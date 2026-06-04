@@ -1,0 +1,24 @@
+{
+  "name": "tamaia-landing",
+  "version": "1.0.0",
+  "description": "TAMAIA — Doskonała Rejestracja Stomatologiczna · Landing page",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve .",
+    "start": "npx serve ."
+  },
+  "homepage": "https://doskonalaobslugapacjenta.pl",
+  "author": {
+    "name": "Excellent Patient Service sp. z o.o.",
+    "email": "biuro@doskonalaobslugapacjenta.pl"
+  },
+  "license": "UNLICENSED",
+  "keywords": [
+    "tamaia",
+    "maia",
+    "stomatologia",
+    "ai",
+    "centralka-telefoniczna",
+    "doskonala-rejestracja"
+  ]
+}
