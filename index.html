@@ -4438,7 +4438,7 @@
       <div class="pc-controls">
         <div class="pc-counter">
           <button type="button" onclick="changePriceCount(-1)" aria-label="Mniej">−</button>
-          <input type="number" id="priceCount" value="3" min="3" max="50" onchange="updatePricingCards()" oninput="updatePricingCards()">
+          <input type="number" id="priceCount" value="3" min="3" max="15" onchange="updatePricingCards()" oninput="updatePricingCards()">
           <button type="button" onclick="changePriceCount(1)" aria-label="Więcej">+</button>
         </div>
         <div class="pc-presets" id="pcPresets">
@@ -4449,46 +4449,77 @@
           <button type="button" data-count="15" onclick="setPriceCount(15)">15</button>
         </div>
       </div>
-      <div class="pc-hint" id="pcHint">💡 <strong>Cena rośnie po 1 osobie.</strong> 3–9 osób → Ringostat Pro · od 10 osób → Ringostat Corporate (taniej per osoba).</div>
+      <div class="pc-hint" id="pcHint">💡 <strong>Cena rośnie po 1 osobie.</strong> Wybierz PLAN+ (bez AI) lub Doskonałą Rejestrację Pro (z AI Ringostat + transkrypcją).</div>
     </div>
 
     <div class="pricing-grid">
 
-      <div class="price-card featured" id="cardPro">
-        <div class="price-badge">JEDEN PROSTY PLAN</div>
-        <div class="price-name" style="font-size: 1.4rem;">Doskonała Rejestracja Pro</div>
-        <div class="price-target" id="targetPro">Pakiet dla zespołu rejestracji · od 3 osób</div>
+      <div class="price-card" id="cardBasic">
+        <div class="price-name" style="font-size: 1.4rem;">PLAN+</div>
+        <div class="price-target" id="targetBasic">Telefonia + skrypty TAMAIA · od 3 osób</div>
 
         <div class="price-single">
-          <div class="price-amount-big" id="priceProAmount">515 zł</div>
-          <div class="price-period-label">średnio miesięcznie brutto</div>
-          <div class="price-period-note">przy abonamencie rocznym płatnym z góry<br>(2 miesiące gratis · VAT 23%)</div>
-          <button type="button" class="price-breakdown-toggle" onclick="toggleBreakdown('breakdownPro')" aria-label="Co składa się na cenę">
-            <span>ⓘ co składa się na tę cenę?</span>
+          <div class="price-amount-big" id="priceBasicAmount">499 zł</div>
+          <div class="price-period-label">brutto / mies</div>
+          <div class="price-period-note">abonament roczny · 2 mies. gratis · VAT 23%</div>
+          <button type="button" class="price-breakdown-toggle" onclick="toggleBreakdown('breakdownBasic')" aria-label="Co składa się na cenę">
+            <span>ⓘ co dokładnie dostajesz?</span>
           </button>
-          <div class="price-breakdown" id="breakdownPro">
-            <div class="pb-row"><span>📞 Ringostat Pro (3 użytk. min.)</span><strong id="pbRsPro">428 zł</strong></div>
-            <div class="pb-row"><span>📚 TAMAIA PRO — 3 skrypty + AI ocena</span><strong id="pbDrsPro">101 zł</strong></div>
-            <div class="pb-row pb-promo"><span>🎁 Promokod Ringostat_DOP (€40/rok)</span><strong>−14 zł</strong></div>
-            <div class="pb-row pb-total"><span>Razem</span><strong id="pbTotalPro">515 zł</strong></div>
+          <div class="price-breakdown" id="breakdownBasic">
+            <div class="pb-row"><span>📞 Telefon Ringostat Basic</span><strong>w cenie</strong></div>
+            <div class="pb-row"><span>📚 Skrypty TAMAIA stomatologiczne</span><strong>w cenie</strong></div>
+            <div class="pb-row"><span>📊 Raport jakości rozmów (uproszczony)</span><strong>w cenie</strong></div>
+            <div class="pb-row"><span>☎️ 1000 min/mies + 2 numery PL</span><strong>w cenie</strong></div>
           </div>
         </div>
 
-        <div class="price-savings">
-          💰 <strong>Z bonusami startowymi:</strong><br>
-          <span class="gold-accent">2 miesiące gratis</span> abonamentu + <span class="gold-accent">kod €40</span> rocznie na Ringostat
+        <ul class="price-features">
+          <li><strong>Telefon Ringostat Basic</strong> — telefonia + nagrywanie + IVR (automatyczne menu)</li>
+          <li><strong>Skrypty TAMAIA</strong> — stomatologiczne warianty rozmów</li>
+          <li><strong>1000 min/mies</strong> połączeń wychodzących</li>
+          <li><strong>2 numery polskie</strong> (1 mobilny + 1 stacjonarny)</li>
+          <li>Miesięczny raport jakości rozmów</li>
+          <li>Szkolenie startowe online (60 min)</li>
+        </ul>
+        <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 16px; font-style: italic;">
+          Pakiet od <strong>3 osób w zespole</strong>. Każda dodatkowa osoba: <strong id="extraBasic">+100 zł/mies brutto</strong>.
+        </p>
+        <a href="#cta" class="btn btn-outline" data-plan="BASIC">Zamów PLAN+ →</a>
+      </div>
+
+      <div class="price-card featured" id="cardPro">
+        <div class="price-badge">REKOMENDOWANY</div>
+        <div class="price-name" style="font-size: 1.4rem;">Doskonała Rejestracja Pro</div>
+        <div class="price-target" id="targetPro">Pełne AI + skrypty TAMAIA · od 3 osób</div>
+
+        <div class="price-single">
+          <div class="price-amount-big" id="priceProAmount">699 zł</div>
+          <div class="price-period-label">brutto / mies</div>
+          <div class="price-period-note">abonament roczny · 2 mies. gratis · VAT 23%</div>
+          <button type="button" class="price-breakdown-toggle" onclick="toggleBreakdown('breakdownPro')" aria-label="Co składa się na cenę">
+            <span>ⓘ co dokładnie dostajesz?</span>
+          </button>
+          <div class="price-breakdown" id="breakdownPro">
+            <div class="pb-row"><span>📞 Telefon Ringostat Pro + AI</span><strong>w cenie</strong></div>
+            <div class="pb-row"><span>🤖 AI Conversation Intelligence</span><strong>w cenie</strong></div>
+            <div class="pb-row"><span>📚 Skrypty TAMAIA + ranking osób</span><strong>w cenie</strong></div>
+            <div class="pb-row"><span>☎️ 1000 min/mies + 2 numery PL</span><strong>w cenie</strong></div>
+            <div class="pb-row"><span>💬 Callback Widget + Online Chat</span><strong>w cenie</strong></div>
+          </div>
         </div>
 
         <ul class="price-features">
-          <li><strong>Wszystko, czego potrzebuje zespół rejestracji</strong></li>
-          <li><strong>3 skrypty stomatologiczne</strong> wgrywane do AI — więcej wariantów rozmów (powitanie, ból, cena, brak terminu)</li>
-          <li><strong>Ringostat Pro</strong> — telefonia + AI podsumowuje każdą rozmowę + pisemny zapis rozmów + czat z pacjentem (min. 3 użytk.)</li>
-          <li>Ranking rejestratorek + <strong>raport w wersji PRO</strong> — rozszerzone konkretne wyniki i konkretne punkty do poprawy dla każdej osoby</li>
+          <li><strong>Wszystko z PLAN+ ↑</strong></li>
+          <li><strong>AI Ringostat</strong> — transkrypcja każdej rozmowy + automatyczna ocena jakości + sentyment</li>
+          <li><strong>Callback Widget</strong> — pacjent zostawia numer, system sam oddzwania</li>
+          <li><strong>Online Chat</strong> — czat omnikanałowy na stronie</li>
+          <li><strong>Ranking rejestratorek</strong> — konkretne wyniki + punkty do poprawy dla każdej osoby</li>
+          <li><strong>Pełny raport TAMAIA</strong> — wnioski AI + rekomendacje dla zespołu</li>
         </ul>
         <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 16px; font-style: italic;">
-          Pakiet od <strong>3 osób w zespole</strong>. Każda dodatkowa osoba: <strong id="extraPerPerson">+244 zł/mies brutto</strong>. Od 10 osób automatycznie przechodzimy na Ringostat Corporate.
+          Pakiet od <strong>3 osób w zespole</strong>. Każda dodatkowa osoba: <strong id="extraPro">+150 zł/mies brutto</strong>.
         </p>
-        <a href="#cta" class="btn btn-primary" data-plan="PRO">Zamów Doskonałą Rejestrację Pro →</a>
+        <a href="#cta" class="btn btn-primary" data-plan="PRO" style="background: linear-gradient(135deg, var(--gold-1), var(--gold-2)); color: var(--navy); font-weight: 700;">Zamów Doskonałą Rejestrację Pro →</a>
       </div>
 
     </div>
@@ -4821,11 +4852,9 @@
 
   // Przygotowanie pakietów (ceny netto, mnożone przez 1.23 dla brutto)
   const PRICING_PLANS = {
-    // Jeden plan: Doskonała Rejestracja Pro. Dynamiczny dobór Ringostat:
-    //   3–9 osób  → Ringostat Pro       (rs=116/os, min 3)
-    //   10+ osób  → Ringostat Corporate (rs=169/os, min 10) — taniej w skali
-    'PRO':       { drs: 99, rs: 116, rsMin: 3,  rsName: 'Pro' },
-    'CORPORATE': { drs: 99, rs: 169, rsMin: 10, rsName: 'Corporate' },
+    // Proste formuły: cena_brutto/mies = base + step × liczba_osób
+    'BASIC': { base: 199, step: 100, label: 'PLAN+',                     min: 3, max: 15 },
+    'PRO':   { base: 249, step: 150, label: 'Doskonała Rejestracja Pro', min: 3, max: 15 },
   };
   const VAT = 1.23;
   const PROMO_MO = Math.round(170 / 12); // €40/rok ≈ 14 zł/mies
@@ -4833,10 +4862,8 @@
   function calcPlanMonthlyBrutto(planKey, count) {
     const p = PRICING_PLANS[planKey];
     if (!p) return 0;
-    const effRs = Math.max(count, p.rsMin);
-    const drsMonthly = Math.round(count * p.drs * 0.83 * VAT);
-    const rsMonthly = Math.round(effRs * p.rs * VAT);
-    return Math.max(0, drsMonthly + rsMonthly - PROMO_MO);
+    const n = Math.max(count, p.min);
+    return p.base + p.step * n;
   }
 
   function formatTargetText(planKey, count) {
@@ -4850,37 +4877,23 @@
     if (!input) return;
     let count = parseInt(input.value) || 3;
     if (count < 3) { count = 3; input.value = 3; }
-    if (count > 50) { count = 50; input.value = 50; }
+    if (count > 15) { count = 15; input.value = 15; }
 
-    // Dynamiczny wybór planu Ringostat
-    const planKey = count >= 10 ? 'CORPORATE' : 'PRO';
+    const basicPrice = calcPlanMonthlyBrutto('BASIC', count);
+    const basicEl = document.getElementById('priceBasicAmount');
+    if (basicEl) basicEl.textContent = basicPrice.toLocaleString('pl-PL') + ' zł';
+    const tBasic = document.getElementById('targetBasic');
+    if (tBasic) tBasic.textContent = 'Telefonia + skrypty TAMAIA · ' + count + ' osób w zespole';
 
-    // Główna cena
-    const totalPrice = calcPlanMonthlyBrutto(planKey, count);
-    document.getElementById('priceProAmount').textContent = totalPrice.toLocaleString('pl-PL') + ' zł';
+    const proPrice = calcPlanMonthlyBrutto('PRO', count);
+    const proEl = document.getElementById('priceProAmount');
+    if (proEl) proEl.textContent = proPrice.toLocaleString('pl-PL') + ' zł';
+    const tPro = document.getElementById('targetPro');
+    if (tPro) tPro.textContent = 'Pełne AI + skrypty TAMAIA · ' + count + ' osób w zespole';
 
-    // Target text — informacja kontekstowa
-    const ringostatTier = count >= 10 ? 'Ringostat Corporate' : 'Ringostat Pro';
-    const targetEl = document.getElementById('targetPro');
-    if (targetEl) {
-      targetEl.textContent = `Pakiet dla zespołu rejestracji · ${count} osób · ${ringostatTier}`;
-    }
-
-    // Cena za każdą dodatkową osobę
-    const oneMore = calcPlanMonthlyBrutto(planKey, count + 1) - totalPrice;
-    const extraEl = document.getElementById('extraPerPerson');
-    if (extraEl) {
-      const sign = oneMore >= 0 ? '+' : '';
-      extraEl.textContent = `${sign}${oneMore.toLocaleString('pl-PL')} zł/mies brutto`;
-    }
-
-    // Aktywny preset
     document.querySelectorAll('#pcPresets button').forEach(btn => {
       btn.classList.toggle('active', parseInt(btn.dataset.count) === count);
     });
-
-    // Breakdown
-    updateBreakdown('Pro', planKey, count);
 
     if (typeof orderState !== 'undefined') {
       orderState.count = count;
@@ -4888,21 +4901,8 @@
     }
   }
 
-  function updateBreakdown(suffix, planKey, count) {
-    const p = PRICING_PLANS[planKey];
-    if (!p) return;
-    const effRs = Math.max(count, p.rsMin);
-    const drsM = Math.round(count * p.drs * 0.83 * VAT);
-    const rsM = Math.round(effRs * p.rs * VAT);
-    const total = Math.max(0, drsM + rsM - PROMO_MO);
 
-    const rsEl = document.getElementById('pbRs' + suffix);
-    const drsEl = document.getElementById('pbDrs' + suffix);
-    const totalEl = document.getElementById('pbTotal' + suffix);
-    if (rsEl) rsEl.textContent = rsM.toLocaleString('pl-PL') + ' zł';
-    if (drsEl) drsEl.textContent = drsM.toLocaleString('pl-PL') + ' zł';
-    if (totalEl) totalEl.textContent = total.toLocaleString('pl-PL') + ' zł';
-  }
+  function updateBreakdown(suffix, planKey, count) { return; }
 
   function toggleBreakdown(id) {
     const el = document.getElementById(id);
@@ -5070,7 +5070,7 @@ Promokod: ${config.promo_code} (−€${config.promo_discount_eur}/rok — aktyw
 
   // ===== PLAN SELECT (klik na karcie) → formularz =====
   // Mapowanie data-plan attribute → klucz w PRICING_PLANS
-  const PLAN_KEY_MAP = { 'PRO': 'PRO' };
+  const PLAN_KEY_MAP = { 'BASIC': 'BASIC', 'PRO': 'PRO' };
 
   document.querySelectorAll('[data-plan]').forEach(btn => {
     btn.addEventListener('click', (e) => {
@@ -5085,7 +5085,7 @@ Promokod: ${config.promo_code} (−€${config.promo_discount_eur}/rok — aktyw
 
       // Highlight wybranej karty
       document.querySelectorAll('.price-card').forEach(c => c.classList.remove('selected-card'));
-      const cardId = 'cardPro';
+      const cardId = { 'BASIC': 'cardBasic', 'PRO': 'cardPro' }[planKey] || 'cardPro';
       const card = document.getElementById(cardId);
       if (card) card.classList.add('selected-card');
 
