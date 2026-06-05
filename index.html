@@ -4462,6 +4462,7 @@
           <div class="price-amount-big" id="priceBasicAmount">499 zł</div>
           <div class="price-period-label">brutto / mies</div>
           <div class="price-period-note">abonament roczny · 2 mies. gratis · VAT 23%</div>
+          <div class="ringostat-compare" id="ringostatBasic" style="margin-top:8px; font-size:0.85rem; color:var(--text-muted); font-style:italic;">sam Ringostat Basic: <strong>481 zł</strong></div>
           <button type="button" class="price-breakdown-toggle" onclick="toggleBreakdown('breakdownBasic')" aria-label="Co składa się na cenę">
             <span>ⓘ co dokładnie dostajesz?</span>
           </button>
@@ -4478,7 +4479,7 @@
           <li><strong>Skrypty TAMAIA</strong> — stomatologiczne warianty rozmów</li>
           <li><strong>1000 min/mies</strong> połączeń wychodzących</li>
           <li><strong>2 numery polskie</strong> (1 mobilny + 1 stacjonarny)</li>
-          <li>Miesięczny raport jakości rozmów</li>
+          <li><strong>Miesięczny raport jakości</strong> (uproszczony) — kluczowe metryki: umówienia, nieodebrane, średni czas rozmowy, główne wnioski</li>
           <li>Szkolenie startowe online (60 min)</li>
         </ul>
         <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 16px; font-style: italic;">
@@ -4496,6 +4497,7 @@
           <div class="price-amount-big" id="priceProAmount">699 zł</div>
           <div class="price-period-label">brutto / mies</div>
           <div class="price-period-note">abonament roczny · 2 mies. gratis · VAT 23%</div>
+          <div class="ringostat-compare" id="ringostatPro" style="margin-top:8px; font-size:0.85rem; color:var(--text-muted); font-style:italic;">sam Ringostat Pro AI: <strong>674 zł</strong></div>
           <button type="button" class="price-breakdown-toggle" onclick="toggleBreakdown('breakdownPro')" aria-label="Co składa się na cenę">
             <span>ⓘ co dokładnie dostajesz?</span>
           </button>
@@ -4514,7 +4516,7 @@
           <li><strong>Callback Widget</strong> — pacjent zostawia numer, system sam oddzwania</li>
           <li><strong>Online Chat</strong> — czat omnikanałowy na stronie</li>
           <li><strong>Ranking rejestratorek</strong> — konkretne wyniki + punkty do poprawy dla każdej osoby</li>
-          <li><strong>Pełny raport TAMAIA</strong> — wnioski AI + rekomendacje dla zespołu</li>
+          <li><strong>Pełny raport jakości (z AI)</strong> — transkrypcja każdej rozmowy, sentyment, ranking osób, konkretne wskazówki dla każdej rejestratorki, trendy miesięczne i kwartalne</li>
         </ul>
         <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 16px; font-style: italic;">
           Pakiet od <strong>3 osób w zespole</strong>. Każda dodatkowa osoba: <strong id="extraPro">+150 zł/mies brutto</strong>.
@@ -4866,6 +4868,17 @@
     return p.base + p.step * n;
   }
 
+  // Ceny samego Ringostat (publiczny cennik ringostat.com)
+  // kurs EUR/PLN: 4.60 (uśrednianie w górę) × VAT 1.23
+  const EUR_PLN_VAT = 4.60 * 1.23;
+  function calcRingostatPrice(plan, count) {
+    const n = Math.max(count, 3);
+    // Basic €17/os, Pro €28/os | + 2 numery (€4/mies) + 1000 min (€30/mies)
+    const perUser = plan === 'PRO' ? 28 : 17;
+    const eurTotal = n * perUser + 4 + 30;
+    return Math.round(eurTotal * EUR_PLN_VAT);
+  }
+
   function formatTargetText(planKey, count) {
     const labels = { 'PRO': 'Doskonała Rejestracja Pro', 'CORPORATE': 'Doskonała Rejestracja Pro' };
     const noun = count === 1 ? 'rejestratorki' : (count < 5 ? 'rejestratorek' : 'rejestratorek');
@@ -4891,6 +4904,14 @@
     const tPro = document.getElementById('targetPro');
     if (tPro) tPro.textContent = 'Pełne AI + skrypty TAMAIA · ' + count + ' osób w zespole';
 
+    // Ceny Ringostat (porównanie pod ceną TAMAIA)
+    const ringB = calcRingostatPrice('BASIC', count);
+    const ringP = calcRingostatPrice('PRO', count);
+    const ringBEl = document.getElementById('ringostatBasic');
+    if (ringBEl) ringBEl.innerHTML = 'sam Ringostat Basic: <strong>' + ringB.toLocaleString('pl-PL') + ' zł</strong>';
+    const ringPEl = document.getElementById('ringostatPro');
+    if (ringPEl) ringPEl.innerHTML = 'sam Ringostat Pro AI: <strong>' + ringP.toLocaleString('pl-PL') + ' zł</strong>';
+
     document.querySelectorAll('#pcPresets button').forEach(btn => {
       btn.classList.toggle('active', parseInt(btn.dataset.count) === count);
     });
@@ -4900,6 +4921,7 @@
       if (typeof syncOrderToForm === 'function') syncOrderToForm();
     }
   }
+
 
 
   function updateBreakdown(suffix, planKey, count) { return; }
