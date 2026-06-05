@@ -3751,6 +3751,66 @@
   }
   .hero-text, .hero-visual { animation: fadeUp 0.8s ease-out; }
   .hero-visual { animation-delay: 0.2s; animation-fill-mode: backwards; }
+
+  /* ===== WIZARD FORMULARZ ===== */
+  .wizard-progress { display: flex; justify-content: space-between; align-items: center; gap: 4px; margin-bottom: 24px; position: relative; }
+  .wizard-progress::before { content: ''; position: absolute; top: 14px; left: 14px; right: 14px; height: 2px; background: var(--warm-border); z-index: 0; }
+  .wp-step { display: flex; flex-direction: column; align-items: center; gap: 6px; position: relative; z-index: 1; flex: 1; }
+  .wp-dot { width: 28px; height: 28px; border-radius: 50%; background: var(--white); border: 2px solid var(--warm-border); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; color: var(--text-muted); transition: all 0.25s; }
+  .wp-label { font-size: 0.72rem; color: var(--text-muted); font-weight: 600; text-align: center; letter-spacing: 0.3px; }
+  .wp-step.active .wp-dot { background: var(--gold-1); border-color: var(--gold-1); color: var(--white); transform: scale(1.1); }
+  .wp-step.active .wp-label { color: var(--navy); }
+  .wp-step.completed .wp-dot { background: #2E7D3E; border-color: #2E7D3E; color: var(--white); }
+  .wp-step.completed .wp-dot::after { content: '✓'; }
+  .wp-step.completed .wp-dot span { display: none; }
+  @media (max-width: 600px) {
+    .wp-label { font-size: 0.62rem; }
+    .wp-dot { width: 24px; height: 24px; font-size: 0.75rem; }
+  }
+
+  .wizard-step { display: none; animation: wizardFadeIn 0.3s ease; }
+  .wizard-step.active { display: block; }
+  @keyframes wizardFadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .ws-title { font-family: Georgia, serif; font-size: 1.45rem; color: var(--navy); margin-bottom: 6px; line-height: 1.25; }
+  .ws-sub { color: var(--text-muted); font-size: 0.92rem; margin-bottom: 18px; }
+  .ws-field { display: block; margin-bottom: 14px; }
+  .ws-field span { display: block; font-size: 0.85rem; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+  .ws-field input { width: 100%; padding: 12px 14px; border: 1.5px solid var(--warm-border); border-radius: 8px; font-family: inherit; font-size: 1rem; transition: border-color 0.2s, box-shadow 0.2s; background: var(--white); color: var(--text); }
+  .ws-field input:focus { outline: none; border-color: var(--gold-1); box-shadow: 0 0 0 3px rgba(201,169,97,0.15); }
+  .ws-field input:invalid:not(:placeholder-shown) { border-color: #c83a3a; }
+
+  .ws-radio-group, .ws-checkbox-group { border: none; padding: 0; margin: 0 0 14px 0; }
+  .ws-radio-group legend, .ws-checkbox-group legend { font-size: 0.85rem; font-weight: 600; color: var(--navy); margin-bottom: 8px; padding: 0; }
+  .ws-radio, .ws-check { display: flex; align-items: center; gap: 10px; padding: 11px 14px; border: 1.5px solid var(--warm-border); border-radius: 8px; cursor: pointer; margin-bottom: 8px; transition: all 0.15s; background: var(--white); }
+  .ws-radio:hover, .ws-check:hover { border-color: var(--gold-1); background: rgba(201,169,97,0.04); }
+  .ws-radio input, .ws-check input { margin: 0; accent-color: var(--gold-1); cursor: pointer; }
+  .ws-radio span, .ws-check span { font-size: 0.93rem; color: var(--text); font-weight: 500; }
+  .ws-radio:has(input:checked), .ws-check:has(input:checked) { border-color: var(--gold-1); background: rgba(201,169,97,0.08); }
+  .ws-radio:has(input:checked) span, .ws-check:has(input:checked) span { color: var(--navy); font-weight: 600; }
+  .ws-radio-big { padding: 14px 16px; }
+  .ws-radio-big span { font-size: 1rem; }
+
+  .ws-why { background: linear-gradient(135deg, rgba(201,169,97,0.08), rgba(201,169,97,0.03)); border-left: 3px solid var(--gold-1); padding: 12px 14px; border-radius: 6px; font-size: 0.88rem; color: var(--text); line-height: 1.5; margin: 16px 0 20px; }
+
+  .ws-actions { display: flex; gap: 10px; justify-content: space-between; margin-top: 22px; }
+  .ws-btn { padding: 13px 22px; border: none; border-radius: 50px; font-family: inherit; font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: all 0.18s; }
+  .ws-btn-primary { background: linear-gradient(135deg, var(--gold-1), var(--gold-2)); color: var(--navy); flex: 1; box-shadow: 0 3px 10px rgba(201,169,97,0.3); }
+  .ws-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 5px 14px rgba(201,169,97,0.4); }
+  .ws-btn-back { background: var(--white); color: var(--text-muted); border: 1.5px solid var(--warm-border); }
+  .ws-btn-back:hover { background: var(--cream); color: var(--navy); }
+  .ws-btn-final { background: linear-gradient(135deg, #2E7D3E, #1B5A2B); color: var(--white); }
+  .ws-btn-final:hover { box-shadow: 0 5px 14px rgba(46,125,62,0.4); }
+
+  .wizard-success { text-align: center; padding: 20px 8px; animation: wizardFadeIn 0.5s ease; }
+  .ws-success-icon { font-size: 3.4rem; margin-bottom: 16px; }
+  .ws-success-title { font-family: Georgia, serif; font-size: 1.5rem; color: var(--navy); margin-bottom: 12px; line-height: 1.3; }
+  .ws-success-text { font-size: 1.02rem; color: var(--text); line-height: 1.6; margin-bottom: 22px; }
+  .ws-success-actions { margin-bottom: 22px; }
+  .ws-success-divider { height: 1px; background: var(--warm-border); margin: 22px 0; }
+  .ws-success-meta { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 10px; }
+  .ws-success-link { color: var(--gold-1); font-weight: 600; text-decoration: none; font-size: 0.95rem; }
+  .ws-success-link:hover { text-decoration: underline; }
+
 </style>
 </head>
 <body>
@@ -4709,64 +4769,127 @@
       </div>
 
       <div class="lead-form" id="leadForm">
-        <h3 id="formHeader">Aktywuj swój pakiet</h3>
-        <p class="lead-form-sub" id="formSub">Wybierz tryb startu w koszyku powyżej (bezpłatny test 14 dni lub od razu płatność). Dane do faktury są wymagane także dla testu.</p>
-        <div id="configSummary" style="background: #FAF8F3; border: 1px solid #E8E1CF; border-radius: 8px; padding: 12px 14px; margin-bottom: 16px; font-size: 0.88rem; color: #1B2C4F;">
-          <strong>Twoja przygotowanie:</strong> <span id="configSummaryText">Doskonała Rejestracja Pro × 3 osoby + Ringostat Pro</span><br>
-          <strong>Cena średnio miesięcznie brutto:</strong> <span id="configSummaryPrice">318 zł</span> <span style="color: #2E7D3E; font-weight: 600;">(z promokodem Ringostat_DOP, VAT 23%, abonament roczny z góry)</span><br>
-          <strong>Tryb startu:</strong> <span id="configSummaryIntent" style="color: #C9A24A; font-weight: 700;">Płatność od razu</span>
+        <div class="wizard-progress" id="wizardProgress">
+          <div class="wp-step active" data-step="1"><span class="wp-dot">1</span><span class="wp-label">Kim jesteś</span></div>
+          <div class="wp-step" data-step="2"><span class="wp-dot">2</span><span class="wp-label">Skala</span></div>
+          <div class="wp-step" data-step="3"><span class="wp-dot">3</span><span class="wp-label">Telefonia</span></div>
+          <div class="wp-step" data-step="4"><span class="wp-dot">4</span><span class="wp-label">Usługi</span></div>
+          <div class="wp-step" data-step="5"><span class="wp-dot">5</span><span class="wp-label">Start</span></div>
         </div>
-        <!-- Intent selector — 3 opcje -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 16px;">
-          <label style="padding: 12px 8px; border: 2px solid #E8E1CF; border-radius: 8px; cursor: pointer; text-align: center; font-size: 0.82rem; font-weight: 600; transition: all 0.15s; line-height: 1.3;" class="intent-option active" data-intent="bezpłatny test" onclick="formSetIntent('bezpłatny test', this)">
-            <input type="radio" name="intent" value="bezpłatny test" checked style="display:none;">
-            🧪 Test 14 dni
-          </label>
-          <label style="padding: 12px 8px; border: 2px solid #E8E1CF; border-radius: 8px; cursor: pointer; text-align: center; font-size: 0.82rem; font-weight: 600; transition: all 0.15s; line-height: 1.3;" class="intent-option" data-intent="info" onclick="formSetIntent('info', this)">
-            <input type="radio" name="intent" value="info" style="display:none;">
-            💬 Mam pytania
-          </label>
-          <label style="padding: 12px 8px; border: 2px solid #E8E1CF; border-radius: 8px; cursor: pointer; text-align: center; font-size: 0.82rem; font-weight: 600; transition: all 0.15s; line-height: 1.3;" class="intent-option" data-intent="buy" onclick="formSetIntent('buy', this)">
-            <input type="radio" name="intent" value="buy" style="display:none;">
-            💳 Zamawiam
-          </label>
-        </div>
-        <form id="demoForm" onsubmit="return submitForm(event)">
-          <div class="form-group">
-            <label for="formName">Imię i nazwisko *</label>
-            <input type="text" id="formName" name="name" required placeholder="dr Anna Kowalska">
-          </div>
-          <div class="form-group">
-            <label for="formClinic">Nazwa gabinetu *</label>
-            <input type="text" id="formClinic" name="clinic" required placeholder="Praktyka Stomatologiczna">
-          </div>
-          <div class="form-group-row">
-            <div class="form-group">
-              <label for="formNip">NIP gabinetu *</label>
-              <input type="text" id="formNip" name="nip" required placeholder="123-45-67-890">
-            </div>
-            <div class="form-group">
-              <label for="formPhone">Telefon *</label>
-              <input type="tel" id="formPhone" name="phone" required placeholder="+48 ...">
+        <form id="wizardForm" autocomplete="on" onsubmit="return wizardSubmit(event)">
+
+          <!-- KROK 1 -->
+          <div class="wizard-step active" data-step="1">
+            <h3 class="ws-title">Powiedz nam o sobie</h3>
+            <p class="ws-sub">Zaczynamy od podstaw — żebyśmy mogli oddzwonić.</p>
+            <label class="ws-field"><span>Imię i nazwisko *</span><input type="text" name="name" required autocomplete="name" placeholder="np. Anna Kowalska"></label>
+            <label class="ws-field"><span>Email *</span><input type="email" name="email" required autocomplete="email" placeholder="anna@praktyka.pl"></label>
+            <label class="ws-field"><span>Numer telefonu *</span><input type="tel" name="phone" required autocomplete="tel" placeholder="+48 600 000 000"></label>
+            <label class="ws-field"><span>Nazwa praktyki *</span><input type="text" name="practice" required placeholder="np. Klinika Stomatologiczna"></label>
+            <label class="ws-field"><span>Miasto *</span><input type="text" name="city" required placeholder="np. Warszawa"></label>
+            <div class="ws-why">💡 Te dane wykorzystamy tylko do oddzwonienia, przygotowania propozycji i uruchomienia bezpłatnego konta demo na 14 dni.</div>
+            <div class="ws-actions">
+              <button type="button" class="ws-btn ws-btn-primary" onclick="wizardNext()">Dalej →</button>
             </div>
           </div>
-          <div class="form-group">
-            <label for="formEmail">E-mail (na fakturę / aktywację) *</label>
-            <input type="email" id="formEmail" name="email" required placeholder="biuro@doskonalaobslugapacjenta.pl">
+
+          <!-- KROK 2 -->
+          <div class="wizard-step" data-step="2">
+            <h3 class="ws-title">Jaka jest skala Twojej recepcji?</h3>
+            <p class="ws-sub">Cena pakietu zależy od liczby osób w rejestracji.</p>
+            <label class="ws-field"><span>Ile osób pracuje w rejestracji? *</span><input type="number" name="receptionCount" min="1" max="100" required placeholder="np. 5"></label>
+            <label class="ws-field"><span>Ile macie lokalizacji? *</span><input type="number" name="locations" min="1" max="50" required placeholder="np. 1"></label>
+            <div class="ws-why">💡 Cena pakietu skaluje się liniowo, a od 10 osób przejdziesz na pakiet premium — taniej per osoba.</div>
+            <div class="ws-actions">
+              <button type="button" class="ws-btn ws-btn-back" onclick="wizardBack()">← Wstecz</button>
+              <button type="button" class="ws-btn ws-btn-primary" onclick="wizardNext()">Dalej →</button>
+            </div>
           </div>
-          <button type="submit" class="form-submit" id="formSubmitBtn">Zamów i otrzymaj fakturę →</button>
-          <div class="form-meta" id="formMetaText">
-            Faktura proforma w 2h roboczych. Promokod Ringostat_DOP aplikowany automatycznie.
+
+          <!-- KROK 3 -->
+          <div class="wizard-step" data-step="3">
+            <h3 class="ws-title">Co macie aktualnie?</h3>
+            <p class="ws-sub">To pomaga nam doradzić Ci najlepszy pakiet.</p>
+            <fieldset class="ws-radio-group">
+              <legend>Macie aktualnie centralkę telefoniczną? *</legend>
+              <label class="ws-radio"><input type="radio" name="currentPbx" value="Nie" required onchange="togglePbxName(false)"><span>Nie</span></label>
+              <label class="ws-radio"><input type="radio" name="currentPbx" value="Tak" required onchange="togglePbxName(true)"><span>Tak — jaka?</span></label>
+            </fieldset>
+            <label class="ws-field" id="pbxNameField" style="display:none;"><span>Jaka centralka?</span><input type="text" name="currentPbxName" placeholder="np. Polcom, Datera, 3CX..."></label>
+            <fieldset class="ws-radio-group">
+              <legend>Macie nagrywanie rozmów? *</legend>
+              <label class="ws-radio"><input type="radio" name="recordingStatus" value="Tak, wszystko" required><span>Tak, wszystko</span></label>
+              <label class="ws-radio"><input type="radio" name="recordingStatus" value="Tak, część" required><span>Tak, część</span></label>
+              <label class="ws-radio"><input type="radio" name="recordingStatus" value="Nie" required><span>Nie</span></label>
+              <label class="ws-radio"><input type="radio" name="recordingStatus" value="Nie wiem" required><span>Nie wiem</span></label>
+            </fieldset>
+            <div class="ws-actions">
+              <button type="button" class="ws-btn ws-btn-back" onclick="wizardBack()">← Wstecz</button>
+              <button type="button" class="ws-btn ws-btn-primary" onclick="wizardNext()">Dalej →</button>
+            </div>
           </div>
+
+          <!-- KROK 4 -->
+          <div class="wizard-step" data-step="4">
+            <h3 class="ws-title">Jakie usługi wykonujecie?</h3>
+            <p class="ws-sub">Zaznacz wszystkie, które oferujesz pacjentom.</p>
+            <fieldset class="ws-checkbox-group">
+              <legend>Profil usług *</legend>
+              <label class="ws-check"><input type="checkbox" name="services" value="Stomatologia zachowawcza"><span>Stomatologia zachowawcza</span></label>
+              <label class="ws-check"><input type="checkbox" name="services" value="Implanty"><span>Implanty</span></label>
+              <label class="ws-check"><input type="checkbox" name="services" value="Ortodoncja"><span>Ortodoncja</span></label>
+              <label class="ws-check"><input type="checkbox" name="services" value="Protetyka"><span>Protetyka</span></label>
+              <label class="ws-check"><input type="checkbox" name="services" value="Chirurgia"><span>Chirurgia</span></label>
+              <label class="ws-check"><input type="checkbox" name="services" value="Ortodoncja dziecięca"><span>Ortodoncja dziecięca</span></label>
+              <label class="ws-check"><input type="checkbox" name="services" value="Endodoncja"><span>Endodoncja</span></label>
+              <label class="ws-check"><input type="checkbox" name="services" value="Estetyka (licówki, wybielanie)"><span>Estetyka (licówki, wybielanie)</span></label>
+            </fieldset>
+            <fieldset class="ws-radio-group">
+              <legend>Macie raty 0% dla pacjentów? *</legend>
+              <label class="ws-radio"><input type="radio" name="installments" value="Tak" required><span>Tak</span></label>
+              <label class="ws-radio"><input type="radio" name="installments" value="Nie" required><span>Nie</span></label>
+              <label class="ws-radio"><input type="radio" name="installments" value="Planujemy" required><span>Planujemy</span></label>
+            </fieldset>
+            <div class="ws-why">💡 MAIA da Ci informacje, ilu pacjentów pytało np. o implanty. Raty 0% to ogromny argument przy rozmowie — chcę wiedzieć, czy go masz w arsenale.</div>
+            <div class="ws-actions">
+              <button type="button" class="ws-btn ws-btn-back" onclick="wizardBack()">← Wstecz</button>
+              <button type="button" class="ws-btn ws-btn-primary" onclick="wizardNext()">Dalej →</button>
+            </div>
+          </div>
+
+          <!-- KROK 5 -->
+          <div class="wizard-step" data-step="5">
+            <h3 class="ws-title">Kiedy chcesz wystartować?</h3>
+            <p class="ws-sub">To ostatnia rzecz — żebym wiedział jaki priorytet ma Twoja sprawa.</p>
+            <fieldset class="ws-radio-group">
+              <legend>Termin startu *</legend>
+              <label class="ws-radio ws-radio-big"><input type="radio" name="startTime" value="W tym miesiącu" required><span>🚀 W tym miesiącu</span></label>
+              <label class="ws-radio ws-radio-big"><input type="radio" name="startTime" value="1-2 miesiące" required><span>📅 W ciągu 1-2 miesięcy</span></label>
+              <label class="ws-radio ws-radio-big"><input type="radio" name="startTime" value="3+ miesiące" required><span>🗓️ Za 3 miesiące lub później</span></label>
+              <label class="ws-radio ws-radio-big"><input type="radio" name="startTime" value="Tylko sprawdzam" required><span>👀 Tylko sprawdzam, co to za rozwiązanie</span></label>
+            </fieldset>
+            <div class="ws-actions">
+              <button type="button" class="ws-btn ws-btn-back" onclick="wizardBack()">← Wstecz</button>
+              <button type="submit" class="ws-btn ws-btn-primary ws-btn-final">✓ Wyślij zgłoszenie</button>
+            </div>
+          </div>
+
         </form>
-        <div class="form-success" id="formSuccess">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#2E7D3E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-            <polyline points="22 4 12 14.01 9 11.01"/>
-          </svg>
-          <h3>Dziękujemy!</h3>
-          <p>Twoje zgłoszenie trafiło do nas. Skontaktujemy się w ciągu 2 godzin roboczych pod podany numer telefonu.</p>
+
+        <!-- THANK YOU -->
+        <div class="wizard-success" id="wizardSuccess" style="display:none;">
+          <div class="ws-success-icon">🙏</div>
+          <h3 class="ws-success-title">Dziękuję bardzo za Twoje zaangażowanie</h3>
+          <p class="ws-success-text">Otrzymałem Twoje zgłoszenie. Zadzwonię do <strong>48 godzin</strong>, żebyśmy porozmawiali o tym, jak możemy Ci pomóc.</p>
+          <div class="ws-success-actions">
+            <a href="https://calendly.com/michal-katarzynski/tamaia-rozmowa" target="_blank" rel="noopener" class="ws-btn ws-btn-primary" style="display:inline-block;">📅 Albo wybierz teraz slot 30 min →</a>
+          </div>
+          <div class="ws-success-divider"></div>
+          <p class="ws-success-meta">Tymczasem zobacz, co osiągnęły inne praktyki:</p>
+          <a href="#testimonials" class="ws-success-link">📊 Case study Drosd Clinic +57% umówień →</a>
+          <p class="ws-success-footer" style="margin-top: 24px; font-size: 0.85rem; color: var(--text-muted);">Pilna sprawa? Zadzwoń: <a href="tel:+48579774089" style="color: var(--gold-1); font-weight: 700;">+48 579 774 089</a></p>
         </div>
+
       </div>
     </div>
   </div>
@@ -5243,6 +5366,158 @@ Promokod: ${config.promo_code} (−€${config.promo_discount_eur}/rok — aktyw
       }
     });
   });
+</script>
+
+
+<script>
+  // ===== WIZARD LOGIC =====
+  (function() {
+    let currentStep = 1;
+    const totalSteps = 5;
+
+    function getStep(n) { return document.querySelector('.wizard-step[data-step="' + n + '"]'); }
+    function getProgress(n) { return document.querySelector('.wp-step[data-step="' + n + '"]'); }
+
+    function updateProgress() {
+      for (let i = 1; i <= totalSteps; i++) {
+        const p = getProgress(i);
+        if (!p) continue;
+        p.classList.remove('active', 'completed');
+        if (i < currentStep) p.classList.add('completed');
+        else if (i === currentStep) p.classList.add('active');
+      }
+    }
+
+    function showStep(n) {
+      document.querySelectorAll('.wizard-step').forEach(s => s.classList.remove('active'));
+      const target = getStep(n);
+      if (target) target.classList.add('active');
+      currentStep = n;
+      updateProgress();
+      // Scroll do formularza na mobile
+      const form = document.getElementById('leadForm');
+      if (form) form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function validateCurrentStep() {
+      const step = getStep(currentStep);
+      if (!step) return false;
+      const inputs = step.querySelectorAll('input[required], select[required], textarea[required]');
+      let firstInvalid = null;
+      inputs.forEach(inp => {
+        if (!inp.checkValidity()) {
+          inp.reportValidity();
+          if (!firstInvalid) firstInvalid = inp;
+        }
+      });
+      if (firstInvalid) return false;
+      // Custom: krok 4 wymaga >=1 checkbox usługi
+      if (currentStep === 4) {
+        const services = step.querySelectorAll('input[name="services"]:checked');
+        if (services.length === 0) {
+          alert('Zaznacz przynajmniej jedną usługę.');
+          return false;
+        }
+      }
+      return true;
+    }
+
+    window.wizardNext = function() {
+      if (!validateCurrentStep()) return;
+      if (currentStep < totalSteps) showStep(currentStep + 1);
+    };
+    window.wizardBack = function() {
+      if (currentStep > 1) showStep(currentStep - 1);
+    };
+    window.togglePbxName = function(show) {
+      const field = document.getElementById('pbxNameField');
+      const input = field ? field.querySelector('input') : null;
+      if (field) field.style.display = show ? 'block' : 'none';
+      if (input) {
+        if (show) input.setAttribute('required', 'required');
+        else input.removeAttribute('required');
+      }
+    };
+
+    window.wizardSubmit = function(event) {
+      event.preventDefault();
+      if (!validateCurrentStep()) return false;
+      const form = document.getElementById('wizardForm');
+      const fd = new FormData(form);
+      const services = fd.getAll('services');
+      const data = {
+        name: fd.get('name'),
+        email: fd.get('email'),
+        phone: fd.get('phone'),
+        practice: fd.get('practice'),
+        city: fd.get('city'),
+        receptionCount: fd.get('receptionCount'),
+        locations: fd.get('locations'),
+        currentPbx: fd.get('currentPbx'),
+        currentPbxName: fd.get('currentPbxName') || '',
+        recordingStatus: fd.get('recordingStatus'),
+        services: services,
+        installments: fd.get('installments'),
+        startTime: fd.get('startTime'),
+        timestamp: new Date().toISOString(),
+        source: 'tamaia.pl wizard'
+      };
+
+      // Backup do localStorage
+      try {
+        const leads = JSON.parse(localStorage.getItem('tamaia_leads') || '[]');
+        leads.push(data);
+        localStorage.setItem('tamaia_leads', JSON.stringify(leads));
+      } catch (e) {}
+
+      // Email submit przez mailto: (fallback gdy brak backendu)
+      const subject = encodeURIComponent('[LEAD TAMAIA] ' + data.practice + ' (' + data.city + ') — ' + data.receptionCount + ' osób');
+      const bodyLines = [
+        '=== NOWY LEAD TAMAIA ===',
+        '',
+        '👤 KONTAKT',
+        'Imię i nazwisko: ' + data.name,
+        'Email: ' + data.email,
+        'Telefon: ' + data.phone,
+        'Praktyka: ' + data.practice,
+        'Miasto: ' + data.city,
+        '',
+        '📊 SKALA',
+        'Osoby w rejestracji: ' + data.receptionCount,
+        'Lokalizacje: ' + data.locations,
+        '',
+        '📞 AKTUALNE ROZWIĄZANIA',
+        'Centralka: ' + data.currentPbx + (data.currentPbxName ? ' (' + data.currentPbxName + ')' : ''),
+        'Nagrywanie rozmów: ' + data.recordingStatus,
+        '',
+        '🦷 USŁUGI',
+        'Profil: ' + services.join(', '),
+        'Raty 0%: ' + data.installments,
+        '',
+        '⏱️ GOTOWOŚĆ',
+        'Termin startu: ' + data.startTime,
+        '',
+        '🕒 ' + new Date().toLocaleString('pl-PL'),
+        'Źródło: tamaia.pl'
+      ];
+      const body = encodeURIComponent(bodyLines.join('\n'));
+      const mailto = 'mailto:biuro@doskonalaobslugapacjenta.pl?subject=' + subject + '&body=' + body;
+
+      // Pokaż thank-you i otwórz mailto w nowej karcie
+      document.getElementById('wizardForm').style.display = 'none';
+      document.getElementById('wizardProgress').style.display = 'none';
+      document.getElementById('wizardSuccess').style.display = 'block';
+      const form2 = document.getElementById('leadForm');
+      if (form2) form2.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      // Po krótkiej chwili otwórz klient pocztowy (na wszelki wypadek)
+      setTimeout(() => {
+        try { window.location.href = mailto; } catch (e) {}
+      }, 600);
+
+      return false;
+    };
+  })();
 </script>
 
 </body>
