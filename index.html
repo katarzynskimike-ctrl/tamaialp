@@ -1895,7 +1895,7 @@
 
   .pricing-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 24px;
     margin-bottom: 40px;
   }
@@ -4540,34 +4540,17 @@
           <div class="price-period-label">brutto / mies</div>
           <div class="price-period-note">abonament roczny · VAT 23%</div>
           <div class="ringostat-compare" id="ringostatPlus" style="margin-top:8px; font-size:0.85rem; color:var(--text-muted); font-style:italic;">sam Ringostat: <strong>311 zł</strong></div>
-          <button type="button" class="price-breakdown-toggle" onclick="toggleBreakdown('breakdownPlus')" aria-label="Co składa się na cenę">
-            <span>ⓘ co dokładnie dostajesz?</span>
-          </button>
-          <div class="price-breakdown" id="breakdownPlus">
-            <div class="pb-row"><span>Telefonia Ringostat (nagrywanie + IVR)</span><strong>w cenie</strong></div>
-            <div class="pb-row"><span>AI MAIA — analiza 100% rozmów</span><strong>w cenie</strong></div>
-            <div class="pb-row"><span>Skrypty TAMAIA + ranking osób</span><strong>w cenie</strong></div>
-            <div class="pb-row"><span>2 numery PL</span><strong>w cenie</strong></div>
-            <div class="pb-row"><span>Dodatkowy numer i minuty (oddzwanianie)</span><strong>wg Ringostat</strong></div>
-          </div>
         </div>
 
         <ul class="price-features">
-          <li><strong>Telefonia Ringostat</strong> — nagrywanie rozmów + IVR (automatyczne menu)</li>
-          <li><strong>2 numery polskie w cenie</strong> (1 mobilny + 1 stacjonarny) · dodatkowy numer oraz minuty połączeń (np. oddzwanianie) rozliczane osobno w Ringostat wg zużycia</li>
-          <li><strong>AI MAIA po każdej rozmowie</strong> — autorska AI TAMAIA:
-            <ul style="margin-left: 18px; margin-top: 6px; font-size: 0.92rem; line-height: 1.55;">
-              <li><strong>Transkrypcja</strong> każdej rozmowy po polsku — przeszukiwalne archiwum</li>
-              <li><strong>Ocena jakości 1-10</strong> + nastrój pacjenta i rejestratorki</li>
-              <li><strong>Konkretna rada</strong> po rozmowie — co zrobić następnym razem</li>
-              <li>Czy umówiono wizytę + powód, temat rozmowy (implant, orto, ból...)</li>
-              <li>Zgodność ze standardem rozmowy Doskonałej Rejestracji</li>
-            </ul>
-          </li>
-          <li><strong>Skrypty TAMAIA</strong> — stomatologiczne warianty rozmów</li>
-          <li><strong>Ranking rejestratorek</strong> + indywidualne wskazówki dla każdej osoby</li>
-          <li><strong>Raporty dla właściciela</strong> — trendy, najczęstsze tematy, benchmark</li>
-          <li>Szkolenie startowe online (60 min)</li>
+          <li><span><strong>Telefonia Ringostat</strong> — nagrywanie rozmów + IVR</span></li>
+          <li><span><strong>2 numery PL w cenie</strong> — dodatkowy numer i minuty (np. oddzwanianie) rozliczane osobno w Ringostat</span></li>
+          <li><span><strong>AI MAIA</strong> — analiza 100% rozmów po polsku</span></li>
+          <li><span>Transkrypcja + ocena jakości 1–10 + nastrój pacjenta</span></li>
+          <li><span>Konkretna rada po każdej rozmowie — co zrobić następnym razem</span></li>
+          <li><span>Temat rozmowy (implant, orto, ból) + czy umówiono wizytę</span></li>
+          <li><span><strong>Skrypty TAMAIA</strong> + ranking rejestratorek</span></li>
+          <li><span>Raporty dla właściciela + szkolenie startowe online</span></li>
         </ul>
         <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 16px; font-style: italic;">
           Pakiet od <strong>3 osób w zespole</strong>. Każda dodatkowa osoba: <strong id="extraPlus">+100 zł/mies brutto</strong>.
@@ -4578,33 +4561,23 @@
       <div class="price-card featured" id="cardPro">
         <div class="price-badge">NAJCZĘŚCIEJ WYBIERANY</div>
         <div class="price-name" style="font-size: 1.4rem;">Doskonała Rejestracja Pro</div>
-        <div class="price-target" id="targetPro">Wszystko z Plus + Kalendarz, CRM, SMS, przedpłaty · od 3 osób</div>
+        <div class="price-target" id="targetPro">Wszystko z Plus + Kalendarz, CRM, SMS · od 3 osób</div>
 
         <div class="price-single">
           <div class="price-amount-big" id="priceProAmount">699 zł</div>
           <div class="price-period-label">brutto / mies</div>
           <div class="price-period-note">abonament roczny · VAT 23%</div>
-          <button type="button" class="price-breakdown-toggle" onclick="toggleBreakdown('breakdownPro')" aria-label="Co składa się na cenę">
-            <span>ⓘ co dokładnie dostajesz?</span>
-          </button>
-          <div class="price-breakdown" id="breakdownPro">
-            <div class="pb-row"><span>Wszystko z planu Plus</span><strong>w cenie</strong></div>
-            <div class="pb-row"><span>Kalendarz wizyt + Gap-Filler</span><strong>w cenie</strong></div>
-            <div class="pb-row"><span>SMS: przypomnienia i potwierdzenia</span><strong>w cenie</strong></div>
-            <div class="pb-row"><span>Przedpłaty online (BLIK / Przelewy24)</span><strong>w cenie</strong></div>
-            <div class="pb-row"><span>Karta pacjenta (CRM) + zadania zespołu</span><strong>w cenie</strong></div>
-          </div>
         </div>
 
         <ul class="price-features">
-          <li><strong>Wszystko z planu Plus ↑</strong> — telefonia, pełne AI MAIA, skrypty, raporty</li>
-          <li><strong>Kalendarz wizyt</strong> — kolumny per lekarz, statusy wizyt na żywo, luki widoczne od razu</li>
-          <li><strong>Automatyczne SMS-y</strong> — przypomnienie 24 h przed wizytą, pacjent potwierdza odpowiedzią „TAK", status zmienia się sam</li>
-          <li><strong>Gap-Filler</strong> — luka w grafiku? System sam proponuje pacjentów z listy priorytetowej i wysyła SMS-y kaskadowo</li>
-          <li><strong>Przedpłaty online</strong> (BLIK / Przelewy24) — mniej no-show, wizyta opłacona z góry</li>
-          <li><strong>Karta pacjenta (CRM)</strong> — oś czasu: rozmowy, SMS-y, płatności, wizyty, notatki i zgody w jednym miejscu</li>
-          <li><strong>Plan leczenia jako sekwencja wizyt</strong> — system pilnuje kolejności i sam proponuje następny krok</li>
-          <li><strong>Zadania zespołu</strong> — nieodebrane połączenie czy SMS od pacjenta automatycznie tworzy zadanie z terminem</li>
+          <li><span><strong>Wszystko z planu Plus</strong> — telefonia, AI MAIA, skrypty, raporty</span></li>
+          <li><span><strong>Kalendarz wizyt</strong> — kolumny per lekarz, luki widoczne na żywo</span></li>
+          <li><span><strong>Gap-Filler</strong> — sam proponuje pacjentów na luki i wysyła SMS-y</span></li>
+          <li><span><strong>Automatyczne SMS-y</strong> — przypomnienia i potwierdzenia (pacjent odpisuje „TAK")</span></li>
+          <li><span><strong>Przedpłaty online</strong> (BLIK / Przelewy24) — mniej no-show</span></li>
+          <li><span><strong>Karta pacjenta (CRM)</strong> — oś czasu: rozmowy, SMS, płatności, wizyty</span></li>
+          <li><span>Plan leczenia jako sekwencja wizyt</span></li>
+          <li><span>Zadania zespołu z terminami</span></li>
         </ul>
         <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 16px; font-style: italic;">
           Pakiet od <strong>3 osób w zespole</strong>. Każda dodatkowa osoba: <strong id="extraPro">+100 zł/mies brutto</strong>.
@@ -4615,31 +4588,21 @@
       <div class="price-card" id="cardPremium">
         <div class="price-badge" style="background: linear-gradient(135deg, var(--gold-1), var(--gold-2)); color: var(--navy);">+ 1H / MIES Z MICHAŁEM</div>
         <div class="price-name" style="font-size: 1.4rem;">Doskonała Rejestracja Premium</div>
-        <div class="price-target" id="targetPremium">Wszystko z Pro + 1h/mies z Michałem Katarzyńskim · od 3 osób</div>
+        <div class="price-target" id="targetPremium">Wszystko z Pro + 1h/mies z Michałem · od 3 osób</div>
 
         <div class="price-single">
           <div class="price-amount-big" id="pricePremiumAmount">1 499 zł</div>
           <div class="price-period-label">brutto / mies</div>
           <div class="price-period-note">abonament roczny · VAT 23%</div>
-          <button type="button" class="price-breakdown-toggle" onclick="toggleBreakdown('breakdownPremium')" aria-label="Co składa się na cenę">
-            <span>ⓘ co dokładnie dostajesz?</span>
-          </button>
-          <div class="price-breakdown" id="breakdownPremium">
-            <div class="pb-row"><span>Wszystko z planu Pro</span><strong>w cenie</strong></div>
-            <div class="pb-row"><span>1 godzina / mies z Michałem (1:1)</span><strong>w cenie</strong></div>
-            <div class="pb-row"><span>Przegląd wyników + kalibracja skryptów</span><strong>w cenie</strong></div>
-            <div class="pb-row"><span>Plan rozwoju recepcji</span><strong>w cenie</strong></div>
-            <div class="pb-row"><span>Priorytetowe wsparcie</span><strong>w cenie</strong></div>
-          </div>
         </div>
 
         <ul class="price-features">
-          <li><strong>Wszystko z planu Pro ↑</strong> — telefonia, AI MAIA, Kalendarz, CRM, SMS, przedpłaty</li>
-          <li><strong>1 godzina miesięcznie z Michałem Katarzyńskim</strong> — konsultacja 1:1 na Twoich danych</li>
-          <li><strong>Przegląd wyników recepcji</strong> — co działa, gdzie są pieniądze do odzyskania</li>
-          <li><strong>Kalibracja skryptów</strong> pod Twój gabinet i sezon</li>
-          <li><strong>Indywidualny plan rozwoju zespołu</strong></li>
-          <li><strong>Priorytetowe wsparcie</strong> — szybsza ścieżka kontaktu</li>
+          <li><span><strong>Wszystko z planu Pro</strong> — telefonia, AI MAIA, Kalendarz, CRM, SMS</span></li>
+          <li><span><strong>1 godzina miesięcznie z Michałem Katarzyńskim</strong> — konsultacja 1:1 na Twoich danych</span></li>
+          <li><span>Przegląd wyników recepcji — gdzie są pieniądze do odzyskania</span></li>
+          <li><span>Kalibracja skryptów pod Twój gabinet i sezon</span></li>
+          <li><span>Indywidualny plan rozwoju zespołu</span></li>
+          <li><span>Priorytetowe wsparcie</span></li>
         </ul>
         <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 16px; font-style: italic;">
           Pakiet od <strong>3 osób w zespole</strong>. Każda dodatkowa osoba: <strong id="extraPremium">+100 zł/mies brutto</strong>. Godzina z Michałem — stała kwota.
