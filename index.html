@@ -4,9 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Favicon: TAMAIA -->
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="icon" type="image/x-icon" href="favicon.ico" sizes="any">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230a1e3f'/%3E%3Cpath d='M16 22h32M32 22v22' stroke='%23c9a961' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='32' fill='%230a1e3f'/%3E%3Cpath d='M45 62h90M90 62v62' stroke='%23c9a961' stroke-width='18' stroke-linecap='round'/%3E%3C/svg%3E">
   <link rel="canonical" href="https://tamaia.pl/">
 
 <title>TAMAIA — Doskonała Rejestracja Stomatologiczna · AI dla gabinetów</title>
@@ -72,6 +71,24 @@
 }
 </script>
 
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Co dokladnie kupuje - Ringostat czy usluge Doskonalej Rejestracji?","acceptedAnswer":{"@type":"Answer","text":"System sklada sie z dwoch czesci: skrypty Doskonalej Rejestracji wgrane do AI jako wzorzec oraz uruchomienie telefonu AI (Ringostat + asystentka MAIA, ktora podsumowuje kazda rozmowe). Placisz jedna faktura (brutto, VAT 23%). Z promokodem Ringostat_DOP dostajesz 40 EUR bonusu rocznie."}},
+{"@type":"Question","name":"Ile to kosztuje miesiecznie?","acceptedAnswer":{"@type":"Answer","text":"Trzy plany dla zespolu 3 osob: Plus od 499 zl (telefonia + pelne AI MAIA), Pro od 699 zl (dodatkowo Kalendarz, CRM, SMS, przedplaty), Premium od 1499 zl (Pro + 1 godzina miesiecznie z Michalem Katarzynskim). Kazda kolejna osoba +100 zl/mies. Ceny brutto, abonament roczny."}},
+{"@type":"Question","name":"Co z RODO i nagrywaniem rozmow pacjentow?","acceptedAnswer":{"@type":"Answer","text":"Ringostat hostuje dane w UE i ma podpisana umowe DPA. Dostarczamy szablon polityki RODO oraz zapis informacyjny do nagrywania rozmow. Nagrania sa szyfrowane i dostepne tylko upowaznionym osobom."}},
+{"@type":"Question","name":"Jak szybko mozna wdrozyc system?","acceptedAnswer":{"@type":"Answer","text":"5 dni roboczych od podpisania umowy. Pierwsze raporty po 7 dniach, pelny raport miesieczny po 30 dniach."}},
+{"@type":"Question","name":"Czy jest umowa lojalnosciowa?","acceptedAnswer":{"@type":"Answer","text":"Nie. Plan roczny z mozliwoscia anulowania w dowolnym momencie i proporcjonalnym zwrotem za niewykorzystane miesiace."}}
+]}
+</script>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Product","name":"Doskonala Rejestracja Stomatologiczna (TAMAIA)","description":"Telefon AI z asystentka MAIA dla rejestracji stomatologicznej - analiza 100% rozmow, skrypty i raporty.","brand":{"@type":"Brand","name":"TAMAIA"},"offers":[
+{"@type":"Offer","name":"Plus","price":"499","priceCurrency":"PLN","description":"Telefonia + pelne AI MAIA (3 osoby/mies, brutto)"},
+{"@type":"Offer","name":"Pro","price":"699","priceCurrency":"PLN","description":"Plus + Kalendarz, CRM, SMS, przedplaty (3 osoby/mies, brutto)"},
+{"@type":"Offer","name":"Premium","price":"1499","priceCurrency":"PLN","description":"Pro + 1h/mies z Michalem Katarzynskim (3 osoby/mies, brutto)"}
+]}
+</script>
+
 <style>
   /* ===== RESET & BASE ===== */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -83,6 +100,9 @@
     background: #FFFFFF;
     -webkit-font-smoothing: antialiased;
   }
+  .skip-link { position: absolute; left: 8px; top: -48px; z-index: 2000; background: #0a1e3f; color: #fff; padding: 10px 16px; border-radius: 8px; text-decoration: none; font-weight: 700; transition: top .15s ease; }
+  .skip-link:focus { top: 8px; }
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible { outline: 2px solid #c9a961; outline-offset: 2px; }
 
   :root {
     --navy: #1B2C4F;
@@ -3838,6 +3858,7 @@
 </style>
 </head>
 <body>
+<a href="#tresc" class="skip-link">Przejdz do tresci</a>
 
 <!-- ===== SCROLL PROGRESS BAR ===== -->
 <div class="scroll-progress" id="scrollProgress"></div>
@@ -3882,7 +3903,7 @@
 </nav>
 
 <!-- ===== HERO ===== -->
-<section class="hero">
+<section class="hero" id="tresc">
   <div class="container">
     <div class="hero-content">
       <div class="hero-text">
@@ -4074,7 +4095,7 @@
       </div>
     </div>
 
-    <p class="problem-source">
+    <p class="problem-source" style="max-width:680px;margin-left:auto;margin-right:auto;">
       Źródło: dane z systemu Doskonałej Rejestracji Stomatologicznej oraz zagregowane wdrożenia Ringostat (technologia bazowa) w branżach usługowych i medycznych, 2023–2025.
     </p>
   </div>
@@ -4515,7 +4536,7 @@
       <div class="pc-controls">
         <div class="pc-counter">
           <button type="button" onclick="changePriceCount(-1)" aria-label="Mniej">−</button>
-          <input type="number" id="priceCount" value="3" min="3" max="15" onchange="updatePricingCards()" oninput="updatePricingCards()">
+          <input type="number" id="priceCount" value="3" min="3" max="15" aria-label="Liczba rejestratorek" onchange="updatePricingCards()" oninput="updatePricingCards()">
           <button type="button" onclick="changePriceCount(1)" aria-label="Więcej">+</button>
         </div>
         <div class="pc-presets" id="pcPresets">
@@ -4786,8 +4807,8 @@
             <label class="ws-field"><span>Imię i nazwisko *</span><input type="text" name="name" required autocomplete="name" placeholder="np. Anna Kowalska"></label>
             <label class="ws-field"><span>Email *</span><input type="email" name="email" required autocomplete="email" placeholder="anna@praktyka.pl"></label>
             <label class="ws-field"><span>Numer telefonu *</span><input type="tel" name="phone" required autocomplete="tel" placeholder="+48 600 000 000"></label>
-            <label class="ws-field"><span>Nazwa praktyki *</span><input type="text" name="practice" required placeholder="np. Klinika Stomatologiczna"></label>
-            <label class="ws-field"><span>Miasto *</span><input type="text" name="city" required placeholder="np. Warszawa"></label>
+            <label class="ws-field"><span>Nazwa praktyki *</span><input type="text" name="practice" required autocomplete="organization" placeholder="np. Klinika Stomatologiczna"></label>
+            <label class="ws-field"><span>Miasto *</span><input type="text" name="city" required autocomplete="address-level2" placeholder="np. Warszawa"></label>
             <div class="ws-why">💡 Te dane wykorzystamy tylko do oddzwonienia, przygotowania propozycji i uruchomienia bezpłatnego konta demo na 14 dni.</div>
             <div class="ws-actions">
               <button type="button" class="ws-btn ws-btn-primary" onclick="wizardNext()">Dalej →</button>
