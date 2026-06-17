@@ -6,9 +6,10 @@
   <!-- Favicon: TAMAIA -->
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230a1e3f'/%3E%3Cpath d='M16 22h32M32 22v22' stroke='%23c9a961' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
   <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='32' fill='%230a1e3f'/%3E%3Cpath d='M45 62h90M90 62v62' stroke='%23c9a961' stroke-width='18' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="canonical" href="https://tamaia.pl/">
 
 <title>TAMAIA — Doskonała Rejestracja Stomatologiczna · AI dla gabinetów</title>
-<meta name="description" content="TAMAIA to nowoczesna centrala telefoniczna z asystentką MAIA, która pomaga rejestratorkom umawiać więcej pacjentów + autorskie zasady obsługi dla gabinetów stomatologicznych. Pierwsze 10 gabinetów: bonus startowy">
+<meta name="description" content="Telefon AI z asystentką MAIA podsumowuje każdą rozmowę recepcji i podpowiada, jak umawiać więcej pacjentów — dla gabinetów stomatologicznych. Test 14 dni.">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
@@ -41,11 +42,51 @@
   "offers": {
     "@type": "AggregateOffer",
     "priceCurrency": "PLN",
-    "lowPrice": "69",
-    "highPrice": "129",
+    "lowPrice": "499",
+    "highPrice": "1499",
     "offerCount": "3"
   }
 }
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Excellent Patient Service sp. z o.o.",
+  "alternateName": "TAMAIA — Doskonała Rejestracja Stomatologiczna",
+  "url": "https://tamaia.pl/",
+  "logo": "https://tamaia.pl/logo_tamaia.png",
+  "telephone": "+48579774089",
+  "email": "biuro@doskonalaobslugapacjenta.pl",
+  "vatID": "PL5170359961",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ul. Lubomirskiego 39E",
+    "postalCode": "36-040",
+    "addressLocality": "Boguchwała",
+    "addressCountry": "PL"
+  },
+  "sameAs": ["https://doskonalaobslugapacjenta.pl"]
+}
+</script>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Co dokladnie kupuje - Ringostat czy usluge Doskonalej Rejestracji?","acceptedAnswer":{"@type":"Answer","text":"System sklada sie z dwoch czesci: skrypty Doskonalej Rejestracji wgrane do AI jako wzorzec oraz uruchomienie telefonu AI (Ringostat + asystentka MAIA, ktora podsumowuje kazda rozmowe). Placisz jedna faktura (brutto, VAT 23%). Z promokodem Ringostat_DOP dostajesz 40 EUR bonusu rocznie."}},
+{"@type":"Question","name":"Ile to kosztuje miesiecznie?","acceptedAnswer":{"@type":"Answer","text":"Trzy plany dla zespolu 3 osob: Plus od 499 zl (telefonia + pelne AI MAIA), Pro od 699 zl (dodatkowo Kalendarz, CRM, SMS, przedplaty), Premium od 1499 zl (Pro + 1 godzina miesiecznie z Michalem Katarzynskim). Kazda kolejna osoba +100 zl/mies. Ceny brutto, abonament roczny."}},
+{"@type":"Question","name":"Co z RODO i nagrywaniem rozmow pacjentow?","acceptedAnswer":{"@type":"Answer","text":"Ringostat hostuje dane w UE i ma podpisana umowe DPA. Dostarczamy szablon polityki RODO oraz zapis informacyjny do nagrywania rozmow. Nagrania sa szyfrowane i dostepne tylko upowaznionym osobom."}},
+{"@type":"Question","name":"Jak szybko mozna wdrozyc system?","acceptedAnswer":{"@type":"Answer","text":"5 dni roboczych od podpisania umowy. Pierwsze raporty po 7 dniach, pelny raport miesieczny po 30 dniach."}},
+{"@type":"Question","name":"Czy jest umowa lojalnosciowa?","acceptedAnswer":{"@type":"Answer","text":"Nie. Plan roczny z mozliwoscia anulowania w dowolnym momencie i proporcjonalnym zwrotem za niewykorzystane miesiace."}}
+]}
+</script>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Product","name":"Doskonala Rejestracja Stomatologiczna (TAMAIA)","description":"Telefon AI z asystentka MAIA dla rejestracji stomatologicznej - analiza 100% rozmow, skrypty i raporty.","brand":{"@type":"Brand","name":"TAMAIA"},"offers":[
+{"@type":"Offer","name":"Plus","price":"499","priceCurrency":"PLN","description":"Telefonia + pelne AI MAIA (3 osoby/mies, brutto)"},
+{"@type":"Offer","name":"Pro","price":"699","priceCurrency":"PLN","description":"Plus + Kalendarz, CRM, SMS, przedplaty (3 osoby/mies, brutto)"},
+{"@type":"Offer","name":"Premium","price":"1499","priceCurrency":"PLN","description":"Pro + 1h/mies z Michalem Katarzynskim (3 osoby/mies, brutto)"}
+]}
 </script>
 
 <style>
@@ -59,6 +100,9 @@
     background: #FFFFFF;
     -webkit-font-smoothing: antialiased;
   }
+  .skip-link { position: absolute; left: 8px; top: -48px; z-index: 2000; background: #0a1e3f; color: #fff; padding: 10px 16px; border-radius: 8px; text-decoration: none; font-weight: 700; transition: top .15s ease; }
+  .skip-link:focus { top: 8px; }
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible { outline: 2px solid #c9a961; outline-offset: 2px; }
 
   :root {
     --navy: #1B2C4F;
@@ -1871,7 +1915,7 @@
 
   .pricing-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 24px;
     margin-bottom: 40px;
   }
@@ -3814,6 +3858,7 @@
 </style>
 </head>
 <body>
+<a href="#tresc" class="skip-link">Przejdz do tresci</a>
 
 <!-- ===== SCROLL PROGRESS BAR ===== -->
 <div class="scroll-progress" id="scrollProgress"></div>
@@ -3858,7 +3903,7 @@
 </nav>
 
 <!-- ===== HERO ===== -->
-<section class="hero">
+<section class="hero" id="tresc">
   <div class="container">
     <div class="hero-content">
       <div class="hero-text">
@@ -3879,7 +3924,7 @@
           <div><strong>220+</strong> szkoleń zamkniętych całych praktyk</div>
         </div>
         <p style="margin-top: 20px; font-size: 0.88rem; color: var(--text-muted); font-style: italic;">
-          Dla praktyk stomatologicznych · min. 2 rejestratorki · plany od <strong>399 zł / mies</strong> brutto · min. 10 połączeń dziennie
+          Dla praktyk stomatologicznych · min. 2 rejestratorki · plany od <strong>499 zł / mies</strong> brutto · min. 10 połączeń dziennie
         </p>
       </div>
 
@@ -3957,10 +4002,10 @@
       <div class="sp-logo-placeholder">Orto+ Klinika<br><span>Łódź</span></div>
     </div>
     <div class="social-proof-badges">
-      <div class="sp-badge"><span class="sp-badge-icon">🔒</span> RODO compliant</div>
-      <div class="sp-badge"><span class="sp-badge-icon">🇪🇺</span> Hosting w UE</div>
-      <div class="sp-badge"><span class="sp-badge-icon">⭐</span> Oficjalny Partner Ringostat</div>
-      <div class="sp-badge"><span class="sp-badge-icon">📜</span> 14 lat doświadczenia w branży</div>
+      <div class="sp-badge"><span class="sp-badge-icon"><svg xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle" viewBox="0 0 24 24" fill="none" stroke="#0a1e3f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span> RODO compliant</div>
+      <div class="sp-badge"><span class="sp-badge-icon"><svg xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle" viewBox="0 0 24 24" fill="none" stroke="#0a1e3f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg></span> Hosting w UE</div>
+      <div class="sp-badge"><span class="sp-badge-icon"><svg xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle" viewBox="0 0 24 24" fill="none" stroke="#0a1e3f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l2.9 6 6.6.6-5 4.4 1.5 6.4L12 17l-5.5 3.3L8 13.9l-5-4.4 6.6-.6z"/></svg></span> Oficjalny Partner Ringostat</div>
+      <div class="sp-badge"><span class="sp-badge-icon"><svg xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle" viewBox="0 0 24 24" fill="none" stroke="#0a1e3f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M9 13.3L7 22l5-3 5 3-2-8.7"/></svg></span> 14 lat doświadczenia w branży</div>
     </div>
   </div>
 </section>
@@ -4050,7 +4095,7 @@
       </div>
     </div>
 
-    <p class="problem-source">
+    <p class="problem-source" style="max-width:680px;margin-left:auto;margin-right:auto;">
       Źródło: dane z systemu Doskonałej Rejestracji Stomatologicznej oraz zagregowane wdrożenia Ringostat (technologia bazowa) w branżach usługowych i medycznych, 2023–2025.
     </p>
   </div>
@@ -4080,37 +4125,37 @@
     <div class="solution-grid">
       <div class="solution-card">
         <div class="solution-num">1</div>
-        <div class="solution-icon">📞</div>
+        <div class="solution-icon"><svg xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle" viewBox="0 0 24 24" fill="none" stroke="#0a1e3f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
         <h3>Centrala telefoniczna z AI</h3>
         <p>Nowoczesna telefonia Ringostat (zaufana przez 2 300+ firm) + AI nasłuchuje 100% rozmów po polsku. Telefon w przeglądarce, bez stacjonarnych aparatów.</p>
       </div>
       <div class="solution-card">
         <div class="solution-num">2</div>
-        <div class="solution-icon">📝</div>
+        <div class="solution-icon"><svg xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle" viewBox="0 0 24 24" fill="none" stroke="#0a1e3f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h8M8 9h2"/></svg></div>
         <h3>Podsumowanie po każdej rozmowie</h3>
         <p>Pisemny zapis + wynik 1–10 + rozpoznanie emocji pacjenta. W minutę MAIA pisze konkretną podpowiedź, co warto zrobić następnym razem.</p>
       </div>
       <div class="solution-card">
         <div class="solution-num">3</div>
-        <div class="solution-icon">💡</div>
+        <div class="solution-icon"><svg xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle" viewBox="0 0 24 24" fill="none" stroke="#0a1e3f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V18h6v-1.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg></div>
         <h3>Konkretne rady, nie krytyka</h3>
         <p>„Następnym razem, gdy pacjent pyta o cenę, od razu zaproponuj termin" — a nie „zrobiłaś źle". Rejestratorka widzi wynik jako pierwsza, zanim zobaczy go właściciel.</p>
       </div>
       <div class="solution-card">
         <div class="solution-num">4</div>
-        <div class="solution-icon">📊</div>
+        <div class="solution-icon"><svg xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle" viewBox="0 0 24 24" fill="none" stroke="#0a1e3f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="10" width="3" height="8" rx="1"/><rect x="12" y="6" width="3" height="12" rx="1"/><rect x="17" y="13" width="3" height="5" rx="1"/></svg></div>
         <h3>Trzy poziomy raportów</h3>
         <p><strong>Raport rośnie z zespołem:</strong> 3–9 osób — ranking rejestratorek + konkretne podpowiedzi MAII. Od 10 osób — pełna analiza z porównaniem do innych praktyk.</p>
       </div>
       <div class="solution-card">
         <div class="solution-num">5</div>
-        <div class="solution-icon">🤖</div>
+        <div class="solution-icon"><svg xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle" viewBox="0 0 24 24" fill="none" stroke="#0a1e3f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M12 8V4M8 2h8"/><path d="M9 14h.01M15 14h.01M2 13h2M20 13h2"/></svg></div>
         <h3>Robot głosowy AI 24/7</h3>
         <p>Wirtualny asystent głosowy umawia pacjentów <strong>nocą i w weekendy</strong>, kiedy rejestratorki nie ma. Pacjent dostaje SMS z potwierdzeniem. Opcja od 10 osób w zespole.</p>
       </div>
       <div class="solution-card">
         <div class="solution-num">6</div>
-        <div class="solution-icon">📚</div>
+        <div class="solution-icon"><svg xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle" viewBox="0 0 24 24" fill="none" stroke="#0a1e3f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
         <h3>Skrypty stomatologiczne</h3>
         <p>Wzorcowe rozmowy: powitanie, wywiad, prezentacja cen, zapis na wizytę, obsługa pacjenta bólowego. <strong>14 lat doświadczenia Michała Katarzyńskiego</strong> wgrane do AI.</p>
       </div>
@@ -4133,7 +4178,7 @@
   <div class="container">
     <div class="founder-content">
       <div class="founder-photo">
-        <img src="michal_katarzynski.jpg" alt="Michał Katarzyński — trener, wykładowca, konsultant" onerror="this.onerror=null; this.src='https://content.app-sources.com/s/52327897819285952/uploads/Images/7K7A3549-7865511.jpg';">
+        <img loading="lazy" src="michal_katarzynski.jpg" alt="Michał Katarzyński — trener, wykładowca, konsultant" onerror="this.onerror=null; this.src='https://content.app-sources.com/s/52327897819285952/uploads/Images/7K7A3549-7865511.jpg';">
       </div>
       <div class="founder-text">
         <span class="eyebrow">Kim jestem</span>
@@ -4169,7 +4214,7 @@
         <p class="testimonial-text">Nasza rejestratorka uczestniczyła w kursie — efekt rewelacyjny. Pacjenci zaopiekowani, a ja spokojna, nie ma nic cenniejszego. Polecam z czystym sumieniem.</p>
         <div class="testimonial-author">
           <div class="testimonial-avatar">
-            <img src="https://content.app-sources.com/s/52327897819285952/uploads/Images/Edyta_Bernatek-3819267.jpg" alt="Edyta Bernatek" onerror="this.style.display='none'; this.parentElement.textContent='EB';">
+            <img loading="lazy" src="https://content.app-sources.com/s/52327897819285952/uploads/Images/Edyta_Bernatek-3819267.jpg" alt="Edyta Bernatek" onerror="this.style.display='none'; this.parentElement.textContent='EB';">
           </div>
           <div>
             <div class="testimonial-name">Edyta Bernatek</div>
@@ -4181,7 +4226,7 @@
         <p class="testimonial-text">Fantastyczne spotkanie o doskonałej rejestracji pacjenta. Intensywne i konkretne, pełne śmiechu, świetnych wniosków i rad. Po tym szybkim, 1-dniowym kursie jestem pełna dobrych emocji i gotowości do super pracy. Brawo Michał Katarzyński!</p>
         <div class="testimonial-author">
           <div class="testimonial-avatar">
-            <img src="https://content.app-sources.com/s/52327897819285952/thumbnails/640x480/Images/Dominika_Furyk-3819162.jpg" alt="Dominika Furyk" onerror="this.style.display='none'; this.parentElement.textContent='DF';">
+            <img loading="lazy" src="https://content.app-sources.com/s/52327897819285952/thumbnails/640x480/Images/Dominika_Furyk-3819162.jpg" alt="Dominika Furyk" onerror="this.style.display='none'; this.parentElement.textContent='DF';">
           </div>
           <div>
             <div class="testimonial-name">Dominika Furyk</div>
@@ -4193,7 +4238,7 @@
         <p class="testimonial-text">Doszkalam zespół i siebie. Tematyka — pełen wachlarz: od doskonałej rejestracji przez sprawy finansowe po rozwiązywanie różnych problemów. Masa nowości pojawiła się w Klinice od stycznia tego roku. Polecam i pozdrawiam serdecznie!</p>
         <div class="testimonial-author">
           <div class="testimonial-avatar">
-            <img src="https://content.app-sources.com/s/52327897819285952/uploads/Images/Ewa_Chomik_dla_dop-3814110.jpg" alt="Ewa Chomik" onerror="this.style.display='none'; this.parentElement.textContent='EC';">
+            <img loading="lazy" src="https://content.app-sources.com/s/52327897819285952/uploads/Images/Ewa_Chomik_dla_dop-3814110.jpg" alt="Ewa Chomik" onerror="this.style.display='none'; this.parentElement.textContent='EC';">
           </div>
           <div>
             <div class="testimonial-name">Ewa Chomik</div>
@@ -4230,22 +4275,22 @@
 
     <div class="team-grid">
       <div class="team-card">
-        <div class="team-icon">👁️</div>
+        <div class="team-icon"><svg xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle" viewBox="0 0 24 24" fill="none" stroke="#0a1e3f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
         <h3>Każda rejestratorka widzi swoje wyniki pierwsza, może wprowadzać zmiany!</h3>
         <p>Te same dane, które widzi właściciel. Żadnych liczb krążących „za plecami".</p>
       </div>
       <div class="team-card">
-        <div class="team-icon">💬</div>
+        <div class="team-icon"><svg xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle" viewBox="0 0 24 24" fill="none" stroke="#0a1e3f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
         <h3>Konkretna podpowiedź zamiast krytyki</h3>
         <p>„Następnym razem, gdy pacjent pyta o cenę, od razu zaproponuj termin" — a nie „zrobiłaś źle".</p>
       </div>
       <div class="team-card">
-        <div class="team-icon">📈</div>
+        <div class="team-icon"><svg xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle" viewBox="0 0 24 24" fill="none" stroke="#0a1e3f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M17 7h4v4"/></svg></div>
         <h3>Pokazujemy postęp, nie tylko obszary do rozwoju</h3>
         <p>Widać, co zostało zmienione z tygodnia na tydzień.</p>
       </div>
       <div class="team-card">
-        <div class="team-icon">🎯</div>
+        <div class="team-icon"><svg xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle" viewBox="0 0 24 24" fill="none" stroke="#0a1e3f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4"/></svg></div>
         <h3>Trudne rozmowy rozpatrywane sprawiedliwie</h3>
         <p>Reklamacja czy pacjent z bólem są rozpatrywane za spokój, pomoc i rozwiązanie — a nie za to, czy „udało się umówić wizytę".</p>
       </div>
@@ -4306,24 +4351,24 @@
       <span class="eyebrow">Zwrot z inwestycji</span>
       <h2>Wystarczy <span class="gold-text">tylko 1 dodatkowy pacjent</span>,<br>żeby system <span class="gold-text">zarobił na siebie na wiele miesięcy</span>.</h2>
       <p class="roi-lead">
-        Pełny abonament systemu (skrypty Doskonałej Rejestracji + Ringostat) — zespół 3 osób w pakiecie <strong>Doskonała Rejestracja Pro</strong>: <strong>od 399 zł / mies brutto</strong> (przy abonamencie rocznym płatnym z góry, z promokodem €40, VAT 23%). Wartość typowych procedur: <strong>7 000 — 45 000 zł</strong>.
+        Pełny abonament systemu (skrypty Doskonałej Rejestracji + Ringostat) — zespół 3 osób w pakiecie <strong>Doskonała Rejestracja Plus</strong>: <strong>od 499 zł / mies brutto</strong> (przy abonamencie rocznym płatnym z góry, z promokodem €40, VAT 23%). Wartość typowych procedur: <strong>7 000 — 45 000 zł</strong>.
       </p>
 
       <div class="roi-examples">
         <div class="roi-example">
           <div class="roi-ex-label">1 implant z koroną pokrywa system z góry na</div>
           <div class="roi-ex-value">≈ 7 000 zł</div>
-          <div class="roi-ex-ratio" style="background: var(--gold-1);">~17 miesięcy</div>
+          <div class="roi-ex-ratio" style="background: var(--gold-1);">~14 miesięcy</div>
         </div>
         <div class="roi-example">
           <div class="roi-ex-label">1 plan ortodontyczny pokrywa system z góry na</div>
           <div class="roi-ex-value">≈ 18 000 zł</div>
-          <div class="roi-ex-ratio" style="background: var(--gold-1);">~4 lata</div>
+          <div class="roi-ex-ratio" style="background: var(--gold-1);">~3 lata</div>
         </div>
         <div class="roi-example">
           <div class="roi-ex-label">1 All-on-4 (pełny 1 łuk) pokrywa system na</div>
           <div class="roi-ex-value">≈ 45 000 zł</div>
-          <div class="roi-ex-ratio" style="background: var(--gold-1);">~9 lat</div>
+          <div class="roi-ex-ratio" style="background: var(--gold-1);">~7,5 roku</div>
         </div>
       </div>
 
@@ -4358,7 +4403,7 @@
       </div>
 
       <p style="text-align: center; margin-top: 24px; font-size: 0.85rem; color: var(--text-muted); font-style: italic;">
-        Kalkulacja oparta na średnim miesięcznym koszcie systemu brutto dla zespołu 3 osób w pakiecie <strong>Doskonała Rejestracja Pro</strong> (skrypty TAMAIA + telefonia Ringostat + promokod €40, razem ≈ 399 zł). Dla większych praktyk koszt rośnie proporcjonalnie, ale wartość pacjenta pozostaje ta sama. <strong style="color: var(--navy); font-style: normal;">Wyobraź sobie, jak takich dodatkowych pacjentów będzie kilkunastu…</strong>
+        Kalkulacja oparta na średnim miesięcznym koszcie systemu brutto dla zespołu 3 osób w pakiecie <strong>Doskonała Rejestracja Plus</strong> (skrypty TAMAIA + telefonia Ringostat + promokod €40, razem ≈ 499 zł). Dla większych praktyk koszt rośnie proporcjonalnie, ale wartość pacjenta pozostaje ta sama. <strong style="color: var(--navy); font-style: normal;">Wyobraź sobie, jak takich dodatkowych pacjentów będzie kilkunastu…</strong>
       </p>
     </div>
   </div>
@@ -4415,17 +4460,17 @@
 
       <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; max-width: 900px; margin: 0 auto;">
         <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(229,195,106,0.3); border-radius: 14px; padding: 24px 18px;">
-          <div style="font-size: 2.2rem; margin-bottom: 10px;">🏷️</div>
+          <div style="font-size: 2.2rem; margin-bottom: 10px;"><svg xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle" viewBox="0 0 24 24" fill="none" stroke="#0a1e3f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13l-7 7-9-9V4h7z"/><circle cx="7.5" cy="7.5" r="1.4"/></svg></div>
           <div style="font-family: Georgia, serif; font-size: 1.25rem; font-weight: 700; background: linear-gradient(135deg, var(--gold-1), var(--gold-2)); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 6px;">€40 kod rabatowy</div>
           <p style="color: rgba(255,255,255,0.85); font-size: 0.9rem;">Ringostat_DOP — kod €40/rok na licencję Ringostat.</p>
         </div>
         <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(229,195,106,0.3); border-radius: 14px; padding: 24px 18px;">
-          <div style="font-size: 2.2rem; margin-bottom: 10px;">🔧</div>
+          <div style="font-size: 2.2rem; margin-bottom: 10px;"><svg xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle" viewBox="0 0 24 24" fill="none" stroke="#0a1e3f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.8 2.8-2-2z"/></svg></div>
           <div style="font-family: Georgia, serif; font-size: 1.25rem; font-weight: 700; background: linear-gradient(135deg, var(--gold-1), var(--gold-2)); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 6px;">Przygotowanie gratis</div>
           <p style="color: rgba(255,255,255,0.85); font-size: 0.9rem;">Uruchomienie telefonu AI, podłączenie do systemu, skrypty, szkolenie startowe — wszystko bezpłatne.</p>
         </div>
         <div style="background: rgba(255,255,255,0.1); border: 2px solid var(--gold-1); border-radius: 14px; padding: 24px 18px;">
-          <div style="font-size: 2.2rem; margin-bottom: 10px;">🧪</div>
+          <div style="font-size: 2.2rem; margin-bottom: 10px;"><svg xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle" viewBox="0 0 24 24" fill="none" stroke="#0a1e3f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2v6L4 18a2 2 0 0 0 2 3h12a2 2 0 0 0 2-3L15 8V2"/><path d="M8 2h8M7 14h10"/></svg></div>
           <div style="font-family: Georgia, serif; font-size: 1.25rem; font-weight: 700; background: linear-gradient(135deg, var(--gold-1), var(--gold-2)); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 6px;">14 dni za darmo bez karty</div>
           <p style="color: rgba(255,255,255,0.85); font-size: 0.9rem;">Pełen system bez płatności i podawania karty. Decydujesz dopiero gdy widzisz wartość.</p>
         </div>
@@ -4454,7 +4499,7 @@
 
     <div style="text-align: center; margin-bottom: 24px;">
       <div style="display: inline-flex; align-items: center; gap: 14px; background: var(--white); border: 2px solid var(--gold-1); padding: 12px 24px; border-radius: 50px;">
-        <span style="background: linear-gradient(135deg, var(--gold-1), var(--gold-2)); color: var(--navy); padding: 6px 14px; border-radius: 50px; font-size: 0.78rem; font-weight: 700; letter-spacing: 1px;">DWA PROSTE PLANY</span>
+        <span style="background: linear-gradient(135deg, var(--gold-1), var(--gold-2)); color: var(--navy); padding: 6px 14px; border-radius: 50px; font-size: 0.78rem; font-weight: 700; letter-spacing: 1px;">TRZY PLANY</span>
         <span style="font-weight: 600; color: var(--navy);">Płatność roczna z góry · oferta do 31.07.2026</span>
       </div>
     </div>
@@ -4491,7 +4536,7 @@
       <div class="pc-controls">
         <div class="pc-counter">
           <button type="button" onclick="changePriceCount(-1)" aria-label="Mniej">−</button>
-          <input type="number" id="priceCount" value="3" min="3" max="15" onchange="updatePricingCards()" oninput="updatePricingCards()">
+          <input type="number" id="priceCount" value="3" min="3" max="15" aria-label="Liczba rejestratorek" onchange="updatePricingCards()" oninput="updatePricingCards()">
           <button type="button" onclick="changePriceCount(1)" aria-label="Więcej">+</button>
         </div>
         <div class="pc-presets" id="pcPresets">
@@ -4502,88 +4547,86 @@
           <button type="button" data-count="15" onclick="setPriceCount(15)">15</button>
         </div>
       </div>
-      <div class="pc-hint" id="pcHint">💡 <strong>Cena rośnie po 1 osobie.</strong> Pro — telefonia i pełne AI MAIA w cenie. Premium — dodatkowo Kalendarz + CRM, SMS-y i przedpłaty online.</div>
+      <div class="pc-hint" id="pcHint"><strong>Cena rośnie po 1 osobie.</strong> Plus — telefonia i pełne AI MAIA. Pro — dodatkowo Kalendarz, CRM, SMS i przedpłaty. Premium — to co Pro + 1h/mies z Michałem.</div>
     </div>
 
-    <div class="pricing-grid" style="grid-template-columns: repeat(2, 1fr); max-width: 1040px; margin-left: auto; margin-right: auto;">
+    <div class="pricing-grid" style="max-width: 1180px; margin-left: auto; margin-right: auto;">
 
-      <div class="price-card" id="cardPro">
-        <div class="price-name" style="font-size: 1.4rem;">Doskonała Rejestracja Pro</div>
-        <div class="price-target" id="targetPro">Telefonia + pełne AI MAIA · od 3 osób</div>
+      <div class="price-card" id="cardPlus">
+        <div class="price-name" style="font-size: 1.4rem;">Doskonała Rejestracja Plus</div>
+        <div class="price-target" id="targetPlus">Telefonia + pełne AI MAIA · od 3 osób</div>
 
         <div class="price-single">
-          <div class="price-amount-big" id="priceProAmount">399 zł</div>
+          <div class="price-amount-big" id="pricePlusAmount">499 zł</div>
           <div class="price-period-label">brutto / mies</div>
           <div class="price-period-note">abonament roczny · VAT 23%</div>
-          <div class="ringostat-compare" id="ringostatPro" style="margin-top:8px; font-size:0.85rem; color:var(--text-muted); font-style:italic;">sam Ringostat: <strong>311 zł</strong></div>
-          <button type="button" class="price-breakdown-toggle" onclick="toggleBreakdown('breakdownPro')" aria-label="Co składa się na cenę">
-            <span>ⓘ co dokładnie dostajesz?</span>
-          </button>
-          <div class="price-breakdown" id="breakdownPro">
-            <div class="pb-row"><span>📞 Telefonia Ringostat (nagrywanie + IVR)</span><strong>w cenie</strong></div>
-            <div class="pb-row"><span>🤖 AI MAIA — analiza 100% rozmów</span><strong>w cenie</strong></div>
-            <div class="pb-row"><span>📚 Skrypty TAMAIA + ranking osób</span><strong>w cenie</strong></div>
-            <div class="pb-row"><span>☎️ 2 numery PL</span><strong>w cenie</strong></div>
-            <div class="pb-row"><span>📶 Minuty połączeń</span><strong>wg zużycia</strong></div>
-          </div>
+          <div class="ringostat-compare" id="ringostatPlus" style="margin-top:8px; font-size:0.85rem; color:var(--text-muted); font-style:italic;">sam Ringostat: <strong>311 zł</strong></div>
         </div>
 
         <ul class="price-features">
-          <li><strong>Telefonia Ringostat</strong> — nagrywanie rozmów + IVR (automatyczne menu)</li>
-          <li><strong>2 numery polskie</strong> (1 mobilny + 1 stacjonarny) · minuty połączeń rozliczane osobno, wg zużycia</li>
-          <li><strong>AI MAIA po każdej rozmowie</strong> — autorska AI TAMAIA:
-            <ul style="margin-left: 18px; margin-top: 6px; font-size: 0.92rem; line-height: 1.55;">
-              <li><strong>Transkrypcja</strong> każdej rozmowy po polsku — przeszukiwalne archiwum</li>
-              <li><strong>Ocena jakości 1-10</strong> + nastrój pacjenta i rejestratorki</li>
-              <li><strong>Konkretna rada</strong> po rozmowie — co zrobić następnym razem</li>
-              <li>Czy umówiono wizytę + powód, temat rozmowy (implant, orto, ból...)</li>
-              <li>Zgodność ze standardem rozmowy Doskonałej Rejestracji</li>
-            </ul>
-          </li>
-          <li><strong>Skrypty TAMAIA</strong> — stomatologiczne warianty rozmów</li>
-          <li><strong>Ranking rejestratorek</strong> + indywidualne wskazówki dla każdej osoby</li>
-          <li><strong>Raporty dla właściciela</strong> — trendy, najczęstsze tematy, benchmark</li>
-          <li>Szkolenie startowe online (60 min)</li>
+          <li><span><strong>Telefonia Ringostat</strong> — nagrywanie rozmów + IVR</span></li>
+          <li><span><strong>2 numery PL w cenie</strong> — dodatkowy numer i minuty (np. oddzwanianie) rozliczane osobno w Ringostat</span></li>
+          <li><span><strong>AI MAIA</strong> — analiza 100% rozmów po polsku</span></li>
+          <li><span>Transkrypcja + ocena jakości 1–10 + nastrój pacjenta</span></li>
+          <li><span>Konkretna rada po każdej rozmowie — co zrobić następnym razem</span></li>
+          <li><span>Temat rozmowy (implant, orto, ból) + czy umówiono wizytę</span></li>
+          <li><span><strong>Skrypty TAMAIA</strong> + ranking rejestratorek</span></li>
+          <li><span>Raporty dla właściciela + szkolenie startowe online</span></li>
+        </ul>
+        <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 16px; font-style: italic;">
+          Pakiet od <strong>3 osób w zespole</strong>. Każda dodatkowa osoba: <strong id="extraPlus">+100 zł/mies brutto</strong>.
+        </p>
+        <a href="#cta" class="btn btn-outline" data-plan="PLUS">Zamów Plus →</a>
+      </div>
+
+      <div class="price-card featured" id="cardPro">
+        <div class="price-badge">NAJCZĘŚCIEJ WYBIERANY</div>
+        <div class="price-name" style="font-size: 1.4rem;">Doskonała Rejestracja Pro</div>
+        <div class="price-target" id="targetPro">Wszystko z Plus + Kalendarz, CRM, SMS · od 3 osób</div>
+
+        <div class="price-single">
+          <div class="price-amount-big" id="priceProAmount">699 zł</div>
+          <div class="price-period-label">brutto / mies</div>
+          <div class="price-period-note">abonament roczny · VAT 23%</div>
+        </div>
+
+        <ul class="price-features">
+          <li><span><strong>Wszystko z planu Plus</strong> — telefonia, AI MAIA, skrypty, raporty</span></li>
+          <li><span><strong>Kalendarz wizyt</strong> — kolumny per lekarz, luki widoczne na żywo</span></li>
+          <li><span><strong>Gap-Filler</strong> — sam proponuje pacjentów na luki i wysyła SMS-y</span></li>
+          <li><span><strong>Automatyczne SMS-y</strong> — przypomnienia i potwierdzenia (pacjent odpisuje „TAK")</span></li>
+          <li><span><strong>Przedpłaty online</strong> (BLIK / Przelewy24) — mniej no-show</span></li>
+          <li><span><strong>Karta pacjenta (CRM)</strong> — oś czasu: rozmowy, SMS, płatności, wizyty</span></li>
+          <li><span>Plan leczenia jako sekwencja wizyt</span></li>
+          <li><span>Zadania zespołu z terminami</span></li>
         </ul>
         <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 16px; font-style: italic;">
           Pakiet od <strong>3 osób w zespole</strong>. Każda dodatkowa osoba: <strong id="extraPro">+100 zł/mies brutto</strong>.
         </p>
-        <a href="#cta" class="btn btn-outline" data-plan="PRO">Zamów Pro →</a>
+        <a href="#cta" class="btn btn-primary" data-plan="PRO">Zamów Pro →</a>
       </div>
 
-      <div class="price-card featured" id="cardPremium">
-        <div class="price-badge">Z KALENDARZEM I CRM</div>
+      <div class="price-card" id="cardPremium">
+        <div class="price-badge" style="background: linear-gradient(135deg, var(--gold-1), var(--gold-2)); color: var(--navy);">+ 1H / MIES Z MICHAŁEM</div>
         <div class="price-name" style="font-size: 1.4rem;">Doskonała Rejestracja Premium</div>
-        <div class="price-target" id="targetPremium">Wszystko z Pro + Kalendarz, CRM, SMS, przedpłaty · od 3 osób</div>
+        <div class="price-target" id="targetPremium">Wszystko z Pro + 1h/mies z Michałem · od 3 osób</div>
 
         <div class="price-single">
-          <div class="price-amount-big" id="pricePremiumAmount">699 zł</div>
+          <div class="price-amount-big" id="pricePremiumAmount">1 499 zł</div>
           <div class="price-period-label">brutto / mies</div>
           <div class="price-period-note">abonament roczny · VAT 23%</div>
-          <button type="button" class="price-breakdown-toggle" onclick="toggleBreakdown('breakdownPremium')" aria-label="Co składa się na cenę">
-            <span>ⓘ co dokładnie dostajesz?</span>
-          </button>
-          <div class="price-breakdown" id="breakdownPremium">
-            <div class="pb-row"><span>✓ Wszystko z planu Pro</span><strong>w cenie</strong></div>
-            <div class="pb-row"><span>📅 Kalendarz wizyt + Gap-Filler</span><strong>w cenie</strong></div>
-            <div class="pb-row"><span>💬 SMS: przypomnienia i potwierdzenia</span><strong>w cenie</strong></div>
-            <div class="pb-row"><span>💳 Przedpłaty online (BLIK / Przelewy24)</span><strong>w cenie</strong></div>
-            <div class="pb-row"><span>🗂 Karta pacjenta (CRM) + zadania zespołu</span><strong>w cenie</strong></div>
-          </div>
         </div>
 
         <ul class="price-features">
-          <li><strong>Wszystko z planu Pro ↑</strong> — telefonia, pełne AI MAIA, skrypty, raporty</li>
-          <li><strong>Kalendarz wizyt</strong> — kolumny per lekarz, statusy wizyt na żywo, luki widoczne od razu</li>
-          <li><strong>Automatyczne SMS-y</strong> — przypomnienie 24 h przed wizytą, pacjent potwierdza odpowiedzią „TAK", status zmienia się sam</li>
-          <li><strong>Gap-Filler</strong> — luka w grafiku? System sam proponuje pacjentów z listy priorytetowej i wysyła SMS-y kaskadowo</li>
-          <li><strong>Przedpłaty online</strong> (BLIK / Przelewy24) — mniej no-show, wizyta opłacona z góry</li>
-          <li><strong>Karta pacjenta (CRM)</strong> — oś czasu: rozmowy, SMS-y, płatności, wizyty, notatki i zgody w jednym miejscu</li>
-          <li><strong>Plan leczenia jako sekwencja wizyt</strong> — system pilnuje kolejności i sam proponuje następny krok</li>
-          <li><strong>Zadania zespołu</strong> — nieodebrane połączenie czy SMS od pacjenta automatycznie tworzy zadanie z terminem</li>
+          <li><span><strong>Wszystko z planu Pro</strong> — telefonia, AI MAIA, Kalendarz, CRM, SMS</span></li>
+          <li><span><strong>1 godzina miesięcznie z Michałem Katarzyńskim</strong> — konsultacja 1:1 na Twoich danych</span></li>
+          <li><span>Przegląd wyników recepcji — gdzie są pieniądze do odzyskania</span></li>
+          <li><span>Kalibracja skryptów pod Twój gabinet i sezon</span></li>
+          <li><span>Indywidualny plan rozwoju zespołu</span></li>
+          <li><span>Priorytetowe wsparcie</span></li>
         </ul>
         <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 16px; font-style: italic;">
-          Pakiet od <strong>3 osób w zespole</strong>. Każda dodatkowa osoba: <strong id="extraPremium">+100 zł/mies brutto</strong>.
+          Pakiet od <strong>3 osób w zespole</strong>. Każda dodatkowa osoba: <strong id="extraPremium">+100 zł/mies brutto</strong>. Godzina z Michałem — stała kwota.
         </p>
         <a href="#cta" class="btn btn-primary" data-plan="PREMIUM" style="background: linear-gradient(135deg, var(--gold-1), var(--gold-2)); color: var(--navy); font-weight: 700;">Zamów Premium →</a>
       </div>
@@ -4619,10 +4662,11 @@
           <div class="faq-toggle">+</div>
         </div>
         <div class="faq-answer">
-          <p>Dwa plany. Wszystkie ceny <strong>brutto z VAT 23%</strong> (to co widzisz na fakturze), przy abonamencie rocznym płatnym z góry, jedna faktura.</p>
+          <p>Trzy plany. Wszystkie ceny <strong>brutto z VAT 23%</strong> (to co widzisz na fakturze), przy abonamencie rocznym płatnym z góry, jedna faktura.</p>
           <ul style="margin-left: 20px; margin-top: 6px;">
-            <li><strong>Doskonała Rejestracja Pro</strong> — telefonia + pełne AI MAIA: <strong>od 399 zł/mies</strong> dla zespołu 3 osób, każda kolejna osoba <strong>+100 zł/mies</strong></li>
-            <li><strong>Doskonała Rejestracja Premium</strong> — dodatkowo Kalendarz, CRM, SMS-y i przedpłaty: <strong>od 699 zł/mies</strong> dla zespołu 3 osób, każda kolejna osoba <strong>+100 zł/mies</strong></li>
+            <li><strong>Doskonała Rejestracja Plus</strong> — telefonia + pełne AI MAIA: <strong>od 499 zł/mies</strong> dla zespołu 3 osób, każda kolejna osoba <strong>+100 zł/mies</strong></li>
+            <li><strong>Doskonała Rejestracja Pro</strong> — dodatkowo Kalendarz, CRM, SMS-y i przedpłaty: <strong>od 699 zł/mies</strong> dla zespołu 3 osób, każda kolejna osoba <strong>+100 zł/mies</strong></li>
+            <li><strong>Doskonała Rejestracja Premium</strong> — wszystko z Pro + <strong>1 godzina miesięcznie z Michałem Katarzyńskim</strong>: <strong>od 1 499 zł/mies</strong> dla zespołu 3 osób</li>
           </ul>
           <p style="margin-top: 10px;">Dokładną cenę dla swojego zespołu policzysz w <a href="#pricing" style="color: var(--gold-1); font-weight: 600;">kalkulatorze na cenniku ↑</a>.</p>
           <p>Bonus: kod rabatowy <strong>€40 rocznie na Ringostat</strong> (Ringostat_DOP).</p>
@@ -4692,7 +4736,7 @@
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
 
         <div style="background: var(--white); border-radius: 14px; padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
-          <div style="font-size: 2rem; margin-bottom: 8px;">🌙</div>
+          <div style="font-size: 2rem; margin-bottom: 8px;"><svg xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle" viewBox="0 0 24 24" fill="none" stroke="#0a1e3f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></div>
           <div style="font-weight: 700; color: var(--navy); margin-bottom: 10px; font-size: 1.1rem;">Twoje wieczory wracają do Ciebie</div>
           <p style="font-size: 0.95rem; color: var(--text); line-height: 1.6;">
             Wieczorem nie odsłuchujesz nagrań ani nie robisz tabelek. Rano masz gotowy raport od MAII: <strong>co świetnie zadziałało i jakie rady ma MAIA na jutro</strong>. Bez sobót przy biurku.
@@ -4700,7 +4744,7 @@
         </div>
 
         <div style="background: var(--white); border-radius: 14px; padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
-          <div style="font-size: 2rem; margin-bottom: 8px;">👀</div>
+          <div style="font-size: 2rem; margin-bottom: 8px;"><svg xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle" viewBox="0 0 24 24" fill="none" stroke="#0a1e3f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
           <div style="font-weight: 700; color: var(--navy); margin-bottom: 10px; font-size: 1.1rem;">Widzisz, kogo nauczyć i czego</div>
           <p style="font-size: 0.95rem; color: var(--text); line-height: 1.6;">
             Anna umawia 7 na 10 pacjentów. Karolina 3 — bo po pierwszym „nie wiem" pacjenta odpuszcza temat. <strong>MAIA podpowiada konkretne zdanie, które warto wypróbować</strong> — możesz powiedzieć Annie „tak trzymaj", a Karolinie podać jedno zdanie do wypróbowania na jutro.
@@ -4708,7 +4752,7 @@
         </div>
 
         <div style="background: var(--white); border-radius: 14px; padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
-          <div style="font-size: 2rem; margin-bottom: 8px;">📲</div>
+          <div style="font-size: 2rem; margin-bottom: 8px;"><svg xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle" viewBox="0 0 24 24" fill="none" stroke="#0a1e3f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div>
           <div style="font-weight: 700; color: var(--navy); margin-bottom: 10px; font-size: 1.1rem;">Pacjent dzwoni o 21:00. I zostaje z Tobą.</div>
           <p style="font-size: 0.95rem; color: var(--text); line-height: 1.6;">
             Recepcja zamknięta — pacjent zostawia numer w widgecie na stronie. <strong>Rano system sam dzwoni, zanim pacjent wybierze konkurencję.</strong> AI przypomina też o tych, którzy mówili „muszę pomyśleć".
@@ -4763,8 +4807,8 @@
             <label class="ws-field"><span>Imię i nazwisko *</span><input type="text" name="name" required autocomplete="name" placeholder="np. Anna Kowalska"></label>
             <label class="ws-field"><span>Email *</span><input type="email" name="email" required autocomplete="email" placeholder="anna@praktyka.pl"></label>
             <label class="ws-field"><span>Numer telefonu *</span><input type="tel" name="phone" required autocomplete="tel" placeholder="+48 600 000 000"></label>
-            <label class="ws-field"><span>Nazwa praktyki *</span><input type="text" name="practice" required placeholder="np. Klinika Stomatologiczna"></label>
-            <label class="ws-field"><span>Miasto *</span><input type="text" name="city" required placeholder="np. Warszawa"></label>
+            <label class="ws-field"><span>Nazwa praktyki *</span><input type="text" name="practice" required autocomplete="organization" placeholder="np. Klinika Stomatologiczna"></label>
+            <label class="ws-field"><span>Miasto *</span><input type="text" name="city" required autocomplete="address-level2" placeholder="np. Warszawa"></label>
             <div class="ws-why">💡 Te dane wykorzystamy tylko do oddzwonienia, przygotowania propozycji i uruchomienia bezpłatnego konta demo na 14 dni.</div>
             <div class="ws-actions">
               <button type="button" class="ws-btn ws-btn-primary" onclick="wizardNext()">Dalej →</button>
@@ -4938,7 +4982,7 @@
 <div class="sticky-cta" id="stickyCta">
   <div class="sticky-cta-inner">
     <div class="sticky-cta-text">
-      <strong>Plany od 399 zł / mies</strong> <small>· test 14 dni za darmo</small>
+      <strong>Plany od 499 zł / mies</strong> <small>· test 14 dni za darmo</small>
     </div>
     <div style="display: flex; align-items: center; gap: 14px;">
       <a href="tel:+48579774089" class="sticky-cta-phone">📞 579 774 089</a>
@@ -5018,10 +5062,12 @@
   // Przygotowanie pakietów (ceny netto, mnożone przez 1.23 dla brutto)
   const PRICING_PLANS = {
     // Proste formuły: cena_brutto/mies = base + step × liczba_osób
-    // PRO:     3 os. = 399 zł brutto, każda kolejna +100 zł (Ringostat Basic, AI własne TAMAIA)
-    // PREMIUM: 3 os. = 699 zł brutto, każda kolejna +100 zł (+ Kalendarz/CRM/SMS/przedpłaty)
-    'PRO':     { base: 99,  step: 100, label: 'Doskonała Rejestracja Pro',     rsName: 'Basic', min: 3, max: 15 },
-    'PREMIUM': { base: 399, step: 100, label: 'Doskonała Rejestracja Premium', rsName: 'Basic', min: 3, max: 15 },
+    // PLUS:    3 os. = 499 zł brutto, każda kolejna +100 zł (telefonia + pełne AI MAIA)
+    // PRO:     3 os. = 699 zł brutto, każda kolejna +100 zł (+ Kalendarz/CRM/SMS/przedpłaty)
+    // PREMIUM: 3 os. = 1499 zł brutto (= Pro + 800 zł: 1h/mies z Michałem, stała kwota)
+    'PLUS':    { base: 199,  step: 100, label: 'Doskonała Rejestracja Plus',    rsName: 'Basic', min: 3, max: 15 },
+    'PRO':     { base: 399,  step: 100, label: 'Doskonała Rejestracja Pro',     rsName: 'Basic', min: 3, max: 15 },
+    'PREMIUM': { base: 1199, step: 100, label: 'Doskonała Rejestracja Premium', rsName: 'Basic', min: 3, max: 15 },
   };
   const VAT = 1.23;
   const PROMO_MO = Math.round(170 / 12); // €40/rok ≈ 14 zł/mies
@@ -5045,7 +5091,7 @@
   }
 
   function formatTargetText(planKey, count) {
-    const labels = { 'PRO': 'Doskonała Rejestracja Pro', 'PREMIUM': 'Doskonała Rejestracja Premium', 'CORPORATE': 'Doskonała Rejestracja Pro' };
+    const labels = { 'PLUS': 'Doskonała Rejestracja Plus', 'PRO': 'Doskonała Rejestracja Pro', 'PREMIUM': 'Doskonała Rejestracja Premium', 'CORPORATE': 'Doskonała Rejestracja Pro' };
     const noun = count === 1 ? 'rejestratorki' : (count < 5 ? 'rejestratorek' : 'rejestratorek');
     return `${labels[planKey]} · dla ${count} ${noun}`;
   }
@@ -5057,21 +5103,27 @@
     if (count < 3) { count = 3; input.value = 3; }
     if (count > 15) { count = 15; input.value = 15; }
 
+    const plusPrice = calcPlanMonthlyBrutto('PLUS', count);
+    const plusEl = document.getElementById('pricePlusAmount');
+    if (plusEl) plusEl.textContent = plusPrice.toLocaleString('pl-PL') + ' zł';
+    const tPlus = document.getElementById('targetPlus');
+    if (tPlus) tPlus.textContent = 'Telefonia + pełne AI MAIA · ' + count + ' osób w zespole';
+
     const proPrice = calcPlanMonthlyBrutto('PRO', count);
     const proEl = document.getElementById('priceProAmount');
     if (proEl) proEl.textContent = proPrice.toLocaleString('pl-PL') + ' zł';
     const tPro = document.getElementById('targetPro');
-    if (tPro) tPro.textContent = 'Telefonia + pełne AI MAIA · ' + count + ' osób w zespole';
+    if (tPro) tPro.textContent = 'Wszystko z Plus + Kalendarz, CRM, SMS, przedpłaty · ' + count + ' osób w zespole';
 
     const premiumPrice = calcPlanMonthlyBrutto('PREMIUM', count);
     const premiumEl = document.getElementById('pricePremiumAmount');
     if (premiumEl) premiumEl.textContent = premiumPrice.toLocaleString('pl-PL') + ' zł';
     const tPremium = document.getElementById('targetPremium');
-    if (tPremium) tPremium.textContent = 'Wszystko z Pro + Kalendarz, CRM, SMS, przedpłaty · ' + count + ' osób w zespole';
+    if (tPremium) tPremium.textContent = 'Wszystko z Pro + 1h/mies z Michałem · ' + count + ' osób w zespole';
 
-    // Cena samego Ringostat (porównanie pod ceną TAMAIA)
+    // Cena samego Ringostat (porównanie pod ceną Plus)
     const ringB = calcRingostatPrice('BASIC', count);
-    const ringPEl = document.getElementById('ringostatPro');
+    const ringPEl = document.getElementById('ringostatPlus');
     if (ringPEl) ringPEl.innerHTML = 'sam Ringostat: <strong>' + ringB.toLocaleString('pl-PL') + ' zł</strong>';
 
     document.querySelectorAll('#pcPresets button').forEach(btn => {
@@ -5247,7 +5299,7 @@ Promokod: ${config.promo_code} (−€${config.promo_discount_eur}/rok — aktyw
 
   // ===== PLAN SELECT (klik na karcie) → formularz =====
   // Mapowanie data-plan attribute → klucz w PRICING_PLANS
-  const PLAN_KEY_MAP = { 'PRO': 'PRO', 'PREMIUM': 'PREMIUM' };
+  const PLAN_KEY_MAP = { 'PLUS': 'PLUS', 'PRO': 'PRO', 'PREMIUM': 'PREMIUM' };
 
   document.querySelectorAll('[data-plan]').forEach(btn => {
     btn.addEventListener('click', (e) => {
@@ -5262,7 +5314,7 @@ Promokod: ${config.promo_code} (−€${config.promo_discount_eur}/rok — aktyw
 
       // Highlight wybranej karty
       document.querySelectorAll('.price-card').forEach(c => c.classList.remove('selected-card'));
-      const cardId = { 'PRO': 'cardPro', 'PREMIUM': 'cardPremium' }[planKey] || 'cardPro';
+      const cardId = { 'PLUS': 'cardPlus', 'PRO': 'cardPro', 'PREMIUM': 'cardPremium' }[planKey] || 'cardPro';
       const card = document.getElementById(cardId);
       if (card) card.classList.add('selected-card');
 
