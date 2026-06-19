@@ -4167,7 +4167,7 @@
         <span class="sym">+</span>
         <span>TELEFON AI</span>
         <span class="sym">=</span>
-        <span class="final">SYSTEM, KTÓRY MIERZY I POPRAWIA</span>
+        <span class="final">SYSTEM, KTÓRY MIERZY I WSPIERA</span>
       </div>
     </div>
   </div>
@@ -4341,6 +4341,102 @@
     <p class="how-footer">
       <strong>Wdrożenie:</strong> 5 dni roboczych · przygotowanie gratis · <strong>jedna faktura</strong> na cały system · 14 dni za darmo bez karty.
     </p>
+  </div>
+</section>
+
+<!-- ===== TAK WYGLĄDA PULPIT ===== -->
+<style>
+  .plp-wrap{max-width:940px;margin:0 auto;background:var(--white);border:1px solid var(--warm-border);border-radius:18px;box-shadow:0 26px 64px rgba(15,30,61,.16);overflow:hidden}
+  .plp-bar{display:flex;align-items:center;gap:8px;padding:13px 18px;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-dark) 100%)}
+  .plp-dot{width:11px;height:11px;border-radius:50%;display:inline-block}
+  .plp-body{padding:18px}
+  .plp-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  .plp-kpi{background:var(--cream);border:1px solid var(--warm-border);border-radius:12px;padding:13px 14px}
+  .plp-kpi .v{font-size:1.6rem;font-weight:800;color:var(--navy);line-height:1.1}
+  .plp-kpi .l{font-size:.78rem;color:var(--text-muted);margin-top:3px}
+  .plp-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+  .plp-panel{background:var(--white);border:1px solid var(--warm-border);border-radius:14px;padding:14px}
+  .plp-h{font-size:.95rem;font-weight:700;color:var(--navy);margin:0 0 10px}
+  .plp-h small{font-weight:500;color:var(--text-muted);font-size:.74rem}
+  .plp-row{display:grid;grid-template-columns:minmax(0,1fr) 38px 46px;gap:8px;align-items:center;padding:7px 0;border-top:1px solid #F0ECE0}
+  .plp-row:first-of-type{border-top:0}
+  .plp-row .t{font-size:.86rem;color:var(--navy);font-weight:600;min-width:0}
+  .plp-row .n{font-size:.95rem;font-weight:700;text-align:center;color:var(--navy)}
+  .plp-row .p{font-size:.82rem;font-weight:700;text-align:right}
+  .plp-bar2{height:6px;background:#EFE3DF;border-radius:99px;overflow:hidden;margin-top:4px;grid-column:1 / -1}
+  .plp-bar2 i{display:block;height:100%}
+  .plp-advice{margin-top:10px;font-size:.78rem;color:var(--text-muted);line-height:1.5}
+  .plp-att{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .plp-att .c{background:var(--cream);border:1px solid var(--warm-border);border-radius:10px;padding:9px 10px}
+  .plp-att .c .v{font-size:1.15rem;font-weight:800;color:var(--navy)}
+  .plp-att .c .l{font-size:.7rem;color:var(--text-muted);line-height:1.25;margin-top:2px}
+  .plp-att .c.warn{background:#FCF3E5;border-color:#EBD3A8}
+  .plp-att .c.warn .v{color:#B45309}
+  .plp-list{margin-top:10px;border-top:1px solid #F0ECE0;padding-top:8px}
+  .plp-li{display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--navy);padding:4px 0}
+  .plp-li .tag{font-size:.66rem;font-weight:700;padding:2px 6px;border-radius:6px;white-space:nowrap}
+  .plp-foot{margin-top:14px}
+  @media(max-width:720px){
+    .plp-kpis{grid-template-columns:repeat(2,1fr)}
+    .plp-cols{grid-template-columns:1fr}
+  }
+</style>
+<section id="pulpit" class="how-it-works" style="background:linear-gradient(180deg,var(--cream) 0%,#fff 100%)">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Tak wygląda Twój Pulpit</span>
+      <h2>Jeden ekran, na którym widać, <span class="gold-text">czy rozmowy zamieniają się w wizyty</span></h2>
+      <p>Bez liczenia w tabelkach. Logujesz się i od razu wiesz: ilu pacjentów się umówiło, na co dzwonią — i kto czeka na kontakt.</p>
+    </div>
+
+    <div class="plp-wrap">
+      <div class="plp-bar">
+        <span class="plp-dot" style="background:#E5C36A"></span>
+        <span class="plp-dot" style="background:#9FB3D1"></span>
+        <span class="plp-dot" style="background:#5A6B7A"></span>
+        <span style="color:#fff;font-weight:600;font-size:.86rem;margin-left:6px">Pulpit · Doskonała Rejestracja</span>
+        <span style="margin-left:auto;color:rgba(255,255,255,.65);font-size:.74rem">ostatnie 30 dni</span>
+      </div>
+      <div class="plp-body">
+        <!-- 4 KPI -->
+        <div class="plp-kpis">
+          <div class="plp-kpi"><div class="v">86%</div><div class="l">Odebrane połączenia</div></div>
+          <div class="plp-kpi"><div class="v">14</div><div class="l">Nieodebrane</div></div>
+          <div class="plp-kpi"><div class="v" style="color:var(--success)">63</div><div class="l">Umówione wizyty</div></div>
+          <div class="plp-kpi"><div class="v">8,4<span style="font-size:.9rem;color:var(--text-muted)">/10</span></div><div class="l">Średnia ocena MAI</div></div>
+        </div>
+
+        <div class="plp-cols">
+          <!-- Skuteczność wg tematu -->
+          <div class="plp-panel">
+            <h3 class="plp-h">Skuteczność wg tematu <small>kto się umawia</small></h3>
+            <div class="plp-row"><span class="t">Higienizacja</span><span class="n">31</span><span class="p" style="color:var(--success)">71%</span><span class="plp-bar2"><i style="width:71%;background:var(--success)"></i></span></div>
+            <div class="plp-row"><span class="t">Ortodoncja</span><span class="n">18</span><span class="p" style="color:var(--success)">50%</span><span class="plp-bar2"><i style="width:50%;background:var(--success)"></i></span></div>
+            <div class="plp-row"><span class="t">Implant</span><span class="n">24</span><span class="p" style="color:#D97706">46%</span><span class="plp-bar2"><i style="width:46%;background:#D97706"></i></span></div>
+            <div class="plp-advice">💬 <b style="color:var(--navy)">MAIA radzi:</b> Przy implantach pacjenci pytają o cenę — zamiast podawać kwotę przez telefon, proponuj bezpłatną konsultację. Tak częściej umówisz wizytę.</div>
+          </div>
+
+          <!-- Rozmowy atencyjne -->
+          <div class="plp-panel">
+            <h3 class="plp-h">Rozmowy atencyjne <small>oddzwonienia + odwołania</small></h3>
+            <div style="font-size:.82rem;color:var(--text-muted);margin-bottom:10px">Z <b style="color:var(--navy)">14</b> nieodebranych oddzwoniliśmy do <b style="color:var(--success)">11</b> (79%) · umówieni: <b style="color:var(--navy)">4</b></div>
+            <div class="plp-att">
+              <div class="c"><div class="v">3</div><div class="l">Odwołane przez pacjenta</div></div>
+              <div class="c"><div class="v">5</div><div class="l">Przełożone przez pacjenta</div></div>
+              <div class="c"><div class="v">2</div><div class="l">Przełożone przez lekarza</div></div>
+              <div class="c warn"><div class="v">1</div><div class="l">Lekarz odwołał — NIE umówione</div></div>
+            </div>
+            <div class="plp-list">
+              <div class="plp-li"><span class="tag" style="background:#E8F3EB;color:var(--success-dark)">umówiony ✓</span> Marek W. — przełożył, nowy termin 14.07</div>
+              <div class="plp-li"><span class="tag" style="background:#FCF3E5;color:#B45309">do odzyskania</span> Jan P. — gabinet odwołał, brak nowego terminu</div>
+              <div class="plp-li"><span class="tag" style="background:#EEF1F6;color:var(--navy)">czeka</span> 3 pacjentów czeka na telefon zwrotny</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="how-footer plp-foot"><strong>Realny widok właściciela</strong> — dane przykładowe. Każda liczba jest klikalna i prowadzi wprost do konkretnych rozmów.</p>
   </div>
 </section>
 
@@ -4923,7 +5019,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="logo" style="flex-direction: column; align-items: flex-start; gap: 6px;">
-          <img src="logo_tamaia.png?v=2" alt="TAMAIA — Doskonała Rejestracja Stomatologiczna" class="logo-img-maia" style="height: 64px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
+          <img src="logo_dop_gold.png" alt="TAMAIA — Doskonała Rejestracja Stomatologiczna" class="logo-img-maia" style="height: 68px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
           <span class="logo-text-fallback" style="display:none; color: var(--white);">
             <span class="logo-maia-wordmark" style="font-size: 2.3rem;">
               <span class="lm-letter" style="color: rgba(255,255,255,0.95);">T</span><span class="lm-letter" style="color: rgba(255,255,255,0.95);">A</span><span class="lm-letter lm-gold">M</span><span class="lm-letter lm-gold">A</span><span class="lm-letter lm-gold">I</span><span class="lm-letter lm-gold">A</span>
