@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TAMAIA — Kalkulator strat recepcji</title>
+<style>
+  :root{
+    --navy:#071D49; --navy2:#0C2A63; --gold:#C9A24A; --green:#1F9D6B;
+    --bg:#F7F9FC; --card:#FFFFFF; --ink:#1B2540; --muted:#5A6480; --line:#E4E9F2;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{font-family:'Trebuchet MS',system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+       background:var(--bg);color:var(--ink);padding:20px;display:flex;justify-content:center}
+  .root{max-width:760px;width:100%}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .grid>*{min-width:0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 22px;
+        box-shadow:0 10px 30px rgba(7,29,73,.06)}
+  h1{font-size:18px;margin:0 0 4px;color:var(--navy)}
+  .sub{font-size:13px;color:var(--muted);margin:0 0 16px}
+  .ctrl{margin-bottom:18px}
+  .ctrl .lab{display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px}
+  .ctrl .lab b{color:var(--navy)} .ctrl .lab .v{color:var(--gold);font-weight:800}
+  input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:6px;
+    background:linear-gradient(90deg,var(--gold) 0%,var(--gold) var(--fillpct,40%),#E7ECF4 var(--fillpct,40%),#E7ECF4 100%);outline:none}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;
+    background:var(--navy);border:3px solid #fff;box-shadow:0 2px 6px rgba(7,29,73,.3);cursor:pointer;transition:transform .12s ease-out}
+  input[type=range]::-webkit-slider-thumb:active{transform:scale(1.15)}
+  input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--navy);border:3px solid #fff;cursor:pointer}
+  .result{position:relative;overflow:hidden;background:linear-gradient(160deg,var(--navy),var(--navy2));color:#fff;
+          border-radius:18px;padding:24px 22px;display:flex;flex-direction:column;justify-content:center}
+  .result .cap{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#9FB0D0;font-weight:700}
+  .result .big{font-size:46px;font-weight:800;color:var(--gold);line-height:1.05;margin:8px 0 2px}
+  .result .unit{font-size:13px;color:#C9D4EA}
+  .result .note{font-size:11px;color:#8FA0C2;margin-top:14px;line-height:1.5}
+  .coin{position:absolute;width:10px;height:10px;border-radius:50%;background:rgba(201,162,74,.55);top:-12px;opacity:0}
+  .cta{margin-top:14px;display:inline-block;font-weight:700;font-size:14px;color:var(--navy);background:var(--gold);
+       border:none;border-radius:12px;padding:12px 16px;text-align:center;cursor:pointer;transition:transform .12s ease-out;width:100%}
+  .cta:active{transform:scale(.98)}
+  @media (max-width:620px){.grid{grid-template-columns:1fr}}
+  @media (prefers-reduced-motion: reduce){
+    .coin{display:none}
+    input[type=range]::-webkit-slider-thumb{transition:none}
+  }
+</style>
+</head>
+<body>
+<div class="root">
+  <div class="grid">
+    <div class="card">
+      <h1>Ile traci Twoja recepcja?</h1>
+      <p class="sub">Przesuń suwaki — liczba przeliczy się na żywo.</p>
+
+      <div class="ctrl">
+        <div class="lab"><b>Liczba połączeń dziennie</b><span class="v" id="vCalls">20</span></div>
+        <input type="range" id="calls" min="5" max="80" step="1" value="20" aria-label="Liczba połączeń dziennie">
+      </div>
+      <div class="ctrl">
+        <div class="lab"><b>Średnia wartość planu leczenia</b><span class="v" id="vPlan">8 000 zł</span></div>
+        <input type="range" id="plan" min="1000" max="45000" step="500" value="8000" aria-label="Średnia wartość planu leczenia">
+      </div>
+      <p class="sub" style="margin:0">Założenie ostrożne: 22 dni robocze × 23% nieodebranych × 20% do odzyskania × 25% to realne plany leczenia.</p>
+    </div>
+
+    <div class="result" id="result" aria-live="polite">
+      <div class="cap">Tracisz miesięcznie</div>
+      <div class="big"><span id="amount">0</span> zł</div>
+      <div class="unit">na samych nieodebranych połączeniach</div>
+      <div class="note">Realny potencjał jest zwykle wyższy. MAIA odzyskuje te rozmowy: oddzwania, przypomina, podpowiada recepcji.</div>
+      <button class="cta" id="cta" type="button">Odzyskaj te pieniądze →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var calls=document.getElementById('calls'), plan=document.getElementById('plan');
+  var vCalls=document.getElementById('vCalls'), vPlan=document.getElementById('vPlan');
+  var amountEl=document.getElementById('amount'), result=document.getElementById('result');
+  var DAYS=22, MISSED=0.23, RECOVER=0.20, TREAT=0.25;
+  var shown=0, target=0, raf=null;
+
+  function fmt(n){ return Math.round(n).toLocaleString('pl-PL').replace(/ /g,' '); }
+  function calc(){ return calls.value * DAYS * MISSED * RECOVER * TREAT * plan.value; }
+  function fillPct(el){ var p=(el.value-el.min)/(el.max-el.min)*100; el.style.setProperty('--fillpct', p+'%'); }
+
+  function animateTo(t){
+    target=t;
+    if(reduce){ shown=t; amountEl.textContent=fmt(t); return; }
+    if(raf) return;
+    function step(){
+      var d=target-shown; shown+=d*0.18;
+      if(Math.abs(d)<2){ shown=target; amountEl.textContent=fmt(shown); raf=null; return; }
+      amountEl.textContent=fmt(shown); raf=requestAnimationFrame(step);
+    }
+    raf=requestAnimationFrame(step);
+  }
+  function update(){
+    vCalls.textContent=calls.value;
+    vPlan.textContent=fmt(plan.value)+' zł';
+    fillPct(calls); fillPct(plan);
+    animateTo(calc());
+  }
+  calls.addEventListener('input', update);
+  plan.addEventListener('input', update);
+
+  // subtelne "wyciekające" monety (tylko transform/opacity)
+  function spawnCoins(){
+    if(reduce) return;
+    var n=7;
+    for(var i=0;i<n;i++){
+      var c=document.createElement('span'); c.className='coin';
+      c.style.left=(8+Math.random()*84)+'%';
+      result.appendChild(c);
+      (function(el,delay){
+        el.animate([
+          {transform:'translateY(0)',opacity:0},
+          {transform:'translateY(8px)',opacity:.7,offset:.1},
+          {transform:'translateY(180px)',opacity:0}
+        ],{duration:2600+Math.random()*1400,delay:delay,iterations:Infinity,easing:'ease-in'});
+      })(c, i*420);
+    }
+  }
+  document.getElementById('cta').addEventListener('click',function(){ /* placeholder CTA */ });
+  // init
+  update(); shown=calc(); amountEl.textContent=fmt(shown);
+  if(!reduce){ try{ spawnCoins(); }catch(e){} }
+})();
+</script>
+</body>
+</html>
