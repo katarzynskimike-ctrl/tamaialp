@@ -28,7 +28,7 @@
 
   .flow{position:relative;height:248px;margin-top:14px}
   .node{position:absolute;opacity:0;transform:translateY(10px) scale(.96);
-        transition:opacity .45s ease-out, transform .45s ease-out}
+        transition:opacity .6s ease-out, transform .6s ease-out}
   .node.show{opacity:1;transform:none}
 
   /* 1. telefon */
@@ -157,23 +157,22 @@
   var ids = ['n-call','n-maia','n-advice','n-booked','n-counter'];
   var tls = ['tl1','tl2','tl3'];
   var cv = document.getElementById('cv');
-  var CYCLE = 8800, raf=null, start=null, lastBucket=-1;
+  var CYCLE = 13000, raf=null, start=null, lastBucket=-1;
   function show(id,on){ var e=document.getElementById(id); if(e) e.classList.toggle('show',!!on); }
   function easeOut(x){ return 1-Math.pow(1-x,3); }
 
   function setPhase(t){
-    show('n-call',  t>200 && t<8200);
-    show('n-maia',  t>1200 && t<8200);
-    show('tl1', t>1600 && t<8200);
-    show('tl2', t>2300 && t<8200);
-    show('tl3', t>3000 && t<8200);
-    show('n-advice',t>4000 && t<8200);
-    show('n-booked',t>5400 && t<8200);
-    show('n-counter',t>5400 && t<8200);
-    // licznik 0->42 w oknie 5400..6900
+    show('n-call',  t>400 && t<12200);
+    show('n-maia',  t>2000 && t<12200);
+    show('tl1', t>2700 && t<12200);
+    show('tl2', t>4000 && t<12200);
+    show('tl3', t>5300 && t<12200);
+    show('n-advice',t>6800 && t<12200);
+    show('n-booked',t>8800 && t<12200);
+    show('n-counter',t>8800 && t<12200);
     var v=0;
-    if(t>=5400){ var p=Math.min(1,(t-5400)/1500); v=Math.round(42*easeOut(p)); }
-    if(t>=8200) v=42;
+    if(t>=8800){ var p=Math.min(1,(t-8800)/2400); v=Math.round(42*easeOut(p)); }
+    if(t>=12200) v=42;
     if(cv && +cv.textContent!==v) cv.textContent=v;
   }
   function frame(ts){
