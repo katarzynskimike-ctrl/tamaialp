@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TAMAIA — Hero: rozmowa zamienia się w wizytę</title>
+<style>
+  :root{
+    --navy:#071D49; --navy2:#0C2A63; --gold:#C9A24A; --green:#1F9D6B;
+    --ink:#EAF0FB; --muted:#9FB0D0; --line:rgba(255,255,255,.10); --maia:#6366F1; --maia2:#8B5CF6;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{font-family:'Trebuchet MS',system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+       background:#0a1430; color:var(--ink); padding:18px;}
+  .root{max-width:1000px;margin:0 auto}
+  .stage{
+    position:relative; border-radius:22px; overflow:hidden; min-height:430px; padding:26px 28px 84px;
+    background:
+      radial-gradient(60% 60% at 88% 6%, rgba(201,162,74,.16), transparent 60%),
+      radial-gradient(50% 60% at 4% 100%, rgba(31,157,107,.12), transparent 60%),
+      linear-gradient(160deg,#071D49,#0C2A63 70%);
+    border:1px solid var(--line);
+  }
+  .brand{display:flex;align-items:center;gap:.1em;font-weight:700;font-size:20px;letter-spacing:.5px}
+  .brand .b1{color:#fff}.brand .b2{color:var(--gold)}
+  .eyebrow{margin:2px 0 0;font-size:11px;letter-spacing:3px;color:var(--gold);font-weight:700;text-transform:uppercase}
+
+  .flow{position:relative;height:248px;margin-top:14px}
+  .node{position:absolute;opacity:0;transform:translateY(10px) scale(.96);
+        transition:opacity .45s ease-out, transform .45s ease-out}
+  .node.show{opacity:1;transform:none}
+
+  /* 1. telefon */
+  .call{left:0;top:54px;width:230px;background:rgba(255,255,255,.06);border:1px solid var(--line);
+        border-radius:16px;padding:14px 16px;backdrop-filter:blur(2px)}
+  .call .who{display:flex;align-items:center;gap:10px}
+  .ring{width:38px;height:38px;border-radius:50%;background:rgba(201,162,74,.18);display:grid;place-items:center;flex:0 0 auto}
+  .pulse{position:absolute;width:38px;height:38px;border-radius:50%;border:2px solid var(--gold);opacity:.0}
+  .call.show .pulse{animation:ring 1.8s ease-out infinite}
+  @keyframes ring{0%{opacity:.6;transform:scale(1)}100%{opacity:0;transform:scale(2.1)}}
+  .call .t1{font-weight:700;font-size:14px}.call .t2{font-size:12px;color:var(--muted)}
+
+  /* 2. MAIA nasłuchuje + transkrypcja */
+  .maia{left:265px;top:8px;width:330px}
+  .maiahead{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+  .avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--maia),var(--maia2));
+          display:grid;place-items:center;color:#fff;font-weight:800;font-size:14px;flex:0 0 auto}
+  .bars{display:flex;align-items:flex-end;gap:3px;height:20px}
+  .bars span{width:3px;height:8px;background:var(--maia2);border-radius:2px;transform-origin:bottom}
+  .maia.show .bars span{animation:eq 1s ease-in-out infinite}
+  .maia.show .bars span:nth-child(2){animation-delay:.12s}
+  .maia.show .bars span:nth-child(3){animation-delay:.24s}
+  .maia.show .bars span:nth-child(4){animation-delay:.36s}
+  .maia.show .bars span:nth-child(5){animation-delay:.48s}
+  .maia.show .bars span:nth-child(6){animation-delay:.6s}
+  @keyframes eq{0%,100%{transform:scaleY(.4)}50%{transform:scaleY(2.2)}}
+  .script{background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+  .tline{font-size:13px;line-height:1.5;opacity:0;transform:translateY(6px);
+         transition:opacity .4s ease-out, transform .4s ease-out}
+  .tline.show{opacity:1;transform:none}
+  .tline .lab{color:var(--gold);font-weight:700}
+
+  /* 3. złota rada */
+  .advice{right:0;top:30px;width:250px;background:linear-gradient(135deg,#6366F1,#8B5CF6);
+          color:#fff;border-radius:16px;padding:13px 15px;box-shadow:0 14px 30px rgba(99,102,241,.30)}
+  .advice .h{display:flex;align-items:center;gap:8px;font-weight:800;font-size:12px;letter-spacing:.4px;text-transform:uppercase;margin-bottom:6px}
+  .advice .txt{font-size:13.5px;line-height:1.45;font-weight:600}
+
+  /* 4. umówiono + licznik */
+  .booked{right:24px;top:150px;width:250px;background:rgba(31,157,107,.16);border:1px solid rgba(31,157,107,.5);
+          border-radius:16px;padding:14px 16px;display:flex;align-items:center;gap:14px}
+  .check{width:42px;height:42px;border-radius:50%;background:var(--green);display:grid;place-items:center;flex:0 0 auto}
+  .booked .bk1{font-weight:800;font-size:15px;color:#bdf0d8}
+  .booked .bk2{font-size:12px;color:#8fd3b6}
+  .counter{position:absolute;left:6px;top:166px;width:230px}
+  .counter .num{font-size:54px;font-weight:800;color:var(--gold);line-height:1}
+  .counter .cl{font-size:12px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+
+  .tag{position:absolute;left:28px;right:28px;bottom:24px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+  .tagline{font-size:19px;font-weight:700;color:#fff}
+  .tagline em{color:var(--gold);font-style:italic}
+  .replay{font:inherit;font-size:13px;font-weight:600;color:var(--navy);background:#fff;border:none;border-radius:10px;
+          padding:8px 14px;cursor:pointer;transition:transform .12s ease-out}
+  .replay:active{transform:scale(.96)}
+  svg{display:block}
+
+  @media (max-width:640px){
+    .flow{height:auto;min-height:560px}
+    .call,.maia,.advice,.booked,.counter{position:relative;left:auto;right:auto;top:auto;width:100%;margin-bottom:12px}
+    .counter{order:5}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  }
+</style>
+</head>
+<body>
+<div class="root">
+  <div class="stage" id="stage" role="img" aria-label="Animacja: telefon pacjenta zamienia się w umówioną wizytę dzięki radzie MAI">
+    <div class="brand"><span class="b1">TA</span><span class="b2">MAIA</span></div>
+    <p class="eyebrow">Doskonała Rejestracja Stomatologiczna</p>
+
+    <div class="flow">
+      <!-- 1 -->
+      <div class="node call" id="n-call">
+        <div class="who">
+          <div class="ring"><span class="pulse"></span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A24A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div><div class="t1">Pacjent dzwoni</div><div class="t2">Linia 1 · 14:32</div></div>
+        </div>
+      </div>
+      <!-- 2 -->
+      <div class="node maia" id="n-maia">
+        <div class="maiahead">
+          <div class="avatar">M</div>
+          <div style="font-weight:700;font-size:13px">MAIA nasłuchuje<span style="color:var(--muted);font-weight:400"> · po polsku</span></div>
+          <div class="bars" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        </div>
+        <div class="script">
+          <div class="tline" id="tl1"><span class="lab">Pacjent:</span> „Ile kosztuje implant?"</div>
+          <div class="tline" id="tl2"><span class="lab">Recepcja:</span> podaje cenę…</div>
+          <div class="tline" id="tl3"><span class="lab">MAIA:</span> wykrywa temat → implant</div>
+        </div>
+      </div>
+      <!-- 3 -->
+      <div class="node advice" id="n-advice">
+        <div class="h">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.2 1 2h6c0-.8.4-1.5 1-2A7 7 0 0 0 12 2z"/></svg>
+          MAIA radzi
+        </div>
+        <div class="txt">„Przed ceną zapytaj o termin i zaproponuj bezpłatną konsultację."</div>
+      </div>
+      <!-- 4 -->
+      <div class="node booked" id="n-booked">
+        <div class="check"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <div><div class="bk1">UMÓWIONO</div><div class="bk2">Konsultacja implantologiczna · pon. 9:00</div></div>
+      </div>
+      <!-- licznik -->
+      <div class="node counter" id="n-counter">
+        <div class="num"><span id="cv">0</span><span style="font-size:24px;color:var(--muted)"> / 100</span></div>
+        <div class="cl">umówień na 100 rozmów ↑ +18%</div>
+      </div>
+    </div>
+
+    <div class="tag">
+      <div class="tagline">Recepcja, która zamienia rozmowy w <em>wizyty</em>.</div>
+      <button class="replay" id="replay" type="button">↻ Odtwórz ponownie</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ids = ['n-call','n-maia','n-advice','n-booked','n-counter'];
+  var tls = ['tl1','tl2','tl3'];
+  var cv = document.getElementById('cv');
+  var CYCLE = 8800, raf=null, start=null, lastBucket=-1;
+  function show(id,on){ var e=document.getElementById(id); if(e) e.classList.toggle('show',!!on); }
+  function easeOut(x){ return 1-Math.pow(1-x,3); }
+
+  function setPhase(t){
+    show('n-call',  t>200 && t<8200);
+    show('n-maia',  t>1200 && t<8200);
+    show('tl1', t>1600 && t<8200);
+    show('tl2', t>2300 && t<8200);
+    show('tl3', t>3000 && t<8200);
+    show('n-advice',t>4000 && t<8200);
+    show('n-booked',t>5400 && t<8200);
+    show('n-counter',t>5400 && t<8200);
+    // licznik 0->42 w oknie 5400..6900
+    var v=0;
+    if(t>=5400){ var p=Math.min(1,(t-5400)/1500); v=Math.round(42*easeOut(p)); }
+    if(t>=8200) v=42;
+    if(cv && +cv.textContent!==v) cv.textContent=v;
+  }
+  function frame(ts){
+    if(start===null) start=ts;
+    var t=(ts-start)%CYCLE;
+    setPhase(t);
+    raf=requestAnimationFrame(frame);
+  }
+  function play(){ start=null; if(raf) cancelAnimationFrame(raf); raf=requestAnimationFrame(frame); }
+  function showFinal(){ ids.forEach(function(i){show(i,true)}); tls.forEach(function(i){show(i,true)}); if(cv) cv.textContent=42; }
+
+  document.getElementById('replay').addEventListener('click', function(){ if(reduce){showFinal();return;} play(); });
+  document.addEventListener('visibilitychange', function(){ if(document.hidden){ if(raf) cancelAnimationFrame(raf); raf=null; } else if(!reduce){ play(); } });
+
+  if(reduce){ showFinal(); } else { play(); }
+})();
+</script>
+<script>
+(function(){function h(){try{parent.postMessage({tamaiaH:Math.ceil(document.documentElement.getBoundingClientRect().height)},'*');}catch(e){}}
+window.addEventListener('load',h);window.addEventListener('resize',h);
+['click','transitionend','animationiteration','animationend'].forEach(function(ev){document.addEventListener(ev,function(){setTimeout(h,40);},true);});
+setTimeout(h,300);setTimeout(h,1200);setTimeout(h,2600);})();
+</script>
+</body>
+</html>

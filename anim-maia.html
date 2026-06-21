@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TAMAIA — MAIA radzi (karta po rozmowie)</title>
+<style>
+  :root{
+    --navy:#071D49; --gold:#C9A24A; --green:#1F9D6B;
+    --bg:#F7F9FC; --card:#FFFFFF; --ink:#1B2540; --muted:#5A6480; --line:#E4E9F2; --maia:#6366F1; --maia2:#8B5CF6;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{font-family:'Trebuchet MS',system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+       background:var(--bg);color:var(--ink);padding:20px;display:flex;justify-content:center}
+  .root{max-width:560px;width:100%}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px 24px;
+        box-shadow:0 16px 40px rgba(7,29,73,.10)}
+  .top{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+  .ava{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--maia),var(--maia2));
+       display:grid;place-items:center;color:#fff;font-weight:800;flex:0 0 auto}
+  .top .nm{font-weight:700;font-size:15px}.top .sub{font-size:12px;color:var(--muted)}
+  .badge{margin-left:auto;font-size:11px;color:var(--green);background:rgba(31,157,107,.1);
+         border:1px solid rgba(31,157,107,.3);border-radius:999px;padding:4px 10px;font-weight:700}
+  .mid{display:flex;align-items:center;gap:22px;margin:6px 0 18px}
+  .donut{position:relative;width:128px;height:128px;flex:0 0 auto}
+  .donut svg{transform:rotate(-90deg)}
+  .donut .arc{stroke:var(--maia);stroke-linecap:round;fill:none;
+              transition:stroke-dashoffset 1.3s cubic-bezier(.2,.8,.25,1)}
+  .donut .track{stroke:#EEF2F8;fill:none}
+  .donut .val{position:absolute;inset:0;display:grid;place-items:center;flex-direction:column;text-align:center}
+  .donut .val b{font-size:32px;font-weight:800;color:var(--navy);line-height:1}
+  .donut .val small{font-size:11px;color:var(--muted)}
+  .mood{flex:1;min-width:0}
+  .mood .lab{font-size:12px;color:var(--muted);margin-bottom:6px}
+  .face{display:inline-flex;align-items:center;gap:8px;font-weight:700;color:var(--navy);font-size:14px;
+        background:rgba(31,157,107,.08);border:1px solid rgba(31,157,107,.25);border-radius:12px;padding:8px 12px;
+        opacity:0;transform:translateY(8px);transition:opacity .5s ease-out,transform .5s ease-out}
+  .face.show{opacity:1;transform:none}
+  .tags{margin-top:10px;display:flex;gap:6px;flex-wrap:wrap}
+  .tag{font-size:11px;color:var(--muted);background:#F2F5FA;border-radius:8px;padding:4px 9px;
+       opacity:0;transform:translateY(6px);transition:opacity .4s ease-out,transform .4s ease-out}
+  .tag.show{opacity:1;transform:none}
+  .advice{background:linear-gradient(135deg,#EEF0FD,#fff);border:1px solid #C7CBF5;border-radius:16px;padding:15px 16px;
+          opacity:0;transform:translateY(10px) scale(.99);transition:opacity .55s ease-out,transform .55s ease-out}
+  .advice.show{opacity:1;transform:none}
+  .advice .h{display:flex;align-items:center;gap:8px;font-weight:800;font-size:12px;letter-spacing:.4px;
+             text-transform:uppercase;color:#5A4FBF;margin-bottom:7px}
+  .advice .q{font-size:15px;line-height:1.5;color:#3F3A8C;font-weight:600}
+  .first{margin-top:14px;font-size:13px;color:var(--navy);font-weight:700;display:flex;align-items:center;gap:8px;
+         opacity:0;transform:translateY(6px);transition:opacity .5s ease-out,transform .5s ease-out}
+  .first.show{opacity:1;transform:none}
+  .first .dot{width:8px;height:8px;border-radius:50%;background:var(--green)}
+  .slogan{margin-top:16px;text-align:center;font-size:14.5px;color:var(--navy);line-height:1.5}
+  .slogan b{color:var(--maia)}
+  .replay{display:block;margin:16px auto 0;font:inherit;font-size:13px;font-weight:600;color:#fff;background:var(--navy);
+          border:none;border-radius:10px;padding:9px 16px;cursor:pointer;transition:transform .12s ease-out}
+  .replay:active{transform:scale(.96)}
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{transition-duration:.001ms!important}
+  }
+</style>
+</head>
+<body>
+<div class="root">
+  <div class="card">
+    <div class="top">
+      <div class="ava">M</div>
+      <div><div class="nm">Rozmowa · Anna (recepcja)</div><div class="sub">dziś, 14:32 · 3 min 12 s</div></div>
+      <div class="badge">analiza gotowa</div>
+    </div>
+
+    <div class="mid">
+      <div class="donut">
+        <svg width="128" height="128" viewBox="0 0 128 128">
+          <circle class="track" cx="64" cy="64" r="54" stroke-width="12"></circle>
+          <circle class="arc" id="arc" cx="64" cy="64" r="54" stroke-width="12"></circle>
+        </svg>
+        <div class="val"><div><b id="score">0,0</b><br><small>ocena MAI / 10</small></div></div>
+      </div>
+      <div class="mood">
+        <div class="lab">Emocja pacjenta</div>
+        <div class="face" id="face">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F9D6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+          spokojny → zadowolony
+        </div>
+        <div class="tags">
+          <span class="tag" id="tg1">temat: implant</span>
+          <span class="tag" id="tg2">pytanie o cenę</span>
+          <span class="tag" id="tg3">umówiono ✓</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="advice" id="advice">
+      <div class="h">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.2 1 2h6c0-.8.4-1.5 1-2A7 7 0 0 0 12 2z"/></svg>
+        MAIA radzi — rada, nie krytyka
+      </div>
+      <div class="q">„Gdy pacjent pyta o cenę implantu — nie podawaj jej od razu. Powiedz, że za chwilę podasz, ale najpierw krótko wyjaśnij, jak takie leczenie u Was wygląda: że specjalizujecie się w takich zabiegach, a lekarz jest bardzo doświadczony. Zaproponuj konsultację z dokładną diagnostyką i dodaj, że dokładną cenę lekarz przedstawi dopiero po badaniu."</div>
+    </div>
+
+    <div class="first" id="first"><span class="dot"></span> Ten wynik recepcja widzi PIERWSZA — zanim zobaczy go właściciel.</div>
+
+    <div class="slogan">Pacjenci chcą rozmawiać z ludźmi.<br><b>MAIA wspiera rejestratorki, aby były z siebie dumne.</b></div>
+    <button class="replay" id="replay" type="button">↻ Odtwórz ponownie</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var R=54, C=2*Math.PI*R, TARGET=0.84;
+  var arc=document.getElementById('arc'), score=document.getElementById('score');
+  arc.style.strokeDasharray=C;
+  var steps=[['face'],['tg1'],['tg2'],['tg3'],['advice'],['first']];
+  function easeOut(x){return 1-Math.pow(1-x,3);}
+  function countScore(){
+    var DUR=1300,t0=null;
+    function step(ts){ if(t0===null)t0=ts; var p=Math.min(1,(ts-t0)/DUR);
+      score.textContent=(8.4*easeOut(p)).toFixed(1).replace('.',','); if(p<1)requestAnimationFrame(step); else score.textContent='8,4'; }
+    requestAnimationFrame(step);
+  }
+  function setFinal(){
+    arc.style.transition='none'; arc.style.strokeDashoffset=C*(1-TARGET); score.textContent='8,4';
+    steps.forEach(function(s){document.getElementById(s[0]).classList.add('show');});
+  }
+  function play(){
+    // reset
+    arc.style.transition='none'; arc.style.strokeDashoffset=C; score.textContent='0,0';
+    steps.forEach(function(s){document.getElementById(s[0]).classList.remove('show');});
+    // force reflow then animate
+    void arc.getBoundingClientRect();
+    requestAnimationFrame(function(){
+      arc.style.transition='stroke-dashoffset 1.3s cubic-bezier(.2,.8,.25,1)';
+      arc.style.strokeDashoffset=C*(1-TARGET);
+      countScore();
+      var delays=[300,500,650,800,1100,1700];
+      steps.forEach(function(s,i){ setTimeout(function(){document.getElementById(s[0]).classList.add('show');}, delays[i]); });
+    });
+  }
+  document.getElementById('replay').addEventListener('click', function(){ reduce?setFinal():play(); });
+  if(reduce) setFinal(); else play();
+})();
+</script>
+<script>
+(function(){function h(){try{parent.postMessage({tamaiaH:Math.ceil(document.documentElement.getBoundingClientRect().height)},'*');}catch(e){}}
+window.addEventListener('load',h);window.addEventListener('resize',h);
+['click','transitionend','animationiteration','animationend'].forEach(function(ev){document.addEventListener(ev,function(){setTimeout(h,40);},true);});
+setTimeout(h,300);setTimeout(h,1200);setTimeout(h,2600);})();
+</script>
+</body>
+</html>
