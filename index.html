@@ -3892,7 +3892,7 @@
     </ul>
     <a href="https://app.tamaia.pl" class="nav-login" target="_blank" rel="noopener">Zaloguj się →</a>
     <a href="#cta" class="btn btn-primary nav-cta">Wypróbuj 14 dni</a>
-    <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+    <button class="hamburger" id="hamburgerBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -3939,7 +3939,7 @@
         <div class="mockup-header">
           <div class="mockup-title">
             Raport AI — Maj 2026
-            <small>Gabinet pilotażowy • Warszawa</small>
+            <small>Dane przykładowe • gabinet pilotażowy</small>
           </div>
           <div class="mockup-badge"><span class="live-dot"></span>LIVE</div>
         </div>
@@ -5035,6 +5035,10 @@
               <label class="ws-radio ws-radio-big"><input type="radio" name="startTime" value="3+ miesiące" required><span>🗓️ Za 3 miesiące lub później</span></label>
               <label class="ws-radio ws-radio-big"><input type="radio" name="startTime" value="Tylko sprawdzam" required><span>👀 Tylko sprawdzam, co to za rozwiązanie</span></label>
             </fieldset>
+            <fieldset class="ws-checkbox-group" style="margin-top:4px">
+              <label class="ws-check"><input type="checkbox" name="consent_terms" value="1" required><span>Akceptuję <a href="https://app.tamaia.pl/regulamin" target="_blank" rel="noopener">Regulamin</a> i <a href="https://app.tamaia.pl/polityka" target="_blank" rel="noopener">Politykę prywatności</a>. *</span></label>
+              <label class="ws-check"><input type="checkbox" name="consent_contact" value="1" required><span>Wyrażam zgodę na kontakt w sprawie mojego zgłoszenia (telefon / e-mail). *</span></label>
+            </fieldset>
             <div class="ws-actions">
               <button type="button" class="ws-btn ws-btn-back" onclick="wizardBack()">← Wstecz</button>
               <button type="submit" class="ws-btn ws-btn-primary ws-btn-final">✓ Wyślij zgłoszenie</button>
@@ -5197,8 +5201,8 @@
   // ===== HAMBURGER =====
   const hamburger = document.getElementById('hamburgerBtn');
   const mobileMenu = document.getElementById('mobileMenu');
-  hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
-  document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+  hamburger.addEventListener('click', () => { const o = mobileMenu.classList.toggle('open'); hamburger.setAttribute('aria-expanded', o ? 'true' : 'false'); });
+  document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', () => { mobileMenu.classList.remove('open'); hamburger.setAttribute('aria-expanded', 'false'); }));
 
   // ===== INTERAKTYWNY LICZNIK + LIVE PRICING CARDS =====
   // Globalny stan zamówienia (używany przez formularz)
