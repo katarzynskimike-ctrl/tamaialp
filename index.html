@@ -4952,7 +4952,7 @@
           <div class="wp-step active" data-step="1"><span class="wp-dot">1</span><span class="wp-label">Kim jesteś</span></div>
           <div class="wp-step" data-step="2"><span class="wp-dot">2</span><span class="wp-label">Skala</span></div>
           <div class="wp-step" data-step="3"><span class="wp-dot">3</span><span class="wp-label">Telefonia</span></div>
-          <div class="wp-step" data-step="4"><span class="wp-dot">4</span><span class="wp-label">Usługi</span></div>
+          <div class="wp-step" data-step="4"><span class="wp-dot">4</span><span class="wp-label">Raty 0%</span></div>
           <div class="wp-step" data-step="5"><span class="wp-dot">5</span><span class="wp-label">Start</span></div>
         </div>
         <form id="wizardForm" autocomplete="on" onsubmit="return wizardSubmit(event)">
@@ -5010,26 +5010,15 @@
 
           <!-- KROK 4 -->
           <div class="wizard-step" data-step="4">
-            <h3 class="ws-title">Jakie usługi wykonujecie?</h3>
-            <p class="ws-sub">Zaznacz wszystkie, które oferujesz pacjentom.</p>
-            <fieldset class="ws-checkbox-group">
-              <legend>Profil usług *</legend>
-              <label class="ws-check"><input type="checkbox" name="services" value="Stomatologia zachowawcza"><span>Stomatologia zachowawcza</span></label>
-              <label class="ws-check"><input type="checkbox" name="services" value="Implanty"><span>Implanty</span></label>
-              <label class="ws-check"><input type="checkbox" name="services" value="Ortodoncja"><span>Ortodoncja</span></label>
-              <label class="ws-check"><input type="checkbox" name="services" value="Protetyka"><span>Protetyka</span></label>
-              <label class="ws-check"><input type="checkbox" name="services" value="Chirurgia"><span>Chirurgia</span></label>
-              <label class="ws-check"><input type="checkbox" name="services" value="Ortodoncja dziecięca"><span>Ortodoncja dziecięca</span></label>
-              <label class="ws-check"><input type="checkbox" name="services" value="Endodoncja"><span>Endodoncja</span></label>
-              <label class="ws-check"><input type="checkbox" name="services" value="Estetyka (licówki, wybielanie)"><span>Estetyka (licówki, wybielanie)</span></label>
-            </fieldset>
+            <h3 class="ws-title">Raty 0% dla pacjentów</h3>
+            <p class="ws-sub">Jeszcze jedno pytanie o ofertę dla pacjentów.</p>
             <fieldset class="ws-radio-group">
               <legend>Macie raty 0% dla pacjentów? *</legend>
               <label class="ws-radio"><input type="radio" name="installments" value="Tak" required><span>Tak</span></label>
               <label class="ws-radio"><input type="radio" name="installments" value="Nie" required><span>Nie</span></label>
               <label class="ws-radio"><input type="radio" name="installments" value="Planujemy" required><span>Planujemy</span></label>
             </fieldset>
-            <div class="ws-why">💡 MAIA da Ci informacje, ilu pacjentów pytało np. o implanty. Raty 0% to ogromny argument przy rozmowie — chcę wiedzieć, czy go masz w arsenale.</div>
+            <div class="ws-why">💡 Raty 0% to ogromny argument przy rozmowie — chcę wiedzieć, czy masz go w arsenale.</div>
             <div class="ws-actions">
               <button type="button" class="ws-btn ws-btn-back" onclick="wizardBack()">← Wstecz</button>
               <button type="button" class="ws-btn ws-btn-primary" onclick="wizardNext()">Dalej →</button>
@@ -5589,14 +5578,6 @@ Promokod: ${config.promo_code} (−€${config.promo_discount_eur}/rok — aktyw
         }
       });
       if (firstInvalid) return false;
-      // Custom: krok 4 wymaga >=1 checkbox usługi
-      if (currentStep === 4) {
-        const services = step.querySelectorAll('input[name="services"]:checked');
-        if (services.length === 0) {
-          alert('Zaznacz przynajmniej jedną usługę.');
-          return false;
-        }
-      }
       return true;
     }
 
