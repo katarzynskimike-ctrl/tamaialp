@@ -3892,7 +3892,7 @@
     </ul>
     <a href="https://app.tamaia.pl" class="nav-login" target="_blank" rel="noopener">Zaloguj się →</a>
     <a href="#cta" class="btn btn-primary nav-cta">Wypróbuj 14 dni</a>
-    <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+    <button class="hamburger" id="hamburgerBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -3939,7 +3939,7 @@
         <div class="mockup-header">
           <div class="mockup-title">
             Raport AI — Maj 2026
-            <small>Gabinet pilotażowy • Warszawa</small>
+            <small>Dane przykładowe • gabinet pilotażowy</small>
           </div>
           <div class="mockup-badge"><span class="live-dot"></span>LIVE</div>
         </div>
@@ -4181,14 +4181,14 @@
     <!-- Cytat Michała — partnerstwo, nie kontrola (anty „tajemniczy pacjent") -->
     <figure class="tp-quote">
       <span class="tpq-mark" aria-hidden="true">„</span>
-      <blockquote class="tpq-text">Każde badanie „Tajemniczy pacjent" to działanie opresyjne. Lepiej rozwijać umiejętności zespołu rejestracji w&nbsp;bardziej partnerski sposób.</blockquote>
+      <blockquote class="tpq-text">„Tajemniczy pacjent" to dla lekarzy i&nbsp;rejestracji działanie opresyjne. Lepiej rozwijać umiejętności zespołu w&nbsp;partnerski sposób.</blockquote>
       <figcaption class="tpq-by">
         <span class="tpq-name">Michał Katarzyński</span>
-        <span class="tpq-role">twórca Doskonałej Rejestracji</span>
+        <span class="tpq-role">autor standardu Doskonałej Obsługi i komunikacji z pacjentami</span>
       </figcaption>
     </figure>
     <style>
-      .tp-quote{max-width:820px;margin:40px auto 0;background:linear-gradient(135deg,#0a1e3f,#0c2a63);
+      .tp-quote{max-width:820px;margin:40px auto 0;background:linear-gradient(135deg,#0F1E3D,#1B2C4F);
         border-radius:20px;padding:36px 42px 30px;position:relative;overflow:hidden;text-align:left}
       .tp-quote .tpq-mark{position:absolute;top:-18px;left:24px;font-family:Georgia,'Times New Roman',serif;
         font-size:130px;line-height:1;color:var(--gold-2,#C9A24A);opacity:.26;pointer-events:none}
@@ -4706,7 +4706,6 @@
           <div class="price-amount-big" id="pricePlusAmount">499 zł</div>
           <div class="price-period-label">brutto / mies</div>
           <div class="price-period-note">abonament roczny · VAT 23%</div>
-          <div class="ringostat-compare" id="ringostatPlus" style="margin-top:8px; font-size:0.85rem; color:var(--text-muted); font-style:italic;">sam Ringostat: <strong>311 zł</strong></div>
         </div>
 
         <ul class="price-features">
@@ -4825,7 +4824,7 @@
           <div class="faq-toggle">+</div>
         </div>
         <div class="faq-answer">
-          <p>Ringostat hostuje dane w UE i ma podpisaną umowę DPA. Dostarczamy szablon polityki RODO + zapis informacyjny do nagrywania rozmów. Wszystkie nagrania są szyfrowane i dostępne tylko upoważnionym osobom z gabinetu.</p>
+          <p>Ringostat hostuje dane w UE i ma podpisaną umowę DPA. Dostarczamy szablon polityki RODO + zapis informacyjny do nagrywania rozmów. Nagrania są szyfrowane (AES-256) i dostępne wyłącznie dla upoważnionych osób z gabinetu — przez podpisane, wygasające adresy. Cała transmisja odbywa się po HTTPS, a dane przetwarzamy w UE.</p>
         </div>
       </div>
 
@@ -5036,6 +5035,10 @@
               <label class="ws-radio ws-radio-big"><input type="radio" name="startTime" value="3+ miesiące" required><span>🗓️ Za 3 miesiące lub później</span></label>
               <label class="ws-radio ws-radio-big"><input type="radio" name="startTime" value="Tylko sprawdzam" required><span>👀 Tylko sprawdzam, co to za rozwiązanie</span></label>
             </fieldset>
+            <fieldset class="ws-checkbox-group" style="margin-top:4px">
+              <label class="ws-check"><input type="checkbox" name="consent_terms" value="1" required><span>Akceptuję <a href="https://app.tamaia.pl/regulamin" target="_blank" rel="noopener">Regulamin</a> i <a href="https://app.tamaia.pl/polityka" target="_blank" rel="noopener">Politykę prywatności</a>. *</span></label>
+              <label class="ws-check"><input type="checkbox" name="consent_contact" value="1" required><span>Wyrażam zgodę na kontakt w sprawie mojego zgłoszenia (telefon / e-mail). *</span></label>
+            </fieldset>
             <div class="ws-actions">
               <button type="button" class="ws-btn ws-btn-back" onclick="wizardBack()">← Wstecz</button>
               <button type="submit" class="ws-btn ws-btn-primary ws-btn-final">✓ Wyślij zgłoszenie</button>
@@ -5085,7 +5088,8 @@
           <strong style="color: var(--white);">Excellent Patient Service sp. z o.o.</strong><br>
           ul. Lubomirskiego 39E<br>
           36-040 Boguchwała<br>
-          NIP: 5170359961<br>
+          NIP: 5170359961 · REGON: 180874009<br>
+          KRS: 0000429303 · Sąd Rejonowy w Rzeszowie, XII Wydział Gospodarczy KRS<br>
           <a href="tel:+48579774089" style="color: var(--gold-2); font-weight: 600;">📞 +48 579 774 089</a><br>
           <a href="mailto:biuro@doskonalaobslugapacjenta.pl" style="color: rgba(255,255,255,0.8);">biuro@doskonalaobslugapacjenta.pl</a>
         </div>
@@ -5111,10 +5115,9 @@
       <div class="footer-col">
         <h4>Prawne</h4>
         <ul>
-          <li><a href="https://doskonalaobslugapacjenta.pl" target="_blank" rel="noopener">Polityka prywatności</a></li>
-          <li><a href="https://doskonalaobslugapacjenta.pl" target="_blank" rel="noopener">Regulamin</a></li>
-          <li><a href="https://doskonalaobslugapacjenta.pl" target="_blank" rel="noopener">RODO</a></li>
-          <li><a href="https://doskonalaobslugapacjenta.pl" target="_blank" rel="noopener">DPA Ringostat</a></li>
+          <li><a href="https://app.tamaia.pl/polityka" target="_blank" rel="noopener">Polityka prywatności</a></li>
+          <li><a href="https://app.tamaia.pl/regulamin" target="_blank" rel="noopener">Regulamin</a></li>
+          <li><a href="https://app.tamaia.pl/dpa" target="_blank" rel="noopener">Umowa powierzenia (DPA)</a></li>
         </ul>
       </div>
     </div>
@@ -5198,8 +5201,8 @@
   // ===== HAMBURGER =====
   const hamburger = document.getElementById('hamburgerBtn');
   const mobileMenu = document.getElementById('mobileMenu');
-  hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
-  document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+  hamburger.addEventListener('click', () => { const o = mobileMenu.classList.toggle('open'); hamburger.setAttribute('aria-expanded', o ? 'true' : 'false'); });
+  document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', () => { mobileMenu.classList.remove('open'); hamburger.setAttribute('aria-expanded', 'false'); }));
 
   // ===== INTERAKTYWNY LICZNIK + LIVE PRICING CARDS =====
   // Globalny stan zamówienia (używany przez formularz)
@@ -5266,11 +5269,6 @@
     if (premiumEl) premiumEl.textContent = premiumPrice.toLocaleString('pl-PL') + ' zł';
     const tPremium = document.getElementById('targetPremium');
     if (tPremium) tPremium.textContent = 'Wszystko z Pro + 1h/mies z Michałem · ' + count + ' osób w zespole';
-
-    // Cena samego Ringostat (porównanie pod ceną Plus)
-    const ringB = calcRingostatPrice('BASIC', count);
-    const ringPEl = document.getElementById('ringostatPlus');
-    if (ringPEl) ringPEl.innerHTML = 'sam Ringostat: <strong>' + ringB.toLocaleString('pl-PL') + ' zł</strong>';
 
     document.querySelectorAll('#pcPresets button').forEach(btn => {
       btn.classList.toggle('active', parseInt(btn.dataset.count) === count);
