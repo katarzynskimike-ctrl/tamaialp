@@ -4706,7 +4706,6 @@
           <div class="price-amount-big" id="pricePlusAmount">499 zł</div>
           <div class="price-period-label">brutto / mies</div>
           <div class="price-period-note">abonament roczny · VAT 23%</div>
-          <div class="ringostat-compare" id="ringostatPlus" style="margin-top:8px; font-size:0.85rem; color:var(--text-muted); font-style:italic;">sam Ringostat: <strong>311 zł</strong></div>
         </div>
 
         <ul class="price-features">
@@ -5266,11 +5265,6 @@
     if (premiumEl) premiumEl.textContent = premiumPrice.toLocaleString('pl-PL') + ' zł';
     const tPremium = document.getElementById('targetPremium');
     if (tPremium) tPremium.textContent = 'Wszystko z Pro + 1h/mies z Michałem · ' + count + ' osób w zespole';
-
-    // Cena samego Ringostat (porównanie pod ceną Plus)
-    const ringB = calcRingostatPrice('BASIC', count);
-    const ringPEl = document.getElementById('ringostatPlus');
-    if (ringPEl) ringPEl.innerHTML = 'sam Ringostat: <strong>' + ringB.toLocaleString('pl-PL') + ' zł</strong>';
 
     document.querySelectorAll('#pcPresets button').forEach(btn => {
       btn.classList.toggle('active', parseInt(btn.dataset.count) === count);
