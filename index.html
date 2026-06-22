@@ -5637,6 +5637,10 @@ Promokod: ${config.promo_code} (−€${config.promo_discount_eur}/rok — aktyw
         services: services,
         installments: fd.get('installments'),
         startTime: fd.get('startTime'),
+        consent_terms: fd.get('consent_terms') ? 1 : 0,
+        consent_contact: fd.get('consent_contact') ? 1 : 0,
+        terms_version: 'v1',
+        hp: fd.get('hp') || '',
         timestamp: new Date().toISOString(),
         source: 'tamaia.pl wizard'
       };
@@ -5681,17 +5685,29 @@ Promokod: ${config.promo_code} (−€${config.promo_discount_eur}/rok — aktyw
       const body = encodeURIComponent(bodyLines.join('\n'));
       const mailto = 'mailto:biuro@doskonalaobslugapacjenta.pl?subject=' + subject + '&body=' + body;
 
-      // Pokaż thank-you i otwórz mailto w nowej karcie
+      // Pokaż thank-you od razu (niezależnie od kanału wysyłki)
       document.getElementById('wizardForm').style.display = 'none';
       document.getElementById('wizardProgress').style.display = 'none';
       document.getElementById('wizardSuccess').style.display = 'block';
       const form2 = document.getElementById('leadForm');
       if (form2) form2.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-      // Po krótkiej chwili otwórz klient pocztowy (na wszelki wypadek)
-      setTimeout(() => {
-        try { window.location.href = mailto; } catch (e) {}
-      }, 600);
+      // Wyślij zgłoszenie do backendu (zapis na serwerze + e-mail przez Brevo).
+      // mailto + localStorage zostają WYŁĄCZNIE jako fallback, gdy POST się nie powiedzie.
+      fetch('https://app.tamaia.pl/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
+        .then(r => r.json().catch(() => ({})).then(j => ({ httpOk: r.ok, j })))
+        .then(({ httpOk, j }) => {
+          if (!httpOk || !j || !j.ok) throw new Error('backend');
+          // sukces — zgłoszenie zapisane po stronie serwera; nic więcej nie robimy
+        })
+        .catch(() => {
+          // Fallback: otwórz klienta pocztowego z gotowym mailem do biura
+          try { window.location.href = mailto; } catch (e) {}
+        });
 
       return false;
     };
