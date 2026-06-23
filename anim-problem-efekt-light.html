@@ -66,6 +66,19 @@
   .track{position:absolute;left:0;bottom:0;height:4px;width:100%;background:rgba(10,30,63,.06);z-index:5}
   .track i{position:absolute;left:0;top:0;height:100%;background:var(--gold);width:0;animation:prog 36s linear infinite}
   @keyframes prog{0%{width:0}100%{width:100%}}
+  @media (max-width:640px){
+    .bg-photo{display:none}
+    .stage{height:360px;border-radius:16px}
+    .scene{padding:44px 16px 26px;gap:12px}
+    .scene h2{font-size:1.15rem}
+    .scene p{font-size:0.88rem}
+    .loss{min-width:0;width:100%;max-width:300px;padding:18px 16px}
+    .loss .pct{font-size:2.6rem}
+    .loss .amt{font-size:1rem}
+    .maia-tip{font-size:0.84rem;padding:10px 12px}
+    .big{font-size:2.8rem}
+    .brand-logo{height:24px;top:10px;left:10px}
+  }
 </style>
 </head>
 <body>
