@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TAMAIA — Problem → MAIA → Efekt (jasna)</title>
+<style>
+  :root{ --navy:#0a1e3f; --gold:#c9a961; --gold-dk:#a07d1f; --text:#46505f; --red:#c0392b; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:#fbf9f4;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:24px}
+  .stage{
+    position:relative;width:760px;max-width:100%;height:440px;
+    background:linear-gradient(180deg,#ffffff 0%,#fbf6ec 100%);
+    border:1px solid rgba(201,169,97,0.45);border-radius:20px;overflow:hidden;
+    box-shadow:0 24px 60px rgba(10,30,63,0.10);
+  }
+
+  /* TŁO: opcjonalny obraz/film + grafika recepcji */
+  .bg-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .bg-sad{animation:bgSad 24s infinite}
+  .bg-happy{opacity:0;animation:bgHappy 24s infinite}
+  @keyframes bgSad{0%{opacity:1}63%{opacity:1}68%{opacity:0}97%{opacity:0}100%{opacity:1}}
+  @keyframes bgHappy{0%{opacity:0}63%{opacity:0}68%{opacity:1}97%{opacity:1}100%{opacity:0}}
+  .bg-art{position:absolute;inset:0;z-index:0;opacity:.10}
+  .bg-art svg{width:100%;height:100%}
+  .bg-tint{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(255,255,255,.42) 0%,rgba(251,246,236,.72) 100%)}
+
+  .brand-logo{position:absolute;top:14px;left:14px;z-index:5;height:32px;width:auto;filter:drop-shadow(0 1px 6px rgba(255,255,255,.85))}
+  .step-label{display:none}
+  .scene{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;opacity:0;padding:58px 40px 40px}
+  .scene h2{color:var(--navy);font-size:1.5rem;font-weight:800;text-align:center;line-height:1.25;text-shadow:0 1px 12px rgba(255,255,255,.92),0 1px 3px rgba(255,255,255,.92)}
+  .scene p{color:var(--text);font-size:1rem;text-align:center;max-width:520px;text-shadow:0 1px 10px rgba(255,255,255,.92)}
+  .eyebrow{font-size:.72rem;font-weight:800;letter-spacing:3px;text-transform:uppercase}
+
+  .s1{animation:sc1 24s infinite}.s2{animation:sc2 24s infinite}.s3{animation:sc3 24s infinite}
+  .s4{animation:sc4 24s infinite}.s5{animation:sc5 24s infinite}.s6{animation:sc6 24s infinite}
+  @keyframes sc1{0%{opacity:0}2%{opacity:1}15%{opacity:1}16.7%{opacity:0}100%{opacity:0}}
+  @keyframes sc2{0%,16.7%{opacity:0}18.7%{opacity:1}31.5%{opacity:1}33.3%{opacity:0}100%{opacity:0}}
+  @keyframes sc3{0%,33.3%{opacity:0}35.3%{opacity:1}48%{opacity:1}50%{opacity:0}100%{opacity:0}}
+  @keyframes sc4{0%,50%{opacity:0}52%{opacity:1}64.7%{opacity:1}66.7%{opacity:0}100%{opacity:0}}
+  @keyframes sc5{0%,66.7%{opacity:0}68.7%{opacity:1}81.5%{opacity:1}83.3%{opacity:0}100%{opacity:0}}
+  @keyframes sc6{0%,83.3%{opacity:0}85.3%{opacity:1}99%{opacity:1}100%{opacity:0}}
+
+  .phone{width:96px;height:96px;border-radius:50%;background:rgba(201,169,97,.18);display:flex;align-items:center;justify-content:center;animation:ring 1.4s ease-in-out infinite}
+  .phone svg{width:44px;height:44px;stroke:var(--navy)}
+  @keyframes ring{0%,60%,100%{transform:rotate(0) scale(1)}8%{transform:rotate(-12deg) scale(1.05)}16%{transform:rotate(12deg)}24%{transform:rotate(-10deg)}32%{transform:rotate(10deg)}40%{transform:rotate(0)}}
+
+  .loss{background:rgba(192,57,43,.07);border:1px solid rgba(192,57,43,.45);border-radius:18px;padding:26px 34px;display:flex;flex-direction:column;align-items:center;gap:6px;min-width:300px}
+  .loss .pct{font-size:3.4rem;font-weight:900;color:var(--red);line-height:1}
+  .loss .lab{font-size:1.05rem;font-weight:700;color:var(--navy)}
+  .loss .amt{margin-top:10px;background:rgba(192,57,43,.12);color:#8c2218;font-weight:800;font-size:1.15rem;padding:8px 18px;border-radius:50px}
+  .floaty{animation:floaty 3.2s ease-in-out infinite}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+
+  .wave{display:flex;align-items:flex-end;gap:6px;height:70px}
+  .wave i{width:8px;background:linear-gradient(var(--gold),var(--gold-dk));border-radius:4px;animation:eq 1.3s ease-in-out infinite}
+  .wave i:nth-child(1){animation-delay:0s}.wave i:nth-child(2){animation-delay:.12s}.wave i:nth-child(3){animation-delay:.24s}
+  .wave i:nth-child(4){animation-delay:.36s}.wave i:nth-child(5){animation-delay:.48s}.wave i:nth-child(6){animation-delay:.6s}
+  .wave i:nth-child(7){animation-delay:.72s}.wave i:nth-child(8){animation-delay:.84s}.wave i:nth-child(9){animation-delay:.96s}
+  @keyframes eq{0%,100%{height:14px}50%{height:64px}}
+  .maia-tip{background:#fff;border:1px solid rgba(201,169,97,.5);border-radius:14px;padding:12px 16px;color:var(--navy);font-size:.95rem;max-width:480px;text-align:center;box-shadow:0 6px 16px rgba(10,30,63,.06)}
+  .maia-tip b{color:var(--gold-dk)}
+
+  .big{font-size:3.4rem;font-weight:900;color:var(--navy);line-height:1}
+  .pill{background:var(--navy);color:#fff;font-weight:800;padding:9px 20px;border-radius:50px;font-size:.95rem;text-align:center}
+  .check{width:66px;height:66px;border-radius:50%;background:rgba(201,169,97,.22);display:flex;align-items:center;justify-content:center;margin-bottom:4px}
+  .check svg{width:36px;height:36px;stroke:var(--gold-dk)}
+
+  .track{position:absolute;left:0;bottom:0;height:4px;width:100%;background:rgba(10,30,63,.06);z-index:5}
+  .track i{position:absolute;left:0;top:0;height:100%;background:var(--gold);width:0;animation:prog 24s linear infinite}
+  @keyframes prog{0%{width:0}100%{width:100%}}
+</style>
+</head>
+<body>
+  <div class="stage">
+
+    <!-- Oryginalna grafika recepcji (fallback gdy brak filmu) -->
+    <div class="bg-art" aria-hidden="true">
+      <svg viewBox="0 0 760 440" fill="none" stroke="#0a1e3f" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="40" y1="372" x2="720" y2="372"/>
+        <rect x="120" y="292" width="150" height="92" rx="8"/>
+        <path d="M195 384 v16 M168 416 h54"/>
+        <circle cx="560" cy="168" r="46"/>
+        <path d="M495 372 Q495 252 560 252 Q625 252 625 372"/>
+        <path d="M612 300 Q662 286 656 224 Q653 198 614 192"/>
+        <path d="M604 176 q-18 -10 -34 4"/>
+        <circle cx="566" cy="186" r="3" fill="#0a1e3f" stroke="none"/>
+      </svg>
+    </div>
+
+    <!-- Film: niezadowolona rejestratorka podczas scen problem/strata -->
+    <video class="bg-photo bg-sad" autoplay muted loop playsinline>
+      <source src="recepcja-problem.mp4" type="video/mp4">
+    </video>
+    <!-- Film: uśmiechnięta rejestratorka podczas scen MAIA/Efekt -->
+    <video class="bg-photo bg-happy" autoplay muted loop playsinline>
+      <source src="recepcja-efekt.mp4" type="video/mp4">
+    </video>
+
+    <div class="bg-tint"></div>
+
+    <img class="brand-logo" src="logo_tamaia.png" alt="TAMAIA" onerror="this.style.display='none'">
+
+    <!-- 1 · PROBLEM -->
+    <div class="scene s1">
+      <div class="step-label">01 · PROBLEM</div>
+      <div class="phone">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </div>
+      <h2>Pacjent dzwoni — a przychód wycieka</h2>
+      <p>Bez pomiarów nawet nie wiesz, ilu pacjentów oddajesz konkurencji.</p>
+    </div>
+
+    <!-- 2 · STRATA 23% -->
+    <div class="scene s2">
+      <div class="step-label">02 · STRATA</div>
+      <div class="loss floaty"><div class="pct">23%</div><div class="lab">Nieodebrane połączenia</div><div class="amt">≈ 30 000 zł / mies</div></div>
+      <p style="font-size:.9rem">~101 telefonów miesięcznie bez odbioru — dzwonią do konkurencji.</p>
+    </div>
+
+    <!-- 3 · STRATA 41% -->
+    <div class="scene s3">
+      <div class="step-label">03 · STRATA</div>
+      <div class="loss floaty"><div class="pct">41%</div><div class="lab">Słabo obsłużone</div><div class="amt">≈ 21 000 zł / mies</div></div>
+      <p style="font-size:.9rem">Rozmowa bez pytania o termin — pacjent zostawia „muszę pomyśleć".</p>
+    </div>
+
+    <!-- 4 · STRATA 62% -->
+    <div class="scene s4">
+      <div class="step-label">04 · STRATA</div>
+      <div class="loss floaty"><div class="pct">62%</div><div class="lab">Bez oddzwonienia</div><div class="amt">≈ 15 000 zł / mies</div></div>
+      <p style="font-size:.9rem">Pyta o cenę, mówi „zastanowię się" — i nigdy nie wraca.</p>
+    </div>
+
+    <!-- 5 · MAIA -->
+    <div class="scene s5">
+      <div class="step-label">05 · MAIA</div>
+      <div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <h2>MAIA analizuje 100% rozmów</h2>
+      <div class="maia-tip">„Pacjent pytał o cenę — <b>zanim ją podasz, powiedz o doświadczeniu lekarza</b> i o korzyściach z konsultacji: dokładna diagnostyka i przewidywalny plan leczenia."</div>
+      <p style="font-size:.85rem">Rada dla recepcji w minutę po rozmowie</p>
+    </div>
+
+    <!-- 6 · EFEKT -->
+    <div class="scene s6">
+      <div class="step-label">06 · EFEKT</div>
+      <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="big">+18%</div>
+      <div class="eyebrow" style="color:var(--gold-dk)">umówionych wizyt po 90 dniach</div>
+      <h2 style="margin-top:6px">Pacjenci zostają u Ciebie</h2>
+      <div class="pill">Centralka TAMAIA + skrypty Doskonałej Rejestracji</div>
+    </div>
+
+    <div class="track"><i></i></div>
+  </div>
+  <script>
+    document.querySelectorAll('video.bg-photo').forEach(function(v){
+      var slow = function(){ try { v.playbackRate = 0.5; } catch(e){} };
+      v.addEventListener('loadedmetadata', slow);
+      v.addEventListener('play', slow);
+      slow();
+      var p = v.play && v.play(); if (p && p.catch) p.catch(function(){});
+    });
+  </script>
+</body>
+</html>
