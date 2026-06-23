@@ -4782,6 +4782,38 @@
   </div>
 </section>
 
+<!-- ===== SZCZEGÓŁY TELEFONII RINGOSTAT ===== -->
+<section style="background: var(--cream); padding: 32px 0 48px; border-top: 1px solid rgba(10,30,63,.08);">
+  <div class="container" style="max-width: 960px;">
+    <p style="text-align:center; font-size: 0.8rem; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 22px;">Szczegóły telefonii Ringostat — co wchodzi w abonament, a co jest płatne osobno</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
+
+      <div style="background:#fff; border-radius:12px; padding:16px 20px; border:1px solid rgba(10,30,63,.08); display:flex; flex-direction:column; gap:4px;">
+        <span style="font-size:0.78rem; color:var(--text-muted); font-weight:500;">Dodatkowy numer stacjonarny</span>
+        <span style="font-size:1.15rem; font-weight:700; color:var(--navy);">6 zł <span style="font-size:0.82rem; font-weight:400; color:var(--text-muted);">/ mies brutto</span></span>
+      </div>
+
+      <div style="background:#fff; border-radius:12px; padding:16px 20px; border:1px solid rgba(10,30,63,.08); display:flex; flex-direction:column; gap:4px;">
+        <span style="font-size:0.78rem; color:var(--text-muted); font-weight:500;">Dodatkowy numer komórkowy</span>
+        <span style="font-size:1.15rem; font-weight:700; color:var(--navy);">18 zł <span style="font-size:0.82rem; font-weight:400; color:var(--text-muted);">/ mies brutto</span></span>
+      </div>
+
+      <div style="background:#fff; border-radius:12px; padding:16px 20px; border:1px solid rgba(10,30,63,.08); display:flex; flex-direction:column; gap:4px;">
+        <span style="font-size:0.78rem; color:var(--text-muted); font-weight:500;">Rozmowy przychodzące</span>
+        <span style="font-size:1.15rem; font-weight:700; color:var(--navy);">0 zł <span style="font-size:0.82rem; font-weight:400; color:var(--text-muted);">— w ramach abonamentu</span></span>
+      </div>
+
+      <div style="background:#fff; border-radius:12px; padding:16px 20px; border:1px solid rgba(10,30,63,.08); display:flex; flex-direction:column; gap:4px;">
+        <span style="font-size:0.78rem; color:var(--text-muted); font-weight:500;">Rozmowy wychodzące</span>
+        <span style="font-size:1.15rem; font-weight:700; color:var(--navy);">0,15 zł<span style="font-size:0.82rem; font-weight:400; color:var(--text-muted);">/min brutto</span></span>
+        <span style="font-size:0.73rem; color:var(--text-muted);">np. 100 min ≈ 15 zł</span>
+      </div>
+
+    </div>
+    <p style="text-align:center; font-size:0.74rem; color:var(--text-muted); margin-top:14px;">Ceny Ringostat z VAT 23%, zaokrąglone w górę. Rozmowy wychodzące wg stawek Ringostat od 0,12 zł netto/min (połączenia komórkowe). Aktualne stawki: <a href="https://ringostat.com/pl/virtual-number-pl/" target="_blank" rel="noopener" style="color:var(--gold-1);">ringostat.com</a>.</p>
+  </div>
+</section>
+
 <!-- ===== FAQ ===== -->
 <section id="faq" class="faq">
   <div class="container">
@@ -5699,4 +5731,5 @@ Promokod: ${config.promo_code} (−€${config.promo_discount_eur}/rok — aktyw
 window.addEventListener('message',function(e){var d=e&&e.data;if(!d||!d.tamaiaH)return;document.querySelectorAll('#demo iframe').forEach(function(f){if(f.contentWindow===e.source){f.style.height=d.tamaiaH+'px';}});});
 </script>
 </body>
+<!-- build:2026-06-23 -->
 </html>
