@@ -18,6 +18,10 @@
 
   /* TŁO: opcjonalny obraz/film + grafika recepcji */
   .bg-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .bg-sad{animation:bgSad 36s infinite}
+  .bg-happy{opacity:0;animation:bgHappy 36s infinite}
+  @keyframes bgSad{0%{opacity:1}63%{opacity:1}68%{opacity:0}97%{opacity:0}100%{opacity:1}}
+  @keyframes bgHappy{0%{opacity:0}63%{opacity:0}68%{opacity:1}97%{opacity:1}100%{opacity:0}}
   .bg-art{position:absolute;inset:0;z-index:0;opacity:.10}
   .bg-art svg{width:100%;height:100%}
   .bg-tint{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(255,255,255,.42) 0%,rgba(251,246,236,.72) 100%)}
@@ -67,6 +71,7 @@
   .track i{position:absolute;left:0;top:0;height:100%;background:var(--gold);width:0;animation:prog 36s linear infinite}
   @keyframes prog{0%{width:0}100%{width:100%}}
   @media (max-width:640px){
+    .bg-photo{display:none}
     .stage{height:360px;border-radius:16px}
     .scene{padding:44px 16px 26px;gap:12px}
     .scene h2{font-size:1.15rem}
@@ -97,10 +102,9 @@
       </svg>
     </div>
 
-    <!-- Jeden film (smutna 24s → uśmiechnięta 12s, zsynchronizowany z 36s pętli) — mobile-friendly -->
-    <video class="bg-photo" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture>
-      <source src="recepcja-bg.mp4" type="video/mp4">
-    </video>
+    <!-- Dwa zdjęcia: smutna (problem/strata) → uśmiechnięta (MAIA/Efekt), płynne przejście -->
+    <img class="bg-photo bg-sad" src="recepcja-sad.jpg" alt="" aria-hidden="true">
+    <img class="bg-photo bg-happy" src="recepcja-happy.jpg" alt="" aria-hidden="true">
 
     <div class="bg-tint"></div>
 
@@ -158,9 +162,6 @@
 
     <div class="track"><i></i></div>
   </div>
-  <script>
-    var v = document.querySelector('video.bg-photo');
-    if (v) { var p = v.play && v.play(); if (p && p.catch) p.catch(function(){}); }
-  </script>
+  <!-- statyczne zdjęcia, bez skryptu wideo -->
 </body>
 </html>
