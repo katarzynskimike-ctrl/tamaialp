@@ -18,7 +18,6 @@
 
   /* TŁO: opcjonalny obraz/film + grafika recepcji */
   .bg-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
-  .bg-img{display:none}
   .bg-sad{animation:bgSad 36s infinite}
   .bg-happy{opacity:0;animation:bgHappy 36s infinite}
   @keyframes bgSad{0%{opacity:1}63%{opacity:1}68%{opacity:0}97%{opacity:0}100%{opacity:1}}
@@ -72,8 +71,6 @@
   .track i{position:absolute;left:0;top:0;height:100%;background:var(--gold);width:0;animation:prog 36s linear infinite}
   @keyframes prog{0%{width:0}100%{width:100%}}
   @media (max-width:900px){
-    .bg-vid{display:none}
-    .bg-img{display:block}
     .stage{height:360px;border-radius:16px}
     .scene{padding:44px 16px 26px;gap:12px}
     .scene h2{font-size:1.15rem}
@@ -104,9 +101,8 @@
       </svg>
     </div>
 
-    <!-- Tło: film na desktopie, zdjęcie na mobile (napisy na obu) -->
-    <video class="bg-photo bg-vid" src="recepcja-bg.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto"></video>
-    <img class="bg-photo bg-img" src="recepcja-happy.jpg" alt="" aria-hidden="true">
+    <!-- Tło: film (desktop autoplay) + plakat-zdjęcie (mobile, gdy autoplay zablokowany) -->
+    <video class="bg-photo" src="recepcja-bg.mp4" poster="recepcja-happy.jpg" autoplay muted loop playsinline webkit-playsinline preload="metadata"></video>
 
     <div class="bg-tint"></div>
 
