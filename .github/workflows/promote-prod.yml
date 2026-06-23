@@ -1,0 +1,170 @@
+# Promocja landingu beta -> produkcja (tamaia.pl)
+# Wzorzec architektury: beta = staging, main = produkcja (patrz ARCHITEKTURA_DEPLOY_LANDING.md).
+#
+# Kiedy: tylko w oknach 06:30 i 22:15 czasu polskiego (poza ruchem klientow).
+# Co: jesli beta jest zatwierdzona (commit z "[ship]" albo tag "ready") i wyprzedza main,
+#     robi BACKUP biezacej produkcji, promuje beta->main (Vercel sam zbuduje),
+#     czeka na deploy, odpala SMOKE TEST. Gdy test padnie -> AUTOMATYCZNY ROLLBACK do backupu.
+# Reczne uruchomienie (override okna): zakladka Actions -> "Run workflow" (mozna z force=true).
+
+name: Promocja na produkcje (beta -> main)
+
+on:
+  schedule:
+    # Czas w UTC. Pary pokrywaja oba stany czasu (letni CEST / zimowy CET);
+    # straznik nizej dopuszcza tylko realne okno 06:30 / 22:15 PL.
+    - cron: '30 4 * * *'    # 06:30 PL (lato)
+    - cron: '30 5 * * *'    # 06:30 PL (zima)
+    - cron: '15 20 * * *'   # 22:15 PL (lato)
+    - cron: '15 21 * * *'   # 22:15 PL (zima)
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Wymus promocje teraz (pomin okno czasu i wymog [ship]/ready)'
+        type: boolean
+        default: false
+
+concurrency:
+  group: promote-prod
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  issues: write
+
+env:
+  PROD_URL: https://tamaia.pl
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (pelna historia + galezie)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Strażnik okna + zatwierdzenia
+        id: gate
+        run: |
+          set -e
+          FORCE="${{ github.event.inputs.force }}"
+          git fetch origin beta main --tags --quiet
+          BETA=$(git rev-parse origin/beta)
+          MAIN=$(git rev-parse origin/main)
+          echo "beta=$BETA"; echo "main=$MAIN"
+
+          if [ "$BETA" = "$MAIN" ]; then
+            echo "Beta == main — nic do wgrania."; echo "proceed=0" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+
+          # Okno czasu (pomijane przy force)
+          if [ "$FORCE" != "true" ]; then
+            H=$(TZ=Europe/Warsaw date +%H); M=$(TZ=Europe/Warsaw date +%M)
+            MIN=$((10#$H*60 + 10#$M))
+            AM=$((6*60+30)); PM=$((22*60+15)); INWIN=0
+            if [ $MIN -ge $((AM-5)) ] && [ $MIN -le $((AM+15)) ]; then INWIN=1; fi
+            if [ $MIN -ge $((PM-5)) ] && [ $MIN -le $((PM+15)) ]; then INWIN=1; fi
+            if [ $INWIN -ne 1 ]; then
+              echo "Poza oknem promocji (PL $H:$M) — pomijam."; echo "proceed=0" >> "$GITHUB_OUTPUT"; exit 0
+            fi
+          fi
+
+          # Zatwierdzenie (pomijane przy force): commit "[ship]" albo tag "ready" == beta HEAD
+          if [ "$FORCE" != "true" ]; then
+            MSG=$(git log -1 --format=%B origin/beta || echo "")
+            READY=$(git rev-parse -q --verify refs/tags/ready 2>/dev/null || echo "")
+            if echo "$MSG" | grep -q '\[ship\]' || [ "$READY" = "$BETA" ]; then
+              echo "Beta zatwierdzona — promuje."
+            else
+              echo "Beta niezatwierdzona (brak [ship] w commicie i brak taga ready) — pomijam."
+              echo "proceed=0" >> "$GITHUB_OUTPUT"; exit 0
+            fi
+          fi
+
+          echo "proceed=1" >> "$GITHUB_OUTPUT"
+
+      - name: Backup produkcji (tag + kopia HTML)
+        if: steps.gate.outputs.proceed == '1'
+        run: |
+          set -e
+          TS=$(TZ=Europe/Warsaw date +%Y%m%d-%H%M)
+          TAG="backup/prod-$TS"
+          git tag "$TAG" origin/main
+          git push origin "$TAG"
+          echo "BACKUP_TAG=$TAG" >> "$GITHUB_ENV"
+          echo "Utworzono backup: $TAG (= poprzedni stan produkcji)"
+          # Kopia zywej strony jako czytelny artefakt
+          curl -fsSL "$PROD_URL" -o prod-before.html || echo "(nie udalo sie pobrac zywej strony — pomijam kopie HTML)"
+
+      - name: Zapisz kopie HTML jako artefakt
+        if: steps.gate.outputs.proceed == '1'
+        uses: actions/upload-artifact@v4
+        with:
+          name: prod-backup-html
+          path: prod-before.html
+          if-no-files-found: ignore
+          retention-days: 30
+
+      - name: Promocja beta -> main
+        if: steps.gate.outputs.proceed == '1'
+        run: |
+          set -e
+          git config user.name  "TAMAIA Deploy Bot"
+          git config user.email "deploy-bot@tamaia.pl"
+          git checkout main
+          # Landing to zlepek calych plikow — bierzemy stan bety jako zrodlo prawdy.
+          if git merge --ff-only origin/beta; then
+            echo "Fast-forward main -> beta"
+          else
+            git merge -X theirs --no-edit origin/beta -m "Promocja beta -> produkcja"
+          fi
+          git push origin main
+          echo "main zaktualizowany — Vercel buduje produkcje."
+
+      - name: Czekaj na deploy Vercel
+        if: steps.gate.outputs.proceed == '1'
+        run: sleep 110
+
+      - name: Smoke test produkcji
+        if: steps.gate.outputs.proceed == '1'
+        run: node scripts/smoke-test.mjs "$PROD_URL"
+
+      - name: Lighthouse (wydajnosc, informacyjnie)
+        if: steps.gate.outputs.proceed == '1'
+        continue-on-error: true
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          urls: https://tamaia.pl
+          configPath: ./.github/lighthouserc.json
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+
+      - name: ROLLBACK przy nieudanym tescie
+        if: failure() && steps.gate.outputs.proceed == '1' && env.BACKUP_TAG != ''
+        run: |
+          set -e
+          echo "Test produkcji nieudany — przywracam $BACKUP_TAG na main."
+          git push origin "+refs/tags/${BACKUP_TAG}:refs/heads/main"
+          echo "Rollback wykonany. Vercel buduje poprzednia (dzialajaca) wersje."
+
+      - name: Zglos awarie (issue) po rollbacku
+        if: failure() && steps.gate.outputs.proceed == '1'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const tag = process.env.BACKUP_TAG || '(brak)';
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Deploy produkcji nieudany — rollback do ${tag}`,
+              body: [
+                'Automatyczna promocja beta -> produkcja nie przeszla smoke testu i zostala **wycofana (rollback)**.',
+                '',
+                `- Backup/punkt powrotu: \`${tag}\``,
+                `- Log uruchomienia: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+                '',
+                'Co dalej: popraw na **becie**, przetestuj na beta.tamaia.pl, oznacz commit `[ship]`. Kolejne okno promocji sprobuje ponownie.'
+              ].join('\n')
+            });

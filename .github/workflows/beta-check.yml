@@ -1,0 +1,38 @@
+# Test bety po kazdej zmianie na galezi beta.
+# Po pushu na beta Vercel buduje beta.tamaia.pl; tu czekamy i odpalamy smoke test,
+# zebys wiedzial czy beta jest zdrowa ZANIM oznaczysz commit "[ship]" do produkcji.
+
+name: Test bety (push -> beta)
+
+on:
+  push:
+    branches: [ beta ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  BETA_URL: https://beta.tamaia.pl
+
+jobs:
+  test-beta:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Czekaj na deploy Vercel (beta)
+        run: sleep 90
+
+      - name: Smoke test bety
+        run: node scripts/smoke-test.mjs "$BETA_URL"
+
+      - name: Lighthouse beta (informacyjnie)
+        continue-on-error: true
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          urls: https://beta.tamaia.pl
+          configPath: ./.github/lighthouserc.json
+          uploadArtifacts: true
+          temporaryPublicStorage: true
