@@ -84,6 +84,10 @@
           padding:8px 14px;cursor:pointer;transition:transform .12s ease-out}
   .replay:active{transform:scale(.96)}
   svg{display:block}
+  .bg-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:.5}
+  .bg-tint{position:absolute;inset:0;z-index:1;background:linear-gradient(160deg,rgba(15,30,61,.70),rgba(27,44,79,.80))}
+  .brand,.eyebrow{position:relative;z-index:2}
+  .flow,.tag{z-index:2}
 
   @media (max-width:640px){
     .flow{height:auto;min-height:560px}
@@ -98,6 +102,8 @@
 <body>
 <div class="root">
   <div class="stage" id="stage" role="img" aria-label="Animacja: telefon pacjenta zamienia się w umówioną wizytę dzięki radzie MAI">
+    <video class="bg-vid" src="recepcja-hero.mp4" poster="recepcja-hero.jpg" autoplay muted loop playsinline webkit-playsinline preload="metadata"></video>
+    <div class="bg-tint"></div>
     <div class="brand"><span class="b1">TA</span><span class="b2">MAIA</span></div>
     <p class="eyebrow">Doskonała Rejestracja Stomatologiczna</p>
 
