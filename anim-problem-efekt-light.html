@@ -18,10 +18,6 @@
 
   /* TŁO: opcjonalny obraz/film + grafika recepcji */
   .bg-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
-  .bg-sad{animation:bgSad 36s infinite}
-  .bg-happy{opacity:0;animation:bgHappy 36s infinite}
-  @keyframes bgSad{0%{opacity:1}63%{opacity:1}68%{opacity:0}97%{opacity:0}100%{opacity:1}}
-  @keyframes bgHappy{0%{opacity:0}63%{opacity:0}68%{opacity:1}97%{opacity:1}100%{opacity:0}}
   .bg-art{position:absolute;inset:0;z-index:0;opacity:.10}
   .bg-art svg{width:100%;height:100%}
   .bg-tint{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(255,255,255,.42) 0%,rgba(251,246,236,.72) 100%)}
@@ -89,13 +85,9 @@
       </svg>
     </div>
 
-    <!-- Film: niezadowolona rejestratorka podczas scen problem/strata -->
-    <video class="bg-photo bg-sad" autoplay muted loop playsinline>
-      <source src="recepcja-problem.mp4" type="video/mp4">
-    </video>
-    <!-- Film: uśmiechnięta rejestratorka podczas scen MAIA/Efekt -->
-    <video class="bg-photo bg-happy" autoplay muted loop playsinline>
-      <source src="recepcja-efekt.mp4" type="video/mp4">
+    <!-- Jeden film (smutna 24s → uśmiechnięta 12s, zsynchronizowany z 36s pętli) — mobile-friendly -->
+    <video class="bg-photo" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture>
+      <source src="recepcja-bg.mp4" type="video/mp4">
     </video>
 
     <div class="bg-tint"></div>
@@ -155,13 +147,8 @@
     <div class="track"><i></i></div>
   </div>
   <script>
-    document.querySelectorAll('video.bg-photo').forEach(function(v){
-      var slow = function(){ try { v.playbackRate = 0.5; } catch(e){} };
-      v.addEventListener('loadedmetadata', slow);
-      v.addEventListener('play', slow);
-      slow();
-      var p = v.play && v.play(); if (p && p.catch) p.catch(function(){});
-    });
+    var v = document.querySelector('video.bg-photo');
+    if (v) { var p = v.play && v.play(); if (p && p.catch) p.catch(function(){}); }
   </script>
 </body>
 </html>
