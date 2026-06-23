@@ -18,8 +18,8 @@
 
   /* TŁO: opcjonalny obraz/film + grafika recepcji */
   .bg-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
-  .bg-sad{animation:bgSad 24s infinite}
-  .bg-happy{opacity:0;animation:bgHappy 24s infinite}
+  .bg-sad{animation:bgSad 36s infinite}
+  .bg-happy{opacity:0;animation:bgHappy 36s infinite}
   @keyframes bgSad{0%{opacity:1}63%{opacity:1}68%{opacity:0}97%{opacity:0}100%{opacity:1}}
   @keyframes bgHappy{0%{opacity:0}63%{opacity:0}68%{opacity:1}97%{opacity:1}100%{opacity:0}}
   .bg-art{position:absolute;inset:0;z-index:0;opacity:.10}
@@ -33,8 +33,8 @@
   .scene p{color:var(--text);font-size:1rem;text-align:center;max-width:520px;text-shadow:0 1px 10px rgba(255,255,255,.92)}
   .eyebrow{font-size:.72rem;font-weight:800;letter-spacing:3px;text-transform:uppercase}
 
-  .s1{animation:sc1 24s infinite}.s2{animation:sc2 24s infinite}.s3{animation:sc3 24s infinite}
-  .s4{animation:sc4 24s infinite}.s5{animation:sc5 24s infinite}.s6{animation:sc6 24s infinite}
+  .s1{animation:sc1 36s infinite}.s2{animation:sc2 36s infinite}.s3{animation:sc3 36s infinite}
+  .s4{animation:sc4 36s infinite}.s5{animation:sc5 36s infinite}.s6{animation:sc6 36s infinite}
   @keyframes sc1{0%{opacity:0}2%{opacity:1}15%{opacity:1}16.7%{opacity:0}100%{opacity:0}}
   @keyframes sc2{0%,16.7%{opacity:0}18.7%{opacity:1}31.5%{opacity:1}33.3%{opacity:0}100%{opacity:0}}
   @keyframes sc3{0%,33.3%{opacity:0}35.3%{opacity:1}48%{opacity:1}50%{opacity:0}100%{opacity:0}}
@@ -55,7 +55,7 @@
 
   .wave{display:flex;align-items:flex-end;gap:6px;height:70px}
   .wave i{width:8px;background:linear-gradient(var(--gold),var(--gold-dk));border-radius:4px;animation:eq 1.3s ease-in-out infinite}
-  .wave i:nth-child(1){animation-delay:0s}.wave i:nth-child(2){animation-delay:.12s}.wave i:nth-child(3){animation-delay:.24s}
+  .wave i:nth-child(1){animation-delay:0s}.wave i:nth-child(2){animation-delay:.12s}.wave i:nth-child(3){animation-delay:.36s}
   .wave i:nth-child(4){animation-delay:.36s}.wave i:nth-child(5){animation-delay:.48s}.wave i:nth-child(6){animation-delay:.6s}
   .wave i:nth-child(7){animation-delay:.72s}.wave i:nth-child(8){animation-delay:.84s}.wave i:nth-child(9){animation-delay:.96s}
   @keyframes eq{0%,100%{height:14px}50%{height:64px}}
@@ -68,7 +68,7 @@
   .check svg{width:36px;height:36px;stroke:var(--gold-dk)}
 
   .track{position:absolute;left:0;bottom:0;height:4px;width:100%;background:rgba(10,30,63,.06);z-index:5}
-  .track i{position:absolute;left:0;top:0;height:100%;background:var(--gold);width:0;animation:prog 24s linear infinite}
+  .track i{position:absolute;left:0;top:0;height:100%;background:var(--gold);width:0;animation:prog 36s linear infinite}
   @keyframes prog{0%{width:0}100%{width:100%}}
 </style>
 </head>
@@ -108,8 +108,8 @@
       <div class="phone">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       </div>
-      <h2>Pacjent dzwoni — a przychód wycieka</h2>
-      <p>Bez pomiarów nawet nie wiesz, ilu pacjentów oddajesz konkurencji.</p>
+      <h2>Pacjent dzwoni. Brak wizyty = brak leczenia.</h2>
+      <p>Bez pomiarów nawet nie wiesz, ile przychodów tracisz — ilu pacjentów oddajesz konkurencji.</p>
     </div>
 
     <!-- 2 · STRATA 23% -->
