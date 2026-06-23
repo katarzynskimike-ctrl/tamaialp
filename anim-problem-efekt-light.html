@@ -103,7 +103,8 @@
       </svg>
     </div>
 
-    <!-- Bez zdjęć w animacji — receptionistka jest w filmie pod spodem (jeden film) -->
+    <!-- Film w tle animacji (desktop; na mobile iframe jest ukryty) -->
+    <video class="bg-photo" src="recepcja-bg.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto"></video>
 
     <div class="bg-tint"></div>
 
@@ -161,6 +162,9 @@
 
     <div class="track"><i></i></div>
   </div>
-  <!-- statyczne zdjęcia, bez skryptu wideo -->
+  <script>
+    var v = document.querySelector('video.bg-photo');
+    if (v) { v.muted = true; var p = v.play && v.play(); if (p && p.catch) p.catch(function(){}); }
+  </script>
 </body>
 </html>
