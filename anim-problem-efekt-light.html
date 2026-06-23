@@ -71,7 +71,8 @@
   .track i{position:absolute;left:0;top:0;height:100%;background:var(--gold);width:0;animation:prog 36s linear infinite}
   @keyframes prog{0%{width:0}100%{width:100%}}
   @media (max-width:640px){
-    .bg-photo{display:none}
+    .bg-sad{display:none}
+    .bg-happy{display:block;opacity:1;animation:none}
     .stage{height:360px;border-radius:16px}
     .scene{padding:44px 16px 26px;gap:12px}
     .scene h2{font-size:1.15rem}
@@ -102,9 +103,7 @@
       </svg>
     </div>
 
-    <!-- Dwa zdjęcia: smutna (problem/strata) → uśmiechnięta (MAIA/Efekt), płynne przejście -->
-    <img class="bg-photo bg-sad" src="recepcja-sad.jpg" alt="" aria-hidden="true">
-    <img class="bg-photo bg-happy" src="recepcja-happy.jpg" alt="" aria-hidden="true">
+    <!-- Bez zdjęć w animacji — receptionistka jest w filmie pod spodem (jeden film) -->
 
     <div class="bg-tint"></div>
 
