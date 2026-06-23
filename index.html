@@ -4656,22 +4656,36 @@
       </span>
     </div>
 
-    <!-- ===== LIVE COUNTER — pierwsze 10 gabinetów ===== -->
+    <!-- ===== LIVE COUNTER — oferta startowa ===== -->
     <div class="live-counter">
       <div class="lc-headline">
         <span class="lc-pulse"></span>
-        <strong>OFERTA STARTOWA</strong> — pierwsze <strong>10 gabinetów</strong> otrzymuje <strong>bonus startowy</strong> na 12 miesięcy
+        <strong>OFERTA STARTOWA</strong> — do 31.07.2026 gabinety które rozpoczną współpracę otrzymają <strong>1&nbsp;000 minut połączeń wychodzących</strong> gratis
       </div>
       <div class="lc-progress-wrap">
-        <div class="lc-progress-bar">
-          <div class="lc-progress-fill" style="width: 70%"></div>
-        </div>
+        <div style="font-size:0.85rem; color:var(--text-muted); margin-bottom:10px; line-height:1.5;">Ze względu na chęć idealnego wdrożenia przyłączamy <strong>1&nbsp;praktykę dziennie</strong> — dołącz do TAMAIA</div>
         <div class="lc-progress-text">
-          <span class="lc-taken"><strong>7</strong> miejsc zajętych</span>
-          <span class="lc-remaining"><strong>3</strong> miejsca zostało · oferta do 31.07.2026</span>
+          <span class="lc-taken">Przyłączonych w czerwcu: <strong id="lc-days-count">—</strong></span>
         </div>
       </div>
     </div>
+    <script>
+    (function(){
+      function workingDaysElapsedJune() {
+        var now = new Date();
+        var year = now.getFullYear();
+        var count = 0;
+        var endDay = (now.getMonth() === 5) ? now.getDate() : (now.getMonth() > 5 ? 30 : 0);
+        for (var d = 1; d <= endDay; d++) {
+          var day = new Date(year, 5, d).getDay();
+          if (day !== 0 && day !== 6) count++;
+        }
+        return count;
+      }
+      var el = document.getElementById('lc-days-count');
+      if (el) el.textContent = workingDaysElapsedJune();
+    })();
+    </script>
 
     <!-- ===== INTERAKTYWNY LICZNIK REJESTRATOREK ===== -->
     <div class="pricing-counter">
