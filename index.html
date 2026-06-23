@@ -73,6 +73,7 @@
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Czy to nie jest inwigilacja mojego zespolu?","acceptedAnswer":{"@type":"Answer","text":"Nie. MAIA nie ocenia ludzi, tylko rozmowy, i po kazdej podpowiada co zrobic nastepnym razem - to narzedzie rozwoju, nie kontroli. Nagrywanie rozmow w telefonii to standard (kazda centralka). Zalecamy powiedziec zespolowi wprost, ze rozmowy sa podsumowywane przez AI - transparentnosc buduje zaufanie, a RODO tego wymaga. Cel to wiecej umowionych wizyt i spokojniejsza recepcja, nie lapanie ludzi na bledach."}},
 {"@type":"Question","name":"Co dokladnie kupuje - Ringostat czy usluge Doskonalej Rejestracji?","acceptedAnswer":{"@type":"Answer","text":"System sklada sie z dwoch czesci: skrypty Doskonalej Rejestracji wgrane do AI jako wzorzec oraz uruchomienie telefonu AI (Ringostat + asystentka MAIA, ktora podsumowuje kazda rozmowe). Placisz jedna faktura (brutto, VAT 23%). Z promokodem Ringostat_DOP dostajesz 40 EUR bonusu rocznie."}},
 {"@type":"Question","name":"Ile to kosztuje miesiecznie?","acceptedAnswer":{"@type":"Answer","text":"Trzy plany dla zespolu 3 osob: Plus od 499 zl (telefonia + pelne AI MAIA), Pro od 699 zl (dodatkowo Kalendarz, CRM, SMS, przedplaty), Premium od 1499 zl (Pro + 1 godzina miesiecznie z Michalem Katarzynskim). Kazda kolejna osoba +100 zl/mies. Ceny brutto, abonament roczny."}},
 {"@type":"Question","name":"Co z RODO i nagrywaniem rozmow pacjentow?","acceptedAnswer":{"@type":"Answer","text":"Ringostat hostuje dane w UE i ma podpisana umowe DPA. Dostarczamy szablon polityki RODO oraz zapis informacyjny do nagrywania rozmow. Nagrania sa szyfrowane i dostepne tylko upowaznionym osobom."}},
@@ -875,6 +876,8 @@
     text-align: left;
     transition: all 0.25s ease;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
   .solution-card::before {
     content: "";
@@ -2066,6 +2069,15 @@
     font-size: 0.78rem;
     color: var(--text-muted);
     line-height: 1.4;
+  }
+  .price-year-note {
+    margin-top: 8px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.3;
+    border-top: 1px solid var(--warm-border);
+    padding-top: 8px;
   }
   /* === Toggle breakdown — co składa się na cenę === */
   .price-breakdown-toggle {
@@ -3916,14 +3928,13 @@
       <div class="hero-text">
         <h1>Twoja recepcja przestaje gubić pacjentów. <span class="accent">Twój gabinet zaczyna zarabiać więcej.</span></h1>
         <p class="hero-lead">
-          <strong>Najlepsze standardy rozmów Doskonała Obsługa Pacjenta</strong> wdrożone do sprawdzonego na całym świecie <strong>telefonu AI</strong>.
+          <strong>Najskuteczniejsze standardy rozmów Doskonała Obsługa Pacjenta</strong> wdrożone do sprawdzonej na całym świecie <strong>centralki telefonicznej</strong>.
         </p>
         <p class="hero-lead-secondary">
-          <strong>MAIA</strong> to nieoceniony pomocnik Twojej recepcji — po każdej rozmowie podpowiada zespołowi, <strong>jak skuteczniej pozyskiwać pacjentów</strong>. W minutę powstaje lista <strong>dobrych rad</strong> i konkretnych podpowiedzi, co można zrobić następnym razem. Otrzymasz wsparcie merytoryczne modelu <strong>Doskonałej Rejestracji Stomatologicznej — Michała Katarzyńskiego</strong>.
+          <strong>W minutę</strong> po zakończonej rozmowie <strong>MAIA</strong> podpowiada recepcji, <strong>jak umówić więcej pacjentów</strong> — w oparciu o model <strong>Doskonałej Rejestracji</strong> Michała Katarzyńskiego.
         </p>
         <div class="hero-cta-group">
           <a href="#cta" class="btn btn-primary btn-lg">Wypróbuj 14 dni — bez karty</a>
-          <a href="#calculator" style="display:inline-flex;align-items:center;gap:6px;color:var(--navy);font-weight:600;text-decoration:none;padding:18px 4px">Albo policz, ile tracisz →</a>
         </div>
         <div class="hero-trust">
           <div><strong>14 lat</strong> doświadczenia w branży stomatologicznej</div>
@@ -3938,7 +3949,7 @@
       <div class="hero-visual">
         <div class="mockup-header">
           <div class="mockup-title">
-            Raport AI — Maj 2026
+            Pulpit — Maj 2026
             <small>Dane przykładowe • gabinet pilotażowy</small>
           </div>
           <div class="mockup-badge"><span class="live-dot"></span>LIVE</div>
@@ -3983,7 +3994,7 @@
           <div class="mockup-maia-text">
             <div class="mockup-maia-name">MAIA — rada po rozmowie 14:32</div>
             <div class="mockup-maia-msg" id="maiaMsg">
-              „Pacjent pytał o implanty — przed cennikiem zapytaj o czas decyzji i finansowanie."
+              „Pacjent pytał o cenę aparatu — zanim ją podasz, powiedz o doświadczeniu ortodonty i o korzyściach z konsultacji: pełna diagnostyka i przewidywalny plan leczenia."
             </div>
           </div>
         </div>
@@ -4065,18 +4076,25 @@
         <div class="problem-stat">23%</div>
         <h3>Nieodebrane połączenia</h3>
         <p>Średnio co czwarty pacjent nie dodzwania się za pierwszym razem. Większość nie próbuje drugi raz — dzwoni do konkurencji.</p>
+        <div style="display:inline-block;margin-top:14px;background:#FBEAEA;color:#9B1C1C;font-weight:700;font-size:0.9rem;line-height:1.35;padding:7px 12px;border-radius:8px;">Co miesiąc dla konkurencji: ≈ 30 000 zł<span style="display:block;font-weight:500;color:#B45757;font-size:0.78rem;margin-top:2px;">~10 pacjentów × 3 000 zł</span></div>
       </div>
       <div class="problem-card">
         <div class="problem-stat">41%</div>
         <h3>Słabo obsłużone</h3>
         <p>Rejestratorka odbiera, ale nie pyta o ważne rzeczy, nie pomaga wybrać terminu. Pacjent zostawia „muszę pomyśleć".</p>
+        <div style="display:inline-block;margin-top:14px;background:#FBEAEA;color:#9B1C1C;font-weight:700;font-size:0.9rem;line-height:1.35;padding:7px 12px;border-radius:8px;">Co miesiąc dla konkurencji: ≈ 21 000 zł<span style="display:block;font-weight:500;color:#B45757;font-size:0.78rem;margin-top:2px;">~7 pacjentów × 3 000 zł</span></div>
       </div>
       <div class="problem-card">
         <div class="problem-stat">62%</div>
         <h3>Bez kontaktu zwrotnego</h3>
         <p>Pacjent pyta o cenę, słyszy ją, mówi „jeszcze się zastanowię". Bez kontaktu wstecznego — nigdy nie wraca.</p>
+        <div style="display:inline-block;margin-top:14px;background:#FBEAEA;color:#9B1C1C;font-weight:700;font-size:0.9rem;line-height:1.35;padding:7px 12px;border-radius:8px;">Co miesiąc dla konkurencji: ≈ 15 000 zł<span style="display:block;font-weight:500;color:#B45757;font-size:0.78rem;margin-top:2px;">~5 pacjentów × 3 000 zł</span></div>
       </div>
     </div>
+
+    <p style="text-align:center;max-width:680px;margin:18px auto 0;font-size:0.85rem;color:var(--text-muted);line-height:1.5;">
+      Przykład dla 10 połączeń dziennie i planu leczenia 3 000 zł (1 pacjent). Założenia ostrożne; ujęcia częściowo się nakładają. <strong>Policz dla swojego gabinetu ↓</strong>
+    </p>
 
     <!-- Calculator strat — sprawdź ile Cię to kosztuje -->
     <div id="calculator" class="calc-box" style="margin-top: 40px;">
@@ -4113,8 +4131,8 @@
   <div class="container">
     <div class="section-header">
       <span class="eyebrow">Rozwiązanie</span>
-      <h2>MAIA daje Twojej recepcji <span class="gold-text">6 narzędzi w 1 aplikacji</span></h2>
-      <p>Skrypty Doskonałej Rejestracji + sprawdzony telefon AI Ringostat + autorski sposób pracy Michała Katarzyńskiego — wszystko w jednym panelu, w jednej fakturze, z jednym kontaktem.</p>
+      <h2>MAIA pilnuje, żeby przychód <span class="gold-text">został u Ciebie</span></h2>
+      <p>Centralka telefoniczna TAMAIA + skrypty Doskonałej Rejestracji + sposób pracy Michała Katarzyńskiego — wszystko w jednej aplikacji, na jednej fakturze. Poniżej: co realnie z tego masz.</p>
     </div>
 
     <!-- Mini "Poznaj MAIĘ" -->
@@ -4128,53 +4146,75 @@
       <p><strong>TAMAIA</strong> to aplikacja. <strong>MAIA</strong> to asystentka w niej — życzliwa trenerka, która <strong>kibicuje</strong> rejestratorkom i daje konkretne rady po każdej rozmowie.</p>
     </div>
 
-    <!-- 6 narzędzi -->
+    <!-- Rozwiązanie w 10 sekund -->
+    <div style="max-width:980px;margin:0 auto 28px;display:flex;flex-wrap:wrap;gap:10px;align-items:stretch;justify-content:center;">
+      <div style="flex:1 1 220px;background:#fff;border:1px solid rgba(10,30,63,0.12);border-radius:12px;padding:16px;">
+        <div style="font-size:0.72rem;font-weight:700;letter-spacing:1px;color:#9B1C1C;margin-bottom:4px;">PROBLEM</div>
+        <div style="font-weight:700;color:var(--navy);font-size:0.98rem;line-height:1.35;">Przychód wycieka na telefonie — nie wiesz ile</div>
+      </div>
+      <div style="flex:0 0 auto;display:flex;align-items:center;color:var(--gold-1);font-size:1.4rem;">→</div>
+      <div style="flex:1 1 220px;background:#fff;border:1px solid rgba(10,30,63,0.12);border-radius:12px;padding:16px;">
+        <div style="font-size:0.72rem;font-weight:700;letter-spacing:1px;color:var(--gold-1);margin-bottom:4px;">CO ROBI MAIA</div>
+        <div style="font-weight:700;color:var(--navy);font-size:0.98rem;line-height:1.35;">Analizuje 100% rozmów i daje radę po każdej</div>
+      </div>
+      <div style="flex:0 0 auto;display:flex;align-items:center;color:var(--gold-1);font-size:1.4rem;">→</div>
+      <div style="flex:1 1 220px;background:var(--navy);border-radius:12px;padding:16px;">
+        <div style="font-size:0.72rem;font-weight:700;letter-spacing:1px;color:var(--gold-1);margin-bottom:4px;">EFEKT</div>
+        <div style="font-weight:700;color:#fff;font-size:0.98rem;line-height:1.35;">Pacjenci zostają u Ciebie · +18% umówień po 90 dniach = +100 tys zł</div>
+      </div>
+    </div>
+
+    <!-- 6 efektów -->
     <div class="solution-grid">
       <div class="solution-card">
         <div class="solution-num">1</div>
         <div class="solution-icon"><svg xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle" viewBox="0 0 24 24" fill="none" stroke="#0a1e3f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-        <h3>Centrala telefoniczna z AI</h3>
-        <p>Nowoczesna telefonia Ringostat (zaufana przez 2 300+ firm) + AI nasłuchuje 100% rozmów po polsku. Telefon w przeglądarce lub aparat stacjonarny (1 w cenie).</p>
+        <h3>Więcej odebranych</h3>
+        <p>Centrala kieruje pacjenta do wolnej osoby — nikt nie czeka w nieskończoność. Nowoczesna telefonia Ringostat, telefon w przeglądarce lub aparat stacjonarny (1 w cenie).</p>
+        <div style="display:inline-block;margin-top:auto;align-self:flex-start;background:rgba(201,169,97,0.16);color:#0a1e3f;font-weight:700;font-size:0.84rem;line-height:1.35;padding:6px 11px;border-radius:8px;"><span style="color:#a07d1f;">Efekt:</span> przychód zostaje u Ciebie, nie u konkurencji</div>
       </div>
       <div class="solution-card">
         <div class="solution-num">2</div>
         <div class="solution-icon"><svg xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle" viewBox="0 0 24 24" fill="none" stroke="#0a1e3f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h8M8 9h2"/></svg></div>
-        <h3>Podsumowanie po każdej rozmowie</h3>
-        <p>Pisemny zapis + wynik 1–10 + rozpoznanie emocji pacjenta. W minutę MAIA pisze konkretną podpowiedź, co warto zrobić następnym razem.</p>
+        <h3>Lepsze rozmowy</h3>
+        <p>Skrypty Doskonałej Rejestracji + wynik 1–10 i rozpoznanie emocji pacjenta. W minutę MAIA pisze konkretną radę, co zrobić następnym razem.</p>
+        <div style="display:inline-block;margin-top:auto;align-self:flex-start;background:rgba(201,169,97,0.16);color:#0a1e3f;font-weight:700;font-size:0.84rem;line-height:1.35;padding:6px 11px;border-radius:8px;"><span style="color:#a07d1f;">Efekt:</span> +18% umówień po 90 dniach</div>
       </div>
       <div class="solution-card">
         <div class="solution-num">3</div>
         <div class="solution-icon"><svg xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle" viewBox="0 0 24 24" fill="none" stroke="#0a1e3f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V18h6v-1.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg></div>
-        <h3>Konkretne rady, nie krytyka</h3>
-        <p>„Następnym razem, gdy pacjent pyta o cenę, od razu zaproponuj termin" — a nie „zrobiłaś źle". Rejestratorka widzi wynik jako pierwsza, zanim zobaczy go właściciel.</p>
+        <h3>MAIA wspiera rejestratorki</h3>
+        <p>Rada zamiast krytyki: „następnym razem od razu zaproponuj termin" — a nie „zrobiłaś źle". Rejestratorka widzi swój wynik jako pierwsza, zanim zobaczy go właściciel.</p>
+        <div style="display:inline-block;margin-top:auto;align-self:flex-start;background:rgba(201,169,97,0.16);color:#0a1e3f;font-weight:700;font-size:0.84rem;line-height:1.35;padding:6px 11px;border-radius:8px;"><span style="color:#a07d1f;">Efekt:</span> wdrożenie się przyjmuje, bez poczucia inwigilacji</div>
       </div>
       <div class="solution-card">
         <div class="solution-num">4</div>
         <div class="solution-icon"><svg xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle" viewBox="0 0 24 24" fill="none" stroke="#0a1e3f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="10" width="3" height="8" rx="1"/><rect x="12" y="6" width="3" height="12" rx="1"/><rect x="17" y="13" width="3" height="5" rx="1"/></svg></div>
-        <h3>Trzy poziomy raportów</h3>
-        <p><strong>Raport rośnie z zespołem:</strong> 3–9 osób — ranking rejestratorek + konkretne podpowiedzi MAII. Od 10 osób — pełna analiza z porównaniem do innych praktyk.</p>
+        <h3>Brak przesłuchiwania nagrań</h3>
+        <p>100% rozmów podsumowanych automatycznie — raport dla właściciela robi się sam, w 5 minut. Ranking rejestratorek i porównanie miesiąc do miesiąca w komplecie.</p>
+        <div style="display:inline-block;margin-top:auto;align-self:flex-start;background:rgba(201,169,97,0.16);color:#0a1e3f;font-weight:700;font-size:0.84rem;line-height:1.35;padding:6px 11px;border-radius:8px;"><span style="color:#a07d1f;">Efekt:</span> +6–12 h/mies (144 h/rok) dla managera</div>
       </div>
       <div class="solution-card">
         <div class="solution-num">5</div>
-        <div class="solution-icon"><svg xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle" viewBox="0 0 24 24" fill="none" stroke="#0a1e3f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M12 8V4M8 2h8"/><path d="M9 14h.01M15 14h.01M2 13h2M20 13h2"/></svg></div>
-        <h3>Robot głosowy AI 24/7</h3>
-        <p>Wirtualny asystent głosowy umawia pacjentów <strong>nocą i w weekendy</strong>, kiedy rejestratorki nie ma. Pacjent dostaje SMS z potwierdzeniem. Opcja od 10 osób w zespole.</p>
+        <div class="solution-icon"><svg xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle" viewBox="0 0 24 24" fill="none" stroke="#0a1e3f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Rozmawia człowiek, nie voicebot</h3>
+        <p>Pacjenta zawsze obsługuje Twoja recepcja — MAIA wspiera ją tylko w tle. Żadnego bota, który zniechęca dzwoniącego do gabinetu.</p>
+        <div style="display:inline-block;margin-top:auto;align-self:flex-start;background:rgba(201,169,97,0.16);color:#0a1e3f;font-weight:700;font-size:0.84rem;line-height:1.35;padding:6px 11px;border-radius:8px;"><span style="color:#a07d1f;">Efekt:</span> pacjent czuje się zaopiekowany i zostaje</div>
       </div>
       <div class="solution-card">
         <div class="solution-num">6</div>
-        <div class="solution-icon"><svg xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle" viewBox="0 0 24 24" fill="none" stroke="#0a1e3f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
-        <h3>Skrypty stomatologiczne</h3>
-        <p>Wzorcowe rozmowy: powitanie, wywiad, prezentacja cen, zapis na wizytę, obsługa pacjenta bólowego. <strong>14 lat doświadczenia Michała Katarzyńskiego</strong> wgrane do AI.</p>
+        <div class="solution-icon"><svg xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle" viewBox="0 0 24 24" fill="none" stroke="#0a1e3f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/><path d="M16 2h6v6"/><path d="M22 2l-7 7"/></svg></div>
+        <h3>Więcej oddzwonionych</h3>
+        <p>Połączenia po godzinach (gabinet czynny 8–21) trafiają na pocztę głosową TAMAIA, a „pomyślę" i nieodebrane lądują na liście oddzwonień — rano recepcja dzwoni pierwsza, zanim pacjent wybierze konkurencję.</p>
+        <div style="display:inline-block;margin-top:auto;align-self:flex-start;background:rgba(201,169,97,0.16);color:#0a1e3f;font-weight:700;font-size:0.84rem;line-height:1.35;padding:6px 11px;border-radius:8px;"><span style="color:#a07d1f;">Efekt:</span> pacjent wraca, zamiast zniknąć</div>
       </div>
     </div>
 
     <div class="system-equation" style="margin-top: 40px;">
       <div class="system-equation-inner">
-        <span>SKRYPTY WGRANE DO AI</span>
-        <span class="sym">+</span>
-        <span>TELEFON AI</span>
+        <span>SKRYPTY WGRANE DO CENTRALKI</span>
         <span class="sym">=</span>
-        <span class="final">SYSTEM, KTÓRY MIERZY I WSPIERA</span>
+        <span class="final">MAIA MIERZY I WSPIERA</span>
       </div>
     </div>
 
@@ -4463,7 +4503,7 @@
             <div class="plp-row"><span class="t">Higienizacja</span><span class="n">31</span><span class="p" style="color:var(--success)">71%</span><span class="plp-bar2"><i style="width:71%;background:var(--success)"></i></span></div>
             <div class="plp-row"><span class="t">Ortodoncja</span><span class="n">18</span><span class="p" style="color:var(--success)">50%</span><span class="plp-bar2"><i style="width:50%;background:var(--success)"></i></span></div>
             <div class="plp-row"><span class="t">Implant</span><span class="n">24</span><span class="p" style="color:#D97706">46%</span><span class="plp-bar2"><i style="width:46%;background:#D97706"></i></span></div>
-            <div class="plp-advice">💬 <b style="color:var(--navy)">MAIA radzi:</b> Przy implantach pacjenci pytają o cenę — zamiast podawać kwotę przez telefon, proponuj bezpłatną konsultację. Tak częściej umówisz wizytę.</div>
+            <div class="plp-advice">💬 <b style="color:var(--navy)">MAIA radzi:</b> Przy koronach i protetyce pacjent pyta o cenę — zanim ją podasz, powiedz o doświadczeniu protetyka i o tym, co daje konsultacja: dokładna diagnostyka i trwały, przewidywalny efekt.</div>
           </div>
 
           <!-- Rozmowy atencyjne -->
@@ -4720,6 +4760,7 @@
           <div class="price-amount-big" id="pricePlusAmount">499 zł</div>
           <div class="price-period-label">brutto / mies</div>
           <div class="price-period-note">abonament roczny · VAT 23%</div>
+          <div class="price-year-note" id="pricePlusYear">= 5 988 zł / rok · jedna faktura</div>
         </div>
 
         <ul class="price-features">
@@ -4747,6 +4788,7 @@
           <div class="price-amount-big" id="priceProAmount">699 zł</div>
           <div class="price-period-label">brutto / mies</div>
           <div class="price-period-note">abonament roczny · VAT 23%</div>
+          <div class="price-year-note" id="priceProYear">= 8 388 zł / rok · jedna faktura</div>
         </div>
 
         <ul class="price-features">
@@ -4774,6 +4816,7 @@
           <div class="price-amount-big" id="pricePremiumAmount">1 499 zł</div>
           <div class="price-period-label">brutto / mies</div>
           <div class="price-period-note">abonament roczny · VAT 23%</div>
+          <div class="price-year-note" id="pricePremiumYear">= 17 988 zł / rok · jedna faktura</div>
         </div>
 
         <ul class="price-features">
@@ -4835,6 +4878,18 @@
       <h2>Najczęściej zadawane pytania</h2>
     </div>
     <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-question">
+          Czy to nie jest inwigilacja mojego zespołu?
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          <p>Rozumiemy tę obawę — i odpowiedź brzmi: nie. MAIA <strong>nie ocenia ludzi, ocenia rozmowy</strong> i po każdej podpowiada, co zrobić następnym razem. To narzędzie <strong>rozwoju, nie kontroli</strong>: rejestratorka dostaje konkretną radę zamiast czekać na uwagę przełożonego raz na kwartał. Zespoły, które z tym pracują, mówią, że to zdejmuje stres — wiadomo, co działa, a niepewne sytuacje przestają wisieć w powietrzu.</p>
+          <p style="margin-top: 10px;">W praktyce: <strong>nagrywanie rozmów w telefonii to standard</strong> (Ringostat, jak każda centralka). Różnica jest taka, że zamiast martwego archiwum dostajesz wsparcie, które realnie pomaga umawiać więcej wizyt. Zalecamy <strong>powiedzieć zespołowi wprost</strong>, że rozmowy są podsumowywane przez AI — transparentność buduje zaufanie, a RODO i tak tego wymaga (informujemy też dzwoniących o nagrywaniu).</p>
+          <p style="margin-top: 10px; padding: 10px 14px; background: var(--cream); border-left: 3px solid var(--gold-1); border-radius: 4px; font-size: 0.92rem;"><strong>Krótko:</strong> cel to więcej umówionych wizyt i spokojniejsza recepcja — nie łapanie ludzi na błędach.</p>
+        </div>
+      </div>
 
       <div class="faq-item">
         <div class="faq-question">
@@ -4955,9 +5010,9 @@
 
         <div style="background: var(--white); border-radius: 14px; padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
           <div style="font-size: 2rem; margin-bottom: 8px;"><svg xmlns="http://www.w3.org/2000/svg" style="width:1em;height:1em;display:inline-block;vertical-align:middle" viewBox="0 0 24 24" fill="none" stroke="#0a1e3f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div>
-          <div style="font-weight: 700; color: var(--navy); margin-bottom: 10px; font-size: 1.1rem;">Pacjent dzwoni o 21:00. I zostaje z Tobą.</div>
+          <div style="font-weight: 700; color: var(--navy); margin-bottom: 10px; font-size: 1.1rem;">Pacjent dzwoni po godzinach. I zostaje z Tobą.</div>
           <p style="font-size: 0.95rem; color: var(--text); line-height: 1.6;">
-            Recepcja zamknięta — pacjent zostawia numer w widgecie na stronie. <strong>Rano system sam dzwoni, zanim pacjent wybierze konkurencję.</strong> AI przypomina też o tych, którzy mówili „muszę pomyśleć".
+            Recepcja zamknięta — pacjent trafia na <strong>pocztę głosową TAMAIA</strong>. MAIA dodaje go do listy oddzwonień i <strong>rano recepcja dzwoni pierwsza</strong>, zanim pacjent wybierze konkurencję. Przypomina też o tych, którzy mówili „muszę pomyśleć".
           </p>
         </div>
 
@@ -5109,8 +5164,125 @@
 
       </div>
     </div>
+
+    <!-- ===== SEKCJA DECYZJI (pod formularzem) ===== -->
+    <div id="decision" class="decision-box">
+      <style>
+        .decision-box{max-width:760px;margin:34px auto 0;padding:30px 26px;border-radius:20px;
+          background:rgba(255,255,255,0.05);border:1px solid rgba(201,162,74,0.35);text-align:center}
+        .decision-box h3{margin:0 0 8px;font-family:Georgia,serif;font-size:1.45rem;color:#fff}
+        .decision-box p{margin:0 auto;max-width:560px;color:rgba(255,255,255,0.82);line-height:1.6}
+        .decision-head p{margin-bottom:22px}
+        .decision-choice{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+        .dcn-btn{min-height:54px;padding:14px 30px;border:none;border-radius:12px;font-size:1.05rem;
+          font-weight:700;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease,opacity .15s}
+        .dcn-btn:hover{transform:translateY(-2px)}
+        .dcn-yes{background:linear-gradient(135deg,#16a34a,#15803d);color:#fff;box-shadow:0 8px 22px rgba(22,163,74,.35)}
+        .dcn-no{background:transparent;color:#fff;border:1.5px solid rgba(239,68,68,.7)}
+        .dcn-no:hover{background:rgba(239,68,68,.12)}
+        .decision-yes,.decision-no{margin-top:6px}
+        .dcn-emoji{font-size:2.6rem;line-height:1;margin-bottom:8px}
+        #objectionForm{margin:18px auto 0;max-width:520px;display:flex;flex-direction:column;gap:12px;text-align:left}
+        #objectionForm textarea,#objectionForm input[type=email]{width:100%;box-sizing:border-box;padding:13px 14px;
+          border-radius:11px;border:1px solid rgba(255,255,255,0.25);background:rgba(255,255,255,0.06);
+          color:#fff;font-size:1rem;font-family:inherit;resize:vertical}
+        #objectionForm textarea::placeholder,#objectionForm input::placeholder{color:rgba(255,255,255,0.45)}
+        #objectionForm textarea:focus,#objectionForm input:focus{outline:none;border-color:rgba(201,162,74,.8)}
+        .dcn-send{background:linear-gradient(135deg,#C9A24A,#b3893a);color:#1a1407;align-self:center}
+        .dcn-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+        @media (prefers-reduced-motion: reduce){.dcn-btn{transition:none}.dcn-btn:hover{transform:none}}
+      </style>
+
+      <div class="decision-head" id="decisionChoice">
+        <h3>Podejmij decyzję — świadomie</h3>
+        <p>To miejsce na Twoją decyzję. Każda jest dobra, jeśli jest świadoma. Co wybierasz?</p>
+        <div class="decision-choice">
+          <button type="button" class="dcn-btn dcn-yes" onclick="decisionYes()">✓ Decyduję się</button>
+          <button type="button" class="dcn-btn dcn-no" onclick="decisionNo()">Nie, to nie dla mnie</button>
+        </div>
+      </div>
+
+      <div class="decision-yes" id="decisionYes" hidden>
+        <div class="dcn-emoji">🎉</div>
+        <h3>Gratulacje — świetny wybór!</h3>
+        <p>Za chwilę przeniosę Cię do formularza, żebyś dokończył zgłoszenie. Do zobaczenia po drugiej stronie.</p>
+      </div>
+
+      <div class="decision-no" id="decisionNo" hidden>
+        <div class="dcn-emoji">🤝</div>
+        <h3>Każda decyzja jest dobra, jeśli jest świadoma.</h3>
+        <p>Będziemy wdzięczni za <strong>jeden powód</strong>, dlaczego nie. Napisz — a może spełnimy Twoje oczekiwanie.</p>
+        <form id="objectionForm" onsubmit="return objectionSubmit(event)" novalidate>
+          <textarea name="reason" required maxlength="2000" rows="3" placeholder="Np. za drogo / nie mam teraz czasu / mam już inne rozwiązanie…"></textarea>
+          <input type="email" name="email" placeholder="E-mail (opcjonalnie — gdybyśmy mieli wrócić z propozycją)">
+          <input type="text" name="website" class="dcn-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button type="submit" class="dcn-btn dcn-send"><span class="dcn-send-label">Wyślij powód →</span><span class="dcn-send-loading" hidden>Wysyłam…</span></button>
+        </form>
+        <div class="decision-thanks" id="decisionThanks" hidden>
+          <div class="dcn-emoji">🙏</div>
+          <h3>Dziękujemy za szczerość.</h3>
+          <p>Przeczytamy każde słowo. Jeśli zostawiłeś e-mail i znajdziemy rozwiązanie Twojej obiekcji — odezwiemy się.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
+
+<script>
+(function(){
+  function show(id){ var e=document.getElementById(id); if(e) e.hidden=false; }
+  function hide(id){ var e=document.getElementById(id); if(e) e.hidden=true; }
+  function fireConfetti(){
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    function burst(){
+      if(!window.confetti) return;
+      window.confetti({ particleCount:120, spread:75, origin:{ y:0.75 } });
+      setTimeout(function(){ window.confetti({ particleCount:80, spread:100, startVelocity:45, origin:{ y:0.65 } }); }, 260);
+    }
+    if (window.confetti) return burst();
+    var sc=document.createElement('script');
+    sc.src='https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.9.3/confetti.browser.min.js';
+    sc.onload=burst; document.head.appendChild(sc);
+  }
+  window.decisionYes=function(){
+    hide('decisionChoice'); hide('decisionNo'); show('decisionYes');
+    fireConfetti();
+    setTimeout(function(){
+      var lf=document.getElementById('leadForm');
+      if(lf){ lf.scrollIntoView({ behavior:'smooth', block:'start' });
+        var inp=lf.querySelector('input[name=name]'); if(inp) setTimeout(function(){ try{ inp.focus(); }catch(e){} }, 700); }
+    }, 1500);
+  };
+  window.decisionNo=function(){
+    hide('decisionChoice'); hide('decisionYes'); show('decisionNo');
+    var ta=document.querySelector('#objectionForm textarea'); if(ta) setTimeout(function(){ try{ ta.focus(); }catch(e){} }, 150);
+  };
+  window.objectionSubmit=function(ev){
+    ev.preventDefault();
+    var f=ev.target;
+    if(f.website && f.website.value) { return false; } // honeypot
+    var reason=(f.reason.value||'').trim();
+    if(!reason){ f.reason.focus(); return false; }
+    var email=(f.email.value||'').trim();
+    var lbl=f.querySelector('.dcn-send-label'), ld=f.querySelector('.dcn-send-loading'), btn=f.querySelector('button[type=submit]');
+    if(lbl) lbl.hidden=true; if(ld) ld.hidden=false; if(btn) btn.disabled=true;
+    var payload={ reason:reason, email:email, source:'tamaia.pl' };
+    var done=function(){ f.style.display='none'; show('decisionThanks'); };
+    var mailtoFallback=function(){
+      try{
+        var subj=encodeURIComponent('[OBIEKCJA TAMAIA] dlaczego nie');
+        var body=encodeURIComponent('Powód: '+reason+(email?('\n\nKontakt: '+email):'')+'\n\nŹródło: tamaia.pl');
+        window.location.href='mailto:biuro@doskonalaobslugapacjenta.pl?subject='+subj+'&body='+body;
+      }catch(e){}
+    };
+    fetch('https://app.tamaia.pl/api/objection',{ method:'POST', headers:{ 'Content-Type':'application/json' }, body:JSON.stringify(payload) })
+      .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ return { ok:r.ok, j:j }; }); })
+      .then(function(x){ if(!x.ok || !x.j || !x.j.ok) throw new Error('backend'); done(); })
+      .catch(function(){ mailtoFallback(); done(); });
+    return false;
+  };
+})();
+</script>
 
 <!-- ===== FOOTER ===== -->
 <footer>
@@ -5221,7 +5393,7 @@
 <script>
   // ===== MAIA TOAST (animowane rady w hero mockupie) =====
   const maiaTips = [
-    { time: '14:32', tip: '„Pacjent pytał o implanty — przed cennikiem zapytaj o czas decyzji i finansowanie."' },
+    { time: '14:32', tip: '„Pacjent pytał o cenę aparatu — zanim ją podasz, powiedz o doświadczeniu ortodonty i o korzyściach z konsultacji: pełna diagnostyka i przewidywalny plan leczenia."' },
     { time: '14:48', tip: '„Świetnie zareagowałaś na obawę o ból — pacjent czuł się słuchany. Tak trzymaj!"' },
     { time: '15:02', tip: '„Pacjent zostawił »muszę pomyśleć« — zaproponuj kontakt za 2 dni, miękko."' },
     { time: '15:15', tip: '„Bardzo dobry telefon. Spokojny ton, jasna prezentacja cen — wzorzec rozmowy."' },
@@ -5298,21 +5470,29 @@
     if (count < 3) { count = 3; input.value = 3; }
     if (count > 15) { count = 15; input.value = 15; }
 
+    const yearTxt = (monthly) => '= ' + (monthly * 12).toLocaleString('pl-PL') + ' zł / rok · jedna faktura';
+
     const plusPrice = calcPlanMonthlyBrutto('PLUS', count);
     const plusEl = document.getElementById('pricePlusAmount');
     if (plusEl) plusEl.textContent = plusPrice.toLocaleString('pl-PL') + ' zł';
+    const plusYearEl = document.getElementById('pricePlusYear');
+    if (plusYearEl) plusYearEl.textContent = yearTxt(plusPrice);
     const tPlus = document.getElementById('targetPlus');
     if (tPlus) tPlus.textContent = 'Telefonia + pełne AI MAIA · ' + count + ' osób w zespole';
 
     const proPrice = calcPlanMonthlyBrutto('PRO', count);
     const proEl = document.getElementById('priceProAmount');
     if (proEl) proEl.textContent = proPrice.toLocaleString('pl-PL') + ' zł';
+    const proYearEl = document.getElementById('priceProYear');
+    if (proYearEl) proYearEl.textContent = yearTxt(proPrice);
     const tPro = document.getElementById('targetPro');
     if (tPro) tPro.textContent = 'Wszystko z Plus + Kalendarz, CRM, SMS, przedpłaty · ' + count + ' osób w zespole';
 
     const premiumPrice = calcPlanMonthlyBrutto('PREMIUM', count);
     const premiumEl = document.getElementById('pricePremiumAmount');
     if (premiumEl) premiumEl.textContent = premiumPrice.toLocaleString('pl-PL') + ' zł';
+    const premiumYearEl = document.getElementById('pricePremiumYear');
+    if (premiumYearEl) premiumYearEl.textContent = yearTxt(premiumPrice);
     const tPremium = document.getElementById('targetPremium');
     if (tPremium) tPremium.textContent = 'Wszystko z Pro + 1h/mies z Michałem · ' + count + ' osób w zespole';
 
