@@ -5505,7 +5505,7 @@
     maiaMsgEl.textContent = t.tip;
     if (maiaNameEl) maiaNameEl.textContent = `MAIA — rada po rozmowie ${t.time}`;
   }
-  if (maiaMsgEl) setInterval(rotateMaiaTip, 4500);
+  /* rotacja porad MAIA WYŁĄCZONA — zmienna długość tekstu zmieniała wysokość kafelka i powodowała skok całej strony co 4,5 s (mobile) */
 
   // ===== HAMBURGER =====
   const hamburger = document.getElementById('hamburgerBtn');
