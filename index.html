@@ -5525,7 +5525,7 @@
 <script>
 (function(){
   var el=document.getElementById('maiaFloat'); if(!el) return;
-  var dragging=false, moved=false, sx=0, sy=0, ox=0, oy=0;
+  var dragging=false, moved=false, justDragged=false, sx=0, sy=0, ox=0, oy=0;
   function openChat(){
     var t=document.getElementById('maia-chat');
     if(t){ t.scrollIntoView({behavior:'smooth',block:'center'}); }
@@ -5552,11 +5552,11 @@
   function endDrag(e){
     if(!dragging) return; dragging=false; el.classList.remove('dragging');
     try{ el.releasePointerCapture(e.pointerId); }catch(_){}
-    if(!moved){ openChat(); }
-    else { try{ localStorage.setItem('maiaFloatPos', JSON.stringify({l:el.style.left,t:el.style.top})); }catch(_){} }
+    if(moved){ justDragged=true; setTimeout(function(){ justDragged=false; }, 350); try{ localStorage.setItem('maiaFloatPos', JSON.stringify({l:el.style.left,t:el.style.top})); }catch(_){} }
   }
   el.addEventListener('pointerup', endDrag);
   el.addEventListener('pointercancel', endDrag);
+  el.addEventListener('click', function(e){ if(justDragged){ justDragged=false; e.preventDefault(); return; } openChat(); });
   el.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openChat(); } });
   try{ var s=localStorage.getItem('maiaFloatPos'); if(s){ var p=JSON.parse(s); if(p&&p.l&&p.t){ el.style.right='auto'; el.style.bottom='auto'; el.style.left=p.l; el.style.top=p.t; } } }catch(_){}
 })();
