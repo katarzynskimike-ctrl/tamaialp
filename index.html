@@ -4636,6 +4636,114 @@
   </div>
 </section>
 
+<!-- ===== MAIA CHAT WIDGET ===== -->
+<section id="maia-chat" class="mc-section">
+  <style id="mc-styles">
+    #maia-chat.mc-section{ background: var(--cream); padding: 64px 0; }
+    #maia-chat .mc-wrap{ max-width: 720px; margin: 28px auto 0; background: var(--white); border:1px solid rgba(27,44,79,.1); border-radius:20px; box-shadow:0 24px 60px rgba(15,30,61,.12); overflow:hidden; }
+    #maia-chat .mc-head{ display:flex; align-items:center; gap:12px; padding:16px 20px; background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%); }
+    #maia-chat .mc-head-av{ width:42px;height:42px;border-radius:50%; background:linear-gradient(135deg,var(--gold-1),var(--gold-2)); color:var(--navy); display:flex;align-items:center;justify-content:center; font-weight:700;font-size:18px; flex-shrink:0; }
+    #maia-chat .mc-head-info{ flex:1; min-width:0; line-height:1.3; }
+    #maia-chat .mc-head-info strong{ color:#fff; display:block; font-size:15px; }
+    #maia-chat .mc-head-info span{ color:rgba(255,255,255,.72); font-size:12px; }
+    #maia-chat .mc-dot{ width:9px;height:9px;border-radius:50%; background:#4ade80; box-shadow:0 0 8px #4ade80; flex-shrink:0; animation:mcblink 2.4s ease-in-out infinite; }
+    #maia-chat .mc-body{ padding:18px 16px; min-height:260px; max-height:440px; overflow-y:auto; display:flex; flex-direction:column; gap:10px; background:var(--white); }
+    #maia-chat .mc-row{ display:flex; gap:8px; max-width:90%; }
+    #maia-chat .mc-row.mc-user{ align-self:flex-end; flex-direction:row-reverse; }
+    #maia-chat .mc-av{ width:28px;height:28px;border-radius:50%; flex-shrink:0; display:flex;align-items:center;justify-content:center; font-size:10px;font-weight:700; }
+    #maia-chat .mc-assistant .mc-av{ background:linear-gradient(135deg,var(--gold-1),var(--gold-2)); color:var(--navy); }
+    #maia-chat .mc-user .mc-av{ background:var(--navy); color:#fff; }
+    #maia-chat .mc-bubble{ padding:11px 15px; border-radius:16px; font-size:14.5px; line-height:1.55; color:var(--text); background:var(--cream); border:1px solid rgba(27,44,79,.06); white-space:pre-wrap; word-break:break-word; }
+    #maia-chat .mc-user .mc-bubble{ background:var(--navy); color:#fff; border-color:transparent; }
+    #maia-chat .mc-typing{ display:flex; gap:5px; align-items:center; }
+    #maia-chat .mc-typing span{ width:7px;height:7px;border-radius:50%; background:#9fb0c0; animation:mcbounce 1.1s ease-in-out infinite; }
+    #maia-chat .mc-typing span:nth-child(2){ animation-delay:.16s; }
+    #maia-chat .mc-typing span:nth-child(3){ animation-delay:.32s; }
+    #maia-chat .mc-chips{ display:flex; flex-wrap:wrap; gap:8px; padding:4px 16px 12px; }
+    #maia-chat .mc-chip{ padding:7px 14px; border:1.5px solid rgba(27,44,79,.18); border-radius:30px; background:#fff; color:var(--navy); font-size:13px; font-weight:600; cursor:pointer; font-family:inherit; transition:background .15s,border-color .15s; }
+    #maia-chat .mc-chip:hover{ background:var(--cream); border-color:var(--gold-1); }
+    #maia-chat .mc-input-row{ display:flex; gap:10px; align-items:center; padding:14px 16px; border-top:1px solid rgba(27,44,79,.08); }
+    #maia-chat .mc-input{ flex:1; min-width:0; border:1.5px solid rgba(27,44,79,.18); border-radius:30px; padding:12px 18px; font-size:15px; font-family:inherit; color:var(--text); background:var(--cream); outline:none; transition:border-color .15s,background .15s; }
+    #maia-chat .mc-input:focus{ border-color:var(--gold-1); background:#fff; }
+    #maia-chat .mc-send{ width:46px;height:46px;border-radius:50%; border:none; flex-shrink:0; cursor:pointer; font-size:20px;font-weight:700; color:var(--navy); background:linear-gradient(135deg,var(--gold-1),var(--gold-2)); transition:transform .12s,opacity .15s; }
+    #maia-chat .mc-send:hover{ transform:scale(1.06); }
+    #maia-chat .mc-send:disabled{ opacity:.45; cursor:not-allowed; transform:none; }
+    #maia-chat .mc-note{ max-width:720px; margin:14px auto 0; text-align:center; font-size:12.5px; color:var(--text-muted); }
+    @keyframes mcblink{ 0%,100%{opacity:1} 50%{opacity:.4} }
+    @keyframes mcbounce{ 0%,100%{transform:translateY(0);opacity:.5} 50%{transform:translateY(-5px);opacity:1} }
+    @media (max-width:560px){ #maia-chat .mc-bubble{ font-size:14px } #maia-chat .mc-body{ min-height:220px } #maia-chat .mc-wrap{ margin-top:20px } }
+    @media (prefers-reduced-motion: reduce){ #maia-chat *{ animation-duration:.001ms!important; transition-duration:.001ms!important } }
+  </style>
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Porozmawiaj z MAIA</span>
+      <h2>Masz pytanie? <span class="gold-text">Zapytaj MAIA</span></h2>
+      <p>MAIA odpowie od ręki — jak działa, co dają plany, jak wygląda test 14 dni bez karty.</p>
+    </div>
+    <div class="mc-wrap">
+      <div class="mc-head">
+        <div class="mc-head-av">M</div>
+        <div class="mc-head-info"><strong>MAIA</strong><span>Twoja przewodniczka po TAMAIA · zwykle odpowiada od razu</span></div>
+        <span class="mc-dot" aria-hidden="true"></span>
+      </div>
+      <div class="mc-body" id="mcMsgs" aria-live="polite"></div>
+      <div class="mc-chips" id="mcChips">
+        <button type="button" class="mc-chip" onclick="mcQuick('Jak działa MAIA?')">Jak działa MAIA?</button>
+        <button type="button" class="mc-chip" onclick="mcQuick('Co dostanę w planie PRO?')">Co dostanę w PRO?</button>
+        <button type="button" class="mc-chip" onclick="mcQuick('Ile kosztuje i jak wygląda test 14 dni?')">Cena i test 14 dni</button>
+        <button type="button" class="mc-chip" onclick="mcQuick('Czy MAIA to nadzór nad zespołem?')">To nie nadzór?</button>
+      </div>
+      <div class="mc-input-row">
+        <input type="text" id="mcInput" class="mc-input" placeholder="Napisz pytanie do MAIA…" autocomplete="off" aria-label="Pytanie do MAIA">
+        <button type="button" id="mcSend" class="mc-send" aria-label="Wyślij pytanie">→</button>
+      </div>
+    </div>
+    <p class="mc-note">MAIA odpowiada na podstawie wiedzy o TAMAIA. Szczegóły i wycenę ustalimy na demo.</p>
+  </div>
+  <script>
+  (function(){
+    var API='https://app.tamaia.pl/api/maia-chat';
+    var msgs=document.getElementById('mcMsgs'), input=document.getElementById('mcInput'),
+        sendBtn=document.getElementById('mcSend'), chips=document.getElementById('mcChips');
+    var history=[], busy=false;
+    function add(role,text){
+      var row=document.createElement('div'); row.className='mc-row mc-'+role;
+      var av=document.createElement('div'); av.className='mc-av'; av.textContent=(role==='assistant'?'M':'Ty');
+      var b=document.createElement('div'); b.className='mc-bubble'; b.textContent=text;
+      if(role==='assistant'){ row.appendChild(av); row.appendChild(b); } else { row.appendChild(b); row.appendChild(av); }
+      msgs.appendChild(row); msgs.scrollTop=msgs.scrollHeight;
+    }
+    function typing(on){
+      var t=document.getElementById('mcTyping');
+      if(on){ if(t)return; t=document.createElement('div'); t.id='mcTyping'; t.className='mc-row mc-assistant';
+        t.innerHTML='<div class="mc-av">M</div><div class="mc-bubble mc-typing"><span></span><span></span><span></span></div>';
+        msgs.appendChild(t); msgs.scrollTop=msgs.scrollHeight;
+      } else if(t&&t.parentNode){ t.parentNode.removeChild(t); }
+    }
+    function send(text){
+      var txt=((text!==undefined?text:input.value)||'').trim();
+      if(!txt||busy)return;
+      input.value=''; if(chips)chips.style.display='none';
+      add('user',txt); history.push({role:'user',content:txt});
+      busy=true; sendBtn.disabled=true; typing(true);
+      fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:history})})
+        .then(function(r){ return r.json().then(function(d){ return {ok:r.ok,d:d}; }).catch(function(){ return {ok:r.ok,d:{}}; }); })
+        .then(function(res){
+          typing(false);
+          if(!res.ok){ add('assistant', res.d.error || 'MAIA chwilowo niedostępna — spróbuj za chwilę.'); }
+          else { var reply=res.d.reply || '(brak odpowiedzi)'; history.push({role:'assistant',content:reply}); add('assistant',reply); }
+        })
+        .catch(function(){ typing(false); add('assistant','Nie udało się połączyć. Sprawdź internet i spróbuj ponownie.'); })
+        .then(function(){ busy=false; sendBtn.disabled=false; });
+    }
+    window.mcQuick=function(t){ send(t); };
+    sendBtn.addEventListener('click',function(){ send(); });
+    input.addEventListener('keydown',function(e){ if(e.key==='Enter'&&!e.shiftKey){ e.preventDefault(); send(); } });
+    add('assistant','Cześć! Jestem MAIA 👋 Zapytaj mnie o TAMAIA — jak działa, co dają plany, jak wygląda test 14 dni bez karty.');
+  })();
+  </script>
+</section>
+
 <!-- ===== PRICING ===== -->
 <section id="pricing" class="pricing">
   <div class="container">
