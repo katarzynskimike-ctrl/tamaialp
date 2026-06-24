@@ -3532,27 +3532,37 @@
     width: 0%;
   }
 
-  /* ===== WHATSAPP FLOATING ===== */
-  .whatsapp-float {
+  /* ===== MAIA FLOATING ===== */
+  .maia-float {
     position: fixed;
     bottom: 20px;
     right: 20px;
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background: #25D366;
-    color: white;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    border: 2px solid var(--gold-1);
+    color: var(--gold-2);
     display: flex;
     align-items: center;
     justify-content: center;
-    text-decoration: none;
-    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);
+    font-family: Georgia, serif;
+    font-weight: 700;
+    font-size: 26px;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: none;
+    box-shadow: 0 6px 18px rgba(10,30,63,0.35);
     z-index: 95;
-    transition: transform 0.2s;
-    animation: wppPulse 2s infinite;
+    transition: transform 0.18s, box-shadow 0.18s;
+    animation: maiaPulse 2.4s infinite;
   }
-  .whatsapp-float:hover { transform: scale(1.1); }
-  .whatsapp-float svg { width: 32px; height: 32px; }
+  .maia-float:hover { transform: scale(1.08); }
+  .maia-float.dragging { animation: none; transition: none; cursor: grabbing; }
+  .maia-float .maia-dot { position: absolute; top: 5px; right: 5px; width: 11px; height: 11px; border-radius: 50%; background: #4ade80; border: 2px solid #fff; }
+  @keyframes maiaPulse { 0%,100% { box-shadow: 0 6px 18px rgba(10,30,63,0.35), 0 0 0 0 rgba(201,162,74,0.5); } 50% { box-shadow: 0 6px 18px rgba(10,30,63,0.35), 0 0 0 10px rgba(201,162,74,0); } }
+  @media (prefers-reduced-motion: reduce) { .maia-float { animation: none; } }
   @keyframes wppPulse {
     0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
     70% { box-shadow: 0 0 0 18px rgba(37, 211, 102, 0); }
@@ -3613,8 +3623,7 @@
   }
   @media (max-width: 600px) {
     .cookie-banner { left: 10px; right: 10px; max-width: none; bottom: 10px; padding: 16px; }
-    .whatsapp-float { width: 52px; height: 52px; bottom: 90px; right: 10px; }
-    .whatsapp-float svg { width: 28px; height: 28px; }
+    .maia-float { width: 54px; height: 54px; bottom: 90px; right: 12px; font-size: 23px; }
   }
 
   /* ===== STICKY CTA PHONE ===== */
@@ -5508,12 +5517,50 @@
   </div>
 </div>
 
-<!-- ===== WHATSAPP FLOATING ===== -->
-<a href="https://wa.me/48579774089?text=Cześć%2C%20jestem%20zainteresowany%20Doskonałą%20Rejestracją%20Stomatologiczną" target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp">
-  <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-    <path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.88 11.9L4 20l4.2-1.1a7.93 7.93 0 003.85.98h.01c4.38 0 7.94-3.56 7.94-7.93a7.88 7.88 0 00-2.4-5.63zm-5.55 12.2a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.67-2.43-.16-.25a6.6 6.6 0 01-1.01-3.51c0-3.64 2.96-6.6 6.6-6.6 1.76 0 3.42.69 4.66 1.93a6.55 6.55 0 011.93 4.67c0 3.64-2.96 6.6-6.6 6.6zm3.62-4.94c-.2-.1-1.17-.58-1.35-.64-.18-.07-.32-.1-.45.1-.13.2-.51.64-.63.77-.12.13-.23.15-.43.05a5.4 5.4 0 01-1.6-.99 6 6 0 01-1.1-1.37c-.12-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.12.13-.2.2-.33.06-.13.03-.25-.02-.35-.05-.1-.45-1.08-.62-1.48-.16-.39-.33-.34-.45-.34l-.39-.01a.74.74 0 00-.54.25c-.18.2-.7.69-.7 1.68 0 1 .72 1.96.82 2.09.1.13 1.41 2.16 3.42 3.03.48.2.85.33 1.14.42.48.15.92.13 1.26.08.39-.06 1.18-.48 1.34-.95.17-.47.17-.87.12-.95-.05-.08-.18-.13-.39-.23z"/>
-  </svg>
-</a>
+<!-- ===== MAIA FLOATING (przeciągalna) ===== -->
+<button type="button" id="maiaFloat" class="maia-float" aria-label="Zapytaj MAIA — otwórz czat" title="Zapytaj MAIA">
+  <span aria-hidden="true">M</span>
+  <span class="maia-dot" aria-hidden="true"></span>
+</button>
+<script>
+(function(){
+  var el=document.getElementById('maiaFloat'); if(!el) return;
+  var dragging=false, moved=false, sx=0, sy=0, ox=0, oy=0;
+  function openChat(){
+    var t=document.getElementById('maia-chat');
+    if(t){ t.scrollIntoView({behavior:'smooth',block:'center'}); }
+    setTimeout(function(){ var i=document.getElementById('mcInput'); if(i){ try{ i.focus(); }catch(e){} } }, 600);
+  }
+  el.addEventListener('pointerdown', function(e){
+    dragging=true; moved=false; sx=e.clientX; sy=e.clientY;
+    var r=el.getBoundingClientRect(); ox=r.left; oy=r.top;
+    try{ el.setPointerCapture(e.pointerId); }catch(_){}
+  });
+  el.addEventListener('pointermove', function(e){
+    if(!dragging) return;
+    var dx=e.clientX-sx, dy=e.clientY-sy;
+    if(!moved && (Math.abs(dx)>4 || Math.abs(dy)>4)){
+      moved=true; el.classList.add('dragging');
+      el.style.right='auto'; el.style.bottom='auto'; el.style.left=ox+'px'; el.style.top=oy+'px';
+    }
+    if(moved){
+      var nx=Math.min(Math.max(0, ox+dx), window.innerWidth-el.offsetWidth);
+      var ny=Math.min(Math.max(0, oy+dy), window.innerHeight-el.offsetHeight);
+      el.style.left=nx+'px'; el.style.top=ny+'px';
+    }
+  });
+  function endDrag(e){
+    if(!dragging) return; dragging=false; el.classList.remove('dragging');
+    try{ el.releasePointerCapture(e.pointerId); }catch(_){}
+    if(!moved){ openChat(); }
+    else { try{ localStorage.setItem('maiaFloatPos', JSON.stringify({l:el.style.left,t:el.style.top})); }catch(_){} }
+  }
+  el.addEventListener('pointerup', endDrag);
+  el.addEventListener('pointercancel', endDrag);
+  el.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openChat(); } });
+  try{ var s=localStorage.getItem('maiaFloatPos'); if(s){ var p=JSON.parse(s); if(p&&p.l&&p.t){ el.style.right='auto'; el.style.bottom='auto'; el.style.left=p.l; el.style.top=p.t; } } }catch(_){}
+})();
+</script>
 
 <!-- ===== COOKIE BANNER (TYMCZASOWO WYŁĄCZONY) ===== -->
 <!--
