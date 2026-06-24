@@ -3881,6 +3881,7 @@
 
   /* MOBILE SLIM — ukryj sekcje na telefonie; przycisk rozwija pełną wersję */
   .full-toggle{display:none}
+  .desktop-fab{display:none}
   @media (max-width: 900px){
     body:not(.full-mobile) #solution,
     body:not(.full-mobile) #demo,
@@ -3893,6 +3894,8 @@
     /* Hero na telefonie: chowamy domyślny mockup — jego rolę przejmuje „Jeden ekran" (#pulpit tuż pod hero) */
     body:not(.full-mobile) .hero .hero-visual{ display:none; }
     body:not(.full-mobile) .full-toggle{ display:block; }
+    body:not(.full-mobile) .desktop-fab{ display:inline-flex; align-items:center; gap:7px; position:fixed; left:14px; bottom:16px; z-index:60; background:var(--navy-dark); color:#fff; border:1px solid rgba(255,255,255,.18); padding:9px 14px; border-radius:999px; font-size:13px; font-weight:600; box-shadow:0 8px 22px rgba(10,30,63,.28); cursor:pointer; font-family:inherit; }
+    body:not(.full-mobile) .desktop-fab svg{ width:16px; height:16px; }
   }
 </style>
 <style id="audyt-czytelnosc-2026">
@@ -5452,10 +5455,15 @@
 })();
 </script>
 
+<!-- FAB: przełącz na pełną/desktopową wersję (tylko mobile, znika po kliknięciu) -->
+<button type="button" class="desktop-fab" onclick="document.body.classList.add('full-mobile')" aria-label="Zobacz wersję na komputer">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+  <span>Wersja desktop</span>
+</button>
 <!-- ===== SKRÓCONA WERSJA — przełącznik na pełną (tylko mobile) ===== -->
 <div class="full-toggle" style="text-align:center;padding:30px 20px;background:var(--cream);border-top:1px solid var(--warm-border);">
   <p style="font-size:0.92rem;color:var(--text-muted);margin:0 0 12px;">To skrócona wersja na telefon — pokazaliśmy najważniejsze.</p>
-  <button type="button" onclick="document.body.classList.add('full-mobile');this.closest('.full-toggle').style.display='none';" style="background:var(--navy-dark);color:#fff;border:none;font-weight:700;padding:13px 24px;border-radius:10px;font-size:0.95rem;cursor:pointer;">Zobacz pełną wersję strony</button>
+  <button type="button" onclick="document.body.classList.add('full-mobile');this.closest('.full-toggle').style.display='none';" style="background:var(--navy-dark);color:#fff;border:none;font-weight:700;padding:13px 24px;border-radius:10px;font-size:0.95rem;cursor:pointer;">Zobacz wersję na komputer</button>
 </div>
 
 <!-- ===== FOOTER ===== -->
