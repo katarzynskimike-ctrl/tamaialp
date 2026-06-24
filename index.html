@@ -3881,9 +3881,16 @@
   /* MOBILE SLIM — ukryj sekcje na telefonie; przycisk rozwija pełną wersję */
   .full-toggle{display:none}
   @media (max-width: 900px){
+    body:not(.full-mobile) #solution,
     body:not(.full-mobile) #demo,
+    body:not(.full-mobile) #testimonials,
     body:not(.full-mobile) #for-team,
-    body:not(.full-mobile) #for-whom { display: none !important; }
+    body:not(.full-mobile) #for-whom,
+    body:not(.full-mobile) #maia-chat,
+    body:not(.full-mobile) #ringo-details,
+    body:not(.full-mobile) #start { display: none !important; }
+    /* Hero na telefonie: chowamy domyślny mockup — jego rolę przejmuje „Jeden ekran" (#pulpit tuż pod hero) */
+    body:not(.full-mobile) .hero .hero-visual{ display:none; }
     body:not(.full-mobile) .full-toggle{ display:block; }
   }
 </style>
@@ -4303,10 +4310,7 @@
 
 
 <!-- MOBILE: przełącznik pełnej wersji -->
-<div class="full-toggle" style="text-align:center;padding:26px 20px;background:var(--cream);border-top:1px solid var(--warm-border);">
-  <p style="font-size:0.9rem;color:var(--text-muted);margin:0 0 12px;">Czytasz skróconą wersję na telefon.</p>
-  <button type="button" onclick="document.body.classList.add('full-mobile')" style="background:var(--navy-dark);color:#fff;border:none;font-weight:700;padding:13px 24px;border-radius:10px;font-size:0.95rem;cursor:pointer;">Zobacz pełną wersję strony ↓</button>
-</div>
+<!-- full-toggle (skrócona wersja) przeniesiony na koniec strony, tuż przed stopką -->
 
 <!-- ===== ZOBACZ NA ŻYWO (animacje) ===== -->
 <section class="section" id="demo">
@@ -4938,7 +4942,7 @@
 </section>
 
 <!-- ===== SZCZEGÓŁY TELEFONII RINGOSTAT ===== -->
-<section style="background: var(--cream); padding: 32px 0 48px; border-top: 1px solid rgba(10,30,63,.08);">
+<section id="ringo-details" style="background: var(--cream); padding: 32px 0 48px; border-top: 1px solid rgba(10,30,63,.08);">
   <div class="container" style="max-width: 960px;">
     <p style="text-align:center; font-size: 0.8rem; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 22px;">Szczegóły telefonii Ringostat — co wchodzi w abonament, a co jest płatne osobno</p>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
@@ -5443,6 +5447,12 @@
 })();
 </script>
 
+<!-- ===== SKRÓCONA WERSJA — przełącznik na pełną (tylko mobile) ===== -->
+<div class="full-toggle" style="text-align:center;padding:30px 20px;background:var(--cream);border-top:1px solid var(--warm-border);">
+  <p style="font-size:0.92rem;color:var(--text-muted);margin:0 0 12px;">To skrócona wersja na telefon — pokazaliśmy najważniejsze.</p>
+  <button type="button" onclick="document.body.classList.add('full-mobile');this.closest('.full-toggle').style.display='none';" style="background:var(--navy-dark);color:#fff;border:none;font-weight:700;padding:13px 24px;border-radius:10px;font-size:0.95rem;cursor:pointer;">Zobacz pełną wersję strony</button>
+</div>
+
 <!-- ===== FOOTER ===== -->
 <footer>
   <div class="container">
@@ -5517,47 +5527,108 @@
   </div>
 </div>
 
-<!-- ===== MAIA FLOATING (przeciągalna) ===== -->
-<button type="button" id="maiaFloat" class="maia-float" aria-label="Zapytaj MAIA — otwórz czat" title="Zapytaj MAIA">
+<!-- ===== MAIA FLOATING (przeciągalna) + mini-czat ===== -->
+<button type="button" id="maiaFloat" class="maia-float" aria-label="Zapytaj MAIA — otwórz czat" aria-expanded="false" title="Zapytaj MAIA">
   <span aria-hidden="true">M</span>
   <span class="maia-dot" aria-hidden="true"></span>
 </button>
+<style id="maia-pop-styles">
+  #maiaPop{ position:fixed; bottom:92px; right:20px; width:340px; max-width:calc(100vw - 32px); height:460px; max-height:calc(100vh - 130px); background:#fff; border:1px solid rgba(27,44,79,.12); border-radius:18px; box-shadow:0 24px 60px rgba(15,30,61,.3); z-index:96; display:none; flex-direction:column; overflow:hidden; font-family:'Inter',system-ui,Arial,sans-serif; }
+  #maiaPop.open{ display:flex; }
+  #maiaPop .mp-head{ display:flex; align-items:center; gap:10px; padding:14px 16px; background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%); }
+  #maiaPop .mp-av{ width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--gold-1),var(--gold-2));color:var(--navy);display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-weight:700;font-size:16px;flex-shrink:0; }
+  #maiaPop .mp-htext{ flex:1;min-width:0;line-height:1.25; }
+  #maiaPop .mp-htext strong{ color:#fff;font-size:14px;display:block; }
+  #maiaPop .mp-htext span{ color:rgba(255,255,255,.7);font-size:11px; }
+  #maiaPop .mp-close{ background:none;border:none;color:rgba(255,255,255,.85);font-size:24px;cursor:pointer;line-height:1;padding:0 4px; }
+  #maiaPop .mp-body{ flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:9px;background:#fff; }
+  #maiaPop .mp-row{ display:flex;gap:7px;max-width:92%; }
+  #maiaPop .mp-row.u{ align-self:flex-end;flex-direction:row-reverse; }
+  #maiaPop .mp-av2{ width:24px;height:24px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700; }
+  #maiaPop .mp-row.a .mp-av2{ background:linear-gradient(135deg,var(--gold-1),var(--gold-2));color:var(--navy); }
+  #maiaPop .mp-row.u .mp-av2{ background:var(--navy);color:#fff; }
+  #maiaPop .mp-b{ padding:9px 12px;border-radius:14px;font-size:13.5px;line-height:1.5;color:var(--text);background:var(--cream);border:1px solid rgba(27,44,79,.06);white-space:pre-wrap;word-break:break-word; }
+  #maiaPop .mp-row.u .mp-b{ background:var(--navy);color:#fff;border-color:transparent; }
+  #maiaPop .mp-foot{ display:flex;gap:8px;padding:10px 12px;border-top:1px solid rgba(27,44,79,.08); }
+  #maiaPop .mp-in{ flex:1;min-width:0;border:1.5px solid rgba(27,44,79,.18);border-radius:22px;padding:9px 14px;font-size:14px;font-family:inherit;color:var(--text);background:var(--cream);outline:none; }
+  #maiaPop .mp-in:focus{ border-color:var(--gold-1);background:#fff; }
+  #maiaPop .mp-send{ width:40px;height:40px;border-radius:50%;border:none;flex-shrink:0;cursor:pointer;font-size:18px;font-weight:700;color:var(--navy);background:linear-gradient(135deg,var(--gold-1),var(--gold-2)); }
+  #maiaPop .mp-send:disabled{ opacity:.5;cursor:not-allowed; }
+  #maiaPop .mp-typing span{ display:inline-block;width:6px;height:6px;border-radius:50%;background:#9fb0c0;animation:mpb 1.1s infinite; }
+  #maiaPop .mp-typing span:nth-child(2){ animation-delay:.15s; }
+  #maiaPop .mp-typing span:nth-child(3){ animation-delay:.3s; }
+  @keyframes mpb{ 0%,100%{ transform:translateY(0);opacity:.5; } 50%{ transform:translateY(-4px);opacity:1; } }
+  @media (max-width:560px){ #maiaPop{ right:10px; left:10px; width:auto; bottom:84px; height:72vh; } }
+  @media (prefers-reduced-motion: reduce){ #maiaPop .mp-typing span{ animation:none; } }
+</style>
+<div id="maiaPop" role="dialog" aria-label="Czat z MAIA">
+  <div class="mp-head">
+    <div class="mp-av" aria-hidden="true">M</div>
+    <div class="mp-htext"><strong>MAIA</strong><span>Twoja przewodniczka po TAMAIA</span></div>
+    <button type="button" class="mp-close" id="maiaPopClose" aria-label="Zamknij czat">&times;</button>
+  </div>
+  <div class="mp-body" id="mpBody" aria-live="polite"></div>
+  <div class="mp-foot">
+    <input type="text" id="mpInput" class="mp-in" placeholder="Napisz do MAIA…" autocomplete="off" aria-label="Wiadomość do MAIA">
+    <button type="button" id="mpSend" class="mp-send" aria-label="Wyślij">&rarr;</button>
+  </div>
+</div>
 <script>
 (function(){
   var el=document.getElementById('maiaFloat'); if(!el) return;
-  var dragging=false, moved=false, justDragged=false, sx=0, sy=0, ox=0, oy=0;
-  function openChat(){
-    var t=document.getElementById('maia-chat');
-    if(t){ t.scrollIntoView({behavior:'smooth',block:'center'}); }
-    setTimeout(function(){ var i=document.getElementById('mcInput'); if(i){ try{ i.focus(); }catch(e){} } }, 600);
-  }
-  el.addEventListener('pointerdown', function(e){
-    dragging=true; moved=false; sx=e.clientX; sy=e.clientY;
-    var r=el.getBoundingClientRect(); ox=r.left; oy=r.top;
-    try{ el.setPointerCapture(e.pointerId); }catch(_){}
-  });
-  el.addEventListener('pointermove', function(e){
+  var pop=document.getElementById('maiaPop'), body=document.getElementById('mpBody'),
+      input=document.getElementById('mpInput'), sendBtn=document.getElementById('mpSend'),
+      closeBtn=document.getElementById('maiaPopClose');
+  var API='https://app.tamaia.pl/api/maia-chat', history=[], busy=false, greeted=false;
+  var dragging=false, moved=false, sx=0, sy=0, ox=0, oy=0;
+  function onMove(e){
     if(!dragging) return;
     var dx=e.clientX-sx, dy=e.clientY-sy;
-    if(!moved && (Math.abs(dx)>4 || Math.abs(dy)>4)){
-      moved=true; el.classList.add('dragging');
-      el.style.right='auto'; el.style.bottom='auto'; el.style.left=ox+'px'; el.style.top=oy+'px';
-    }
-    if(moved){
-      var nx=Math.min(Math.max(0, ox+dx), window.innerWidth-el.offsetWidth);
-      var ny=Math.min(Math.max(0, oy+dy), window.innerHeight-el.offsetHeight);
-      el.style.left=nx+'px'; el.style.top=ny+'px';
-    }
-  });
-  function endDrag(e){
-    if(!dragging) return; dragging=false; el.classList.remove('dragging');
-    try{ el.releasePointerCapture(e.pointerId); }catch(_){}
-    if(moved){ justDragged=true; setTimeout(function(){ justDragged=false; }, 350); try{ localStorage.setItem('maiaFloatPos', JSON.stringify({l:el.style.left,t:el.style.top})); }catch(_){} }
+    if(!moved && (Math.abs(dx)>4 || Math.abs(dy)>4)){ moved=true; el.classList.add('dragging'); el.style.right='auto'; el.style.bottom='auto'; el.style.left=ox+'px'; el.style.top=oy+'px'; }
+    if(moved){ var nx=Math.min(Math.max(0,ox+dx),window.innerWidth-el.offsetWidth); var ny=Math.min(Math.max(0,oy+dy),window.innerHeight-el.offsetHeight); el.style.left=nx+'px'; el.style.top=ny+'px'; }
   }
-  el.addEventListener('pointerup', endDrag);
-  el.addEventListener('pointercancel', endDrag);
-  el.addEventListener('click', function(e){ if(justDragged){ justDragged=false; e.preventDefault(); return; } openChat(); });
-  el.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openChat(); } });
+  function onUp(){
+    document.removeEventListener('pointermove',onMove); document.removeEventListener('pointerup',onUp);
+    if(!dragging) return; dragging=false; el.classList.remove('dragging');
+    if(moved){ try{ localStorage.setItem('maiaFloatPos', JSON.stringify({l:el.style.left,t:el.style.top})); }catch(_){} }
+    else { togglePop(); }
+  }
+  el.addEventListener('pointerdown', function(e){
+    if(typeof e.button==='number' && e.button!==0) return;
+    dragging=true; moved=false; sx=e.clientX; sy=e.clientY;
+    var r=el.getBoundingClientRect(); ox=r.left; oy=r.top;
+    document.addEventListener('pointermove',onMove); document.addEventListener('pointerup',onUp);
+  });
+  el.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); togglePop(); } });
+  function togglePop(){ pop.classList.contains('open') ? closePop() : openPop(); }
+  function openPop(){ pop.classList.add('open'); el.setAttribute('aria-expanded','true'); if(!greeted){ greeted=true; add('a','Cześć! Jestem MAIA 👋 Zapytaj mnie o TAMAIA — jak działa, co dają plany, jak wygląda test 14 dni bez karty.'); } setTimeout(function(){ try{ input.focus(); }catch(_){} },90); }
+  function closePop(){ pop.classList.remove('open'); el.setAttribute('aria-expanded','false'); }
+  closeBtn.addEventListener('click', closePop);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && pop.classList.contains('open')) closePop(); });
+  function add(role,text){
+    var row=document.createElement('div'); row.className='mp-row '+(role==='a'?'a':'u');
+    var av=document.createElement('div'); av.className='mp-av2'; av.textContent=(role==='a'?'M':'Ty');
+    var b=document.createElement('div'); b.className='mp-b'; b.textContent=text;
+    if(role==='a'){ row.appendChild(av); row.appendChild(b); } else { row.appendChild(b); row.appendChild(av); }
+    body.appendChild(row); body.scrollTop=body.scrollHeight;
+  }
+  function typing(on){
+    var t=document.getElementById('mpTyping');
+    if(on){ if(t)return; t=document.createElement('div'); t.id='mpTyping'; t.className='mp-row a'; t.innerHTML='<div class="mp-av2">M</div><div class="mp-b mp-typing"><span></span><span></span><span></span></div>'; body.appendChild(t); body.scrollTop=body.scrollHeight; }
+    else if(t&&t.parentNode){ t.parentNode.removeChild(t); }
+  }
+  function send(){
+    var txt=(input.value||'').trim(); if(!txt||busy) return;
+    input.value=''; add('u',txt); history.push({role:'user',content:txt});
+    busy=true; sendBtn.disabled=true; typing(true);
+    fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:history})})
+      .then(function(r){ return r.json().then(function(d){return{ok:r.ok,d:d};}).catch(function(){return{ok:r.ok,d:{}};}); })
+      .then(function(res){ typing(false); if(!res.ok){ add('a',res.d.error||'MAIA chwilowo niedostępna — spróbuj za chwilę.'); } else { var rep=res.d.reply||'(brak odpowiedzi)'; history.push({role:'assistant',content:rep}); add('a',rep); } })
+      .catch(function(){ typing(false); add('a','Nie udało się połączyć. Spróbuj ponownie.'); })
+      .then(function(){ busy=false; sendBtn.disabled=false; try{ input.focus(); }catch(_){} });
+  }
+  sendBtn.addEventListener('click', send);
+  input.addEventListener('keydown', function(e){ if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); send(); } });
   try{ var s=localStorage.getItem('maiaFloatPos'); if(s){ var p=JSON.parse(s); if(p&&p.l&&p.t){ el.style.right='auto'; el.style.bottom='auto'; el.style.left=p.l; el.style.top=p.t; } } }catch(_){}
 })();
 </script>
