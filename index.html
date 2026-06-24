@@ -3869,6 +3869,15 @@
   .ws-success-link { color: var(--gold-1); font-weight: 600; text-decoration: none; font-size: 0.95rem; }
   .ws-success-link:hover { text-decoration: underline; }
 
+  /* MOBILE SLIM — ukryj sekcje na telefonie; przycisk rozwija pełną wersję */
+  .full-toggle{display:none}
+  @media (max-width: 900px){
+    body:not(.full-mobile) #demo,
+    body:not(.full-mobile) #how,
+    body:not(.full-mobile) #for-team,
+    body:not(.full-mobile) #for-whom { display: none !important; }
+    body:not(.full-mobile) .full-toggle{ display:block; }
+  }
 </style>
 <style id="audyt-czytelnosc-2026">
 /* Czytelność — krótszy wiersz dla długich akapitów (audyt 21.06.2026, norma 65–75 znaków) */
@@ -4282,6 +4291,12 @@
     <p class="how-footer plp-foot"><strong>Realny widok właściciela</strong> — dane przykładowe. Każda liczba jest klikalna i prowadzi wprost do konkretnych rozmów.</p>
   </div>
 </section>
+
+<!-- MOBILE: przełącznik pełnej wersji -->
+<div class="full-toggle" style="text-align:center;padding:26px 20px;background:var(--cream);border-top:1px solid var(--warm-border);">
+  <p style="font-size:0.9rem;color:var(--text-muted);margin:0 0 12px;">Czytasz skróconą wersję na telefon.</p>
+  <button type="button" onclick="document.body.classList.add('full-mobile')" style="background:var(--navy-dark);color:#fff;border:none;font-weight:700;padding:13px 24px;border-radius:10px;font-size:0.95rem;cursor:pointer;">Zobacz pełną wersję strony ↓</button>
+</div>
 
 <!-- ===== ZOBACZ NA ŻYWO (animacje) ===== -->
 <section class="section" id="demo">
