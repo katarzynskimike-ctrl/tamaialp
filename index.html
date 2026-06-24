@@ -5185,13 +5185,13 @@
           <span style="color: rgba(255,255,255,0.85); font-size: 0.88rem;">— kod €40</span>
         </div>
         <h2 style="margin-top: 28px;">Zamów swój pakiet</h2>
-        <p>Konfiguracja z kalkulatora powyżej zostaje dołączona do zgłoszenia. W ciągu 2 godzin roboczych odeślemy dopasowaną propozycję — z ceną i fakturą proforma lub dostępem do bezpłatnego testu 14 dni. Ty decydujesz.</p>
+        <p>Konfiguracja z kalkulatora powyżej zostaje dołączona do zgłoszenia. W ciągu <strong>1 dnia zadzwonimy</strong> do Ciebie i porozmawiamy o dostępie do bezpłatnego testu 14 dni. Ty decydujesz.</p>
         <ul class="cta-bullets">
-          <li>Kod rabatowy <strong>Ringostat_DOP €40</strong> na licencję Ringostat</li>
+          <li>Kod rabatowy <strong>Ringostat_DOP — 169 zł</strong> na 18 godzin rozmów wychodzących (otrzymasz po decyzji)</li>
           <li><strong>Przygotowanie gratis</strong> — nie ponosisz kosztów wdrożenia</li>
           <li>14 dni na świadomą decyzję (z bezpłatnym testem bez karty)</li>
-          <li>Jedna faktura na pakiet DRS + Ringostat</li>
-          <li>My konfigurujemy w 1-3 dni, GO LIVE w dniu 5</li>
+          <li>Jedna faktura na wszystko</li>
+          <li>My konfigurujemy w 1-3 dni — najczęściej działająca centralka w 5. dniu</li>
           <li>Oferta startowa z bonusem <strong>do 31.07.2026</strong></li>
         </ul>
       </div>
@@ -5301,7 +5301,7 @@
         <div class="wizard-success" id="wizardSuccess" style="display:none;">
           <div class="ws-success-icon">🙏</div>
           <h3 class="ws-success-title">Dziękuję bardzo za Twoje zaangażowanie</h3>
-          <p class="ws-success-text">Otrzymałem Twoje zgłoszenie. W ciągu <strong>2 godzin roboczych</strong> wyślę Ci propozycję dopasowaną do Twojego gabinetu — z ceną i, w zależności od Twojego wyboru, fakturą proforma albo dostępem do bezpłatnego testu 14 dni. Wolisz najpierw porozmawiać? Wybierz termin poniżej.</p>
+          <p class="ws-success-text">Otrzymałem Twoje zgłoszenie. W ciągu <strong>1 dnia zadzwonimy</strong> do Ciebie i porozmawiamy o dostępie do bezpłatnego testu 14 dni. Ty decydujesz. Zaraz otrzymasz e-mail z odpowiedziami na najczęstsze pytania — zapoznaj się z nim przed rozmową.</p>
           <div class="ws-success-actions">
             <a href="https://calendly.com/michal-katarzynski/tamaia-rozmowa" target="_blank" rel="noopener" class="ws-btn ws-btn-primary" style="display:inline-block;">📅 Albo wybierz teraz slot 30 min →</a>
           </div>
@@ -5393,6 +5393,7 @@
     sc.src='https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.9.3/confetti.browser.min.js';
     sc.onload=burst; document.head.appendChild(sc);
   }
+  window.fireConfetti=fireConfetti;
   window.decisionYes=function(){
     hide('decisionChoice'); hide('decisionNo'); show('decisionYes');
     fireConfetti();
@@ -6044,6 +6045,7 @@ Promokod: ${config.promo_code} (−€${config.promo_discount_eur}/rok — aktyw
       document.getElementById('wizardForm').style.display = 'none';
       document.getElementById('wizardProgress').style.display = 'none';
       document.getElementById('wizardSuccess').style.display = 'block';
+      if (window.fireConfetti) window.fireConfetti();
       const form2 = document.getElementById('leadForm');
       if (form2) form2.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
