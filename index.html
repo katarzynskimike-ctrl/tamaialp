@@ -3975,57 +3975,52 @@
       </div>
 
       <div class="hero-visual">
-        <div class="mockup-header">
-          <div class="mockup-title">
-            Pulpit — Maj 2026
-            <small>Dane przykładowe • gabinet pilotażowy</small>
-          </div>
-          <div class="mockup-badge"><span class="live-dot"></span>LIVE</div>
-        </div>
-        <div class="mockup-stat-grid">
-          <div class="mockup-stat">
-            <div class="mockup-stat-label">Umówień / 100 rozmów</div>
-            <div class="mockup-stat-value">78 <span class="mockup-stat-trend">↑ +18%</span></div>
-          </div>
-          <div class="mockup-stat">
-            <div class="mockup-stat-label">Średni wynik rozmowy</div>
-            <div class="mockup-stat-value">8.4 <span class="mockup-stat-trend">↑ +1.2</span></div>
-          </div>
-          <div class="mockup-stat">
-            <div class="mockup-stat-label">Pytania o implanty/orto/protetykę</div>
-            <div class="mockup-stat-value">23 <span class="mockup-stat-trend">↑ +35%</span></div>
-          </div>
-          <div class="mockup-stat">
-            <div class="mockup-stat-label">Nieodebrane</div>
-            <div class="mockup-stat-value">6 <span class="mockup-stat-trend" style="color: var(--success);">↓ −62%</span></div>
-          </div>
-        </div>
-        <div class="mockup-chart">
-          <div class="mockup-chart-title">
-            <span>Umówienia ostatnie 7 dni</span>
-            <span style="color: var(--success); font-weight: 600;">↑ Trend wzrostowy</span>
-          </div>
-          <div class="mockup-bars">
-            <div class="mockup-bar" style="height: 40%"></div>
-            <div class="mockup-bar" style="height: 55%"></div>
-            <div class="mockup-bar" style="height: 50%"></div>
-            <div class="mockup-bar" style="height: 70%"></div>
-            <div class="mockup-bar" style="height: 65%"></div>
-            <div class="mockup-bar" style="height: 85%"></div>
-            <div class="mockup-bar active" style="height: 100%"></div>
-          </div>
+<div class="plp-wrap">
+      <div class="plp-bar">
+        <span class="plp-dot" style="background:#E5C36A"></span>
+        <span class="plp-dot" style="background:#9FB3D1"></span>
+        <span class="plp-dot" style="background:#5A6B7A"></span>
+        <span style="color:#fff;font-weight:600;font-size:.86rem;margin-left:6px">Pulpit · Doskonała Rejestracja</span>
+        <span style="margin-left:auto;color:rgba(255,255,255,.65);font-size:.75rem">ostatnie 30 dni</span>
+      </div>
+      <div class="plp-body">
+        <!-- 4 KPI -->
+        <div class="plp-kpis">
+          <div class="plp-kpi"><div class="v">86%</div><div class="l">Odebrane połączenia</div></div>
+          <div class="plp-kpi"><div class="v">14</div><div class="l">Nieodebrane</div></div>
+          <div class="plp-kpi"><div class="v" style="color:var(--success)">63</div><div class="l">Umówione wizyty</div></div>
+          <div class="plp-kpi"><div class="v">8,4<span style="font-size:.9rem;color:var(--text-muted)">/10</span></div><div class="l">Średnia ocena MAI</div></div>
         </div>
 
-        <!-- MAIA — animowane podpowiedzi w mockupie -->
-        <div class="mockup-maia-toast">
-          <div class="mockup-maia-avatar">M</div>
-          <div class="mockup-maia-text">
-            <div class="mockup-maia-name">MAIA — rada po rozmowie 14:32</div>
-            <div class="mockup-maia-msg" id="maiaMsg">
-              „Pacjent pytał o cenę aparatu — zanim ją podasz, powiedz o doświadczeniu ortodonty i o korzyściach z konsultacji: pełna diagnostyka i przewidywalny plan leczenia."
+        <div class="plp-cols">
+          <!-- Skuteczność wg tematu -->
+          <div class="plp-panel">
+            <h3 class="plp-h">Skuteczność wg tematu <small>kto się umawia</small></h3>
+            <div class="plp-row"><span class="t">Bonding</span><span class="n">31</span><span class="p" style="color:var(--success)">71%</span><span class="plp-bar2"><i style="width:71%;background:var(--success)"></i></span></div>
+            <div class="plp-row"><span class="t">Ortodoncja</span><span class="n">18</span><span class="p" style="color:var(--success)">50%</span><span class="plp-bar2"><i style="width:50%;background:var(--success)"></i></span></div>
+            <div class="plp-row"><span class="t">Implant</span><span class="n">24</span><span class="p" style="color:#D97706">46%</span><span class="plp-bar2"><i style="width:46%;background:#D97706"></i></span></div>
+            <div class="plp-advice">💬 <b style="color:var(--navy)">MAIA radzi:</b> Przy koronach i protetyce pacjent pyta o cenę — zanim ją podasz, powiedz o doświadczeniu protetyka i o tym, co daje konsultacja: dokładna diagnostyka i trwały, przewidywalny efekt.</div>
+          </div>
+
+          <!-- Rozmowy atencyjne -->
+          <div class="plp-panel">
+            <h3 class="plp-h">Rozmowy atencyjne <small>oddzwonienia + odwołania</small></h3>
+            <div style="font-size:.82rem;color:var(--text-muted);margin-bottom:10px">Z <b style="color:var(--navy)">14</b> nieodebranych oddzwoniliśmy do <b style="color:var(--success)">11</b> (79%) · umówieni: <b style="color:var(--navy)">4</b></div>
+            <div class="plp-att">
+              <div class="c"><div class="v">3</div><div class="l">Odwołane przez pacjenta</div></div>
+              <div class="c"><div class="v">5</div><div class="l">Przełożone przez pacjenta</div></div>
+              <div class="c"><div class="v">2</div><div class="l">Przełożone przez lekarza</div></div>
+              <div class="c warn"><div class="v">1</div><div class="l">Lekarz odwołał — NIE umówione</div></div>
+            </div>
+            <div class="plp-list">
+              <div class="plp-li"><span class="tag" style="background:#E8F3EB;color:var(--success-dark)">umówiony ✓</span> Marek W. — przełożył, nowy termin 14.07</div>
+              <div class="plp-li"><span class="tag" style="background:#FCF3E5;color:#B45309">do odzyskania</span> Jan P. — gabinet odwołał, brak nowego terminu</div>
+              <div class="plp-li"><span class="tag" style="background:#EEF1F6;color:var(--navy)">czeka</span> 3 pacjentów czeka na telefon zwrotny</div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
       </div>
     </div>
   </div>
@@ -4133,7 +4128,7 @@
     <div class="section-header">
       <span class="eyebrow">Problem</span>
       <h2>Twoja recepcja codziennie <span class="gold-text">gubi pacjentów i pieniądze</span></h2>
-      <p>Im wartościowsze procedury (implant, ortodoncja, protetyka), tym bardziej boli każda przegrana rozmowa. A bez pomiarów nawet nie wiesz, ilu pacjentów Ci ucieka.</p>
+      <p>Im wartościowsze procedury (implant, ortodoncja, protetyka), tym bardziej boli każdy stracony pacjent. A bez statystyk nawet nie wiesz, ilu pacjentów prawdopodobnie poszło do Twojej konkurencji.</p>
     </div>
 
     <!-- 3 problem cards -->
@@ -6274,5 +6269,6 @@ window.addEventListener('message',function(e){var d=e&&e.data;if(!d||!d.tamaiaH)
   });
 })();
 </script>
+<style id="heroPulpitFix">@media(min-width:901px){#pulpit{display:none!important;}}body.full-mobile #pulpit{display:none!important;}</style>
 </body>
 </html>
