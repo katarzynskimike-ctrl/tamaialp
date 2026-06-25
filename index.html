@@ -640,9 +640,9 @@
 
   /* ===== TRUST BAR ===== */
   .trust-bar {
-    background: var(--navy);
-    color: var(--white);
-    padding: 14px 0;
+    background: var(--cream);
+    color: var(--navy);
+    padding: 20px 0;
     text-align: center;
   }
   .trust-inline {
@@ -653,18 +653,18 @@
     flex-wrap: wrap;
   }
   .trust-inline .trust-lead {
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--text);
     font-size: 0.88rem;
     margin: 0;
   }
-  .trust-inline .trust-lead strong { color: var(--gold-2); font-weight: 700; }
+  .trust-inline .trust-lead strong { color: var(--navy); font-weight: 700; }
   .trust-logos {
     display: inline-flex;
     align-items: center;
     gap: 22px;
     flex-wrap: wrap;
     font-family: Georgia, serif;
-    color: rgba(255, 255, 255, 0.75);
+    color: var(--text-muted);
     font-size: 0.95rem;
     font-weight: 500;
     letter-spacing: 0.5px;
@@ -3671,10 +3671,13 @@
 
   /* ===== TRUST PARTNER (Oficjalny Partner Ringostat) ===== */
   .trust-partner {
-    margin-top: 18px;
+    margin: 20px auto 0;
+    max-width: 760px;
     text-align: center;
-    border-top: 1px solid rgba(229,195,106,0.18);
-    padding-top: 16px;
+    background: var(--navy);
+    color: #fff;
+    border-radius: 14px;
+    padding: 18px 24px;
   }
   .trust-partner-headline {
     display: inline-flex;
