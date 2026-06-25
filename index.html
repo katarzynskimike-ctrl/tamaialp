@@ -3556,6 +3556,8 @@
   }
   .maia-float:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(10,30,63,0.26); }
   .maia-float.dragging { transition: none; cursor: grabbing; }
+  .desktop-fab{ transition: transform .2s ease; }
+  body.cta-up .maia-float, body.cta-up .desktop-fab{ transform: translateY(-88px); }
   .maia-float .maia-av { position: relative; width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); border: 2px solid var(--gold-1); color: var(--gold-2); display: flex; align-items: center; justify-content: center; font-family: Georgia, serif; font-weight: 700; font-size: 19px; flex-shrink: 0; }
   .maia-float .maia-dot { position: absolute; bottom: -1px; right: -1px; width: 11px; height: 11px; border-radius: 50%; background: #4ade80; border: 2px solid #fff; animation: maiaDot 2.4s infinite; }
   .maia-float .maia-cta { text-align: left; line-height: 1.2; padding-right: 4px; }
@@ -3983,31 +3985,31 @@
         <span class="plp-dot" style="background:#9FB3D1"></span>
         <span class="plp-dot" style="background:#5A6B7A"></span>
         <span style="color:#fff;font-weight:600;font-size:.86rem;margin-left:6px">Pulpit · Doskonała Rejestracja</span>
-        <span style="margin-left:auto;color:rgba(255,255,255,.65);font-size:.75rem">ostatnie 30 dni</span>
+        <span style="margin-left:auto;color:rgba(255,255,255,.65);font-size:.75rem"><b style="color:#fff">100</b> telefonów · ostatnie 30 dni</span>
       </div>
       <div class="plp-body">
         <!-- 4 KPI -->
         <div class="plp-kpis">
-          <div class="plp-kpi"><div class="v">86%</div><div class="l">Odebrane połączenia</div></div>
-          <div class="plp-kpi"><div class="v">14%</div><div class="l">Nieodebrane · 3 nieoddzwonione</div></div>
-          <div class="plp-kpi"><div class="v" style="color:var(--success)">63</div><div class="l">Umówione wizyty</div></div>
+          <div class="plp-kpi"><div class="v">86%<span style="display:block;font-size:.8rem;font-weight:700;color:var(--text-muted);margin-top:2px;">86 / 100</span></div><div class="l">Odebrane połączenia</div></div>
+          <div class="plp-kpi"><div class="v">14%<span style="display:block;font-size:.8rem;font-weight:700;color:var(--text-muted);margin-top:2px;">14 / 100</span></div><div class="l">Nieodebrane · 3 nieoddzwonione</div></div>
+          <div class="plp-kpi"><div class="v" style="color:var(--success)">63%<span style="display:block;font-size:.8rem;font-weight:700;color:var(--text-muted);margin-top:2px;">63 / 100</span></div><div class="l">Skuteczność umawiania · rozmowa → wizyta</div></div>
           <div class="plp-kpi"><div class="v">8,4<span style="font-size:.9rem;color:var(--text-muted)">/10</span></div><div class="l">Średnia ocena — Indeks MAIA®</div></div>
         </div>
 
         <div class="plp-cols">
           <!-- Skuteczność wg tematu -->
           <div class="plp-panel">
-            <h3 class="plp-h">Skuteczność wg tematu <small>kto się umawia</small></h3>
-            <div class="plp-row"><span class="t">Bonding</span><span class="n">31</span><span class="p" style="color:var(--success)">71%</span><span class="plp-bar2"><i style="width:71%;background:var(--success)"></i></span></div>
-            <div class="plp-row"><span class="t">Ortodoncja</span><span class="n">18</span><span class="p" style="color:var(--success)">50%</span><span class="plp-bar2"><i style="width:50%;background:var(--success)"></i></span></div>
-            <div class="plp-row"><span class="t">Implant</span><span class="n">24</span><span class="p" style="color:#D97706">46%</span><span class="plp-bar2"><i style="width:46%;background:#D97706"></i></span></div>
+            <h3 class="plp-h">Skuteczność wg tematu <small>umówione / zapytań</small></h3>
+            <div class="plp-row"><span class="t">Bonding</span><span class="n">22/31</span><span class="p" style="color:var(--success)">71%</span><span class="plp-bar2"><i style="width:71%;background:var(--success)"></i></span></div>
+            <div class="plp-row"><span class="t">Ortodoncja</span><span class="n">9/18</span><span class="p" style="color:var(--success)">50%</span><span class="plp-bar2"><i style="width:50%;background:var(--success)"></i></span></div>
+            <div class="plp-row"><span class="t">Implant</span><span class="n">11/24</span><span class="p" style="color:#D97706">46%</span><span class="plp-bar2"><i style="width:46%;background:#D97706"></i></span></div>
             <div class="plp-advice">💬 <b style="color:var(--navy)">MAIA radzi:</b> Przy koronach i protetyce pacjent pyta o cenę — zanim ją podasz, powiedz o doświadczeniu protetyka i o tym, co daje konsultacja: dokładna diagnostyka i trwały, przewidywalny efekt.</div>
           </div>
 
           <!-- Rozmowy atencyjne -->
           <div class="plp-panel">
             <h3 class="plp-h">Rozmowy atencyjne <small>oddzwonienia + odwołania</small></h3>
-            <div style="font-size:.82rem;color:var(--text-muted);margin-bottom:10px">Z <b style="color:var(--navy)">14</b> nieodebranych oddzwoniliśmy do <b style="color:var(--success)">11</b> (79%) · umówieni: <b style="color:var(--navy)">4</b></div>
+            <div style="font-size:.82rem;color:var(--text-muted);margin-bottom:10px">Z <b style="color:var(--navy)">14</b> nieodebranych oddzwoniliśmy do <b style="color:var(--success)">11/14</b> (79%) · umówieni: <b style="color:var(--navy)">4</b></div>
             <div class="plp-att">
               <div class="c"><div class="v">3</div><div class="l">Odwołane przez pacjenta</div></div>
               <div class="c"><div class="v">5</div><div class="l">Przełożone przez pacjenta</div></div>
@@ -4089,31 +4091,31 @@
         <span class="plp-dot" style="background:#9FB3D1"></span>
         <span class="plp-dot" style="background:#5A6B7A"></span>
         <span style="color:#fff;font-weight:600;font-size:.86rem;margin-left:6px">Pulpit · Doskonała Rejestracja</span>
-        <span style="margin-left:auto;color:rgba(255,255,255,.65);font-size:.75rem">ostatnie 30 dni</span>
+        <span style="margin-left:auto;color:rgba(255,255,255,.65);font-size:.75rem"><b style="color:#fff">100</b> telefonów · ostatnie 30 dni</span>
       </div>
       <div class="plp-body">
         <!-- 4 KPI -->
         <div class="plp-kpis">
-          <div class="plp-kpi"><div class="v">86%</div><div class="l">Odebrane połączenia</div></div>
-          <div class="plp-kpi"><div class="v">14%</div><div class="l">Nieodebrane · 3 nieoddzwonione</div></div>
-          <div class="plp-kpi"><div class="v" style="color:var(--success)">63</div><div class="l">Umówione wizyty</div></div>
+          <div class="plp-kpi"><div class="v">86%<span style="display:block;font-size:.8rem;font-weight:700;color:var(--text-muted);margin-top:2px;">86 / 100</span></div><div class="l">Odebrane połączenia</div></div>
+          <div class="plp-kpi"><div class="v">14%<span style="display:block;font-size:.8rem;font-weight:700;color:var(--text-muted);margin-top:2px;">14 / 100</span></div><div class="l">Nieodebrane · 3 nieoddzwonione</div></div>
+          <div class="plp-kpi"><div class="v" style="color:var(--success)">63%<span style="display:block;font-size:.8rem;font-weight:700;color:var(--text-muted);margin-top:2px;">63 / 100</span></div><div class="l">Skuteczność umawiania · rozmowa → wizyta</div></div>
           <div class="plp-kpi"><div class="v">8,4<span style="font-size:.9rem;color:var(--text-muted)">/10</span></div><div class="l">Średnia ocena — Indeks MAIA®</div></div>
         </div>
 
         <div class="plp-cols">
           <!-- Skuteczność wg tematu -->
           <div class="plp-panel">
-            <h3 class="plp-h">Skuteczność wg tematu <small>kto się umawia</small></h3>
-            <div class="plp-row"><span class="t">Bonding</span><span class="n">31</span><span class="p" style="color:var(--success)">71%</span><span class="plp-bar2"><i style="width:71%;background:var(--success)"></i></span></div>
-            <div class="plp-row"><span class="t">Ortodoncja</span><span class="n">18</span><span class="p" style="color:var(--success)">50%</span><span class="plp-bar2"><i style="width:50%;background:var(--success)"></i></span></div>
-            <div class="plp-row"><span class="t">Implant</span><span class="n">24</span><span class="p" style="color:#D97706">46%</span><span class="plp-bar2"><i style="width:46%;background:#D97706"></i></span></div>
+            <h3 class="plp-h">Skuteczność wg tematu <small>umówione / zapytań</small></h3>
+            <div class="plp-row"><span class="t">Bonding</span><span class="n">22/31</span><span class="p" style="color:var(--success)">71%</span><span class="plp-bar2"><i style="width:71%;background:var(--success)"></i></span></div>
+            <div class="plp-row"><span class="t">Ortodoncja</span><span class="n">9/18</span><span class="p" style="color:var(--success)">50%</span><span class="plp-bar2"><i style="width:50%;background:var(--success)"></i></span></div>
+            <div class="plp-row"><span class="t">Implant</span><span class="n">11/24</span><span class="p" style="color:#D97706">46%</span><span class="plp-bar2"><i style="width:46%;background:#D97706"></i></span></div>
             <div class="plp-advice">💬 <b style="color:var(--navy)">MAIA radzi:</b> Przy koronach i protetyce pacjent pyta o cenę — zanim ją podasz, powiedz o doświadczeniu protetyka i o tym, co daje konsultacja: dokładna diagnostyka i trwały, przewidywalny efekt.</div>
           </div>
 
           <!-- Rozmowy atencyjne -->
           <div class="plp-panel">
             <h3 class="plp-h">Rozmowy atencyjne <small>oddzwonienia + odwołania</small></h3>
-            <div style="font-size:.82rem;color:var(--text-muted);margin-bottom:10px">Z <b style="color:var(--navy)">14</b> nieodebranych oddzwoniliśmy do <b style="color:var(--success)">11</b> (79%) · umówieni: <b style="color:var(--navy)">4</b></div>
+            <div style="font-size:.82rem;color:var(--text-muted);margin-bottom:10px">Z <b style="color:var(--navy)">14</b> nieodebranych oddzwoniliśmy do <b style="color:var(--success)">11/14</b> (79%) · umówieni: <b style="color:var(--navy)">4</b></div>
             <div class="plp-att">
               <div class="c"><div class="v">3</div><div class="l">Odwołane przez pacjenta</div></div>
               <div class="c"><div class="v">5</div><div class="l">Przełożone przez pacjenta</div></div>
@@ -4492,7 +4494,7 @@
   .plp-panel{background:var(--white);border:1px solid var(--warm-border);border-radius:14px;padding:14px}
   .plp-h{font-size:.95rem;font-weight:700;color:var(--navy);margin:0 0 10px}
   .plp-h small{font-weight:500;color:var(--text-muted);font-size:.75rem}
-  .plp-row{display:grid;grid-template-columns:minmax(0,1fr) 38px 46px;gap:8px;align-items:center;padding:7px 0;border-top:1px solid #F0ECE0}
+  .plp-row{display:grid;grid-template-columns:minmax(0,1fr) 56px 46px;gap:8px;align-items:center;padding:7px 0;border-top:1px solid #F0ECE0}
   .plp-row:first-of-type{border-top:0}
   .plp-row .t{font-size:.86rem;color:var(--navy);font-weight:600;min-width:0}
   .plp-row .n{font-size:.95rem;font-weight:700;text-align:center;color:var(--navy)}
@@ -5884,11 +5886,9 @@
   // ===== STICKY CTA on scroll =====
   const stickyCta = document.getElementById('stickyCta');
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 600 && window.scrollY < document.body.scrollHeight - 1500) {
-      stickyCta.classList.add('visible');
-    } else {
-      stickyCta.classList.remove('visible');
-    }
+    var __ctaShow = (window.scrollY > 600 && window.scrollY < document.body.scrollHeight - 1500);
+    stickyCta.classList.toggle('visible', __ctaShow);
+    document.body.classList.toggle('cta-up', __ctaShow);
   });
 
   // ===== EXIT INTENT POPUP =====
