@@ -202,5 +202,23 @@ window.addEventListener('load',h);window.addEventListener('resize',h);
 ['click','transitionend','animationiteration','animationend'].forEach(function(ev){document.addEventListener(ev,function(){setTimeout(h,40);},true);});
 setTimeout(h,300);setTimeout(h,1200);setTimeout(h,2600);})();
 </script>
+<script>
+/* Wymuszone autoplay tla wideo — atrybut autoplay bywa ignorowany w iframe/na mobile */
+(function(){
+  var v=document.querySelector('.bg-vid'); if(!v) return;
+  v.muted=true; v.setAttribute('muted',''); v.playsInline=true;
+  var n=0;
+  function tryPlay(){ try{ var pr=v.play(); if(pr&&pr.catch) pr.catch(function(){}); }catch(e){} }
+  function pump(){ tryPlay(); if(++n<10) setTimeout(pump,400); }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',pump); else pump();
+  window.addEventListener('load',tryPlay);
+  document.addEventListener('visibilitychange',function(){ if(!document.hidden) tryPlay(); });
+  ['touchstart','pointerdown','click','scroll','keydown'].forEach(function(ev){
+    window.addEventListener(ev,tryPlay,{passive:true});
+    try{ parent.addEventListener(ev,tryPlay,{passive:true}); }catch(e){}
+  });
+  if('IntersectionObserver' in window){ try{ new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting) tryPlay(); });},{threshold:0.05}).observe(v); }catch(e){} }
+})();
+</script>
 </body>
 </html>
