@@ -147,7 +147,7 @@
     letter-spacing: 4px;
     font-size: 0.85rem;
     font-weight: 600;
-    color: var(--gold-1);
+    color: #8a6a12; /* D10: dostępny kontrast na jasnym tle; eyebrowy na ciemnych sekcjach mają inline gradient */
   }
 
   /* ===== BUTTONS ===== */
@@ -268,7 +268,7 @@
   .nav-links a:hover { color: var(--gold-1); }
   .nav-cta { padding: 10px 22px; font-size: 0.95rem; }
   .nav-login {
-    color: var(--gold-1);
+    color: #8a6a12; /* D10: kontrast linku logowania na białym */
     font-weight: 600;
     font-size: 0.95rem;
     text-decoration: none;
@@ -4255,6 +4255,7 @@
       </div>
     </div>
 
+    <p style="text-align:center;max-width:780px;margin:16px auto 0;font-size:0.82rem;line-height:1.45;color:#5b6472;">Źródło: 14 lat audytowanych praktyk stomatologicznych wdrażających standard Doskonałej Rejestracji. „+18%” to średni wynik metody (mierzony przez aplikację) — Twój gabinet może mieć mniejszy lub większy.</p>
     <!-- 6 efektów -->
         <!-- 4 korzyści -->
     <div class="solution-grid">
@@ -4328,6 +4329,10 @@
     <p class="ws-sub">Od telefonu pacjenta do umówionej wizyty — w kilka sekund.</p>
     <div class="demo-anim demo-full">
       <iframe src="anim-hero.html" title="Rozmowa pacjenta zamienia się w umówioną wizytę" allow="autoplay; fullscreen" style="height:560px"></iframe>
+    </div>
+    <div style="text-align:center;margin:0 auto 8px;">
+      <p style="font-size:1.05rem;font-weight:700;color:var(--navy);margin:0 0 14px;">Chcesz zobaczyć to na danych swojego gabinetu?</p>
+      <a href="#cta" class="btn btn-primary btn-lg">Wypróbuj 14 dni — bez karty →</a>
     </div>
   </div>
   <style>
@@ -4648,6 +4653,11 @@
       <p style="margin-top: 36px; color: rgba(255,255,255,0.85); font-size: 0.95rem; font-style: italic;">
         Dlatego abonament jest 12-miesięczny: wdrożenie telefonu AI to ważna decyzja, którą podejmujesz raz na rok. Daj sobie <strong style="color: var(--gold-2);">14 dni za darmo bez karty</strong>, żeby zdecydować świadomie — bez presji, z dostępem do pełnego systemu i eksperta.
       </p>
+
+      <div style="max-width:680px;margin:26px auto 0;background:rgba(255,255,255,0.08);border:1px solid rgba(229,195,106,0.4);border-radius:14px;padding:16px 22px;">
+        <p style="margin:0;color:#fff;font-size:0.98rem;line-height:1.5;"><strong style="color:var(--gold-2);">Gwarancja spokoju.</strong> 14 dni bez karty na decyzję, a po zakupie — jeśli uznasz, że to nie dla Ciebie, anulujesz w dowolnym momencie z proporcjonalnym zwrotem za niewykorzystane miesiące. Zero umowy lojalnościowej, zero ukrytych zapisów.</p>
+      </div>
+      <p style="margin:14px auto 0;max-width:680px;color:rgba(255,255,255,0.78);font-size:0.9rem;line-height:1.5;">Roczna płatność z góry to dla Ciebie dużo naraz? Zaznacz to w zgłoszeniu — przy propozycji pomożemy dobrać dogodny wariant startu (np. od pierwszego miesiąca).</p>
 
       <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 28px;">
         <a href="#cta" class="btn btn-primary btn-lg">Wypróbuj — test 14 dni →</a>
@@ -5840,7 +5850,13 @@
 
   // ===== FAQ ACCORDION =====
   document.querySelectorAll('.faq-item').forEach(item => {
-    item.querySelector('.faq-question').addEventListener('click', () => item.classList.toggle('open'));
+    const q = item.querySelector('.faq-question');
+    q.setAttribute('role','button');
+    q.setAttribute('tabindex','0');
+    q.setAttribute('aria-expanded','false');
+    const toggle = () => { const open = item.classList.toggle('open'); q.setAttribute('aria-expanded', open ? 'true' : 'false'); };
+    q.addEventListener('click', toggle);
+    q.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
   });
 
   // ===== CALCULATOR STRAT =====
