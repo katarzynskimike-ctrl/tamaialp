@@ -6205,5 +6205,74 @@ Promokod: ${config.promo_code} (−€${config.promo_discount_eur}/rok — aktyw
 <script>
 window.addEventListener('message',function(e){var d=e&&e.data;if(!d||!d.tamaiaH)return;document.querySelectorAll('#demo iframe').forEach(function(f){if(f.contentWindow===e.source){f.style.height=d.tamaiaH+'px';}});});
 </script>
+
+<!-- ===== BRAMA DEMO NA DOKUMENTACH PRAWNYCH (1. klik = demo, 2. klik = dokument) ===== -->
+<div class="popup-overlay" id="legalGate" role="dialog" aria-modal="true" aria-label="Zobacz TAMAIA w demo">
+  <div class="popup-box" style="max-width:480px;text-align:left;">
+    <button class="popup-close" type="button" onclick="closeLegalGate()" aria-label="Zamknij">&times;</button>
+    <div class="popup-icon" style="margin:0 0 18px;">&#128196;</div>
+    <h3 style="text-align:left;">Najpierw zobacz TAMAIA od &#347;rodka</h3>
+    <p style="text-align:left;margin-bottom:18px;">Skoro chcesz pozna&#263; szczeg&#243;&#322;y &mdash; zacznij od demo. <strong>14 dni bez op&#322;at, bez zobowi&#261;za&#324;.</strong> Zostaw kontakt, a poka&#380;emy Ci TAMAIA na danych Twojego gabinetu.</p>
+    <form id="legalGateForm" onsubmit="return legalGateSubmit(event)" novalidate>
+      <input type="text" name="name" placeholder="Imi&#281; i nazwisko" required style="width:100%;padding:12px 14px;margin-bottom:10px;border:1px solid #d9d4c7;border-radius:10px;font-size:1rem;font-family:inherit;box-sizing:border-box;">
+      <input type="text" name="practice" placeholder="Nazwa gabinetu" required style="width:100%;padding:12px 14px;margin-bottom:10px;border:1px solid #d9d4c7;border-radius:10px;font-size:1rem;font-family:inherit;box-sizing:border-box;">
+      <input type="text" name="city" placeholder="Miasto" required style="width:100%;padding:12px 14px;margin-bottom:10px;border:1px solid #d9d4c7;border-radius:10px;font-size:1rem;font-family:inherit;box-sizing:border-box;">
+      <input type="email" name="email" placeholder="E-mail" required style="width:100%;padding:12px 14px;margin-bottom:10px;border:1px solid #d9d4c7;border-radius:10px;font-size:1rem;font-family:inherit;box-sizing:border-box;">
+      <input type="tel" name="phone" placeholder="Telefon" required style="width:100%;padding:12px 14px;margin-bottom:12px;border:1px solid #d9d4c7;border-radius:10px;font-size:1rem;font-family:inherit;box-sizing:border-box;">
+      <label style="display:flex;gap:8px;align-items:flex-start;font-size:0.82rem;color:var(--text-muted);margin-bottom:16px;text-align:left;line-height:1.45;">
+        <input type="checkbox" name="consent" value="1" required style="margin-top:3px;flex:0 0 auto;">
+        <span>Akceptuj&#281; <a href="https://app.tamaia.pl/regulamin" target="_blank" rel="noopener">Regulamin</a> i <a href="https://app.tamaia.pl/polityka" target="_blank" rel="noopener">Polityk&#281; prywatno&#347;ci</a> oraz zgadzam si&#281; na kontakt w sprawie demo.</span>
+      </label>
+      <button type="submit" class="btn btn-primary" style="width:100%;">Przyst&#261;p do demo &rarr;</button>
+    </form>
+    <div id="legalGateSuccess" style="display:none;text-align:center;">
+      <div class="popup-icon" style="margin:0 auto 16px;">&#10003;</div>
+      <h3 style="text-align:center;">Dzi&#281;kujemy!</h3>
+      <p style="text-align:center;">Odezwiemy si&#281; w sprawie demo. Mo&#380;esz teraz otworzy&#263; dokument.</p>
+      <a id="legalGateDocLink" href="#" target="_blank" rel="noopener" class="btn btn-primary" style="display:inline-block;">Otw&#243;rz dokument &rarr;</a>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var pendingHref=null, released={};
+  var gate=document.getElementById('legalGate');
+  if(!gate) return;
+  function isLegal(a){ return /app\.tamaia\.pl\/(regulamin|polityka|dpa)/.test(a.getAttribute('href')||''); }
+  function openGate(href){
+    pendingHref=href;
+    var f=document.getElementById('legalGateForm'), s=document.getElementById('legalGateSuccess');
+    if(f){f.style.display='';} if(s){s.style.display='none';}
+    var dl=document.getElementById('legalGateDocLink'); if(dl){dl.setAttribute('href',href);}
+    gate.classList.add('show'); document.body.style.overflow='hidden';
+  }
+  window.closeLegalGate=function(){
+    gate.classList.remove('show'); document.body.style.overflow='';
+    if(pendingHref){released[pendingHref]=true;}
+  };
+  window.legalGateSubmit=function(ev){
+    ev.preventDefault();
+    var f=document.getElementById('legalGateForm');
+    if(!f.checkValidity()){f.reportValidity();return false;}
+    var fd=new FormData(f);
+    var data={name:fd.get('name'),email:fd.get('email'),phone:fd.get('phone'),practice:fd.get('practice'),city:fd.get('city'),consent_terms:fd.get('consent')?1:0,consent_contact:fd.get('consent')?1:0,terms_version:'v1',timestamp:new Date().toISOString(),source:'tamaia.pl brama-prawne'};
+    if(pendingHref){released[pendingHref]=true; var dl=document.getElementById('legalGateDocLink'); if(dl){dl.setAttribute('href',pendingHref);}}
+    f.style.display='none'; document.getElementById('legalGateSuccess').style.display='block';
+    try{fetch('https://app.tamaia.pl/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}).catch(function(){});}catch(e){}
+    return false;
+  };
+  gate.addEventListener('click',function(e){ if(e.target===gate){closeLegalGate();} });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&gate.classList.contains('show')){closeLegalGate();} });
+  document.querySelectorAll('a').forEach(function(a){
+    if(!isLegal(a)) return;
+    if(a.closest('#wizardForm')||a.closest('#legalGate')) return;
+    a.addEventListener('click',function(e){
+      var href=a.getAttribute('href');
+      if(released[href]) return;
+      e.preventDefault(); openGate(href);
+    });
+  });
+})();
+</script>
 </body>
 </html>
