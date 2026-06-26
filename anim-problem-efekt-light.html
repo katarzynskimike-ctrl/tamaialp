@@ -18,7 +18,7 @@
 
   /* TŁO: opcjonalny obraz/film + grafika recepcji */
   .bg-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
-  /* Film recepcja-bg.mp4 (36s) zsynchronizowany z animacją 31.2s przez JS (playbackRate + reset na pętli): „pani z telefonem" podczas problemów, „uśmiechnięta pani" na końcu */
+  /* Film recepcja-bg.mp4 (36s) gra natywnie 1x i pętli się co 36s — animacja też ma 36s, więc są zsynchronizowane bez JS: „pani z telefonem" podczas problemów, „uśmiechnięta pani" na końcu */
   .bg-sad{animation:bgSad 36s infinite}
   .bg-happy{opacity:0;animation:bgHappy 36s infinite}
   @keyframes bgSad{0%{opacity:1}63%{opacity:1}68%{opacity:0}97%{opacity:0}100%{opacity:1}}
@@ -34,15 +34,15 @@
   .scene p{color:var(--text);font-size:1rem;text-align:center;max-width:520px;text-shadow:0 1px 10px rgba(255,255,255,.92)}
   .eyebrow{font-size:.72rem;font-weight:800;letter-spacing:3px;text-transform:uppercase}
 
-  .s1{animation:sc1 31.2s infinite}.s2{animation:sc2 31.2s infinite}.s3{animation:sc3 31.2s infinite}
-  .s4{animation:sc4 31.2s infinite}.s5{animation:sc5 31.2s infinite}.s6{animation:sc6 31.2s infinite}
-  /* Problemy (s1-s4) o 20% szybciej (4.8s), solucja (s5-s6) bez zmian (6s) — cykl 31.2s */
-  @keyframes sc1{0%{opacity:0}2.31%{opacity:1}13.43%{opacity:1}15.39%{opacity:0}100%{opacity:0}}
-  @keyframes sc2{0%,15.39%{opacity:0}17.69%{opacity:1}28.81%{opacity:1}30.77%{opacity:0}100%{opacity:0}}
-  @keyframes sc3{0%,30.77%{opacity:0}33.08%{opacity:1}44.2%{opacity:1}46.15%{opacity:0}100%{opacity:0}}
-  @keyframes sc4{0%,46.15%{opacity:0}48.46%{opacity:1}59.58%{opacity:1}61.54%{opacity:0}100%{opacity:0}}
-  @keyframes sc5{0%,61.54%{opacity:0}63.85%{opacity:1}78.81%{opacity:1}80.77%{opacity:0}100%{opacity:0}}
-  @keyframes sc6{0%,80.77%{opacity:0}83.08%{opacity:1}98.05%{opacity:1}100%{opacity:0}}
+  .s1{animation:sc1 36s infinite}.s2{animation:sc2 36s infinite}.s3{animation:sc3 36s infinite}
+  .s4{animation:sc4 36s infinite}.s5{animation:sc5 36s infinite}.s6{animation:sc6 36s infinite}
+  /* Cykl 36s = długość filmu (sync natywny). Problemy (s1-s4) 20% szybciej (4.8s), solucja (s5-s6) wydłużona (8.4s) by wyszło 36s */
+  @keyframes sc1{0%{opacity:0}2%{opacity:1}11.63%{opacity:1}13.33%{opacity:0}100%{opacity:0}}
+  @keyframes sc2{0%,13.33%{opacity:0}15.33%{opacity:1}24.97%{opacity:1}26.67%{opacity:0}100%{opacity:0}}
+  @keyframes sc3{0%,26.67%{opacity:0}28.67%{opacity:1}38.3%{opacity:1}40%{opacity:0}100%{opacity:0}}
+  @keyframes sc4{0%,40%{opacity:0}42%{opacity:1}51.63%{opacity:1}53.33%{opacity:0}100%{opacity:0}}
+  @keyframes sc5{0%,53.33%{opacity:0}55.33%{opacity:1}74.97%{opacity:1}76.67%{opacity:0}100%{opacity:0}}
+  @keyframes sc6{0%,76.67%{opacity:0}78.67%{opacity:1}98.3%{opacity:1}100%{opacity:0}}
 
   .phone{width:96px;height:96px;border-radius:50%;background:rgba(201,169,97,.18);display:flex;align-items:center;justify-content:center;animation:ring 1.4s ease-in-out infinite}
   .phone svg{width:44px;height:44px;stroke:var(--navy)}
@@ -70,7 +70,7 @@
   .check svg{width:36px;height:36px;stroke:var(--gold-dk)}
 
   .track{position:absolute;left:0;bottom:0;height:4px;width:100%;background:rgba(10,30,63,.06);z-index:5}
-  .track i{position:absolute;left:0;top:0;height:100%;background:var(--gold);width:0;animation:prog 31.2s linear infinite}
+  .track i{position:absolute;left:0;top:0;height:100%;background:var(--gold);width:0;animation:prog 36s linear infinite}
   @keyframes prog{0%{width:0}100%{width:100%}}
   @media (max-width:900px){
     .stage{height:360px;border-radius:16px}
@@ -164,14 +164,7 @@
   </div>
   <script>
     var v = document.querySelector('video.bg-photo');
-    if (v) {
-      v.muted = true;
-      try { v.playbackRate = 36/31.2; } catch(e){}   /* pelny 36s film miesci sie w cyklu animacji 31.2s */
-      var p = v.play && v.play(); if (p && p.catch) p.catch(function(){});
-      /* re-sync: na kazdym powrocie petli CSS film startuje od poczatku (pani z telefonem) */
-      var a = document.querySelector('.s1');
-      if (a) a.addEventListener('animationiteration', function(){ try { v.currentTime = 0; var q = v.play(); if (q && q.catch) q.catch(function(){}); } catch(e){} });
-    }
+    if (v) { v.muted = true; var p = v.play && v.play(); if (p && p.catch) p.catch(function(){}); }
   </script>
 </body>
 </html>
