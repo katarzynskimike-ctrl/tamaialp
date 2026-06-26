@@ -17,9 +17,8 @@
   }
 
   /* TŁO: opcjonalny obraz/film + grafika recepcji */
-  .bg-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;animation:bgVid 31.2s infinite}
-  /* Tło wideo gaśnie zaraz po ostatnim problemie (s4 ~61.5%) i wraca przed kolejną pętlą */
-  @keyframes bgVid{0%{opacity:1}61.5%{opacity:1}66%{opacity:0}97%{opacity:0}100%{opacity:1}}
+  .bg-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  /* Film recepcja-bg.mp4 (36s) zsynchronizowany z animacją 31.2s przez JS (playbackRate + reset na pętli): „pani z telefonem" podczas problemów, „uśmiechnięta pani" na końcu */
   .bg-sad{animation:bgSad 36s infinite}
   .bg-happy{opacity:0;animation:bgHappy 36s infinite}
   @keyframes bgSad{0%{opacity:1}63%{opacity:1}68%{opacity:0}97%{opacity:0}100%{opacity:1}}
@@ -165,7 +164,14 @@
   </div>
   <script>
     var v = document.querySelector('video.bg-photo');
-    if (v) { v.muted = true; var p = v.play && v.play(); if (p && p.catch) p.catch(function(){}); }
+    if (v) {
+      v.muted = true;
+      try { v.playbackRate = 36/31.2; } catch(e){}   /* pelny 36s film miesci sie w cyklu animacji 31.2s */
+      var p = v.play && v.play(); if (p && p.catch) p.catch(function(){});
+      /* re-sync: na kazdym powrocie petli CSS film startuje od poczatku (pani z telefonem) */
+      var a = document.querySelector('.s1');
+      if (a) a.addEventListener('animationiteration', function(){ try { v.currentTime = 0; var q = v.play(); if (q && q.catch) q.catch(function(){}); } catch(e){} });
+    }
   </script>
 </body>
 </html>
