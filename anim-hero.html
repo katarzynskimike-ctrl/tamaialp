@@ -190,10 +190,21 @@
   function play(){ start=null; if(raf) cancelAnimationFrame(raf); raf=requestAnimationFrame(frame); }
   function showFinal(){ ids.forEach(function(i){show(i,true)}); tls.forEach(function(i){show(i,true)}); if(cv) cv.textContent=42; }
 
-  document.getElementById('replay').addEventListener('click', function(){ if(reduce){showFinal();return;} play(); });
-  document.addEventListener('visibilitychange', function(){ if(document.hidden){ if(raf) cancelAnimationFrame(raf); raf=null; } else if(!reduce){ play(); } });
+  document.getElementById('replay').addEventListener('click', function(){ play(); });
+  document.addEventListener('visibilitychange', function(){ if(document.hidden){ if(raf) cancelAnimationFrame(raf); raf=null; } else { play(); } });
 
-  if(reduce){ showFinal(); } else { play(); }
+  play();
+
+  // Restart sekwencji od poczatku, gdy animacja wejdzie w widok rodzica (mobile: jest pod foldem)
+  (function(){
+    var fe; try{ fe=window.frameElement; }catch(e){ fe=null; }
+    var wasIn=false;
+    function inView(){ try{ if(!fe) return true; var r=fe.getBoundingClientRect(); var vh=(parent&&parent.innerHeight)||window.innerHeight; return r.top < vh*0.75 && r.bottom > vh*0.2; }catch(e){ return true; } }
+    function check(){ var now=inView(); if(now&&!wasIn){ wasIn=true; play(); } else if(!now){ wasIn=false; } }
+    try{ (parent||window).addEventListener('scroll',check,{passive:true}); }catch(e){}
+    try{ (parent||window).addEventListener('resize',check,{passive:true}); }catch(e){}
+    window.addEventListener('load',check); setTimeout(check,300); setTimeout(check,1200);
+  })();
 })();
 </script>
 <script>
