@@ -163,8 +163,21 @@
     <div class="track"><i></i></div>
   </div>
   <script>
-    var v = document.querySelector('video.bg-photo');
-    if (v) { v.muted = true; var p = v.play && v.play(); if (p && p.catch) p.catch(function(){}); }
+  (function(){
+    var v = document.querySelector('video.bg-photo'); if(!v) return;
+    v.muted = true; v.setAttribute('muted',''); v.playsInline = true;
+    var n=0;
+    function tryPlay(){ try{ var p=v.play(); if(p&&p.catch)p.catch(function(){}); }catch(e){} }
+    function pump(){ tryPlay(); if(++n<12) setTimeout(pump,450); }
+    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',pump); else pump();
+    window.addEventListener('load',tryPlay);
+    document.addEventListener('visibilitychange',function(){ if(!document.hidden) tryPlay(); });
+    ['touchstart','pointerdown','click','scroll','keydown'].forEach(function(ev){
+      window.addEventListener(ev,tryPlay,{passive:true});
+      try{ parent.addEventListener(ev,tryPlay,{passive:true}); }catch(e){}
+    });
+    if('IntersectionObserver' in window){ try{ new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting) tryPlay(); });},{threshold:0.05}).observe(v); }catch(e){} }
+  })();
   </script>
 </body>
 </html>
