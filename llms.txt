@@ -5,20 +5,20 @@
 ## Czym jest TAMAIA (fakty)
 
 - Produkt: aplikacja (TAMAIA) + asystentka AI w niej (MAIA) dla gabinetów stomatologicznych.
-- Dla kogo: prywatne gabinety z min. 2 rejestratorkami, min. 10 połączeń dziennie, usługi od ok. 3 000 zł (implanty, ortodoncja, protetyka).
+- Dla kogo: prywatne gabinety z min. 2 rejestratorkami, min. 10 połączeń dziennie, usługi premium (implanty, ortodoncja, protetyka).
 - Co robi: nasłuch rozmów po polsku → podsumowanie, ocena 1–10, rozpoznanie emocji pacjenta, konkretna rada „co zrobić następnym razem". Rejestratorka widzi wynik jako pierwsza.
 - Czym NIE jest: nie jest voicebotem zastępującym rejestrację. Pacjenci rozmawiają z ludźmi; AI wspiera zespół.
 - Ekspert i metodologia: Michał Katarzyński — trener i konsultant stomatologiczny od 2012 r. (14 lat), 6000+ przeszkolonych osób, 190+ audytów doradczych, 220+ szkoleń zamkniętych.
-- Technologia bazowa: Ringostat (telefonia AI używana przez 2300+ firm). TAMAIA jest oficjalnym partnerem Ringostat.
+- Technologia bazowa: Ringostat (telefonia AI). TAMAIA jest oficjalnym partnerem Ringostat.
 - Zgodność: RODO, hosting danych w UE.
 - Operator: Excellent Patient Service sp. z o.o., NIP 5170359961, Boguchwała.
 
-## Pakiety (ceny brutto, średnio miesięcznie, abonament roczny)
+## Pakiety (ceny brutto VAT 23%, miesięcznie, abonament roczny)
 
-- PLAN + — od 318 zł/mies brutto (1 skrypt + Ringostat Basic, podstawowy raport jakości).
-- PRO — od 515 zł/mies brutto (3 skrypty + ocena AI każdej rozmowy + ranking rejestratorek).
-- PREMIUM — od 3 382 zł/mies brutto (pełna biblioteka skryptów + analiza wielolokalizacyjna + robot głosowy 24/7, min. 10 rejestratorek).
-- Test 14 dni bez karty. Szczegóły: /pricing.md
+- Plus — od 499 zł/mies brutto. Telefonia + pełne AI MAIA, skrypty, raporty jakości. 3 licencje dla rejestratorek + konto administratora gratis.
+- Pro (najczęściej wybierany) — 699 zł/mies brutto (8 388 zł/rok). Wszystko z Plus + jedna skrzynka wiadomości, Kalendarz, CRM, SMS, przedpłaty. 3 licencje + administrator gratis.
+- Premium — 1499 zł/mies brutto (17 988 zł/rok). Wszystko z Pro + 1 h/mies konsultacji z Michałem Katarzyńskim. 3 licencje + administrator gratis.
+- Każda dodatkowa osoba: +100 zł/mies brutto. Bonus: promokod 169 zł — ponad 18 godzin połączeń wychodzących gratis. Test 14 dni bez karty. Szczegóły: /pricing.md
 
 ## Linki
 
