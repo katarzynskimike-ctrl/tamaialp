@@ -4933,29 +4933,29 @@
       </div>
     </div>
     <style>
-      .skrz-cap{position:absolute;left:0;right:0;bottom:0;padding:26px 28px 28px;text-align:center;color:#fff;}
-      .skrz-l1{margin:0;font-size:1.25rem;font-weight:700;line-height:1.3;text-shadow:0 2px 14px rgba(0,0,0,.45);opacity:0;transform:translateY(14px);transition:opacity .6s ease-out,transform .6s ease-out;}
-      .skrz-l2{margin:8px 0 0;font-family:Georgia,serif;font-size:1.55rem;font-weight:800;line-height:1.25;text-shadow:0 2px 14px rgba(0,0,0,.5);opacity:0;transform:translateY(14px);transition:opacity .6s ease-out .25s,transform .6s ease-out .25s;}
-      .skrz-100{color:var(--gold-2);display:inline-block;}
-      .skrz-wrap.in .skrz-l1{opacity:1;transform:none;}
-      .skrz-wrap.in .skrz-l2{opacity:1;transform:none;}
-      .skrz-wrap.in .skrz-100{animation:skrzPop .7s ease-out .55s both,skrzGlow 2.6s ease-in-out 1.4s infinite;}
-      @keyframes skrzPop{0%{transform:scale(.6);opacity:0}60%{transform:scale(1.18)}100%{transform:scale(1);opacity:1}}
-      @keyframes skrzGlow{0%,100%{text-shadow:0 2px 14px rgba(0,0,0,.5)}50%{text-shadow:0 0 18px rgba(201,162,74,.9),0 2px 14px rgba(0,0,0,.5)}}
-      @media (max-width:640px){.skrz-l1{font-size:1.02rem}.skrz-l2{font-size:1.2rem}.skrz-cap{padding:18px 16px 20px}}
-      @media (prefers-reduced-motion:reduce){.skrz-l1,.skrz-l2{transition-duration:.001ms}.skrz-wrap.in .skrz-100{animation:none}}
+      .skrz-vid{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;background:#0a1e3f;}
+      .skrz-cap{position:absolute;left:0;right:0;bottom:0;padding:26px 28px 28px;text-align:center;color:#fff;z-index:2;}
+      .skrz-l1{margin:0;font-size:1.25rem;font-weight:700;line-height:1.3;color:#fff;text-shadow:0 2px 16px rgba(0,0,0,.6);animation:skrzL1 8s ease-in-out infinite;}
+      .skrz-l2{margin:8px 0 0;font-family:Georgia,serif;font-size:1.55rem;font-weight:800;line-height:1.25;color:#fff;text-shadow:0 2px 16px rgba(0,0,0,.6);animation:skrzL2 8s ease-in-out infinite;}
+      .skrz-100{color:var(--gold-2);display:inline-block;animation:skrzPulse 2.4s ease-in-out infinite;}
+      @keyframes skrzL1{0%{opacity:0;transform:translateY(16px)}8%{opacity:1;transform:none}88%{opacity:1;transform:none}97%{opacity:0;transform:translateY(-6px)}100%{opacity:0}}
+      @keyframes skrzL2{0%,12%{opacity:0;transform:translateY(16px)}22%{opacity:1;transform:none}88%{opacity:1}97%{opacity:0;transform:translateY(-6px)}100%{opacity:0}}
+      @keyframes skrzPulse{0%,100%{transform:scale(1);text-shadow:0 2px 16px rgba(0,0,0,.6)}50%{transform:scale(1.07);text-shadow:0 0 20px rgba(201,162,74,.95),0 2px 16px rgba(0,0,0,.6)}}
+      @media (max-width:640px){.skrz-l1{font-size:1.05rem}.skrz-l2{font-size:1.22rem}.skrz-cap{padding:18px 16px 20px}}
+      @media (prefers-reduced-motion:reduce){.skrz-l1,.skrz-l2{animation:none;opacity:1;transform:none}.skrz-100{animation:none}}
     </style>
     <script>
     (function(){
-      var w=document.querySelector('.skrz-wrap'); if(!w) return;
-      var v=w.querySelector('.skrz-vid');
-      function play(){ if(v){ v.muted=true; var p=v.play&&v.play(); if(p&&p.catch)p.catch(function(){});} }
-      play();
-      function reveal(){ w.classList.add('in'); play(); }
-      if('IntersectionObserver' in window){
-        var io=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting){ reveal(); io.disconnect(); } });},{threshold:0.35});
-        io.observe(w);
-      } else { reveal(); }
+      var v=document.querySelector('.skrz-vid'); if(!v) return;
+      v.muted=true;
+      var n=0;
+      function tryPlay(){ try{ var p=v.play(); if(p&&p.catch)p.catch(function(){}); }catch(e){} }
+      function pump(){ tryPlay(); if(++n<10) setTimeout(pump,500); }
+      pump();
+      window.addEventListener('load',tryPlay);
+      document.addEventListener('visibilitychange',function(){ if(!document.hidden) tryPlay(); });
+      ['touchstart','pointerdown','click','scroll'].forEach(function(ev){ window.addEventListener(ev,tryPlay,{passive:true}); });
+      if('IntersectionObserver' in window){ try{ new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting) tryPlay(); });},{threshold:0.1}).observe(v); }catch(e){} }
     })();
     </script>
 
