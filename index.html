@@ -4092,6 +4092,24 @@
 
 
 <!-- ===== PROBLEM + CALCULATOR STRAT (POŁĄCZONE) ===== -->
+<style id="pulpitAnim">
+  #pulpit .plp-armed{opacity:0;transform:translateY(12px) scale(.98)}
+  #pulpit .plp-armed.show{opacity:1;transform:none;transition:opacity .45s ease, transform .45s cubic-bezier(.2,.8,.2,1)}
+  #pulpit .plp-armed:not(.show) .plp-bar2 i{width:0!important}
+  #pulpit .plp-armed.show .plp-bar2 i{transition:width .7s cubic-bezier(.2,.8,.2,1)}
+  #pulpit .plp-rej{margin-top:16px;border-top:1px solid #F0ECE0;padding-top:14px}
+  #pulpit .plp-rejrow{padding:9px 0;border-top:1px solid #F4F0E6}
+  #pulpit .plp-rejrow:first-of-type{border-top:0}
+  #pulpit .rr-top{display:flex;align-items:center;gap:9px}
+  #pulpit .rr-ava{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--navy-light));color:var(--gold-2);font-size:.74rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  #pulpit .rr-nm{font-size:.9rem;font-weight:600;color:var(--navy)}
+  #pulpit .rr-ov{margin-left:auto;font-size:1rem;font-weight:800;color:var(--gold-1)}
+  #pulpit .rr-chips{display:flex;gap:6px;margin-top:7px;flex-wrap:wrap}
+  #pulpit .rr-chip{font-size:.72rem;font-weight:600;color:var(--navy);background:var(--cream);border:1px solid var(--warm-border);border-radius:7px;padding:3px 8px}
+  #pulpit .rr-chip b{color:var(--text-muted);font-weight:600}
+  #pulpit .rr-chip.low{background:#FCF3E5;border-color:#EBD3A8;color:#B4441F}
+  #pulpit .rr-chip.low b{color:#B4441F}
+</style>
 <section id="pulpit" class="how-it-works" style="background:linear-gradient(180deg,var(--cream) 0%,#fff 100%)">
   <div class="container">
     <div class="section-header">
@@ -4111,19 +4129,19 @@
       <div class="plp-body">
         <!-- 4 KPI -->
         <div class="plp-kpis">
-          <div class="plp-kpi"><div class="v">86%<span style="display:block;font-size:.8rem;font-weight:700;color:var(--text-muted);margin-top:2px;">86 / 100</span></div><div class="l">Odebrane połączenia</div></div>
-          <div class="plp-kpi"><div class="v">14%<span style="display:block;font-size:.8rem;font-weight:700;color:var(--text-muted);margin-top:2px;">14 / 100</span></div><div class="l">Nieodebrane · 3 nieoddzwonione</div></div>
-          <div class="plp-kpi"><div class="v" style="color:var(--success)">63%<span style="display:block;font-size:.8rem;font-weight:700;color:var(--text-muted);margin-top:2px;">63 / 100</span></div><div class="l">Skuteczność umawiania · rozmowa → wizyta</div></div>
-          <div class="plp-kpi"><div class="v">8,4<span style="font-size:.9rem;color:var(--text-muted)">/10</span></div><div class="l">Średnia ocena — Indeks MAIA®</div></div>
+          <div class="plp-kpi plp-seq"><div class="v"><span class="plp-num" data-to="86" data-suffix="%">86%</span><span style="display:block;font-size:.8rem;font-weight:700;color:var(--text-muted);margin-top:2px;">86 / 100</span></div><div class="l">Odebrane połączenia</div></div>
+          <div class="plp-kpi plp-seq"><div class="v"><span class="plp-num" data-to="14" data-suffix="%">14%</span><span style="display:block;font-size:.8rem;font-weight:700;color:var(--text-muted);margin-top:2px;">14 / 100</span></div><div class="l">Nieodebrane · 3 nieoddzwonione</div></div>
+          <div class="plp-kpi plp-seq"><div class="v" style="color:var(--success)"><span class="plp-num" data-to="63" data-suffix="%">63%</span><span style="display:block;font-size:.8rem;font-weight:700;color:var(--text-muted);margin-top:2px;">63 / 100</span></div><div class="l">Skuteczność umawiania · rozmowa → wizyta</div></div>
+          <div class="plp-kpi plp-seq"><div class="v"><span class="plp-num" data-to="8.4" data-dec="1">8,4</span><span style="font-size:.9rem;color:var(--text-muted)">/10</span></div><div class="l">Średnia ocena — Indeks MAIA®</div></div>
         </div>
 
         <div class="plp-cols">
           <!-- Skuteczność wg tematu -->
           <div class="plp-panel">
             <h3 class="plp-h">Skuteczność wg tematu <small>umówione / zapytań</small></h3>
-            <div class="plp-row"><span class="t">Bonding</span><span class="n">22/31</span><span class="p" style="color:var(--success)">71%</span><span class="plp-bar2"><i style="width:71%;background:var(--success)"></i></span></div>
-            <div class="plp-row"><span class="t">Ortodoncja</span><span class="n">9/18</span><span class="p" style="color:var(--success)">50%</span><span class="plp-bar2"><i style="width:50%;background:var(--success)"></i></span></div>
-            <div class="plp-row"><span class="t">Implant</span><span class="n">11/24</span><span class="p" style="color:#D97706">46%</span><span class="plp-bar2"><i style="width:46%;background:#D97706"></i></span></div>
+            <div class="plp-row plp-seq"><span class="t">Bonding</span><span class="n">22/31</span><span class="p" style="color:var(--success)"><span class="plp-num" data-to="71" data-suffix="%">71%</span></span><span class="plp-bar2"><i style="width:71%;background:var(--success)"></i></span></div>
+            <div class="plp-row plp-seq"><span class="t">Ortodoncja</span><span class="n">9/18</span><span class="p" style="color:var(--success)"><span class="plp-num" data-to="50" data-suffix="%">50%</span></span><span class="plp-bar2"><i style="width:50%;background:var(--success)"></i></span></div>
+            <div class="plp-row plp-seq"><span class="t">Implant</span><span class="n">11/24</span><span class="p" style="color:#D97706"><span class="plp-num" data-to="46" data-suffix="%">46%</span></span><span class="plp-bar2"><i style="width:46%;background:#D97706"></i></span></div>
             <div class="plp-advice">💬 <b style="color:var(--navy)">MAIA radzi:</b> Przy koronach i protetyce pacjent pyta o cenę — zanim ją podasz, powiedz o doświadczeniu protetyka i o tym, co daje konsultacja: dokładna diagnostyka i trwały, przewidywalny efekt.</div>
           </div>
 
@@ -4142,6 +4160,21 @@
               <div class="plp-li"><span class="tag" style="background:#FCF3E5;color:#B45309">do odzyskania</span> Jan P. — gabinet odwołał, brak nowego terminu</div>
               <div class="plp-li"><span class="tag" style="background:#EEF1F6;color:var(--navy)">czeka</span> 3 pacjentów czeka na telefon zwrotny</div>
             </div>
+          </div>
+        </div>
+        <div class="plp-rej">
+          <h3 class="plp-h">Skuteczność rejestratorek <small>wg tematu</small></h3>
+          <div class="plp-rejrow plp-seq">
+            <div class="rr-top"><span class="rr-ava">AK</span><span class="rr-nm">Ania K.</span><span class="rr-ov"><span class="plp-num" data-to="79" data-suffix="%">79%</span></span></div>
+            <div class="rr-chips"><span class="rr-chip">Bonding <b>84%</b></span><span class="rr-chip">Ortodoncja <b>70%</b></span><span class="rr-chip">Implant <b>83%</b></span></div>
+          </div>
+          <div class="plp-rejrow plp-seq">
+            <div class="rr-top"><span class="rr-ava">KW</span><span class="rr-nm">Kasia W.</span><span class="rr-ov"><span class="plp-num" data-to="58" data-suffix="%">58%</span></span></div>
+            <div class="rr-chips"><span class="rr-chip">Bonding <b>62%</b></span><span class="rr-chip low">Ortodoncja <b>44%</b></span><span class="rr-chip">Implant <b>57%</b></span></div>
+          </div>
+          <div class="plp-rejrow plp-seq">
+            <div class="rr-top"><span class="rr-ava">ML</span><span class="rr-nm">Marta L.</span><span class="rr-ov"><span class="plp-num" data-to="64" data-suffix="%">64%</span></span></div>
+            <div class="rr-chips"><span class="rr-chip">Bonding <b>71%</b></span><span class="rr-chip low">Ortodoncja <b>53%</b></span><span class="rr-chip">Implant <b>66%</b></span></div>
           </div>
         </div>
       </div>
@@ -6361,5 +6394,48 @@ window.addEventListener('message',function(e){var d=e&&e.data;if(!d||!d.tamaiaH)
 })();
 </script>
 <style id="heroPulpitFix">@media(min-width:901px){#pulpit{display:none!important;}}.hero-visual .plp-cols{grid-template-columns:1fr!important;}</style>
+<script>
+(function(){
+  var pulpit=document.getElementById('pulpit'); if(!pulpit) return;
+  var seq=[].slice.call(pulpit.querySelectorAll('.plp-seq')); if(!seq.length) return;
+  var ran=false;
+  function fmt(n,dec,suf){ return (dec? n.toFixed(dec).replace('.',','):Math.round(n).toString())+(suf||''); }
+  function countUp(el,cb){
+    var to=parseFloat(el.getAttribute('data-to')), dec=parseInt(el.getAttribute('data-dec')||'0'), suf=el.getAttribute('data-suffix')||'';
+    var dur=480, t0=performance.now();
+    (function step(t){
+      var p=Math.min(1,(t-t0)/dur), e=1-Math.pow(1-p,3);
+      el.textContent=fmt(to*e,dec,suf);
+      if(p<1) requestAnimationFrame(step); else { el.textContent=fmt(to,dec,suf); if(cb) cb(); }
+    })(performance.now());
+  }
+  function arm(){
+    seq.forEach(function(it){
+      it.classList.add('plp-armed');
+      var num=it.querySelector('.plp-num');
+      if(num){ var dec=parseInt(num.getAttribute('data-dec')||'0'); num.textContent=fmt(0,dec,num.getAttribute('data-suffix')||''); }
+    });
+  }
+  function run(){
+    if(ran) return; ran=true; var i=0;
+    (function next(){
+      if(i>=seq.length) return;
+      var it=seq[i++]; it.classList.add('show');
+      var num=it.querySelector('.plp-num');
+      setTimeout(function(){ if(num) countUp(num,function(){ setTimeout(next,120); }); else setTimeout(next,220); }, 150);
+    })();
+  }
+  function inView(){ var r=pulpit.getBoundingClientRect(); return r.top < (window.innerHeight*0.85) && r.bottom > 40; }
+  if(inView()){ run(); }
+  else {
+    arm();
+    var onScroll=function(){ if(inView()){ cleanup(); run(); } };
+    function cleanup(){ window.removeEventListener('scroll',onScroll); window.removeEventListener('resize',onScroll); }
+    window.addEventListener('scroll',onScroll,{passive:true});
+    window.addEventListener('resize',onScroll,{passive:true});
+    setTimeout(function(){ if(!ran){ cleanup(); run(); } }, 7000);
+  }
+})();
+</script>
 </body>
 </html>
