@@ -3438,9 +3438,12 @@
     color: transparent;
   }
   @media (max-width: 720px) {
-    .sticky-cta-text { font-size: 0.9rem; }
-    .sticky-cta-text small { display: none; }
+    .sticky-cta { padding: 10px 14px; }
+    .sticky-cta-inner { gap: 12px; }
+    .sticky-cta-text { font-size: 0.92rem; line-height: 1.2; }
+    .sticky-cta-text small { display: block; font-size: 0.74rem; opacity: 0.85; font-weight: 500; }
     .sticky-cta-phone { display: none; }
+    .sticky-cta .btn { padding: 13px 20px; font-size: 1rem; min-height: 48px; display: inline-flex; align-items: center; white-space: nowrap; }
   }
 
   /* ===== EXIT INTENT POPUP ===== */
@@ -3883,21 +3886,12 @@
   .ws-success-link { color: var(--gold-1); font-weight: 600; text-decoration: none; font-size: 0.95rem; }
   .ws-success-link:hover { text-decoration: underline; }
 
-  /* MOBILE SLIM — ukryj sekcje na telefonie; przycisk rozwija pełną wersję */
-  .full-toggle{display:none}
-  .desktop-fab{display:none}
+  /* MOBILE — JEDNA strona dla wszystkich (zlikwidowany tryb „slim" + przełącznik „wersja desktop") */
+  .full-toggle{display:none !important}
+  .desktop-fab{display:none !important}
   @media (max-width: 900px){
-    body:not(.full-mobile) #solution,
-    body:not(.full-mobile) #testimonials,
-    body:not(.full-mobile) #for-team,
-    body:not(.full-mobile) #for-whom,
-    body:not(.full-mobile) #maia-chat,
-    body:not(.full-mobile) #ringo-details { display: none !important; }
-    /* Hero na telefonie: chowamy domyślny mockup — jego rolę przejmuje „Jeden ekran" (#pulpit tuż pod hero) */
-    body:not(.full-mobile) .hero .hero-visual{ display:none; }
-    body:not(.full-mobile) .full-toggle{ display:block; }
-    body:not(.full-mobile) .desktop-fab{ display:inline-flex; align-items:center; gap:7px; position:fixed; left:14px; bottom:16px; z-index:60; background:var(--navy-dark); color:#fff; border:1px solid rgba(255,255,255,.18); padding:9px 14px; border-radius:999px; font-size:13px; font-weight:600; box-shadow:0 8px 22px rgba(10,30,63,.28); cursor:pointer; font-family:inherit; }
-    body:not(.full-mobile) .desktop-fab svg{ width:16px; height:16px; }
+    /* Hero na telefonie: ciężki mockup chowamy — jego rolę przejmuje #pulpit tuż pod hero */
+    .hero .hero-visual{ display:none; }
   }
 </style>
 <style id="audyt-czytelnosc-2026">
@@ -5597,7 +5591,7 @@
 <div class="sticky-cta" id="stickyCta">
   <div class="sticky-cta-inner">
     <div class="sticky-cta-text">
-      <strong>Plany od 499 zł / mies</strong> <small>· test 14 dni za darmo</small>
+      <strong>14 dni za darmo</strong> <small>· bez karty, bez zobowiązań</small>
     </div>
     <div style="display: flex; align-items: center; gap: 14px;">
       <a href="tel:+48579774089" class="sticky-cta-phone">📞 579 774 089</a>
@@ -6343,6 +6337,6 @@ window.addEventListener('message',function(e){var d=e&&e.data;if(!d||!d.tamaiaH)
   });
 })();
 </script>
-<style id="heroPulpitFix">@media(min-width:901px){#pulpit{display:none!important;}}body.full-mobile #pulpit{display:none!important;}.hero-visual .plp-cols{grid-template-columns:1fr!important;}</style>
+<style id="heroPulpitFix">@media(min-width:901px){#pulpit{display:none!important;}}.hero-visual .plp-cols{grid-template-columns:1fr!important;}</style>
 </body>
 </html>
