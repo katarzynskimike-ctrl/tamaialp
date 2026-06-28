@@ -4184,6 +4184,16 @@
   </div>
 </section>
 
+<style id="pkg2Anim">
+  [data-animrow] > .anim-armed{opacity:0;transform:translateY(14px)}
+  [data-animrow] > .anim-armed.show{opacity:1;transform:none;transition:opacity .5s ease, transform .5s cubic-bezier(.2,.8,.2,1)}
+  #ringo-details .ringo-acc{max-width:760px;margin:0 auto;border:1px solid rgba(10,30,63,.1);border-radius:12px;background:#fff;overflow:hidden}
+  #ringo-details .ringo-acc>summary{list-style:none;cursor:pointer;padding:14px 18px;font-size:0.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:flex;align-items:center;justify-content:center;gap:10px;text-align:center}
+  #ringo-details .ringo-acc>summary::-webkit-details-marker{display:none}
+  #ringo-details .ringo-acc>summary::after{content:"+";color:var(--gold-1);font-weight:700;font-size:1.2rem;line-height:1}
+  #ringo-details .ringo-acc[open]>summary::after{content:"\2013"}
+  #ringo-details .ringo-acc-body{padding:6px 16px 18px}
+</style>
 <section id="problem" class="problem">
   <div class="container">
     <div class="section-header">
@@ -4193,21 +4203,21 @@
     </div>
 
     <!-- 3 problem cards -->
-    <div class="problem-grid">
+    <div class="problem-grid" data-animrow>
       <div class="problem-card">
-        <div class="problem-stat">23%</div>
+        <div class="problem-stat"><span class="cu" data-to="23" data-suf="%">23%</span></div>
         <h3>Nieodebrane połączenia</h3>
         <p>Średnio co czwarty pacjent nie dodzwania się za pierwszym razem. Większość nie próbuje drugi raz — dzwoni do konkurencji.</p>
         <div style="display:inline-block;margin-top:auto;align-self:center;background:#FBEAEA;color:#9B1C1C;font-weight:700;font-size:0.9rem;line-height:1.35;padding:7px 12px;border-radius:8px;">Co miesiąc dla konkurencji: ≈ 30 000 zł<span style="display:block;font-weight:500;color:#B45757;font-size:0.78rem;margin-top:2px;">~10 pacjentów × 3 000 zł</span></div>
       </div>
       <div class="problem-card">
-        <div class="problem-stat">41%</div>
+        <div class="problem-stat"><span class="cu" data-to="41" data-suf="%">41%</span></div>
         <h3>Słabo obsłużone</h3>
         <p>Rejestratorka odbiera, ale nie uśmiecha się lub nie okazuje empatii i zaangażowania, nie proponuje wizyty z inicjatywą. Pacjent mówi „dziękuję" i dzwoni dalej, szukając profesjonalizmu.</p>
         <div style="display:inline-block;margin-top:auto;align-self:center;background:#FBEAEA;color:#9B1C1C;font-weight:700;font-size:0.9rem;line-height:1.35;padding:7px 12px;border-radius:8px;">Co miesiąc dla konkurencji: ≈ 21 000 zł<span style="display:block;font-weight:500;color:#B45757;font-size:0.78rem;margin-top:2px;">~7 pacjentów × 3 000 zł</span></div>
       </div>
       <div class="problem-card">
-        <div class="problem-stat">62%</div>
+        <div class="problem-stat"><span class="cu" data-to="62" data-suf="%">62%</span></div>
         <h3>Bez kontaktu zwrotnego</h3>
         <p>Pacjent pyta o cenę, a rejestratorka nie buduje wartości wizyty, tylko podaje cenę. Pacjent mówi „jeszcze się zastanowię" — nigdy już nie zadzwoni.</p>
         <div style="display:inline-block;margin-top:auto;align-self:center;background:#FBEAEA;color:#9B1C1C;font-weight:700;font-size:0.9rem;line-height:1.35;padding:7px 12px;border-radius:8px;">Co miesiąc dla konkurencji: ≈ 15 000 zł<span style="display:block;font-weight:500;color:#B45757;font-size:0.78rem;margin-top:2px;">~5 pacjentów × 3 000 zł</span></div>
@@ -4581,20 +4591,20 @@
         <p style="font-family:Georgia,serif;font-size:1.3rem;font-weight:700;color:var(--navy);margin:0;line-height:1.45;">TAMAIA to nie koszt — to inwestycja. <span class="gold-text">Pytanie nie brzmi „czy się zwróci", tylko „ile razy".</span></p>
       </div>
 
-      <div class="roi-examples">
+      <div class="roi-examples" data-animrow>
         <div class="roi-example">
           <div class="roi-ex-label">1 implant z koroną pokrywa system z góry na</div>
-          <div class="roi-ex-value">≈ 7 000 zł</div>
+          <div class="roi-ex-value">≈ <span class="cu" data-to="7000" data-grp="1">7 000</span> zł</div>
           <div class="roi-ex-ratio" style="background: var(--gold-1);">~14 miesięcy</div>
         </div>
         <div class="roi-example">
           <div class="roi-ex-label">1 plan ortodontyczny pokrywa system z góry na</div>
-          <div class="roi-ex-value">≈ 18 000 zł</div>
+          <div class="roi-ex-value">≈ <span class="cu" data-to="18000" data-grp="1">18 000</span> zł</div>
           <div class="roi-ex-ratio" style="background: var(--gold-1);">~3 lata</div>
         </div>
         <div class="roi-example">
           <div class="roi-ex-label">1 All-on-4 (pełny 1 łuk) pokrywa system na</div>
-          <div class="roi-ex-value">≈ 45 000 zł</div>
+          <div class="roi-ex-value">≈ <span class="cu" data-to="45000" data-grp="1">45 000</span> zł</div>
           <div class="roi-ex-ratio" style="background: var(--gold-1);">~7,5 roku</div>
         </div>
       </div>
@@ -4610,19 +4620,19 @@
           <h3>Czas managera — <span class="gold-text">6–12 godzin miesięcznie</span></h3>
           <p>Bez MAII manager nasłuchuje wybranych nagrań ręcznie (5–10 min/rozmowa × ~100 sprawdzonych miesięcznie). Z MAIĄ raport powstaje sam, w 5 minut.</p>
         </div>
-        <div class="roi-time-stats">
+        <div class="roi-time-stats" data-animrow>
           <div class="roi-time-stat">
             <div class="roi-time-num">6–12 h</div>
             <div class="roi-time-label">odzyskane miesięcznie</div>
             <div class="roi-time-meta">= 1–2 dni robocze na inne ważne zadania</div>
           </div>
           <div class="roi-time-stat">
-            <div class="roi-time-num">144 h</div>
+            <div class="roi-time-num"><span class="cu" data-to="144">144</span> h</div>
             <div class="roi-time-label">odzyskane rocznie</div>
             <div class="roi-time-meta">= ponad miesiąc roboczy w skali roku</div>
           </div>
           <div class="roi-time-stat">
-            <div class="roi-time-num">100%</div>
+            <div class="roi-time-num"><span class="cu" data-to="100" data-suf="%">100%</span></div>
             <div class="roi-time-label">rozmów podsumowanych</div>
             <div class="roi-time-meta">zamiast 10–15% wyrywkowo ręcznie</div>
           </div>
@@ -5033,7 +5043,8 @@
 <!-- ===== SZCZEGÓŁY TELEFONII RINGOSTAT ===== -->
 <section id="ringo-details" style="background: var(--cream); padding: 32px 0 48px; border-top: 1px solid rgba(10,30,63,.08);">
   <div class="container" style="max-width: 960px;">
-    <p style="text-align:center; font-size: 0.8rem; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 22px;">Szczegóły telefonii Ringostat — co wchodzi w abonament, a co jest płatne osobno</p>
+    <details class="ringo-acc"><summary>Szczegóły telefonii Ringostat — co wchodzi w abonament, a co płatne osobno</summary>
+    <div class="ringo-acc-body">
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
 
       <div style="background:#fff; border-radius:12px; padding:16px 20px; border:1px solid rgba(10,30,63,.08); display:flex; flex-direction:column; gap:4px;">
@@ -5059,6 +5070,7 @@
 
     </div>
     <p style="text-align:center; font-size:0.74rem; color:var(--text-muted); margin-top:14px;">Ceny Ringostat z VAT 23%. Rozmowy wychodzące wg stawek Ringostat od 0,12 zł netto/min (połączenia komórkowe). Aktualne stawki: <a href="https://ringostat.com/pl/virtual-number-pl/" target="_blank" rel="noopener" style="color:var(--gold-1);">ringostat.com</a>.</p>
+    </div></details>
   </div>
 </section>
 
@@ -6435,6 +6447,25 @@ window.addEventListener('message',function(e){var d=e&&e.data;if(!d||!d.tamaiaH)
     window.addEventListener('resize',onScroll,{passive:true});
     setTimeout(function(){ if(!ran){ cleanup(); run(); } }, 7000);
   }
+})();
+</script>
+<script>
+(function(){
+  function grp(x){return x.replace(/\B(?=(\d{3})+(?!\d))/g,'\u00A0');}
+  function fmt(n,dec,suf,g){var x=dec?n.toFixed(dec).replace('.',','):Math.round(n).toString();if(g)x=grp(x);return x+(suf||'');}
+  function setNum(el,v){el.textContent=fmt(v,parseInt(el.getAttribute('data-dec')||'0'),el.getAttribute('data-suf')||'',el.getAttribute('data-grp'));}
+  function countUp(el,cb){var to=parseFloat(el.getAttribute('data-to')),dec=parseInt(el.getAttribute('data-dec')||'0'),suf=el.getAttribute('data-suf')||'',g=el.getAttribute('data-grp');var dur=620,t0=performance.now();(function st(t){var p=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-p,3);el.textContent=fmt(to*e,dec,suf,g);if(p<1)requestAnimationFrame(st);else{el.textContent=fmt(to,dec,suf,g);if(cb)cb();}})(performance.now());}
+  function setup(row){
+    var items=[].slice.call(row.children).filter(function(c){return c.nodeType===1;});
+    if(!items.length)return; var ran=false;
+    function inView(){var r=row.getBoundingClientRect();return r.top<(window.innerHeight*0.85)&&r.bottom>40;}
+    function arm(){items.forEach(function(it){it.classList.add('anim-armed');[].slice.call(it.querySelectorAll('.cu')).forEach(function(n){setNum(n,0);});});}
+    function run(){if(ran)return;ran=true;var i=0;(function next(){if(i>=items.length)return;var it=items[i++];it.classList.add('show');var cu=it.querySelector('.cu');setTimeout(function(){if(cu)countUp(cu,function(){setTimeout(next,110);});else setTimeout(next,200);},150);})();}
+    arm();
+    if(inView()){run();}
+    else{var on=function(){if(inView()){cl();run();}};function cl(){window.removeEventListener('scroll',on);window.removeEventListener('resize',on);}window.addEventListener('scroll',on,{passive:true});window.addEventListener('resize',on,{passive:true});setTimeout(function(){if(!ran){cl();run();}},8000);}
+  }
+  [].slice.call(document.querySelectorAll('[data-animrow]')).forEach(setup);
 })();
 </script>
 </body>
