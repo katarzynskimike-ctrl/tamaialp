@@ -6468,5 +6468,36 @@ window.addEventListener('message',function(e){var d=e&&e.data;if(!d||!d.tamaiaH)
   [].slice.call(document.querySelectorAll('[data-animrow]')).forEach(setup);
 })();
 </script>
+<!-- ===== POMIAR: Vercel Web Analytics (cookieless) + zdarzenia ===== -->
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script>
+(function(){
+  function track(name,data){ try{ window.va('event', Object.assign({name:name}, data||{})); }catch(e){} }
+  // scroll-depth 25/50/75/100
+  var marks=[25,50,75,100], hit={};
+  function onScroll(){
+    var st=window.scrollY||document.documentElement.scrollTop||0;
+    var hh=(document.documentElement.scrollHeight - window.innerHeight);
+    var pct=hh>0? Math.round(st/hh*100):0;
+    for(var i=0;i<marks.length;i++){ var m=marks[i]; if(pct>=m && !hit[m]){ hit[m]=1; track('scroll_depth',{depth:m}); } }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  // kliknięcia CTA (linki do #cta / app.tamaia.pl / przyciski sprzedażowe)
+  document.addEventListener('click', function(e){
+    var a=e.target && e.target.closest ? e.target.closest('a,button') : null; if(!a) return;
+    var href=a.getAttribute('href')||'';
+    var txt=(a.textContent||'').replace(/\s+/g,' ').trim().slice(0,48);
+    if(href.indexOf('#cta')>-1 || href.indexOf('app.tamaia.pl')>-1 || href.indexOf('calendly')>-1
+       || /Wypróbuj|Zamów|Wyślij zgłoszenie|Zacznij|Umów|Porozmawiaj/i.test(txt)){
+      track('cta_click', {label:txt||'(brak)', href:href||'(brak)'});
+    }
+  }, true);
+  // wysłanie formularza (sukces wizard)
+  document.addEventListener('submit', function(e){
+    if(e.target && (e.target.id==='wizardForm' || e.target.id==='demoForm')) track('lead_submit',{});
+  }, true);
+})();
+</script>
 </body>
 </html>
