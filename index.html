@@ -5352,8 +5352,8 @@
           <div class="wizard-step" data-step="2">
             <h3 class="ws-title">Jaka jest skala Twojej recepcji?</h3>
             <p class="ws-sub">Cena pakietu zależy od liczby osób w rejestracji.</p>
-            <label class="ws-field"><span>Ile osób pracuje w rejestracji? *</span><input type="number" name="receptionCount" min="1" max="100" required placeholder="np. 5"></label>
-            <label class="ws-field"><span>Ile macie lokalizacji? *</span><input type="number" name="locations" min="1" max="50" required placeholder="np. 1"></label>
+            <label class="ws-field"><span>Ile osób pracuje w rejestracji? *</span><input type="number" name="receptionCount" min="1" max="100" required value="2" placeholder="np. 5"></label>
+            <label class="ws-field"><span>Ile macie lokalizacji? *</span><input type="number" name="locations" min="1" max="50" required value="1" placeholder="np. 1"></label>
             <div class="ws-why">💡 Cena pakietu skaluje się liniowo, a od 10 osób przejdziesz na pakiet premium — taniej per osoba.</div>
             <div class="ws-actions">
               <button type="button" class="ws-btn ws-btn-back" onclick="wizardBack()">← Wstecz</button>
@@ -5371,12 +5371,12 @@
               <label class="ws-radio"><input type="radio" name="currentPbx" value="Tak" required onchange="togglePbxName(true)"><span>Tak — jaka?</span></label>
             </fieldset>
             <label class="ws-field" id="pbxNameField" style="display:none;"><span>Jaka centralka?</span><input type="text" name="currentPbxName" placeholder="np. Polcom, Datera, 3CX..."></label>
-            <fieldset class="ws-radio-group">
+            <fieldset class="ws-radio-group" id="recordingField" style="display:none;">
               <legend>Macie nagrywanie rozmów? *</legend>
-              <label class="ws-radio"><input type="radio" name="recordingStatus" value="Tak, wszystko" required><span>Tak, wszystko</span></label>
-              <label class="ws-radio"><input type="radio" name="recordingStatus" value="Tak, część" required><span>Tak, część</span></label>
-              <label class="ws-radio"><input type="radio" name="recordingStatus" value="Nie" required><span>Nie</span></label>
-              <label class="ws-radio"><input type="radio" name="recordingStatus" value="Nie wiem" required><span>Nie wiem</span></label>
+              <label class="ws-radio"><input type="radio" name="recordingStatus" value="Tak, wszystko"><span>Tak, wszystko</span></label>
+              <label class="ws-radio"><input type="radio" name="recordingStatus" value="Tak, część"><span>Tak, część</span></label>
+              <label class="ws-radio"><input type="radio" name="recordingStatus" value="Nie"><span>Nie</span></label>
+              <label class="ws-radio"><input type="radio" name="recordingStatus" value="Nie wiem"><span>Nie wiem</span></label>
             </fieldset>
             <div class="ws-actions">
               <button type="button" class="ws-btn ws-btn-back" onclick="wizardBack()">← Wstecz</button>
@@ -5441,73 +5441,11 @@
       </div>
     </div>
 
-    <!-- ===== SEKCJA DECYZJI (pod formularzem) ===== -->
-    <div id="decision" class="decision-box">
-      <style>
-        .decision-box{max-width:760px;margin:34px auto 0;padding:30px 26px;border-radius:20px;
-          background:rgba(255,255,255,0.05);border:1px solid rgba(201,162,74,0.35);text-align:center}
-        .decision-box h3{margin:0 0 8px;font-family:Georgia,serif;font-size:1.45rem;color:#fff}
-        .decision-box p{margin:0 auto;max-width:560px;color:rgba(255,255,255,0.82);line-height:1.6}
-        .decision-head p{margin-bottom:22px}
-        .decision-choice{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-        .dcn-btn{min-height:54px;padding:14px 30px;border:none;border-radius:12px;font-size:1.05rem;
-          font-weight:700;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease,opacity .15s}
-        .dcn-btn:hover{transform:translateY(-2px)}
-        .dcn-yes{background:linear-gradient(135deg,#16a34a,#15803d);color:#fff;box-shadow:0 8px 22px rgba(22,163,74,.35)}
-        .dcn-no{background:transparent;color:#fff;border:1.5px solid rgba(239,68,68,.7)}
-        .dcn-no:hover{background:rgba(239,68,68,.12)}
-        .decision-yes,.decision-no{margin-top:6px}
-        .dcn-emoji{font-size:2.6rem;line-height:1;margin-bottom:8px}
-        #objectionForm{margin:18px auto 0;max-width:520px;display:flex;flex-direction:column;gap:12px;text-align:left}
-        #objectionForm textarea,#objectionForm input[type=email]{width:100%;box-sizing:border-box;padding:13px 14px;
-          border-radius:11px;border:1px solid rgba(255,255,255,0.25);background:rgba(255,255,255,0.06);
-          color:#fff;font-size:1rem;font-family:inherit;resize:vertical}
-        #objectionForm textarea::placeholder,#objectionForm input::placeholder{color:rgba(255,255,255,0.45)}
-        #objectionForm textarea:focus,#objectionForm input:focus{outline:none;border-color:rgba(201,162,74,.8)}
-        .dcn-send{background:linear-gradient(135deg,#C9A24A,#b3893a);color:#1a1407;align-self:center}
-        .dcn-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
-        @media (prefers-reduced-motion: reduce){.dcn-btn{transition:none}.dcn-btn:hover{transform:none}}
-      </style>
-
-      <div class="decision-head" id="decisionChoice">
-        <h3>Podejmij decyzję — świadomie</h3>
-        <p>To miejsce na Twoją decyzję. Każda jest dobra, jeśli jest świadoma. Co wybierasz?</p>
-        <div class="decision-choice">
-          <button type="button" class="dcn-btn dcn-yes" onclick="decisionYes()">✓ Decyduję się</button>
-          <button type="button" class="dcn-btn dcn-no" onclick="decisionNo()">Nie, to nie dla mnie</button>
-        </div>
-      </div>
-
-      <div class="decision-yes" id="decisionYes" hidden>
-        <div class="dcn-emoji">🎉</div>
-        <h3>Gratulacje — świetny wybór!</h3>
-        <p>Za chwilę przeniosę Cię do formularza, żebyś dokończył zgłoszenie. Do zobaczenia po drugiej stronie.</p>
-      </div>
-
-      <div class="decision-no" id="decisionNo" hidden>
-        <div class="dcn-emoji">🤝</div>
-        <h3>Każda decyzja jest dobra, jeśli jest świadoma.</h3>
-        <p>Będziemy wdzięczni za <strong>jeden powód</strong>, dlaczego nie. Napisz — a może spełnimy Twoje oczekiwanie.</p>
-        <form id="objectionForm" onsubmit="return objectionSubmit(event)" novalidate>
-          <textarea name="reason" required maxlength="2000" rows="3" placeholder="Np. za drogo / nie mam teraz czasu / mam już inne rozwiązanie…"></textarea>
-          <input type="email" name="email" placeholder="E-mail (opcjonalnie — gdybyśmy mieli wrócić z propozycją)">
-          <input type="text" name="website" class="dcn-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <button type="submit" class="dcn-btn dcn-send"><span class="dcn-send-label">Wyślij powód →</span><span class="dcn-send-loading" hidden>Wysyłam…</span></button>
-        </form>
-        <div class="decision-thanks" id="decisionThanks" hidden>
-          <div class="dcn-emoji">🙏</div>
-          <h3>Dziękujemy za szczerość.</h3>
-          <p>Przeczytamy każde słowo. Jeśli zostawiłeś e-mail i znajdziemy rozwiązanie Twojej obiekcji — odezwiemy się.</p>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
 <script>
 (function(){
-  function show(id){ var e=document.getElementById(id); if(e) e.hidden=false; }
-  function hide(id){ var e=document.getElementById(id); if(e) e.hidden=true; }
   function fireConfetti(){
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     function burst(){
@@ -5521,43 +5459,6 @@
     sc.onload=burst; document.head.appendChild(sc);
   }
   window.fireConfetti=fireConfetti;
-  window.decisionYes=function(){
-    hide('decisionChoice'); hide('decisionNo'); show('decisionYes');
-    fireConfetti();
-    setTimeout(function(){
-      var lf=document.getElementById('leadForm');
-      if(lf){ lf.scrollIntoView({ behavior:'smooth', block:'start' });
-        var inp=lf.querySelector('input[name=name]'); if(inp) setTimeout(function(){ try{ inp.focus(); }catch(e){} }, 700); }
-    }, 1500);
-  };
-  window.decisionNo=function(){
-    hide('decisionChoice'); hide('decisionYes'); show('decisionNo');
-    var ta=document.querySelector('#objectionForm textarea'); if(ta) setTimeout(function(){ try{ ta.focus(); }catch(e){} }, 150);
-  };
-  window.objectionSubmit=function(ev){
-    ev.preventDefault();
-    var f=ev.target;
-    if(f.website && f.website.value) { return false; } // honeypot
-    var reason=(f.reason.value||'').trim();
-    if(!reason){ f.reason.focus(); return false; }
-    var email=(f.email.value||'').trim();
-    var lbl=f.querySelector('.dcn-send-label'), ld=f.querySelector('.dcn-send-loading'), btn=f.querySelector('button[type=submit]');
-    if(lbl) lbl.hidden=true; if(ld) ld.hidden=false; if(btn) btn.disabled=true;
-    var payload={ reason:reason, email:email, source:'tamaia.pl' };
-    var done=function(){ f.style.display='none'; show('decisionThanks'); };
-    var mailtoFallback=function(){
-      try{
-        var subj=encodeURIComponent('[OBIEKCJA TAMAIA] dlaczego nie');
-        var body=encodeURIComponent('Powód: '+reason+(email?('\n\nKontakt: '+email):'')+'\n\nŹródło: tamaia.pl');
-        window.location.href='mailto:biuro@doskonalaobslugapacjenta.pl?subject='+subj+'&body='+body;
-      }catch(e){}
-    };
-    fetch('https://app.tamaia.pl/api/objection',{ method:'POST', headers:{ 'Content-Type':'application/json' }, body:JSON.stringify(payload) })
-      .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ return { ok:r.ok, j:j }; }); })
-      .then(function(x){ if(!x.ok || !x.j || !x.j.ok) throw new Error('backend'); done(); })
-      .catch(function(){ mailtoFallback(); done(); });
-    return false;
-  };
 })();
 </script>
 
@@ -6240,6 +6141,15 @@ Promokod: ${config.promo_code} (−€${config.promo_discount_eur}/rok — aktyw
         if (show) input.setAttribute('required', 'required');
         else input.removeAttribute('required');
       }
+      // Pytanie o nagrywanie ma sens tylko gdy jest centralka — pokaż/ukryj + przełącz required
+      const rec = document.getElementById('recordingField');
+      if (rec) {
+        rec.style.display = show ? 'block' : 'none';
+        rec.querySelectorAll('input[name="recordingStatus"]').forEach(function (r) {
+          if (show) { r.setAttribute('required', 'required'); }
+          else { r.removeAttribute('required'); r.checked = false; }
+        });
+      }
     };
 
     window.wizardSubmit = function(event) {
@@ -6258,7 +6168,7 @@ Promokod: ${config.promo_code} (−€${config.promo_discount_eur}/rok — aktyw
         locations: fd.get('locations'),
         currentPbx: fd.get('currentPbx'),
         currentPbxName: fd.get('currentPbxName') || '',
-        recordingStatus: fd.get('recordingStatus'),
+        recordingStatus: fd.get('recordingStatus') || '',
         services: services,
         installments: fd.get('installments'),
         startTime: fd.get('startTime'),
@@ -6295,7 +6205,7 @@ Promokod: ${config.promo_code} (−€${config.promo_discount_eur}/rok — aktyw
         '',
         '📞 AKTUALNE ROZWIĄZANIA',
         'Centralka: ' + data.currentPbx + (data.currentPbxName ? ' (' + data.currentPbxName + ')' : ''),
-        'Nagrywanie rozmów: ' + data.recordingStatus,
+        'Nagrywanie rozmów: ' + (data.recordingStatus || 'nie dotyczy (brak centralki)'),
         '',
         '🦷 USŁUGI',
         'Profil: ' + services.join(', '),
