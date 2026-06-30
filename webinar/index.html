@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.className+=' js';</script>
 <title>Bezpłatny webinar: System doskonałej rejestracji stomatologicznej · 6 lipca</title>
 <meta name="description" content="Jak z tych samych telefonów umawiać więcej wizyt — bez voicebotów. Bezpłatny webinar online, 6 lipca 20:30. Prowadzi Michał Katarzyński (Doskonała Obsługa Pacjenta).">
 <link rel="canonical" href="https://webinar.tamaia.pl/">
@@ -224,11 +225,12 @@ footer.site a{color:rgba(255,255,255,.8)}
 .section-head{max-width:40em}
 .section-head h2{margin-bottom:14px}
 
-/* reveal animation */
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease, transform .6s ease}
-.reveal.in{opacity:1;transform:none}
+/* reveal animation (progressive — widoczne bez JS) */
+.reveal{transition:opacity .6s ease, transform .6s ease}
+.js .reveal{opacity:0;transform:translateY(22px)}
+.js .reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){
-  .reveal{opacity:1!important;transform:none!important;transition:none}
+  .js .reveal{opacity:1!important;transform:none!important;transition:none}
   html{scroll-behavior:auto}
   .btn{transition:none}
 }
@@ -251,7 +253,7 @@ footer.site a{color:rgba(255,255,255,.8)}
 <!-- HERO -->
 <section class="hero section-cream">
   <div class="wrap hero-grid">
-    <div class="hero-copy reveal">
+    <div class="hero-copy">
       <span class="eyebrow">Bezpłatny webinar online · poniedziałek 6 lipca, 20:30</span>
       <h1>Pacjent dzwoni do Twojego gabinetu — <span class="gold">i umawia się gdzie indziej</span></h1>
       <p class="lead">Najczęściej nie przez cenę i nie przez brak reklamy. Przez to, jak wygląda jedna rozmowa na recepcji.</p>
@@ -265,7 +267,7 @@ footer.site a{color:rgba(255,255,255,.8)}
         <span class="hi-t"><b>Prowadzi Michał Katarzyński</b>Doskonała Obsługa Pacjenta · 6 000+ przeszkolonych, 200+ audytów</span>
       </div>
     </div>
-    <div class="hero-panel reveal" aria-hidden="false">
+    <div class="hero-panel" aria-hidden="false">
       <span class="badge-when">pon. <b>6 lipca</b> · 20:30 · online</span>
       <img class="host" src="michal.jpg" alt="Michał Katarzyński — prowadzący webinar">
       <div class="float-card">
