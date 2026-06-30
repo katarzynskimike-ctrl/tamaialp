@@ -89,7 +89,7 @@ header.site{
 header.site.scrolled{border-bottom-color:var(--warm-border); box-shadow:var(--shadow-sm)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:18px}
 .nav .brand{display:flex;align-items:center;gap:12px;min-width:0}
-.nav .brand img{height:38px;width:auto}
+.nav .brand img{height:48px;width:auto}
 .nav .when{
   font-family:var(--sans);font-size:.86rem;font-weight:600;color:var(--text-muted);
   white-space:nowrap;
@@ -447,8 +447,10 @@ window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
   if(!('IntersectionObserver' in window)){ els.forEach(function(e){e.classList.add('in')}); return; }
   var io=new IntersectionObserver(function(entries){
     entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} });
-  },{threshold:.12, rootMargin:'0px 0px -40px 0px'});
+  },{threshold:.05, rootMargin:'0px 0px -8% 0px'});
   els.forEach(function(e){io.observe(e)});
+  // bezpiecznik: po 2.5 s nic nie zostaje ukryte
+  setTimeout(function(){ els.forEach(function(e){e.classList.add('in')}); }, 2500);
 })();
 </script>
 </body>
