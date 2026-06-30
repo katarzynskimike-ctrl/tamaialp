@@ -225,6 +225,12 @@ footer.site a{color:rgba(255,255,255,.8)}
 .section-head{max-width:40em}
 .section-head h2{margin-bottom:14px}
 
+/* video section */
+.video-sec .section-head{margin:0 auto;text-align:center}
+.video-wrap{max-width:372px;margin:36px auto 0;position:relative}
+.video-wrap video{width:100%;aspect-ratio:9/16;border-radius:22px;box-shadow:var(--shadow-lg);background:var(--navy-dark);display:block;border:1px solid var(--warm-border);object-fit:cover}
+.video-cap{font-family:var(--sans);text-align:center;color:var(--text-muted);font-size:.9rem;margin-top:14px}
+
 /* reveal animation (progressive — widoczne bez JS) */
 .reveal{transition:opacity .6s ease, transform .6s ease}
 .js .reveal{opacity:0;transform:translateY(22px)}
@@ -274,6 +280,27 @@ footer.site a{color:rgba(255,255,255,.8)}
         <div class="fc-num"><span>~14 / 100</span></div>
         <div class="fc-lbl">połączeń przepada — część to plany leczenia warte tysiące złotych</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section class="section-cream video-sec">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">Zapowiedź · 60 sekund</div>
+      <h2>Pacjent chce człowieka, nie bota</h2>
+      <p class="muted" style="max-width:34em;margin:14px auto 0">Zobacz w minutę, o czym jest webinar — i dlaczego dobra rozmowa na recepcji wygrywa z każdym voicebotem.</p>
+    </div>
+    <div class="video-wrap reveal">
+      <video controls preload="none" playsinline poster="promo-poster.jpg">
+        <source src="promo.mp4" type="video/mp4">
+        Twoja przeglądarka nie odtwarza tego wideo.
+      </video>
+      <p class="video-cap">▶ Kliknij, aby odtworzyć (60 s, z dźwiękiem)</p>
+    </div>
+    <div class="hero-cta-row reveal" style="margin-top:34px;justify-content:center">
+      <a class="btn btn-primary" href="https://doskonalaobslugapacjenta.clickmeeting.com/jak-zamieniac-telefony-w-wizyty-doskonala-rejestracja-stomatologiczna" target="_blank" rel="noopener" data-cta="video">Zapisuję się na webinar<span class="arrow">→</span></a>
     </div>
   </div>
 </section>
