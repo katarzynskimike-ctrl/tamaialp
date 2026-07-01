@@ -76,9 +76,10 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Czy to nie jest kontrola mojego zespolu?","acceptedAnswer":{"@type":"Answer","text":"Nie. MAIA nie ocenia ludzi, tylko rozmowy, i po kazdej podpowiada co zrobic nastepnym razem - to narzedzie rozwoju, nie kontroli. Nagrywanie rozmow w telefonii to standard (kazda centralka). Zalecamy powiedziec zespolowi wprost, ze rozmowy sa podsumowywane przez AI - transparentnosc buduje zaufanie, a RODO tego wymaga. Cel to wiecej umowionych wizyt i spokojniejsza recepcja, nie lapanie ludzi na bledach."}},
-{"@type":"Question","name":"Co dokladnie kupuje - Ringostat czy usluge Doskonalej Rejestracji?","acceptedAnswer":{"@type":"Answer","text":"System sklada sie z dwoch czesci: skrypty Doskonalej Rejestracji wgrane do AI jako wzorzec oraz uruchomienie telefonu AI (Ringostat + asystentka MAIA, ktora podsumowuje kazda rozmowe). Placisz jedna faktura (brutto, VAT 23%). Z promokodem Ringostat_DOP dostajesz 40 EUR bonusu rocznie."}},
+{"@type":"Question","name":"Co dokladnie kupuje - Ringostat czy usluge Doskonalej Rejestracji?","acceptedAnswer":{"@type":"Answer","text":"System sklada sie z dwoch czesci: skrypty Doskonalej Rejestracji wgrane do AI jako wzorzec oraz uruchomienie telefonu AI (Ringostat + asystentka MAIA, ktora podsumowuje kazda rozmowe). Placisz jedna faktura (brutto, VAT 23%). Z promokodem Ringostat_DOP dostajesz 169 zl gratis na rozmowy wychodzace."}},
 {"@type":"Question","name":"Ile to kosztuje miesiecznie?","acceptedAnswer":{"@type":"Answer","text":"Trzy plany dla zespolu 3 osob: Plus od 499 zl (telefonia + pelne AI MAIA), Pro od 699 zl (dodatkowo Kalendarz, CRM, SMS, przedplaty), Premium od 1499 zl (Pro + 1 godzina miesiecznie z Michalem Katarzynskim). Kazda kolejna osoba +100 zl/mies. Ceny brutto, abonament roczny."}},
 {"@type":"Question","name":"Co z RODO i nagrywaniem rozmow pacjentow?","acceptedAnswer":{"@type":"Answer","text":"Ringostat hostuje dane w UE i ma podpisana umowe DPA. Dostarczamy szablon polityki RODO oraz zapis informacyjny do nagrywania rozmow. Nagrania sa szyfrowane i dostepne tylko upowaznionym osobom."}},
+{"@type":"Question","name":"Co z moja obecna baza pacjentow?","acceptedAnswer":{"@type":"Answer","text":"Mozesz ja wgrac z pliku (np. CSV). Po zaakceptowaniu zgod i potwierdzeniu pochodzenia danych, przy kazdym polaczeniu przychodzacym rejestratorka od razu widzi na ekranie, kto dzwoni - imie, nazwisko i historia pacjenta. Rozmowa zaczyna sie od Dzien dobry, Pani Aniu, a nie od szukania w kartotece."}},
 {"@type":"Question","name":"Jak szybko mozna wdrozyc system?","acceptedAnswer":{"@type":"Answer","text":"5 dni roboczych od podpisania umowy. Pierwsze raporty po 7 dniach, pelny raport miesieczny po 30 dniach."}},
 {"@type":"Question","name":"Czy jest umowa lojalnosciowa?","acceptedAnswer":{"@type":"Answer","text":"Nie. Plan roczny z mozliwoscia anulowania w dowolnym momencie i proporcjonalnym zwrotem za niewykorzystane miesiace."}}
 ]}
@@ -4649,7 +4650,7 @@
       </div>
 
       <p style="text-align: center; margin-top: 24px; font-size: 0.85rem; color: var(--text-muted); font-style: italic;">
-        Kalkulacja oparta na średnim miesięcznym koszcie systemu brutto dla zespołu 3 osób w pakiecie <strong>Doskonała Rejestracja Plus</strong> (skrypty TAMAIA + telefonia Ringostat + promokod €40, razem ≈ 499 zł). Dla większych praktyk koszt rośnie proporcjonalnie, ale wartość pacjenta pozostaje ta sama. <strong style="color: var(--navy); font-style: normal;">Wyobraź sobie, jak takich dodatkowych pacjentów będzie kilkunastu…</strong>
+        Kalkulacja oparta na średnim miesięcznym koszcie systemu brutto dla zespołu 3 osób w pakiecie <strong>Doskonała Rejestracja Plus</strong> (skrypty TAMAIA + telefonia Ringostat + promokod Ringostat_DOP (169 zł na rozmowy wychodzące), razem ≈ 499 zł). Dla większych praktyk koszt rośnie proporcjonalnie, ale wartość pacjenta pozostaje ta sama. <strong style="color: var(--navy); font-style: normal;">Wyobraź sobie, jak takich dodatkowych pacjentów będzie kilkunastu…</strong>
       </p>
     </div>
   </div>
@@ -5097,6 +5098,16 @@
 
       <div class="faq-item">
         <div class="faq-question">
+          Co z moją obecną bazą pacjentów?
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          <p>Możesz ją wgrać z pliku (np. CSV). Po zaakceptowaniu zgód i potwierdzeniu pochodzenia danych, przy każdym połączeniu przychodzącym rejestratorka od razu widzi na ekranie, kto dzwoni — imię, nazwisko i historia pacjenta. Dzięki temu rozmowa zaczyna się od „Dzień dobry, Pani Aniu", a nie od szukania w kartotece.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
           Czy możemy nagrać własne powitania — i czy rozmowy są nagrywane?
           <div class="faq-toggle">+</div>
         </div>
@@ -5123,7 +5134,7 @@
           <div class="faq-toggle">+</div>
         </div>
         <div class="faq-answer">
-          <p>System składa się z dwóch części: <strong>(1) Skrypty Doskonałej Rejestracji</strong> — wzorcowe scenariusze rozmów (powitanie, wywiad, prezentacja cen, zapis na wizytę), które są <strong>wgrywane do AI jako wzorzec porównawczy</strong>. <strong>(2) Uruchomienie telefonu AI</strong> — nowoczesna telefonia Ringostat z asystentem AI (MAIA), który podsumowuje każdą rozmowę pod kątem zgodności ze skryptami. Płacisz wszystko jedną fakturą (brutto, VAT 23%) — my przekazujemy część do Ringostat. Z promokodem <strong>Ringostat_DOP</strong> dostajesz <strong>€40 bonusu startowego</strong> rocznie.</p>
+          <p>System składa się z dwóch części: <strong>(1) Skrypty Doskonałej Rejestracji</strong> — wzorcowe scenariusze rozmów (powitanie, wywiad, prezentacja cen, zapis na wizytę), które są <strong>wgrywane do AI jako wzorzec porównawczy</strong>. <strong>(2) Uruchomienie telefonu AI</strong> — nowoczesna telefonia Ringostat z asystentem AI (MAIA), który podsumowuje każdą rozmowę pod kątem zgodności ze skryptami. Płacisz wszystko jedną fakturą (brutto, VAT 23%) — my przekazujemy część do Ringostat. Z promokodem <strong>Ringostat_DOP</strong> dostajesz <strong>169 zł gratis na rozmowy wychodzące</strong>.</p>
           <p style="margin-top: 10px; padding: 10px 14px; background: var(--cream); border-left: 3px solid var(--gold-1); border-radius: 4px; font-size: 0.92rem;"><strong>Ważne:</strong> abonament <strong>nie zawiera formalnego kursu szkoleniowego</strong>. Kurs stacjonarny „Doskonała Rejestracja" w Warszawie (prowadzi Michał Katarzyński osobiście) to osobna usługa. Klienci abonamentu rocznego dostają preferencyjne ceny na ten kurs.</p>
         </div>
       </div>
@@ -5142,7 +5153,7 @@
           </ul>
           <p style="margin-top:10px;padding:10px 14px;background:var(--cream);border-left:3px solid var(--gold-1);border-radius:4px;font-size:0.92rem;"><strong>W skali roku</strong> (zespół 3 osób, płatność z góry, jedną fakturą): Plus <strong>od 5 988 zł</strong> · Pro <strong>od 8 388 zł</strong> · Premium <strong>od 17 988 zł</strong> brutto. Kwotę roczną znasz z góry — żadnej niespodzianki przy zamówieniu.</p>
           <p style="margin-top: 10px;">Dokładną cenę dla swojego zespołu policzysz w <a href="#pricing" style="color: var(--gold-1); font-weight: 600;">kalkulatorze na cenniku ↑</a>.</p>
-          <p>Bonus: kod rabatowy <strong>€40 rocznie na Ringostat</strong> (Ringostat_DOP).</p>
+          <p>Bonus: promokod <strong>Ringostat_DOP — 169 zł gratis na rozmowy wychodzące</strong>.</p>
         </div>
       </div>
 
@@ -5352,7 +5363,7 @@
         <div class="promo-banner">
           <span style="color: rgba(255,255,255,0.85); font-size: 0.88rem;">PROMOKOD</span>
           <span style="font-size: 1.15rem; font-family: Georgia, serif;" class="gold-text">Ringostat_DOP</span>
-          <span style="color: rgba(255,255,255,0.85); font-size: 0.88rem;">— kod €40</span>
+          <span style="color: rgba(255,255,255,0.85); font-size: 0.88rem;">— 169 zł na rozmowy wychodzące</span>
         </div>
         <h2 style="margin-top: 28px;">Zamów swój pakiet</h2>
         <p>Konfiguracja z kalkulatora powyżej zostaje dołączona do zgłoszenia. W ciągu <strong>1 dnia zadzwonimy</strong> do Ciebie i porozmawiamy o dostępie do bezpłatnego testu 14 dni. Ty decydujesz.</p>
@@ -5799,7 +5810,7 @@
     'PREMIUM': { base: 1199, step: 100, label: 'Doskonała Rejestracja Premium', rsName: 'Basic', min: 3, max: 15 },
   };
   const VAT = 1.23;
-  const PROMO_MO = Math.round(170 / 12); // €40/rok ≈ 14 zł/mies
+  const PROMO_MO = Math.round(169 / 12); // 169 zł/rok na rozmowy wychodzące ≈ 14 zł/mies
 
   function calcPlanMonthlyBrutto(planKey, count) {
     const p = PRICING_PLANS[planKey];
@@ -5983,7 +5994,7 @@
       billing: configBilling,
       monthly_brutto: calcPlanMonthlyBrutto(planKey, count) + ' zł',
       promo_code: 'Ringostat_DOP',
-      promo_discount_eur: 40,
+      promo_bonus: '169 zł na rozmowy wychodzące',
     };
 
     const payload = { ...data, config, intent: purchaseIntent };
@@ -6021,7 +6032,7 @@ Pakiet: ${config.plan_label}
 Liczba rejestratorek: ${config.count}
 Płatność: roczna z góry
 Cena miesięcznie (brutto, VAT 23%): ${config.monthly_brutto}
-Promokod: ${config.promo_code} (−€${config.promo_discount_eur}/rok — aktywuje się ${purchaseIntent === 'bezpłatny test' ? 'po konwersji bezpłatny test→płatność' : 'od razu'})`
+Promokod: ${config.promo_code} (${config.promo_bonus} — aktywuje się ${purchaseIntent === 'bezpłatny test' ? 'po konwersji bezpłatny test→płatność' : 'od razu'})`
     );
     window.location.href = `mailto:biuro@doskonalaobslugapacjenta.pl?subject=${subject}&body=${body}`;
 
