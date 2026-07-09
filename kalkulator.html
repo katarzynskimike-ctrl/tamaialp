@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Kalkulator ROI TAMAIA: policz, ile Twój gabinet stomatologiczny odzyska miesięcznie — oddzwonienia, luki, przedpłaty i lepsza skuteczność rozmów.">
+<link rel="icon" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TAMAIA — Doskonała Rejestracja">
+<meta property="og:title" content="Ile odzyskasz? Kalkulator ROI dla gabinetu — TAMAIA">
+<meta property="og:description" content="Policz, ile Twój gabinet stomatologiczny może odzyskać miesięcznie: oddzwonienia, wypełnione luki, przedpłaty i lepsza skuteczność rozmów.">
+<meta property="og:url" content="https://tamaia.pl/kalkulator">
+<meta property="og:image" content="https://tamaia.pl/og-cover-v2.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ile odzyskasz? Kalkulator ROI — TAMAIA">
+<meta name="twitter:description" content="Policz miesięczny odzysk i zwrot z TAMAIA dla swojego gabinetu.">
+<meta name="twitter:image" content="https://tamaia.pl/og-cover-v2.jpg">
+<title>TAMAIA — Ile odzyskasz? Kalkulator ROI dla gabinetu</title>
+<style>
+  :root{
+    --navy:#1B2C4F; --gold:#C9A24A; --cream:#FAF8F3; --ink:#1B2237; --muted:#5C6577;
+    --line:rgba(27,44,79,.12); --card:#FFFFFF; --good:#0E8A72;
+    --c-oddz:#0E8A72; --c-luki:#A8842C; --c-nosh:#B5602F; --c-skut:#3D6FB4;
+    --shadow:0 10px 30px rgba(27,44,79,.10);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       background:var(--cream);color:var(--ink);line-height:1.5}
+  .wrap{max-width:1080px;margin:0 auto;padding:28px 20px 60px}
+  header.top{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+  .logo{font-weight:800;letter-spacing:.5px;color:var(--navy);font-size:20px}
+  .logo b{color:var(--gold)}
+  .badge{margin-left:auto;font-size:12.5px;color:var(--muted);border:1px solid var(--line);
+         padding:5px 10px;border-radius:999px;background:#fff}
+  h1{font-size:30px;line-height:1.2;margin:14px 0 6px;color:var(--navy);letter-spacing:-.01em}
+  .sub{color:var(--muted);font-size:15.5px;margin:0 0 22px;max-width:640px}
+  .grid{display:grid;grid-template-columns:1fr 1.05fr;gap:20px;align-items:start}
+  @media(max-width:840px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 20px 22px;box-shadow:var(--shadow)}
+  .card h2{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:0 0 16px;font-weight:700}
+  .field{margin-bottom:16px}
+  .field label{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;font-weight:600;color:var(--ink);margin-bottom:7px;gap:10px}
+  .field .val{font-variant-numeric:tabular-nums;color:var(--navy);font-weight:800;font-size:15px;white-space:nowrap}
+  input[type=range]{width:100%;accent-color:var(--navy);height:22px;cursor:pointer}
+  input[type=number],select{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:9px;font-size:15px;
+       font-variant-numeric:tabular-nums;color:var(--ink);background:#fff}
+  input[type=number]:focus,select:focus,input[type=range]:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .hint{font-size:12px;color:var(--muted);margin-top:5px}
+  details.assum{margin-top:6px;border-top:1px dashed var(--line);padding-top:12px}
+  details.assum summary{cursor:pointer;font-size:13px;font-weight:700;color:var(--navy);list-style:none}
+  details.assum summary::-webkit-details-marker{display:none}
+  details.assum summary::before{content:"▸ ";color:var(--gold)}
+  details.assum[open] summary::before{content:"▾ "}
+  .hero{background:linear-gradient(135deg,var(--navy),#26406e);color:#fff;border-radius:16px;padding:22px 22px 20px;box-shadow:var(--shadow)}
+  .hero .k{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#cdd7ea;margin:0 0 6px}
+  .hero .big{font-size:42px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1.05}
+  .hero .split{margin-top:12px;display:flex;gap:10px;flex-wrap:wrap}
+  .chip{font-size:13px;background:rgba(255,255,255,.12);padding:6px 11px;border-radius:999px;font-variant-numeric:tabular-nums}
+  .chip b{font-weight:800}
+  .rowline{display:flex;gap:14px;margin-top:16px;flex-wrap:wrap}
+  .mini{flex:1;min-width:140px;background:#fff;border:1px solid var(--line);border-radius:13px;padding:14px 15px}
+  .mini .kk{font-size:12.5px;color:var(--muted);margin-bottom:4px}
+  .mini .vv{font-size:23px;font-weight:800;color:var(--navy);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+  .mini .ss{font-size:12px;color:var(--muted);margin-top:3px}
+  .bd{margin-top:18px}
+  .bd h3{font-size:13px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:0 0 12px;font-weight:700}
+  .bar{display:flex;height:16px;border-radius:8px;overflow:hidden;background:#eee;gap:2px}
+  .bar span{display:block;height:100%}
+  .legend{margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px 16px}
+  @media(max-width:480px){.legend{grid-template-columns:1fr}}
+  .li{display:flex;align-items:center;gap:9px;font-size:13.5px}
+  .dot{width:11px;height:11px;border-radius:3px;flex:none}
+  .li .lab{color:var(--ink)}
+  .li .amt{margin-left:auto;font-weight:800;color:var(--navy);font-variant-numeric:tabular-nums}
+  .li .cnt{color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums}
+  .tag{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:1px 6px;border-radius:5px;margin-left:4px}
+  .tag.odz{background:rgba(14,138,114,.12);color:#0B6E5B}
+  .tag.poz{background:rgba(61,111,180,.14);color:#2E568C}
+  .disc{font-size:12px;color:var(--muted);margin-top:16px;line-height:1.5;border-top:1px solid var(--line);padding-top:12px}
+  .offer{margin-top:34px}
+  .offer h2{font-size:22px;color:var(--navy);margin:0 0 4px}
+  .offer p.lead{color:var(--muted);margin:0 0 20px;max-width:640px}
+  .props{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  @media(max-width:840px){.props{grid-template-columns:1fr 1fr}}
+  @media(max-width:480px){.props{grid-template-columns:1fr}}
+  .prop{background:#fff;border:1px solid var(--line);border-radius:13px;padding:16px}
+  .prop .ic{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:10px}
+  .prop h4{margin:0 0 5px;font-size:15px;color:var(--navy)}
+  .prop p{margin:0;font-size:13px;color:var(--muted)}
+  .cta{margin-top:26px;background:var(--navy);border-radius:16px;padding:24px 26px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;box-shadow:var(--shadow)}
+  .cta .ctatext{color:#fff;flex:1;min-width:240px}
+  .cta .ctatext b{font-size:19px;display:block;margin-bottom:3px}
+  .cta .ctatext span{color:#cdd7ea;font-size:14px}
+  .cta a{background:var(--gold);color:#241a04;font-weight:800;text-decoration:none;padding:13px 22px;border-radius:11px;font-size:15px;white-space:nowrap}
+  .cta a:focus-visible{outline:2px solid #fff;outline-offset:3px}
+  footer{margin-top:30px;font-size:12px;color:var(--muted);text-align:center}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="logo">TAMAIA <b>·</b> Doskonała Rejestracja</div>
+    <div class="badge">Kalkulator ROI · szacunek</div>
+  </header>
+
+  <h1>Ile TAMAIA odzyska dla Twojego gabinetu?</h1>
+  <p class="sub">Wpisz swoje liczby — zobaczysz szacowany dodatkowy przychód miesięcznie i rocznie, z podziałem na to, co <b>odzyskane</b> (uratowane) i <b>pozyskane</b> (nowe umówienia). Wszystkie założenia możesz zmienić.</p>
+
+  <div class="grid">
+    <section class="card" aria-labelledby="inTitle">
+      <h2 id="inTitle">Twoje liczby</h2>
+
+      <div class="field">
+        <label for="calls">Połączenia przychodzące / mies. <span class="val" id="callsV">300</span></label>
+        <input type="range" id="calls" min="50" max="2000" step="10" value="300" aria-describedby="callsH">
+        <div class="hint" id="callsH">Ile telefonów od pacjentów trafia do recepcji miesięcznie.</div>
+      </div>
+
+      <div class="two">
+        <div class="field">
+          <label for="missed">Nieodebrane <span class="val" id="missedV">20%</span></label>
+          <input type="range" id="missed" min="0" max="50" step="1" value="20">
+        </div>
+        <div class="field">
+          <label for="conv">Skuteczność teraz <span class="val" id="convV">45%</span></label>
+          <input type="range" id="conv" min="10" max="90" step="1" value="45">
+        </div>
+      </div>
+      <div class="hint" style="margin-top:-6px;margin-bottom:16px">„Skuteczność" = ile z rozmów kończy się umówioną wizytą.</div>
+
+      <div class="two">
+        <div class="field">
+          <label for="value">Śr. wartość wizyty (zł)</label>
+          <input type="number" id="value" min="0" step="10" value="250">
+        </div>
+        <div class="field">
+          <label for="cancels">Odwołania / mies.</label>
+          <input type="number" id="cancels" min="0" step="1" value="15">
+        </div>
+      </div>
+
+      <div class="two">
+        <div class="field">
+          <label for="noshow">No-show (nieobecności) <span class="val" id="noshowV">12%</span></label>
+          <input type="range" id="noshow" min="0" max="40" step="1" value="12">
+        </div>
+        <div class="field">
+          <label for="team">Osób w zespole</label>
+          <input type="number" id="team" min="1" step="1" value="3">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="plan">Pakiet TAMAIA</label>
+        <select id="plan">
+          <option value="499">Plus — 499 zł/mies (3 os.)</option>
+          <option value="699" selected>Pro — 699 zł/mies · najczęściej wybierany</option>
+          <option value="1499">Premium — 1 499 zł/mies (3 os.)</option>
+        </select>
+        <div class="hint">+100 zł/mies za każdą osobę powyżej 3. Twój koszt: <b id="costShown">699 zł</b>/mies.</div>
+      </div>
+
+      <details class="assum">
+        <summary>Założenia (ostrożne — możesz zmienić)</summary>
+        <div style="margin-top:14px">
+          <div class="field">
+            <label for="cbRate">Nieodebrane, które oddzwonisz i umówisz <span class="val" id="cbRateV">35%</span></label>
+            <input type="range" id="cbRate" min="0" max="80" step="1" value="35">
+          </div>
+          <div class="field">
+            <label for="fillRate">Luki po odwołaniach wypełnione <span class="val" id="fillRateV">50%</span></label>
+            <input type="range" id="fillRate" min="0" max="90" step="1" value="50">
+          </div>
+          <div class="field">
+            <label for="saveRate">No-show uratowane (przedpłata / SMS „TAK") <span class="val" id="saveRateV">40%</span></label>
+            <input type="range" id="saveRate" min="0" max="80" step="1" value="40">
+          </div>
+          <div class="field">
+            <label for="uplift">Wzrost skuteczności (sufler MAIA / Akademia) <span class="val" id="upliftV">+5 pp</span></label>
+            <input type="range" id="uplift" min="0" max="20" step="1" value="5">
+          </div>
+          <div class="hint">„pp" = punkty procentowe. Przy skuteczności 45% i +5 pp → 50%.</div>
+        </div>
+      </details>
+    </section>
+
+    <section aria-labelledby="outTitle">
+      <h2 id="outTitle" class="sr">Wynik</h2>
+      <div class="hero">
+        <p class="k">Szacowany dodatkowy przychód / miesiąc</p>
+        <div class="big" id="totalM" aria-live="polite">0 zł</div>
+        <div class="split">
+          <span class="chip">Odzyskane: <b id="odzM">0 zł</b></span>
+          <span class="chip">Pozyskane: <b id="pozM">0 zł</b></span>
+        </div>
+      </div>
+
+      <div class="rowline">
+        <div class="mini">
+          <div class="kk">W skali roku</div>
+          <div class="vv" id="totalY">0 zł</div>
+          <div class="ss">dodatkowy przychód</div>
+        </div>
+        <div class="mini">
+          <div class="kk">Zwrot z TAMAIA</div>
+          <div class="vv" id="roi">—</div>
+          <div class="ss" id="roiSub">wpisz koszt, by policzyć</div>
+        </div>
+      </div>
+
+      <div class="card bd">
+        <h3>Skąd ten przychód</h3>
+        <div class="bar" id="bar" role="img" aria-label="Rozbicie przychodu na kanały"></div>
+        <div class="legend">
+          <div class="li"><span class="dot" style="background:var(--c-oddz)"></span><span class="lab">Oddzwonienia<span class="tag odz">odzysk</span></span><span class="cnt" id="oddzN"></span><span class="amt" id="oddzA">0 zł</span></div>
+          <div class="li"><span class="dot" style="background:var(--c-luki)"></span><span class="lab">Wypełnione luki<span class="tag odz">odzysk</span></span><span class="cnt" id="lukiN"></span><span class="amt" id="lukiA">0 zł</span></div>
+          <div class="li"><span class="dot" style="background:var(--c-nosh)"></span><span class="lab">Uratowane no-show<span class="tag odz">odzysk</span></span><span class="cnt" id="noshN"></span><span class="amt" id="noshA">0 zł</span></div>
+          <div class="li"><span class="dot" style="background:var(--c-skut)"></span><span class="lab">Lepsza skuteczność<span class="tag poz">pozysk</span></span><span class="cnt" id="skutN"></span><span class="amt" id="skutA">0 zł</span></div>
+        </div>
+        <p class="disc" id="disc">To szacunek oparty na Twoich danych i ostrożnych założeniach — nie obietnica wyniku. „Odzyskane" to przychód, który bez systemu najpewniej by przepadł (oddzwonienia, luki, uratowane nieobecności). „Pozyskane" to nowe umówienia z lepszej skuteczności rozmów — trzymane osobno, żeby nie zawyżać.</p>
+      </div>
+    </section>
+  </div>
+
+  <section class="offer">
+    <h2>Recepcja, która zamienia rozmowy w wizyty</h2>
+    <p class="lead">TAMAIA nie jest „kolejnym kalendarzem". Mierzy i podnosi skuteczność telefonicznej rejestracji — i pokazuje właścicielowi jedną liczbę, która ma znaczenie: pieniądze.</p>
+    <div class="props">
+      <div class="prop"><div class="ic" style="background:rgba(14,138,114,.12);color:#0B6E5B">📞</div><h4>Zero straconych telefonów</h4><p>Każde nieodebrane trafia do kolejki oddzwonień — click-to-call, nikt nie czeka.</p></div>
+      <div class="prop"><div class="ic" style="background:rgba(168,132,44,.14);color:#7A5F1E">🗓️</div><h4>Luki wypełnione same</h4><p>Odwołanie = pusty fotel. TAMAIA proponuje pacjenta, Ty zatwierdzasz SMS-em.</p></div>
+      <div class="prop"><div class="ic" style="background:rgba(61,111,180,.14);color:#2E568C">🎯</div><h4>Sufler MAIA na żywo</h4><p>Podpowiada w trakcie rozmowy — pewniejsza rozmowa, więcej umówionych wizyt.</p></div>
+      <div class="prop"><div class="ic" style="background:rgba(181,96,47,.12);color:#8A461F">💳</div><h4>Mniej nieobecności</h4><p>Przedpłaty i SMS „TAK" tną no-show i odzyskują przychód, który by przepadł.</p></div>
+    </div>
+    <div class="cta">
+      <div class="ctatext"><b>Zobacz swoją liczbę na żywym danych</b><span>Umów demo — pokażemy, ile odzyskasz w Twoim gabinecie.</span></div>
+      <a href="https://app.tamaia.pl" target="_blank" rel="noopener">Umów demo</a>
+    </div>
+  </section>
+
+  <footer>TAMAIA · Doskonała Rejestracja Stomatologiczna — kalkulator poglądowy. Liczby zależą od Twoich danych i założeń.</footer>
+</div>
+
+<script>
+(function(){
+  var pln = new Intl.NumberFormat('pl-PL',{maximumFractionDigits:0});
+  var money = function(n){ return pln.format(Math.round(n)) + ' zł'; };
+  var ids = ['calls','missed','conv','value','cancels','noshow','team','plan','cbRate','fillRate','saveRate','uplift'];
+  var el = {}; ids.forEach(function(id){ el[id] = document.getElementById(id); });
+  function num(id){ return parseFloat(el[id].value) || 0; }
+
+  function setTxt(id,t){ var e=document.getElementById(id); if(e) e.textContent=t; }
+
+  function calc(){
+    var calls=num('calls'), missedPct=num('missed'), convNow=num('conv'), value=num('value'),
+        cancels=num('cancels'), noShowPct=num('noshow'), team=Math.max(1,num('team')), plan=num('plan'),
+        cbRate=num('cbRate'), fillRate=num('fillRate'), saveRate=num('saveRate'), uplift=num('uplift');
+    var cost = plan + Math.max(0, team - 3) * 100;
+    setTxt('costShown', money(cost));
+
+    setTxt('callsV', pln.format(calls));
+    setTxt('missedV', missedPct+'%'); setTxt('convV', convNow+'%'); setTxt('noshowV', noShowPct+'%');
+    setTxt('cbRateV', cbRate+'%'); setTxt('fillRateV', fillRate+'%'); setTxt('saveRateV', saveRate+'%');
+    setTxt('upliftV', '+'+uplift+' pp');
+
+    var missed = calls * missedPct/100;
+    var answered = calls - missed;
+    var bookedBase = answered * convNow/100;
+
+    var nOddz = Math.round(missed * cbRate/100);                        var aOddz = nOddz * value;
+    var nLuki = Math.round(cancels * fillRate/100);                     var aLuki = nLuki * value;
+    var nNosh = Math.round(bookedBase * noShowPct/100 * saveRate/100);  var aNosh = nNosh * value;
+    var nSkut = Math.round(answered * uplift/100);                      var aSkut = nSkut * value;
+
+    var odz = aOddz + aLuki + aNosh;
+    var poz = aSkut;
+    var totM = odz + poz;
+
+    setTxt('totalM', money(totM));
+    setTxt('odzM', money(odz));
+    setTxt('pozM', money(poz));
+    setTxt('totalY', money(totM*12));
+
+    if(cost>0){ setTxt('roi','×'+(totM/cost).toFixed(1)); setTxt('roiSub', money(totM-cost)+' netto / mies.'); }
+    else { setTxt('roi','—'); setTxt('roiSub','wpisz koszt, by policzyć'); }
+
+    setTxt('oddzA', money(aOddz)); setTxt('lukiA', money(aLuki)); setTxt('noshA', money(aNosh)); setTxt('skutA', money(aSkut));
+    var wiz = function(n){ n=Math.round(n); return n===1?'1 wizyta':(n%10>=2&&n%10<=4&&(n%100<10||n%100>=20)?n+' wizyty':n+' wizyt'); };
+    setTxt('oddzN', wiz(nOddz)); setTxt('lukiN', wiz(nLuki)); setTxt('noshN', wiz(nNosh)); setTxt('skutN', wiz(nSkut));
+
+    var segs=[['--c-oddz',aOddz],['--c-luki',aLuki],['--c-nosh',aNosh],['--c-skut',aSkut]];
+    var tot = aOddz+aLuki+aNosh+aSkut || 1;
+    var bar=document.getElementById('bar'); bar.innerHTML='';
+    segs.forEach(function(s){ if(s[1]<=0) return; var d=document.createElement('span');
+      d.style.background='var('+s[0]+')'; d.style.width=(100*s[1]/tot)+'%'; bar.appendChild(d); });
+  }
+
+  ids.forEach(function(id){ el[id].addEventListener('input', calc); el[id].addEventListener('change', calc); });
+  calc();
+})();
+</script>
+</body>
+</html>
