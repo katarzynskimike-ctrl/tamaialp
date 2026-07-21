@@ -80,8 +80,11 @@
 {"@type":"Question","name":"Ile to kosztuje miesiecznie?","acceptedAnswer":{"@type":"Answer","text":"Trzy plany dla zespolu 3 osob: Plus od 499 zl (telefonia + pelne AI MAIA), Pro od 699 zl (dodatkowo Kalendarz, CRM, SMS, przedplaty), Premium od 1499 zl (Pro + 1 godzina miesiecznie z Michalem Katarzynskim). Kazda kolejna osoba +100 zl/mies. Ceny brutto, abonament roczny."}},
 {"@type":"Question","name":"Co z RODO i nagrywaniem rozmow pacjentow?","acceptedAnswer":{"@type":"Answer","text":"Ringostat hostuje dane w UE i ma podpisana umowe DPA. Dostarczamy szablon polityki RODO oraz zapis informacyjny do nagrywania rozmow. Nagrania sa szyfrowane i dostepne tylko upowaznionym osobom."}},
 {"@type":"Question","name":"Co z moja obecna baza pacjentow?","acceptedAnswer":{"@type":"Answer","text":"Mozesz ja wgrac z pliku (np. CSV). Po zaakceptowaniu zgod i potwierdzeniu pochodzenia danych, przy kazdym polaczeniu przychodzacym rejestratorka od razu widzi na ekranie, kto dzwoni - imie, nazwisko i historia pacjenta. Rozmowa zaczyna sie od Dzien dobry, Pani Aniu, a nie od szukania w kartotece."}},
-{"@type":"Question","name":"Jak szybko mozna wdrozyc system?","acceptedAnswer":{"@type":"Answer","text":"5 dni roboczych od podpisania umowy. Pierwsze raporty po 7 dniach, pelny raport miesieczny po 30 dniach."}},
-{"@type":"Question","name":"Czy jest umowa lojalnosciowa?","acceptedAnswer":{"@type":"Answer","text":"Nie. Plan roczny z mozliwoscia anulowania w dowolnym momencie i proporcjonalnym zwrotem za niewykorzystane miesiace."}}
+{"@type":"Question","name":"Jak szybko mozna wdrozyc system?","acceptedAnswer":{"@type":"Answer","text":"Zwykle kilka dni. Dzien 1: rejestracja i krotka rozmowa wdrozeniowa. Dni 2-4: loginy oraz opcjonalnie baza pacjentow i cennik. Okolo dnia 4 pierwsze rozmowy na nowym numerze, a dni 5-14 to testy i decyzja. Konfiguracja i wdrozenie gratis; ewentualne przeniesienie numeru po tescie to okolo 3 dni bez przerwy w obsludze."}},
+{"@type":"Question","name":"Czy musze przeniesc numer, zeby przetestowac TAMAIA?","acceptedAnswer":{"@type":"Answer","text":"Nie. Na czas 14-dniowego testu dostajesz nowy numer testowy i sprawdzasz wszystko bez ruszania obecnej centrali. Po tescie mozesz zostac przy naszym numerze albo przeniesc swoj do partnera telefonii VoIP (PL Fon) - numer pozostaje Twoj, a przeniesienie trwa zwykle okolo 3 dni roboczych, bez przerwy w odbieraniu telefonow."}},
+{"@type":"Question","name":"Jak krok po kroku wyglada wdrozenie?","acceptedAnswer":{"@type":"Answer","text":"Wypelniasz formularz na tamaia.pl, a tego samego lub nastepnego dnia roboczego dzwonimy, zakladamy konta testowe i uruchamiamy nowy numer. Po okolo 3 dniach 30-minutowe spotkanie online: pokazujemy panel, pomagamy zainstalowac aplikacje i przekazujemy loginy. Kolejny tydzien to testy zespolu; konfiguracje techniczna bierzemy na siebie."}},
+{"@type":"Question","name":"Co warto przygotowac przed startem?","acceptedAnswer":{"@type":"Answer","text":"Dane osob, ktore beda korzystac z centrali (imie, nazwisko, e-mail poza administratorem) oraz informacje, jak zespol prowadzi rozmowy (komorka, komputer ze sluchawkami lub telefon VoIP). Jesli chcesz od razu rozpoznawac dzwoniacych, przygotuj baze pacjentow w CSV i aktualny cennik."}},
+{"@type":"Question","name":"Ile formalnosci jest po mojej stronie?","acceptedAnswer":{"@type":"Answer","text":"Minimum: wypelnienie formularza, przekazanie danych uzytkownikow, przygotowanie pliku z baza pacjentow i cennikiem oraz wskazanie jednej osoby odpowiedzialnej za wdrozenie. Strone techniczna konfigurujemy my, ze wsparciem na kazdym etapie."}}
 ]}
 </script>
 
@@ -5058,11 +5061,42 @@
 
       <div class="faq-item">
         <div class="faq-question">
-          Mogę przetestować, nie ruszając numeru gabinetu?
+          Mogę przetestować, nie ruszając numeru gabinetu? A jak wygląda przeniesienie numeru?
           <div class="faq-toggle">+</div>
         </div>
         <div class="faq-answer">
-          <p>Tak. Na teście dostajesz nowy numer testowy — dzwonisz, odbierasz i oglądasz raporty MAIA, nie ruszając numeru recepcji. Jeśli wolisz, możesz od razu przenieść swój numer. Ty decydujesz.</p>
+          <p>Tak. Na czas 14-dniowego testu dostajesz nowy numer testowy — dzwonisz, odbierasz i oglądasz raporty MAIA, nie ruszając numeru recepcji.</p>
+          <p style="margin-top: 10px;">Po teście masz wybór: zostać przy naszym numerze albo przenieść swój dotychczasowy do partnera telefonii VoIP (PL Fon). Numer pozostaje Twoją własnością, a przeniesienie trwa zwykle około 3 dni roboczych — jak zmiana operatora komórkowego, bez przerwy w odbieraniu telefonów. Jeśli wolisz zostawić numer u obecnego operatora, może pojawić się drobna opłata za przekierowanie połączeń. Ty decydujesz.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          Jak krok po kroku wygląda wdrożenie?
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          <p>Wypełniasz krótki formularz na tamaia.pl. Tego samego lub następnego dnia roboczego dzwonimy, zakładamy konta testowe i uruchamiamy nowy numer. Po około 3 dniach spotykamy się na maksymalnie 30 minut online — pokazujemy panel, pomagamy zainstalować aplikację i przekazujemy loginy zespołowi. Kolejny tydzień to spokojne testy Twojej recepcji: odsłuchujecie rozmowy, sprawdzacie rekomendacje MAIA i widzicie, jak szybko staje się to częścią codziennej pracy. Całą konfigurację techniczną bierzemy na siebie.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          Co warto przygotować przed startem?
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          <p>Naprawdę niewiele. Przydadzą się imiona, nazwiska i e-maile osób, które będą korzystać z centrali (poza głównym administratorem), oraz informacja, jak zespół prowadzi rozmowy — przez komórki, komputer ze słuchawkami czy telefon VoIP. Warto też z góry pomyśleć, czy po teście zechcecie przenieść obecny numer. Jeśli chcesz od razu widzieć, kto dzwoni, przygotuj bazę pacjentów w pliku CSV (imię, nazwisko, telefon, opcjonalnie e-mail) i aktualny cennik (CSV lub XLS) — dzięki temu MAIA rozpozna pacjenta stałego i pokaże wartość rozmów. Resztę konfiguracji robimy my.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          Ile formalności jest po mojej stronie?
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          <p>Minimum. Po Twojej stronie zostaje wypełnienie formularza, przekazanie danych użytkowników, przygotowanie pliku z bazą pacjentów i cennikiem oraz wskazanie jednej osoby odpowiedzialnej za wdrożenie. Nic więcej — stronę techniczną konfigurujemy my, a na każdym etapie masz wsparcie naszego zespołu.</p>
         </div>
       </div>
 
@@ -5153,7 +5187,7 @@
           <div class="faq-toggle">+</div>
         </div>
         <div class="faq-answer">
-          <p>5 dni roboczych od podpisania umowy. Dzień 0: rejestracja w Ringostat. Dzień 1–3: przygotowanie telefonii. Dzień 4: skrypty + <strong>pokazanie online jak korzystać z raportów</strong>. Dzień 5: start na żywo. Pierwsze raporty po 7 dniach, pełny raport miesięczny po 30 dniach.</p>
+          <p>Zwykle kilka dni. <strong>Dzień 1:</strong> rejestracja na stronie i krótka rozmowa wdrożeniowa. <strong>Dni 2–4:</strong> tworzymy loginy i — jeśli chcesz — wgrywamy bazę pacjentów oraz cennik. Około dnia 4 wykonujesz pierwsze rozmowy przez nowy numer, a <strong>dni 5–14</strong> to testy i decyzja o dalszym korzystaniu. Konfiguracja i wdrożenie są <strong>gratis</strong>. Ewentualne przeniesienie numeru po teście to około 3 dni — w tym czasie działa Twoja dotychczasowa centrala, bez przerwy w obsłudze pacjentów.</p>
         </div>
       </div>
 
@@ -5176,16 +5210,6 @@
         </div>
         <div class="faq-answer">
           <p><strong>Nic automatycznie.</strong> Nie podajesz karty przy teście — więc nic nie zostanie pobrane. Po 14 dniach masz <strong>2 opcje</strong>: (1) wybierasz pakiet i wystawiamy fakturę, (2) anulujesz — bez kosztów, bez pytań. Wszystkie nagrania i raporty z testu zostaną skasowane.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">
-          Czy jest umowa lojalnościowa?
-          <div class="faq-toggle">+</div>
-        </div>
-        <div class="faq-answer">
-          <p><strong>Nie.</strong> Plan roczny — możesz anulować w dowolnym momencie z <strong>proporcjonalnym zwrotem</strong> za niewykorzystane miesiące (minus 30 zł opłaty administracyjnej). Brak ukrytych zapisów.</p>
         </div>
       </div>
 
