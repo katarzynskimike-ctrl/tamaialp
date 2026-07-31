@@ -57,11 +57,11 @@ Michał Katarzyński — trener, wykładowca i konsultant stomatologiczny. Od 20
 ## Pakiety i ceny
 
 Wszystkie ceny brutto (VAT 23%), miesięcznie, przy abonamencie rocznym płatnym z góry, jedna faktura. Każdy plan zawiera 3 licencje dla rejestratorek + konto administratora gratis; każda dodatkowa osoba +100 zł/mies brutto:
-- Plus — od 499 zł/mies brutto. Telefonia + pełne AI MAIA (nasłuch, podsumowania, oceny, skrypty, raporty jakości).
-- Pro — 699 zł/mies brutto (8 388 zł/rok). Wszystko z Plus + jedna skrzynka wiadomości (każdy kanał +39 zł), kalendarz wizyt, wypełnianie luk, automatyczne SMS, przedpłaty online, karta pacjenta (CRM), plan leczenia, zadania zespołu.
+- Plus — od 599 zł/mies brutto (7 188 zł/rok). Telefonia + pełne AI MAIA (nasłuch, podsumowania, oceny, skrypty, raporty jakości).
+- Pro — 799 zł/mies brutto (9 588 zł/rok). Wszystko z Plus + jedna skrzynka wiadomości (każdy kanał +39 zł), kalendarz wizyt, wypełnianie luk, automatyczne SMS, przedpłaty online, karta pacjenta (CRM), plan leczenia, zadania zespołu.
 - Premium — 1499 zł/mies brutto (17 988 zł/rok). Wszystko z Pro + 1 godzina miesięcznie konsultacji z Michałem Katarzyńskim.
 
-Bonus: promokod 169 zł — ponad 18 godzin połączeń wychodzących gratis. Test 14 dni bez karty.
+Test 14 dni bez karty.
 
 ## Wdrożenie
 
@@ -74,7 +74,7 @@ RODO; hosting danych w UE; szablon polityki RODO i klauzula informacyjna do nagr
 ## Kontakt
 
 Excellent Patient Service sp. z o.o., ul. Lubomirskiego 39E, 36-040 Boguchwała, NIP 5170359961.
-Tel. +48 579 774 089. E-mail: biuro@doskonalaobslugapacjenta.pl. Strona: https://tamaia.pl
+Tel. +48 886 770 014. E-mail: biuro@tamaia.pl. Strona: https://tamaia.pl
 
 ## Zasady językowe (dla cytowań)
 

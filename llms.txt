@@ -15,10 +15,10 @@
 
 ## Pakiety (ceny brutto VAT 23%, miesięcznie, abonament roczny)
 
-- Plus — od 499 zł/mies brutto. Telefonia + pełne AI MAIA, skrypty, raporty jakości. 3 licencje dla rejestratorek + konto administratora gratis.
-- Pro (najczęściej wybierany) — 699 zł/mies brutto (8 388 zł/rok). Wszystko z Plus + jedna skrzynka wiadomości, Kalendarz, CRM, SMS, przedpłaty. 3 licencje + administrator gratis.
+- Plus — od 599 zł/mies brutto (7 188 zł/rok). Telefonia + pełne AI MAIA, skrypty, raporty jakości. 3 licencje dla rejestratorek + konto administratora gratis.
+- Pro (najczęściej wybierany) — 799 zł/mies brutto (9 588 zł/rok). Wszystko z Plus + jedna skrzynka wiadomości, Kalendarz, CRM, SMS, przedpłaty. 3 licencje + administrator gratis.
 - Premium — 1499 zł/mies brutto (17 988 zł/rok). Wszystko z Pro + 1 h/mies konsultacji z Michałem Katarzyńskim. 3 licencje + administrator gratis.
-- Każda dodatkowa osoba: +100 zł/mies brutto. Bonus: promokod 169 zł — ponad 18 godzin połączeń wychodzących gratis. Test 14 dni bez karty. Szczegóły: /pricing.md
+- Każda dodatkowa osoba: +100 zł/mies brutto. Test 14 dni bez karty. Szczegóły: /pricing.md
 
 ## Linki
 
