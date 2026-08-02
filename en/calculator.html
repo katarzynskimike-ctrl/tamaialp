@@ -1,28 +1,27 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Kalkulator ROI TAMAIA: policz, ile Twój gabinet stomatologiczny odzyska miesięcznie — oddzwonienia, luki, przedpłaty i lepsza skuteczność rozmów.">
-<link rel="icon" href="/favicon.svg">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="TAMAIA — Doskonała Rejestracja">
-<meta property="og:title" content="Ile odzyskasz? Kalkulator ROI dla gabinetu — TAMAIA">
-<meta property="og:description" content="Policz, ile Twój gabinet stomatologiczny może odzyskać miesięcznie: oddzwonienia, wypełnione luki, przedpłaty i lepsza skuteczność rozmów.">
-<meta property="og:url" content="https://tamaia.pl/kalkulator">
-<meta property="og:locale" content="pl_PL">
-<meta property="og:locale:alternate" content="en_GB">
-<link rel="canonical" href="https://tamaia.pl/kalkulator">
+<meta name="description" content="TAMAIA ROI calculator: work out how much your dental practice recovers each month — call-backs, schedule gaps, prepayments and better call performance.">
+<link rel="canonical" href="https://tamaia.pl/en/calculator">
 <link rel="alternate" hreflang="pl" href="https://tamaia.pl/kalkulator">
 <link rel="alternate" hreflang="en" href="https://tamaia.pl/en/calculator">
 <link rel="alternate" hreflang="x-default" href="https://tamaia.pl/kalkulator">
+<link rel="icon" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TAMAIA — Excellent Reception">
+<meta property="og:title" content="How much will you recover? ROI calculator for your practice — TAMAIA">
+<meta property="og:description" content="Work out how much your dental practice could recover each month: call-backs, filled schedule gaps, prepayments and better call performance.">
+<meta property="og:url" content="https://tamaia.pl/en/calculator">
+<meta property="og:locale" content="en_GB">
 <meta property="og:image" content="https://tamaia.pl/og-cover-v2.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Ile odzyskasz? Kalkulator ROI — TAMAIA">
-<meta name="twitter:description" content="Policz miesięczny odzysk i zwrot z TAMAIA dla swojego gabinetu.">
+<meta name="twitter:title" content="How much will you recover? ROI calculator — TAMAIA">
+<meta name="twitter:description" content="Calculate your monthly recovery and return from TAMAIA for your practice.">
 <meta name="twitter:image" content="https://tamaia.pl/og-cover-v2.jpg">
-<title>TAMAIA — Ile odzyskasz? Kalkulator ROI dla gabinetu</title>
+<title>TAMAIA — How much will you recover? ROI calculator for your practice</title>
 <style>
   :root{
     --navy:#1B2C4F; --gold:#C9A24A; --cream:#FAF8F3; --ink:#1B2237; --muted:#5C6577;
@@ -109,151 +108,151 @@
 <body>
 <div class="wrap">
   <header class="top">
-    <div class="logo">TAMAIA <b>·</b> Doskonała Rejestracja</div>
-    <div class="badge">Kalkulator ROI · szacunek</div>
+    <div class="logo">TAMAIA <b>·</b> Excellent Reception</div>
+    <div class="badge">ROI calculator · estimate</div>
   </header>
 
-  <h1>Ile TAMAIA odzyska dla Twojego gabinetu?</h1>
-  <p class="sub">Wpisz swoje liczby — zobaczysz szacowany dodatkowy przychód miesięcznie i rocznie, z podziałem na to, co <b>odzyskane</b> (uratowane) i <b>pozyskane</b> (nowe umówienia). Wszystkie założenia możesz zmienić.</p>
+  <h1>How much will TAMAIA recover for your practice?</h1>
+  <p class="sub">Enter your numbers — you will see the estimated additional revenue per month and per year, split into what is <b>recovered</b> (saved) and <b>gained</b> (new bookings). Every assumption can be changed.</p>
 
   <div class="grid">
     <section class="card" aria-labelledby="inTitle">
-      <h2 id="inTitle">Twoje liczby</h2>
+      <h2 id="inTitle">Your numbers</h2>
 
       <div class="field">
-        <label for="calls">Połączenia przychodzące / mies. <span class="val" id="callsV">300</span></label>
+        <label for="calls">Inbound calls / month <span class="val" id="callsV">300</span></label>
         <input type="range" id="calls" min="50" max="2000" step="10" value="300" aria-describedby="callsH">
-        <div class="hint" id="callsH">Ile telefonów od pacjentów trafia do recepcji miesięcznie.</div>
+        <div class="hint" id="callsH">How many patient calls reach your front desk each month.</div>
       </div>
 
       <div class="two">
         <div class="field">
-          <label for="missed">Nieodebrane <span class="val" id="missedV">20%</span></label>
+          <label for="missed">Missed <span class="val" id="missedV">20%</span></label>
           <input type="range" id="missed" min="0" max="50" step="1" value="20">
         </div>
         <div class="field">
-          <label for="conv">Skuteczność teraz <span class="val" id="convV">45%</span></label>
+          <label for="conv">Current conversion <span class="val" id="convV">45%</span></label>
           <input type="range" id="conv" min="10" max="90" step="1" value="45">
         </div>
       </div>
-      <div class="hint" style="margin-top:-6px;margin-bottom:16px">„Skuteczność" = ile z rozmów kończy się umówioną wizytą.</div>
+      <div class="hint" style="margin-top:-6px;margin-bottom:16px">“Conversion” = how many calls end in a booked appointment.</div>
 
       <div class="two">
         <div class="field">
-          <label for="value">Śr. wartość wizyty (zł)</label>
+          <label for="value">Avg. appointment value (PLN)</label>
           <input type="number" id="value" min="0" step="10" value="250">
         </div>
         <div class="field">
-          <label for="cancels">Odwołania / mies.</label>
+          <label for="cancels">Cancellations / month</label>
           <input type="number" id="cancels" min="0" step="1" value="15">
         </div>
       </div>
 
       <div class="two">
         <div class="field">
-          <label for="noshow">No-show (nieobecności) <span class="val" id="noshowV">12%</span></label>
+          <label for="noshow">No-shows <span class="val" id="noshowV">12%</span></label>
           <input type="range" id="noshow" min="0" max="40" step="1" value="12">
         </div>
         <div class="field">
-          <label for="team">Osób w zespole</label>
+          <label for="team">People on the team</label>
           <input type="number" id="team" min="1" step="1" value="3">
         </div>
       </div>
 
       <div class="field">
-        <label for="plan">Pakiet TAMAIA</label>
+        <label for="plan">TAMAIA package</label>
         <select id="plan">
-          <option value="599">Plus — 599 zł/mies (3 os.)</option>
-          <option value="799" selected>Pro — 799 zł/mies · najczęściej wybierany</option>
-          <option value="1499">Premium — 1 499 zł/mies (3 os.)</option>
+          <option value="599">Plus — PLN 599/month (3 people)</option>
+          <option value="799" selected>Pro — PLN 799/month · most popular</option>
+          <option value="1499">Premium — PLN 1,499/month (3 people)</option>
         </select>
-        <div class="hint">+100 zł/mies za każdą osobę powyżej 3. Twój koszt: <b id="costShown">799 zł</b>/mies.</div>
+        <div class="hint">+PLN 100/month for each person above 3. Your cost: <b id="costShown">PLN 799</b>/month.</div>
       </div>
 
       <details class="assum">
-        <summary>Założenia (ostrożne — możesz zmienić)</summary>
+        <summary>Assumptions (conservative — you can change them)</summary>
         <div style="margin-top:14px">
           <div class="field">
-            <label for="cbRate">Nieodebrane, które oddzwonisz i umówisz <span class="val" id="cbRateV">35%</span></label>
+            <label for="cbRate">Missed calls you return and convert <span class="val" id="cbRateV">35%</span></label>
             <input type="range" id="cbRate" min="0" max="80" step="1" value="35">
           </div>
           <div class="field">
-            <label for="fillRate">Luki po odwołaniach wypełnione <span class="val" id="fillRateV">50%</span></label>
+            <label for="fillRate">Gaps from cancellations refilled <span class="val" id="fillRateV">50%</span></label>
             <input type="range" id="fillRate" min="0" max="90" step="1" value="50">
           </div>
           <div class="field">
-            <label for="saveRate">No-show uratowane (przedpłata / SMS „TAK") <span class="val" id="saveRateV">40%</span></label>
+            <label for="saveRate">No-shows saved (prepayment / “YES” text) <span class="val" id="saveRateV">40%</span></label>
             <input type="range" id="saveRate" min="0" max="80" step="1" value="40">
           </div>
           <div class="field">
-            <label for="uplift">Wzrost skuteczności (sufler MAIA / Akademia) <span class="val" id="upliftV">+5 pp</span></label>
+            <label for="uplift">Conversion uplift (MAIA prompter / Academy) <span class="val" id="upliftV">+5 pp</span></label>
             <input type="range" id="uplift" min="0" max="20" step="1" value="5">
           </div>
-          <div class="hint">„pp" = punkty procentowe. Przy skuteczności 45% i +5 pp → 50%.</div>
+          <div class="hint">“pp” = percentage points. At 45% conversion, +5 pp → 50%.</div>
         </div>
       </details>
     </section>
 
     <section aria-labelledby="outTitle">
-      <h2 id="outTitle" class="sr">Wynik</h2>
+      <h2 id="outTitle" class="sr">Result</h2>
       <div class="hero">
-        <p class="k">Szacowany dodatkowy przychód / miesiąc</p>
-        <div class="big" id="totalM" aria-live="polite">0 zł</div>
+        <p class="k">Estimated additional revenue / month</p>
+        <div class="big" id="totalM" aria-live="polite">PLN 0</div>
         <div class="split">
-          <span class="chip">Odzyskane: <b id="odzM">0 zł</b></span>
-          <span class="chip">Pozyskane: <b id="pozM">0 zł</b></span>
+          <span class="chip">Recovered: <b id="odzM">PLN 0</b></span>
+          <span class="chip">Gained: <b id="pozM">PLN 0</b></span>
         </div>
       </div>
 
       <div class="rowline">
         <div class="mini">
-          <div class="kk">W skali roku</div>
-          <div class="vv" id="totalY">0 zł</div>
-          <div class="ss">dodatkowy przychód</div>
+          <div class="kk">Over a year</div>
+          <div class="vv" id="totalY">PLN 0</div>
+          <div class="ss">additional revenue</div>
         </div>
         <div class="mini">
-          <div class="kk">Zwrot z TAMAIA</div>
+          <div class="kk">Return on TAMAIA</div>
           <div class="vv" id="roi">—</div>
-          <div class="ss" id="roiSub">wpisz koszt, by policzyć</div>
+          <div class="ss" id="roiSub">enter a cost to calculate</div>
         </div>
       </div>
 
       <div class="card bd">
-        <h3>Skąd ten przychód</h3>
-        <div class="bar" id="bar" role="img" aria-label="Rozbicie przychodu na kanały"></div>
+        <h3>Where this revenue comes from</h3>
+        <div class="bar" id="bar" role="img" aria-label="Revenue broken down by channel"></div>
         <div class="legend">
-          <div class="li"><span class="dot" style="background:var(--c-oddz)"></span><span class="lab">Oddzwonienia<span class="tag odz">odzysk</span></span><span class="cnt" id="oddzN"></span><span class="amt" id="oddzA">0 zł</span></div>
-          <div class="li"><span class="dot" style="background:var(--c-luki)"></span><span class="lab">Wypełnione luki<span class="tag odz">odzysk</span></span><span class="cnt" id="lukiN"></span><span class="amt" id="lukiA">0 zł</span></div>
-          <div class="li"><span class="dot" style="background:var(--c-nosh)"></span><span class="lab">Uratowane no-show<span class="tag odz">odzysk</span></span><span class="cnt" id="noshN"></span><span class="amt" id="noshA">0 zł</span></div>
-          <div class="li"><span class="dot" style="background:var(--c-skut)"></span><span class="lab">Lepsza skuteczność<span class="tag poz">pozysk</span></span><span class="cnt" id="skutN"></span><span class="amt" id="skutA">0 zł</span></div>
+          <div class="li"><span class="dot" style="background:var(--c-oddz)"></span><span class="lab">Call-backs<span class="tag odz">recovered</span></span><span class="cnt" id="oddzN"></span><span class="amt" id="oddzA">PLN 0</span></div>
+          <div class="li"><span class="dot" style="background:var(--c-luki)"></span><span class="lab">Filled gaps<span class="tag odz">recovered</span></span><span class="cnt" id="lukiN"></span><span class="amt" id="lukiA">PLN 0</span></div>
+          <div class="li"><span class="dot" style="background:var(--c-nosh)"></span><span class="lab">Saved no-shows<span class="tag odz">recovered</span></span><span class="cnt" id="noshN"></span><span class="amt" id="noshA">PLN 0</span></div>
+          <div class="li"><span class="dot" style="background:var(--c-skut)"></span><span class="lab">Better conversion<span class="tag poz">gained</span></span><span class="cnt" id="skutN"></span><span class="amt" id="skutA">PLN 0</span></div>
         </div>
-        <p class="disc" id="disc">To szacunek oparty na Twoich danych i ostrożnych założeniach — nie obietnica wyniku. „Odzyskane" to przychód, który bez systemu najpewniej by przepadł (oddzwonienia, luki, uratowane nieobecności). „Pozyskane" to nowe umówienia z lepszej skuteczności rozmów — trzymane osobno, żeby nie zawyżać.</p>
+        <p class="disc" id="disc">This is an estimate based on your figures and conservative assumptions — not a promise of results. “Recovered” is revenue that would most likely have been lost without the system (call-backs, gaps, saved no-shows). “Gained” is new bookings from better call performance — kept separate so nothing is overstated.</p>
       </div>
     </section>
   </div>
 
   <section class="offer">
-    <h2>Recepcja, która zamienia rozmowy w wizyty</h2>
-    <p class="lead">TAMAIA nie jest „kolejnym kalendarzem". Mierzy i podnosi skuteczność telefonicznej rejestracji — i pokazuje właścicielowi jedną liczbę, która ma znaczenie: pieniądze.</p>
+    <h2>The front desk that turns calls into appointments</h2>
+    <p class="lead">TAMAIA is not “another calendar”. It measures and raises the performance of phone bookings — and shows the owner the one number that matters: money.</p>
     <div class="props">
-      <div class="prop"><div class="ic" style="background:rgba(14,138,114,.12);color:#0B6E5B">📞</div><h4>Zero straconych telefonów</h4><p>Każde nieodebrane trafia do kolejki oddzwonień — click-to-call, nikt nie czeka.</p></div>
-      <div class="prop"><div class="ic" style="background:rgba(168,132,44,.14);color:#7A5F1E">🗓️</div><h4>Luki wypełnione same</h4><p>Odwołanie = pusty fotel. TAMAIA proponuje pacjenta, Ty zatwierdzasz SMS-em.</p></div>
-      <div class="prop"><div class="ic" style="background:rgba(61,111,180,.14);color:#2E568C">🎯</div><h4>Sufler MAIA na żywo</h4><p>Podpowiada w trakcie rozmowy — pewniejsza rozmowa, więcej umówionych wizyt.</p></div>
-      <div class="prop"><div class="ic" style="background:rgba(181,96,47,.12);color:#8A461F">💳</div><h4>Mniej nieobecności</h4><p>Przedpłaty i SMS „TAK" tną no-show i odzyskują przychód, który by przepadł.</p></div>
+      <div class="prop"><div class="ic" style="background:rgba(14,138,114,.12);color:#0B6E5B">📞</div><h4>No lost calls</h4><p>Every missed call joins the call-back queue — click-to-call, nobody is left waiting.</p></div>
+      <div class="prop"><div class="ic" style="background:rgba(168,132,44,.14);color:#7A5F1E">🗓️</div><h4>Gaps fill themselves</h4><p>A cancellation means an empty chair. TAMAIA proposes a patient, you confirm by text.</p></div>
+      <div class="prop"><div class="ic" style="background:rgba(61,111,180,.14);color:#2E568C">🎯</div><h4>Live MAIA prompter</h4><p>It prompts during the call — a more confident conversation, more appointments booked.</p></div>
+      <div class="prop"><div class="ic" style="background:rgba(181,96,47,.12);color:#8A461F">💳</div><h4>Fewer no-shows</h4><p>Prepayments and “YES” texts cut no-shows and recover revenue that would have been lost.</p></div>
     </div>
     <div class="cta">
-      <div class="ctatext"><b>Zobacz swoją liczbę na żywym danych</b><span>Umów demo — pokażemy, ile odzyskasz w Twoim gabinecie.</span></div>
-      <a href="https://app.tamaia.pl" target="_blank" rel="noopener">Umów demo</a>
+      <div class="ctatext"><b>See your own number on live data</b><span>Book a demo — we will show how much you can recover in your practice.</span></div>
+      <a href="https://app.tamaia.pl" target="_blank" rel="noopener">Book a demo</a>
     </div>
   </section>
 
-  <footer>TAMAIA · Doskonała Rejestracja Stomatologiczna — kalkulator poglądowy. Liczby zależą od Twoich danych i założeń. · <a href="/en/calculator" hreflang="en" style="color:var(--gold)">English</a></footer>
+  <footer>TAMAIA · Excellent Dental Reception — indicative calculator. The figures depend on your data and assumptions. · <a href="/kalkulator" hreflang="pl" style="color:var(--gold)">Polski</a></footer>
 </div>
 
 <script>
 (function(){
-  var pln = new Intl.NumberFormat('pl-PL',{maximumFractionDigits:0});
-  var money = function(n){ return pln.format(Math.round(n)) + ' zł'; };
+  var pln = new Intl.NumberFormat('en-US',{maximumFractionDigits:0});
+  var money = function(n){ return 'PLN ' + pln.format(Math.round(n)); };
   var ids = ['calls','missed','conv','value','cancels','noshow','team','plan','cbRate','fillRate','saveRate','uplift'];
   var el = {}; ids.forEach(function(id){ el[id] = document.getElementById(id); });
   function num(id){ return parseFloat(el[id].value) || 0; }
@@ -290,11 +289,11 @@
     setTxt('pozM', money(poz));
     setTxt('totalY', money(totM*12));
 
-    if(cost>0){ setTxt('roi','×'+(totM/cost).toFixed(1)); setTxt('roiSub', money(totM-cost)+' netto / mies.'); }
-    else { setTxt('roi','—'); setTxt('roiSub','wpisz koszt, by policzyć'); }
+    if(cost>0){ setTxt('roi','×'+(totM/cost).toFixed(1)); setTxt('roiSub', money(totM-cost)+' net / month'); }
+    else { setTxt('roi','—'); setTxt('roiSub','enter a cost to calculate'); }
 
     setTxt('oddzA', money(aOddz)); setTxt('lukiA', money(aLuki)); setTxt('noshA', money(aNosh)); setTxt('skutA', money(aSkut));
-    var wiz = function(n){ n=Math.round(n); return n===1?'1 wizyta':(n%10>=2&&n%10<=4&&(n%100<10||n%100>=20)?n+' wizyty':n+' wizyt'); };
+    var wiz = function(n){ n=Math.round(n); return n===1?'1 appointment':n+' appointments'; };
     setTxt('oddzN', wiz(nOddz)); setTxt('lukiN', wiz(nLuki)); setTxt('noshN', wiz(nNosh)); setTxt('skutN', wiz(nSkut));
 
     var segs=[['--c-oddz',aOddz],['--c-luki',aLuki],['--c-nosh',aNosh],['--c-skut',aSkut]];

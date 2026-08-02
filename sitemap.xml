@@ -1,9 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://tamaia.pl/</loc>
-    <lastmod>2026-06-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://tamaia.pl/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tamaia.pl/en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tamaia.pl/"/>
+    <lastmod>2026-08-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://tamaia.pl/en</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://tamaia.pl/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tamaia.pl/en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tamaia.pl/"/>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tamaia.pl/oferta</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://tamaia.pl/oferta"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tamaia.pl/en/offer"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tamaia.pl/oferta"/>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tamaia.pl/en/offer</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://tamaia.pl/oferta"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tamaia.pl/en/offer"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tamaia.pl/oferta"/>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tamaia.pl/kalkulator</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://tamaia.pl/kalkulator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tamaia.pl/en/calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tamaia.pl/kalkulator"/>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tamaia.pl/en/calculator</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://tamaia.pl/kalkulator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tamaia.pl/en/calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tamaia.pl/kalkulator"/>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>
