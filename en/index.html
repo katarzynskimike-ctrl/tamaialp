@@ -4908,7 +4908,7 @@
           <li><span><strong>Appointment calendar</strong> — a column per clinician, gaps visible live</span></li>
           <li><span><strong>Gap filling</strong> — proposes patients for open slots and sends the texts</span></li>
           <li><span><strong>Automated SMS</strong> — reminders and confirmations (the patient replies “YES”)</span></li>
-          <li><span><strong>Online prepayments</strong> (BLIK / Przelewy24) — fewer no-shows</span></li>
+          <li><span><strong>Online prepayments</strong> (BLIK / instant transfer / card) — fewer no-shows</span></li>
           <li><span><strong>Patient record (CRM)</strong> — a timeline of calls, texts, payments and visits</span></li>
           <li><span>Treatment plans as a sequence of appointments</span></li>
           <li><span>Team tasks with due dates</span></li>
@@ -5579,6 +5579,7 @@
           36-040 Boguchwała<br>
           VAT ID: PL5170359961 · REGON: 180874009<br>
           Company no. (KRS): 0000429303 · District Court in Rzeszów, 12th Commercial Division<br>
+          Share capital: PLN 5,000<br>
           <a href="tel:+48886770014" style="color: var(--gold-2); font-weight: 600;">📞 +48 886 770 014</a> · <a href="tel:+48886570047" style="color: var(--gold-2); font-weight: 600;">+48 886 570 047</a><br>
           <a href="mailto:biuro@tamaia.pl" style="color: rgba(255,255,255,0.8);">biuro@tamaia.pl</a>
         </div>
@@ -5609,6 +5610,11 @@
           <li><a href="https://app.tamaia.pl/dpa" target="_blank" rel="noopener">Data Processing Agreement (DPA)</a></li>
         </ul>
       </div>
+    </div>
+    <div class="footer-payments" style="margin-top:28px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.1); font-size:0.85rem; line-height:1.7; color:rgba(255,255,255,0.75);">
+      <strong style="color:var(--white); font-size:0.95rem;">Accepted payment methods</strong><br>
+      Online payments are handled by <strong style="color:var(--gold-2);">ING Pay</strong> — the payment gateway of <strong>ING Bank Śląski S.A.</strong> Card details are entered on the bank's page; TAMAIA never sees them.
+      <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:12px;"><span style="display:inline-block; padding:7px 14px; border:1px solid rgba(255,255,255,0.22); border-radius:8px; font-size:0.82rem; font-weight:600; letter-spacing:0.02em; color:rgba(255,255,255,0.92); background:rgba(255,255,255,0.04);">BLIK</span><span style="display:inline-block; padding:7px 14px; border:1px solid rgba(255,255,255,0.22); border-radius:8px; font-size:0.82rem; font-weight:600; letter-spacing:0.02em; color:rgba(255,255,255,0.92); background:rgba(255,255,255,0.04);">Instant bank transfer (pay-by-link)</span><span style="display:inline-block; padding:7px 14px; border:1px solid rgba(255,255,255,0.22); border-radius:8px; font-size:0.82rem; font-weight:600; letter-spacing:0.02em; color:rgba(255,255,255,0.92); background:rgba(255,255,255,0.04);">Visa</span><span style="display:inline-block; padding:7px 14px; border:1px solid rgba(255,255,255,0.22); border-radius:8px; font-size:0.82rem; font-weight:600; letter-spacing:0.02em; color:rgba(255,255,255,0.92); background:rgba(255,255,255,0.04);">Mastercard</span></div>
     </div>
     <div class="footer-bottom">
       © 2026 Excellent Patient Service sp. z o.o. · All rights reserved · Official Ringostat Partner · A brand by Doskonała Obsługa Pacjenta · Legal documents are provided in Polish
@@ -5994,7 +6000,7 @@
 
     // === TODO BACKEND ===
     // Tutaj robisz fetch do API: fetch('/api/order', { method:'POST', body: JSON.stringify(payload) })
-    // Backend rozróżnia intent: 'buy' → faktura proforma + Stripe/P24; 'bezpłatny test' → konto testowe 14 dni, bez płatności
+    // Backend rozróżnia intent: 'buy' → faktura proforma + ING Pay (BLIK / przelew online / karta); 'bezpłatny test' → konto testowe 14 dni, bez płatności
     console.log('Order payload:', payload);
 
     // Fallback: mailto z pełnym payloadem

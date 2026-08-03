@@ -10,7 +10,7 @@ Wszystkie ceny BRUTTO (VAT 23%), miesięcznie, przy abonamencie rocznym płatnym
 ## Pro (najczęściej wybierany)
 - Cena: 799 zł/mies brutto (9 588 zł/rok)
 - Dla kogo: gabinet, który chce prowadzić pacjenta end-to-end
-- Zawiera: wszystko z Plus + jedna skrzynka wiadomości (e-mail, SMS, WhatsApp, Messenger, Instagram — każdy kanał +39 zł), Kalendarz wizyt (kolumny per lekarz, luki na żywo), wypełnianie luk z propozycją pacjentów i SMS, automatyczne przypomnienia i potwierdzenia SMS, przedpłaty online (BLIK / Przelewy24), karta pacjenta (CRM), plan leczenia jako sekwencja wizyt, zadania zespołu; 3 licencje + konto administratora gratis
+- Zawiera: wszystko z Plus + jedna skrzynka wiadomości (e-mail, SMS, WhatsApp, Messenger, Instagram — każdy kanał +39 zł), Kalendarz wizyt (kolumny per lekarz, luki na żywo), wypełnianie luk z propozycją pacjentów i SMS, automatyczne przypomnienia i potwierdzenia SMS, przedpłaty online (BLIK / szybki przelew / karta), karta pacjenta (CRM), plan leczenia jako sekwencja wizyt, zadania zespołu; 3 licencje + konto administratora gratis
 
 ## Premium
 - Cena: 1499 zł/mies brutto (17 988 zł/rok)

@@ -81,7 +81,7 @@ Formularz w `<section id="cta">` używa `mailto:` jako fallback. Aby aktywować 
 
 1. **POST /api/lead** — przyjmuje JSON `{ name, clinic, phone, email, nip, address, drs_plan, ringostat_plan, count, intent }`
 2. **Webhook do CRM** — HubSpot / Pipedrive
-3. **Płatność** — Przelewy24 (BLIK/karta) + Stripe Subscriptions (recurring)
+3. **Płatność** — ING Pay / ING Bank Śląski (BLIK, szybki przelew pay-by-link, karty Visa i Mastercard)
 4. **Provisioning Ringostat** — zgłoszenie do portalu partnerskiego z promokodem `Ringostat_DOP`
 
 Stack rekomendowany: Node.js + Express na Vercel Edge Functions / Cloudflare Workers.

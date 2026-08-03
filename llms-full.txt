@@ -25,7 +25,7 @@ Dla kogo TAMAIA NIE jest:
 1. Centrala telefoniczna z AI — telefonia Ringostat + nasłuch 100% rozmów po polsku, telefon w przeglądarce.
 2. Podsumowanie po każdej rozmowie — pisemny zapis, ocena 1–10, rozpoznanie emocji pacjenta, rada „co zrobić następnym razem".
 3. Konkretne rady, nie krytyka — np. „następnym razem, gdy pacjent pyta o cenę, od razu zaproponuj termin". Rejestratorka widzi wynik jako pierwsza.
-4. Skrzynka, kalendarz i CRM (od planu Pro) — jedna skrzynka wiadomości (e-mail, SMS, WhatsApp, Messenger, Instagram), kalendarz wizyt z wypełnianiem luk, automatyczne SMS, przedpłaty online (BLIK / Przelewy24), karta pacjenta i plan leczenia.
+4. Skrzynka, kalendarz i CRM (od planu Pro) — jedna skrzynka wiadomości (e-mail, SMS, WhatsApp, Messenger, Instagram), kalendarz wizyt z wypełnianiem luk, automatyczne SMS, przedpłaty online (BLIK / szybki przelew / karta), karta pacjenta i plan leczenia.
 5. Konsultacje z ekspertem (plan Premium) — 1 godzina miesięcznie z Michałem Katarzyńskim.
 6. Skrypty stomatologiczne — wzorcowe rozmowy (powitanie, wywiad, prezentacja cen, zapis na wizytę, pacjent z bólem) wgrane do AI jako wzorzec porównawczy.
 

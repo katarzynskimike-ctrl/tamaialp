@@ -4919,7 +4919,7 @@
           <li><span><strong>Kalendarz wizyt</strong> — kolumny per lekarz, luki widoczne na żywo</span></li>
           <li><span><strong>Wypełnianie luk</strong> — sam proponuje pacjentów na luki i wysyła SMS-y</span></li>
           <li><span><strong>Automatyczne SMS-y</strong> — przypomnienia i potwierdzenia (pacjent odpisuje „TAK")</span></li>
-          <li><span><strong>Przedpłaty online</strong> (BLIK / Przelewy24) — mniej niestawiennictwa</span></li>
+          <li><span><strong>Przedpłaty online</strong> (BLIK / szybki przelew / karta) — mniej niestawiennictwa</span></li>
           <li><span><strong>Karta pacjenta (CRM)</strong> — oś czasu: rozmowy, SMS, płatności, wizyty</span></li>
           <li><span>Plan leczenia jako sekwencja wizyt</span></li>
           <li><span>Zadania zespołu z terminami</span></li>
@@ -5560,6 +5560,7 @@
           36-040 Boguchwała<br>
           NIP: 5170359961 · REGON: 180874009<br>
           KRS: 0000429303 · Sąd Rejonowy w Rzeszowie, XII Wydział Gospodarczy KRS<br>
+          Kapitał zakładowy: 5 000 zł<br>
           <a href="tel:+48886770014" style="color: var(--gold-2); font-weight: 600;">📞 +48 886 770 014</a><br>
           <a href="mailto:biuro@tamaia.pl" style="color: rgba(255,255,255,0.8);">biuro@tamaia.pl</a>
         </div>
@@ -5590,6 +5591,11 @@
           <li><a href="https://app.tamaia.pl/dpa" target="_blank" rel="noopener">Umowa powierzenia (DPA)</a></li>
         </ul>
       </div>
+    </div>
+    <div class="footer-payments" style="margin-top:28px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.1); font-size:0.85rem; line-height:1.7; color:rgba(255,255,255,0.75);">
+      <strong style="color:var(--white); font-size:0.95rem;">Akceptowane metody płatności</strong><br>
+      Płatności online obsługuje <strong style="color:var(--gold-2);">ING Pay</strong> — bramka płatnicza <strong>ING Banku Śląskiego S.A.</strong> Dane karty podajesz na stronie banku; TAMAIA nie ma do nich dostępu.
+      <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:12px;"><span style="display:inline-block; padding:7px 14px; border:1px solid rgba(255,255,255,0.22); border-radius:8px; font-size:0.82rem; font-weight:600; letter-spacing:0.02em; color:rgba(255,255,255,0.92); background:rgba(255,255,255,0.04);">BLIK</span><span style="display:inline-block; padding:7px 14px; border:1px solid rgba(255,255,255,0.22); border-radius:8px; font-size:0.82rem; font-weight:600; letter-spacing:0.02em; color:rgba(255,255,255,0.92); background:rgba(255,255,255,0.04);">Szybki przelew online (pay-by-link)</span><span style="display:inline-block; padding:7px 14px; border:1px solid rgba(255,255,255,0.22); border-radius:8px; font-size:0.82rem; font-weight:600; letter-spacing:0.02em; color:rgba(255,255,255,0.92); background:rgba(255,255,255,0.04);">Visa</span><span style="display:inline-block; padding:7px 14px; border:1px solid rgba(255,255,255,0.22); border-radius:8px; font-size:0.82rem; font-weight:600; letter-spacing:0.02em; color:rgba(255,255,255,0.92); background:rgba(255,255,255,0.04);">Mastercard</span></div>
     </div>
     <div class="footer-bottom">
       © 2026 Excellent Patient Service sp. z o.o. · Wszystkie prawa zastrzeżone · Oficjalny Partner Ringostat · Marka Doskonała Obsługa Pacjenta
@@ -5975,7 +5981,7 @@
 
     // === TODO BACKEND ===
     // Tutaj robisz fetch do API: fetch('/api/order', { method:'POST', body: JSON.stringify(payload) })
-    // Backend rozróżnia intent: 'buy' → faktura proforma + Stripe/P24; 'bezpłatny test' → konto testowe 14 dni, bez płatności
+    // Backend rozróżnia intent: 'buy' → faktura proforma + ING Pay (BLIK / przelew online / karta); 'bezpłatny test' → konto testowe 14 dni, bez płatności
     console.log('Order payload:', payload);
 
     // Fallback: mailto z pełnym payloadem
