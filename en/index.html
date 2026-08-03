@@ -5510,7 +5510,7 @@
           <div class="ws-success-divider"></div>
           <p class="ws-success-meta">In the meantime, see what other practices achieved:</p>
           <a href="#testimonials" class="ws-success-link">📊 Results of the Excellent Reception standard — +18% more bookings on average (14 years of audited practices) →</a>
-          <p class="ws-success-footer" style="margin-top: 24px; font-size: 0.85rem; color: var(--text-muted);">Urgent? Call us: <a href="tel:+48886770014" style="color: var(--gold-1); font-weight: 700;">+48 886 770 014</a> lub <a href="tel:+48886570047" style="color: var(--gold-1); font-weight: 700;">+48 886 570 047</a></p>
+          <p class="ws-success-footer" style="margin-top: 24px; font-size: 0.85rem; color: var(--text-muted);">Urgent? Call us: <a href="tel:+48886770014" style="color: var(--gold-1); font-weight: 700;">+48 886 770 014</a> or <a href="tel:+48886570047" style="color: var(--gold-1); font-weight: 700;">+48 886 570 047</a></p>
         </div>
 
       </div>
@@ -6508,7 +6508,7 @@ window.addEventListener('message',function(e){var d=e&&e.data;if(!d||!d.tamaiaH)
     var a=e.target && e.target.closest ? e.target.closest('a,button') : null; if(!a) return;
     var href=a.getAttribute('href')||'';
     var txt=(a.textContent||'').replace(/\s+/g,' ').trim().slice(0,48);
-    if(href.indexOf('#cta')>-1 || href.indexOf('app.tamaia.pl')>-1 || href.indexOf('calendly')>-1
+    if(href.indexOf('#cta')>-1 || href.indexOf('app.tamaia.pl')>-1
        || /Try|Start|Order|Send my enquiry|Book|Ask|Activate/i.test(txt)){
       track('cta_click', {label:txt||'(brak)', href:href||'(brak)'});
     }

@@ -6489,7 +6489,7 @@ window.addEventListener('message',function(e){var d=e&&e.data;if(!d||!d.tamaiaH)
     var a=e.target && e.target.closest ? e.target.closest('a,button') : null; if(!a) return;
     var href=a.getAttribute('href')||'';
     var txt=(a.textContent||'').replace(/\s+/g,' ').trim().slice(0,48);
-    if(href.indexOf('#cta')>-1 || href.indexOf('app.tamaia.pl')>-1 || href.indexOf('calendly')>-1
+    if(href.indexOf('#cta')>-1 || href.indexOf('app.tamaia.pl')>-1
        || /Wypróbuj|Zamów|Wyślij zgłoszenie|Zacznij|Umów|Porozmawiaj/i.test(txt)){
       track('cta_click', {label:txt||'(brak)', href:href||'(brak)'});
     }
