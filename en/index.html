@@ -3266,6 +3266,18 @@
   /* ===== FAQ ===== */
   .faq { background: var(--white); }
   .faq-list { max-width: 820px; margin: 0 auto; }
+  .faq-tabs { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin:0 0 24px; }
+  .faq-tab { appearance:none; font:inherit; font-weight:650; font-size:0.93rem; cursor:pointer;
+    display:inline-flex; align-items:center; gap:9px; padding:11px 18px; border-radius:50px;
+    background:#fff; color:var(--navy); border:1px solid rgba(27,44,79,0.12); transition:.15s; }
+  .faq-tab:hover { border-color: var(--gold-1); }
+  .faq-tab:focus-visible { outline:3px solid var(--gold-2); outline-offset:2px; }
+  .faq-tab[aria-selected="true"] { background:var(--navy); color:#fff; border-color:var(--navy); }
+  .faq-tab-n { font-size:0.75rem; font-weight:700; padding:2px 8px; border-radius:50px;
+    background:rgba(27,44,79,0.09); color:var(--text-muted); }
+  .faq-tab[aria-selected="true"] .faq-tab-n { background:rgba(255,255,255,0.18); color:#fff; }
+  .faq-panel[hidden] { display:none; }
+  @media (max-width:560px){ .faq-tab { font-size:0.86rem; padding:9px 14px; } }
   .faq-item {
     background: var(--cream);
     border: 1px solid var(--warm-border);
@@ -3641,7 +3653,9 @@
   }
   @media (max-width: 600px) {
     .cookie-banner { left: 10px; right: 10px; max-width: none; bottom: 10px; padding: 16px; }
-    .maia-float { bottom: 86px; right: 12px; }
+    /* Telefon: dymek zwiniety do ikony — pelna plakietka zaslaniala tekst (48% szerokosci ekranu) */
+    .maia-float { bottom: 86px; right: 12px; padding: 7px; gap: 0; }
+    .maia-float .maia-cta { display: none; }
   }
 
   /* ===== STICKY CTA PHONE ===== */
@@ -5035,7 +5049,6 @@
       </div>
 
     </div>
-    <p style="text-align:center; font-size:0.74rem; color:var(--text-muted); margin-top:14px;">Ringostat prices include 23% VAT. Outbound calls are charged at Ringostat rates from PLN 0.12 net/min (mobile). Current rates: <a href="https://ringostat.com/pl/virtual-number-pl/" target="_blank" rel="noopener" style="color:var(--gold-1);">ringostat.com</a>.</p>
     </div></details>
   </div>
 </section>
@@ -5049,7 +5062,15 @@
     </div>
     <div class="faq-list">
 
-      <div class="faq-item">
+      <div class="faq-tabs" role="tablist" aria-label="FAQ categories">
+        <button class="faq-tab" type="button" role="tab" id="ftab-sprzet" aria-controls="fpan-sprzet" aria-selected="true" tabindex="0">Hardware &amp; internet <span class="faq-tab-n">3</span></button>
+        <button class="faq-tab" type="button" role="tab" id="ftab-wdrozenie" aria-controls="fpan-wdrozenie" aria-selected="false" tabindex="-1">Setup &amp; go-live <span class="faq-tab-n">5</span></button>
+        <button class="faq-tab" type="button" role="tab" id="ftab-umowa" aria-controls="fpan-umowa" aria-selected="false" tabindex="-1">Contract <span class="faq-tab-n">5</span></button>
+        <button class="faq-tab" type="button" role="tab" id="ftab-zespol" aria-controls="fpan-zespol" aria-selected="false" tabindex="-1">Team &amp; GDPR <span class="faq-tab-n">3</span></button>
+      </div>
+
+<div class="faq-panel" id="fpan-sprzet" role="tabpanel" aria-labelledby="ftab-sprzet">
+        <div class="faq-item">
         <div class="faq-question">
           Do I have to buy a new phone system or replace our handsets?
           <div class="faq-toggle">+</div>
@@ -5059,7 +5080,7 @@
         </div>
       </div>
 
-      <div class="faq-item">
+        <div class="faq-item">
         <div class="faq-question">
           Will it work on our connection? We do not have fibre yet.
           <div class="faq-toggle">+</div>
@@ -5069,7 +5090,19 @@
         </div>
       </div>
 
-      <div class="faq-item">
+        <div class="faq-item">
+        <div class="faq-question">
+          Can we record our own greetings — and are calls recorded?
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          <p>Yes — and that works best. You record greetings and announcements in your own voice (yours or your team’s) and can swap them at any time in the dashboard. Patient calls are recorded (in line with GDPR) — that is what MAIA uses to review the call and suggest how to book more effectively.</p>
+        </div>
+      </div>
+      </div>
+
+      <div class="faq-panel" id="fpan-wdrozenie" role="tabpanel" aria-labelledby="ftab-wdrozenie" hidden>
+        <div class="faq-item">
         <div class="faq-question">
           Can I test this without touching our practice number? And what does porting involve?
           <div class="faq-toggle">+</div>
@@ -5080,7 +5113,7 @@
         </div>
       </div>
 
-      <div class="faq-item">
+        <div class="faq-item">
         <div class="faq-question">
           What does the rollout look like step by step?
           <div class="faq-toggle">+</div>
@@ -5090,7 +5123,7 @@
         </div>
       </div>
 
-      <div class="faq-item">
+        <div class="faq-item">
         <div class="faq-question">
           What is worth preparing before we start?
           <div class="faq-toggle">+</div>
@@ -5100,17 +5133,7 @@
         </div>
       </div>
 
-      <div class="faq-item">
-        <div class="faq-question">
-          How much paperwork is on my side?
-          <div class="faq-toggle">+</div>
-        </div>
-        <div class="faq-answer">
-          <p>The minimum. On your side: filling in the form, providing user details, preparing a file with your patient database and price list, and naming one person responsible for the rollout. Nothing more — we configure the technical side, and our team supports you at every stage.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
+        <div class="faq-item">
         <div class="faq-question">
           What happens to our existing patient database?
           <div class="faq-toggle">+</div>
@@ -5120,29 +5143,29 @@
         </div>
       </div>
 
-      <div class="faq-item">
+        <div class="faq-item">
         <div class="faq-question">
-          Can we record our own greetings — and are calls recorded?
+          How fast can the system go live?
           <div class="faq-toggle">+</div>
         </div>
         <div class="faq-answer">
-          <p>Yes — and that works best. You record greetings and announcements in your own voice (yours or your team’s) and can swap them at any time in the dashboard. Patient calls are recorded (in line with GDPR) — that is what MAIA uses to review the call and suggest how to book more effectively.</p>
+          <p>Usually a few days. <strong>Day 1:</strong> sign-up on the site and a short onboarding call. <strong>Days 2–4:</strong> we create logins and — if you want — import your patient database and price list. Around day 4 you make your first calls on the new number, and <strong>days 5–14</strong> are for testing and deciding whether to carry on. Setup and onboarding are <strong>free</strong>. Porting your number after the trial takes about 3 days — during which your existing system keeps running, with no break in patient service.</p>
         </div>
       </div>
+      </div>
 
-      <div class="faq-item">
+      <div class="faq-panel" id="fpan-umowa" role="tabpanel" aria-labelledby="ftab-umowa" hidden>
+        <div class="faq-item">
         <div class="faq-question">
-          Isn’t this just surveillance of my team?
+          How much paperwork is on my side?
           <div class="faq-toggle">+</div>
         </div>
         <div class="faq-answer">
-          <p>We understand the concern — and the answer is no. MAIA <strong>does not rate people, it rates calls</strong>, and after each one it suggests what to do next time. It is a tool for <strong>development, not control</strong>: the receptionist gets a concrete tip instead of waiting for a quarterly comment from a manager. Teams working with it say it takes the stress out — you know what works, and uncertain situations stop hanging in the air.</p>
-          <p style="margin-top: 10px;">In practice: <strong>call recording is standard in telephony</strong> (Ringostat, like any phone system). The difference is that instead of a dead archive you get support that genuinely helps book more appointments. We recommend <strong>telling your team openly</strong> that calls are summarised by AI — transparency builds trust, and GDPR requires it anyway (we also inform callers that calls are recorded).</p>
-          <p style="margin-top: 10px; padding: 10px 14px; background: var(--cream); border-left: 3px solid var(--gold-1); border-radius: 4px; font-size: 0.92rem;"><strong>In short:</strong> the goal is more booked appointments and a calmer front desk — not catching people out.</p>
+          <p>The minimum. On your side: filling in the form, providing user details, preparing a file with your patient database and price list, and naming one person responsible for the rollout. Nothing more — we configure the technical side, and our team supports you at every stage.</p>
         </div>
       </div>
 
-      <div class="faq-item">
+        <div class="faq-item">
         <div class="faq-question">
           What exactly am I buying — Ringostat or the Excellent Reception service?
           <div class="faq-toggle">+</div>
@@ -5153,7 +5176,7 @@
         </div>
       </div>
 
-      <div class="faq-item">
+        <div class="faq-item">
         <div class="faq-question">
           What will this cost me per month?
           <div class="faq-toggle">+</div>
@@ -5170,37 +5193,7 @@
         </div>
       </div>
 
-      <div class="faq-item">
-        <div class="faq-question">
-          Will my team actually want this phone system?
-          <div class="faq-toggle">+</div>
-        </div>
-        <div class="faq-answer">
-          <p>Yes, because MAIA is not a “mystery patient” or someone watching over their shoulder. <strong>The receptionist sees their own result first</strong>, before the owner does, and gets a concrete tip (“next time, offer a slot straight away”) rather than a verdict. <strong>Patients want to talk to people</strong> — MAIA supports the team so they can be proud of their work. That is why our rollouts stick: the front desk feels that MAIA genuinely helps them.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">
-          What about GDPR and recording patient calls?
-          <div class="faq-toggle">+</div>
-        </div>
-        <div class="faq-answer">
-          <p>Ringostat hosts data in the EU and has a signed DPA. We provide a GDPR policy template plus an announcement script for call recording. Recordings are encrypted (AES-256) and available only to authorised staff at the practice — via signed, expiring URLs. All traffic runs over HTTPS, and we process data in the EU.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">
-          How fast can the system go live?
-          <div class="faq-toggle">+</div>
-        </div>
-        <div class="faq-answer">
-          <p>Usually a few days. <strong>Day 1:</strong> sign-up on the site and a short onboarding call. <strong>Days 2–4:</strong> we create logins and — if you want — import your patient database and price list. Around day 4 you make your first calls on the new number, and <strong>days 5–14</strong> are for testing and deciding whether to carry on. Setup and onboarding are <strong>free</strong>. Porting your number after the trial takes about 3 days — during which your existing system keeps running, with no break in patient service.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
+        <div class="faq-item">
         <div class="faq-question">
           Why is the subscription 12 months rather than monthly?
           <div class="faq-toggle">+</div>
@@ -5212,7 +5205,7 @@
         </div>
       </div>
 
-      <div class="faq-item">
+        <div class="faq-item">
         <div class="faq-question">
           What happens after the 14-day trial?
           <div class="faq-toggle">+</div>
@@ -5220,6 +5213,41 @@
         <div class="faq-answer">
           <p><strong>Nothing automatically.</strong> You do not give card details for the trial — so nothing can be charged. After 14 days you have <strong>2 options</strong>: (1) pick a plan and we issue an invoice, or (2) cancel — no cost, no questions. All recordings and reports from the trial are deleted.</p>
         </div>
+      </div>
+      </div>
+
+      <div class="faq-panel" id="fpan-zespol" role="tabpanel" aria-labelledby="ftab-zespol" hidden>
+        <div class="faq-item">
+        <div class="faq-question">
+          Isn’t this just surveillance of my team?
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          <p>We understand the concern — and the answer is no. MAIA <strong>does not rate people, it rates calls</strong>, and after each one it suggests what to do next time. It is a tool for <strong>development, not control</strong>: the receptionist gets a concrete tip instead of waiting for a quarterly comment from a manager. Teams working with it say it takes the stress out — you know what works, and uncertain situations stop hanging in the air.</p>
+          <p style="margin-top: 10px;">In practice: <strong>call recording is standard in telephony</strong> (Ringostat, like any phone system). The difference is that instead of a dead archive you get support that genuinely helps book more appointments. We recommend <strong>telling your team openly</strong> that calls are summarised by AI — transparency builds trust, and GDPR requires it anyway (we also inform callers that calls are recorded).</p>
+          <p style="margin-top: 10px; padding: 10px 14px; background: var(--cream); border-left: 3px solid var(--gold-1); border-radius: 4px; font-size: 0.92rem;"><strong>In short:</strong> the goal is more booked appointments and a calmer front desk — not catching people out.</p>
+        </div>
+      </div>
+
+        <div class="faq-item">
+        <div class="faq-question">
+          Will my team actually want this phone system?
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          <p>Yes, because MAIA is not a “mystery patient” or someone watching over their shoulder. <strong>The receptionist sees their own result first</strong>, before the owner does, and gets a concrete tip (“next time, offer a slot straight away”) rather than a verdict. <strong>Patients want to talk to people</strong> — MAIA supports the team so they can be proud of their work. That is why our rollouts stick: the front desk feels that MAIA genuinely helps them.</p>
+        </div>
+      </div>
+
+        <div class="faq-item">
+        <div class="faq-question">
+          What about GDPR and recording patient calls?
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          <p>Ringostat hosts data in the EU and has a signed DPA. We provide a GDPR policy template plus an announcement script for call recording. Recordings are encrypted (AES-256) and available only to authorised staff at the practice — via signed, expiring URLs. All traffic runs over HTTPS, and we process data in the EU.</p>
+        </div>
+      </div>
       </div>
 
     <!-- ===== DLACZEGO WARTO DOPŁACIĆ NA PRO ===== -->
@@ -5927,6 +5955,32 @@
   // ===== PRICING TOGGLE usunięty — tylko płatność roczna =====
 
   // ===== FAQ ACCORDION =====
+  /* FAQ_TABS — przelaczanie grup pytan (klawiatura: strzalki, Home/End) */
+  (function(){
+    var taby = Array.prototype.slice.call(document.querySelectorAll('.faq-tab'));
+    if (!taby.length) return;
+    function pokaz(t){
+      taby.forEach(function(x){
+        var wybrany = (x === t);
+        x.setAttribute('aria-selected', String(wybrany));
+        x.tabIndex = wybrany ? 0 : -1;
+        var p = document.getElementById(x.getAttribute('aria-controls'));
+        if (p) p.hidden = !wybrany;
+      });
+    }
+    taby.forEach(function(t, i){
+      t.addEventListener('click', function(){ pokaz(t); });
+      t.addEventListener('keydown', function(e){
+        var k = e.key, cel = null;
+        if (k === 'ArrowRight' || k === 'ArrowDown') cel = taby[(i + 1) % taby.length];
+        else if (k === 'ArrowLeft' || k === 'ArrowUp') cel = taby[(i - 1 + taby.length) % taby.length];
+        else if (k === 'Home') cel = taby[0];
+        else if (k === 'End') cel = taby[taby.length - 1];
+        if (cel) { e.preventDefault(); pokaz(cel); cel.focus(); }
+      });
+    });
+  })();
+
   document.querySelectorAll('.faq-item').forEach(item => {
     const q = item.querySelector('.faq-question');
     q.setAttribute('role','button');
