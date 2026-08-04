@@ -207,19 +207,23 @@
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--warm-border);
     z-index: 100;
-    padding: 14px 0;
+    padding: 10px 0;
   }
   .nav-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1200px;
+    /* gap = odstep GWARANTOWANY. Samo space-between niczego nie gwarantuje: rozdaje tylko
+       NADMIAR miejsca, a przy przepelnieniu flex najpierw kurczy pozycje i lamie napisy.
+       Pomiar 04.08.2026: tresc potrzebowala 1207 px w boksie 1152 px -> logo dotykalo menu (0 px). */
+    gap: clamp(20px, 2.4vw, 56px);
+    max-width: 1320px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 28px;
   }
-  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo { display: flex; align-items: center; gap: 10px; flex: 0 0 auto; }
   .logo-img { height: 52px; width: auto; display: block; }
-  .logo-img-maia { height: 56px; width: auto; display: block; }
+  .logo-img-maia { height: 44px; width: auto; display: block; }
   /* === TAMAIA tekstowy fallback (gdy brak pliku logo_tamaia.png) === */
   .logo-text-fallback {
     flex-direction: column;
@@ -228,7 +232,7 @@
   }
   .logo-maia-wordmark {
     display: inline-flex;
-    align-items: punkt startowy;
+    align-items: flex-start;
     justify-content: center;
     font-family: Georgia, "Times New Roman", serif;
     font-size: 2.1rem;
@@ -268,37 +272,80 @@
     margin-top: -4px;
   }
 
-  .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+  /* --- linki --- */
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: clamp(18px, 1.7vw, 30px);
+    list-style: none;
+    flex: 0 0 auto;
+  }
+  .nav-links li { white-space: nowrap; }
   .nav-links a {
+    position: relative;
+    display: inline-block;
+    padding: 6px 1px;
     color: var(--navy);
     font-weight: 500;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+    white-space: nowrap;   /* etykieta nigdy nie lamie sie w srodku frazy */
     transition: color 0.2s;
   }
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 1px; right: 1px; bottom: 0;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--gold-1);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.22s ease;
+  }
   .nav-links a:hover { color: var(--gold-1); }
-  .nav-cta { padding: 10px 22px; font-size: 0.95rem; }
+  .nav-links a:hover::after,
+  .nav-links a:focus-visible::after { transform: scaleX(1); }
+
+  /* --- akcje po prawej: logowanie + CTA + hamburger jako JEDNA grupa --- */
+  .nav-actions { display: flex; align-items: center; gap: 12px; flex: 0 0 auto; }
+  .nav-cta { padding: 10px 20px; font-size: 0.9rem; white-space: nowrap; flex: 0 0 auto; }
   .nav-login {
     color: #8a6a12; /* D10: kontrast linku logowania na białym */
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     text-decoration: none;
-    padding: 10px 18px;
+    padding: 9px 16px;
     border: 2px solid var(--gold-1);
     border-radius: 50px;
     transition: all 0.2s;
-    margin-right: 8px;
     white-space: nowrap;
+    flex: 0 0 auto;
   }
   .nav-login:hover { background: var(--gold-1); color: var(--white); }
-  @media (max-width: 900px) {
-    .nav-login { display: none; }
+
+  /* widoczne ognisko klawiatury zamiast domyslnej ramki przegladarki */
+  .nav .logo:focus-visible,
+  .nav-links a:focus-visible,
+  .nav-login:focus-visible,
+  .nav-cta:focus-visible,
+  .hamburger:focus-visible {
+    outline: 2px solid var(--navy);
+    outline-offset: 3px;
+    border-radius: 8px;
   }
 
-  .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+  .hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px 8px;
+    flex: 0 0 auto;
+  }
   .hamburger span {
     display: block;
-    width: 26px;
-    height: 3px;
+    width: 24px;
+    height: 2.5px;
     background: var(--navy);
     border-radius: 2px;
     margin: 5px 0;
@@ -306,13 +353,16 @@
   }
   .mobile-menu {
     display: none;
-    position: fixed;
-    top: 72px;
+    /* trzyma sie DOLU paska; dawne sztywne top:72px rozjezdzalo sie z jego realna wysokoscia */
+    position: absolute;
+    top: 100%;
     left: 0; right: 0;
     background: var(--white);
     border-bottom: 1px solid var(--warm-border);
     padding: 20px 24px;
     z-index: 99;
+    max-height: calc(100vh - 100%);
+    overflow-y: auto;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   }
   .mobile-menu.open { display: block; }
@@ -321,10 +371,28 @@
   .mobile-menu li:last-child { border-bottom: none; }
   .mobile-menu a { display: block; font-weight: 500; }
 
-  @media (max-width: 900px) {
+  /* Progi wyznaczone POMIAREM, nie na oko (najszersza wersja to angielska):
+     1240 px -> znika "Zaloguj sie" (jest w menu pod hamburgerem i w stopce),
+     1080 px -> hamburger, ale CTA ZOSTAJE w pasku (wczesniej znikalo i telefon nie mial zadnego CTA),
+      560 px -> w pasku zostaje logo + hamburger. */
+  @media (max-width: 1239px) {
+    .nav-login { display: none; }
+  }
+  @media (max-width: 1079px) {
     .nav-links { display: none; }
     .hamburger { display: block; }
+  }
+  /* Menu mobilne nie moze przezyc poszerzenia okna (obrot tabletu, zmiana rozmiaru okna):
+     bez tej bramki zostawalo otwarte i zaslanialo cala strone na komputerze. */
+  @media (min-width: 1080px) {
+    .mobile-menu { display: none !important; }
+  }
+  @media (max-width: 559px) {
     .nav-cta { display: none; }
+    .logo-img-maia { height: 38px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .nav-links a::after { transition: none; }
   }
 
   /* ===== HERO ===== */
@@ -3938,7 +4006,7 @@
 <!-- ===== NAVIGATION ===== -->
 <style id="langSwitch">
   .lang-switch{display:inline-flex;align-items:center;gap:2px;border:1.5px solid rgba(27,44,79,.18);border-radius:50px;padding:2px;background:#fff;line-height:1}
-  .lang-switch a{display:inline-block;padding:5px 11px;border-radius:50px;font-size:.78rem;font-weight:700;letter-spacing:.04em;text-decoration:none;color:var(--navy);transition:background .15s,color .15s}
+  .lang-switch a{display:inline-block;padding:7px 12px;border-radius:50px;font-size:.78rem;font-weight:700;letter-spacing:.04em;text-decoration:none;color:var(--navy);transition:background .15s,color .15s}
   .lang-switch a[aria-current="true"]{background:var(--navy);color:#fff}
   .lang-switch a:not([aria-current="true"]):hover{background:var(--cream)}
   .nav-links .lang-switch{margin-left:6px}
@@ -3965,11 +4033,13 @@
       <li><a href="#faq">FAQ</a></li>
       <li><span class="lang-switch"><a href="/" hreflang="pl" lang="pl">PL</a><a href="/en" hreflang="en" lang="en" aria-current="true">EN</a></span></li>
     </ul>
-    <a href="https://app.tamaia.pl" class="nav-login" target="_blank" rel="noopener">Log in →</a>
-    <a href="#cta" class="btn btn-primary nav-cta">Start 14-day trial</a>
-    <button class="hamburger" id="hamburgerBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="nav-actions">
+      <a href="https://app.tamaia.pl" class="nav-login" target="_blank" rel="noopener">Log in →</a>
+      <a href="#cta" class="btn btn-primary nav-cta">Start 14-day trial</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
   <div class="mobile-menu" id="mobileMenu">
     <ul>
