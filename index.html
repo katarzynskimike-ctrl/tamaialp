@@ -3654,7 +3654,7 @@
   @media (max-width: 600px) {
     .cookie-banner { left: 10px; right: 10px; max-width: none; bottom: 10px; padding: 16px; }
     /* Telefon: dymek zwiniety do ikony — pelna plakietka zaslaniala tekst (48% szerokosci ekranu) */
-    .maia-float { bottom: 86px; right: 12px; padding: 7px; gap: 0; }
+    .maia-float { bottom: 150px; right: 12px; padding: 7px; gap: 0; }
     .maia-float .maia-cta { display: none; }
   }
 
@@ -5762,7 +5762,24 @@
   }
   sendBtn.addEventListener('click', send);
   input.addEventListener('keydown', function(e){ if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); send(); } });
-  try{ var s=localStorage.getItem('maiaFloatPos'); if(s){ var p=JSON.parse(s); if(p&&p.l&&p.t){ el.style.right='auto'; el.style.bottom='auto'; el.style.left=p.l; el.style.top=p.t; } } }catch(_){}
+  /* Przywrocenie zapisanej pozycji — TYLKO jesli miesci sie w oknie.
+     Bez tego dymek przesuniety na komputerze znikal poza ekranem telefonu i nie dalo sie go odzyskac. */
+  function _mfMiesciSie(L,T){ return isFinite(L)&&isFinite(T)&&L>=0&&T>=0
+      && L<=window.innerWidth-el.offsetWidth && T<=window.innerHeight-el.offsetHeight; }
+  try{ var s=localStorage.getItem('maiaFloatPos'); if(s){ var p=JSON.parse(s); if(p&&p.l&&p.t){
+        var L=parseInt(p.l,10), T=parseInt(p.t,10);
+        if(_mfMiesciSie(L,T)){ el.style.right='auto'; el.style.bottom='auto'; el.style.left=p.l; el.style.top=p.t; }
+        else { localStorage.removeItem('maiaFloatPos'); }   // poza ekranem → wracamy do pozycji domyslnej
+  } } }catch(_){}
+  /* Zmiana rozmiaru/obrot ekranu: wciagamy dymek z powrotem, gdyby wypadl poza widok. */
+  window.addEventListener('resize', function(){
+    if(!el.style.left || el.style.left==='auto') return;
+    var L=parseInt(el.style.left,10), T=parseInt(el.style.top,10);
+    var nL=Math.min(Math.max(0,L), window.innerWidth-el.offsetWidth);
+    var nT=Math.min(Math.max(0,T), window.innerHeight-el.offsetHeight);
+    if(nL!==L || nT!==T){ el.style.left=nL+'px'; el.style.top=nT+'px';
+      try{ localStorage.setItem('maiaFloatPos', JSON.stringify({l:el.style.left,t:el.style.top})); }catch(_){} }
+  });
 })();
 </script>
 
