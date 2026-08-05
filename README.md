@@ -91,7 +91,7 @@ Stack rekomendowany: Node.js + Express na Vercel Edge Functions / Cloudflare Wor
 - **Excellent Patient Service sp. z o.o.**
 - ul. Lubomirskiego 39E, 36-040 Boguchwała
 - NIP: 5170359961
-- 📞 +48 886 770 014
+- 📞 +48 886 570 047
 - ✉️ biuro@tamaia.pl
 - 🌐 [doskonalaobslugapacjenta.pl](https://doskonalaobslugapacjenta.pl)
 

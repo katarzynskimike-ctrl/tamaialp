@@ -25,4 +25,4 @@ Wszystkie ceny BRUTTO (VAT 23%), miesięcznie, przy abonamencie rocznym płatnym
 - Abonament roczny płatny z góry, jedna faktura na cały system
 - Ceny brutto (VAT 23%)
 - Wdrożenie: 5 dni roboczych; pierwsze raporty po 7 dniach
-- Kontakt: +48 886 770 014, biuro@tamaia.pl
+- Kontakt: +48 886 570 047, biuro@tamaia.pl
