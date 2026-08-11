@@ -1,0 +1,534 @@
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TAMAIA dla Milanova Clinic — co pokażemy o Waszych telefonach</title>
+
+<style>
+  :root {
+    --ink:        #10152B;
+    --ink-soft:   #3A4260;
+    --ink-faint:  #636986;
+    --paper:      #FBFAF7;
+    --paper-2:    #F2F0EA;
+    --rule:       #DCD8CD;
+    --gold:       #856813;   /* złoto do NAPISÓW — zdaje 4,5 na obu tłach */
+    --gold-line:  #B08D1F;   /* złoto do KRESEK — próg dla grafiki to 3 */
+    --gold-soft:  #F5EBCC;
+    --brick:      #9E3520;
+    --moss:       #1F6446;
+    --moss-soft:  #E0EDE6;
+
+    --serif: Georgia, 'Iowan Old Style', 'Palatino Linotype', 'Times New Roman', serif;
+    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink:#ECEAE3; --ink-soft:#B9BDD0; --ink-faint:#8A90A8;
+      --paper:#0E1220; --paper-2:#171C2E; --rule:#2A3149;
+      --gold:#E0BC55; --gold-line:#E0BC55; --gold-soft:#2E2718;
+      --brick:#E4907C; --moss:#74C79E; --moss-soft:#14251D;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink:#ECEAE3; --ink-soft:#B9BDD0; --ink-faint:#8A90A8;
+    --paper:#0E1220; --paper-2:#171C2E; --rule:#2A3149;
+    --gold:#E0BC55; --gold-line:#E0BC55; --gold-soft:#2E2718;
+    --brick:#E4907C; --moss:#74C79E; --moss-soft:#14251D;
+  }
+  :root[data-theme="light"] {
+    --ink:#10152B; --ink-soft:#3A4260; --ink-faint:#636986;
+    --paper:#FBFAF7; --paper-2:#F2F0EA; --rule:#DCD8CD;
+    --gold:#856813; --gold-line:#B08D1F; --gold-soft:#F5EBCC;
+    --brick:#9E3520; --moss:#1F6446; --moss-soft:#E0EDE6;
+  }
+
+  body {
+    background: var(--paper); color: var(--ink); font-family: var(--sans);
+    font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 76ch; margin: 0 auto; padding: 64px 24px 110px; }
+
+  /* ── otwarcie ───────────────────────────────────────── */
+  .marka {
+    font-family: var(--mono); font-size: 13px; letter-spacing: .34em; font-weight: 700;
+    color: var(--ink); margin-bottom: 46px;
+  }
+  .marka span { color: var(--gold); }
+  h1 {
+    font-family: var(--serif); font-weight: 400; font-size: clamp(31px, 5.2vw, 46px);
+    line-height: 1.12; letter-spacing: -.018em; text-wrap: balance; margin-bottom: 18px;
+  }
+  .wstep {
+    font-size: 19.5px; line-height: 1.55; color: var(--ink-soft);
+    max-width: 60ch; text-wrap: pretty; margin-bottom: 26px;
+  }
+  .dla {
+    font-family: var(--mono); font-size: 12.5px; color: var(--ink-faint);
+    padding-top: 20px; border-top: 2px solid var(--ink); margin-bottom: 62px;
+  }
+
+  /* ── sekcje ─────────────────────────────────────────── */
+  section { margin-bottom: 74px; }
+  h2 {
+    font-family: var(--serif); font-weight: 400; font-size: clamp(25px, 3.8vw, 33px);
+    line-height: 1.2; letter-spacing: -.012em; text-wrap: balance; margin-bottom: 20px;
+  }
+  h3 {
+    font-size: 17.5px; font-weight: 650; letter-spacing: -.005em;
+    margin: 38px 0 13px; text-wrap: balance;
+  }
+  p { margin-bottom: 16px; max-width: 66ch; text-wrap: pretty; }
+  strong { font-weight: 650; }
+  em { font-style: italic; color: var(--ink-soft); }
+
+  ul.plain { list-style: none; display: grid; gap: 11px; margin: 0 0 20px; max-width: 66ch; }
+  ul.plain li { display: flex; gap: 12px; }
+  ul.plain li::before { content: '—'; color: var(--gold); flex: none; font-weight: 700; }
+
+  /* ── karty ustaleń ──────────────────────────────────── */
+  .karty { display: grid; gap: 2px; margin: 26px 0 8px; max-width: 66ch; }
+  .karta { border-top: 1px solid var(--rule); padding: 20px 0; }
+  .karta:last-child { border-bottom: 1px solid var(--rule); }
+  .karta h4 { font-size: 16.5px; font-weight: 650; margin-bottom: 7px; text-wrap: balance; }
+  .karta p { margin-bottom: 0; font-size: 16px; color: var(--ink-soft); }
+  .karta p + p { margin-top: 9px; }
+  .znak {
+    display: inline-block; font-family: var(--mono); font-size: 11.5px; letter-spacing: .1em;
+    text-transform: uppercase; font-weight: 700; margin-right: 10px; vertical-align: 1.5px;
+  }
+  .znak.jest { color: var(--moss); }
+  .znak.brak { color: var(--brick); }
+
+  /* ── wyróżnienie ────────────────────────────────────── */
+  .wyroz {
+    background: var(--paper-2); border-radius: 3px; padding: 26px 28px; margin: 30px 0; max-width: 66ch;
+  }
+  .wyroz h4 { font-size: 17px; font-weight: 650; margin-bottom: 9px; text-wrap: balance; }
+  .wyroz p { margin-bottom: 0; font-size: 16.5px; }
+  .wyroz p + p { margin-top: 11px; }
+
+  .pytania { counter-reset: pyt; display: grid; gap: 16px; margin: 24px 0; max-width: 66ch; }
+  .pytanie { counter-increment: pyt; display: flex; gap: 16px; }
+  .pytanie::before {
+    content: counter(pyt); font-family: var(--mono); font-size: 13px; font-weight: 700;
+    color: var(--gold); flex: none; width: 1.5em; padding-top: 4px;
+  }
+  .pytanie p { margin-bottom: 0; }
+
+  /* ── tabele ─────────────────────────────────────────── */
+  .tbl-scroll { overflow-x: auto; margin: 0 0 22px; }
+  /* `color` jawnie — bez deklaracji typu dokumentu przeglądarka wchodzi w tryb zgodności,
+     a w nim tabele NIE dziedziczą koloru; w ciemnym motywie tekst stawał się niewidoczny. */
+  table { border-collapse: collapse; width: 100%; font-size: 15.2px; min-width: 460px; color: var(--ink); }
+  th, td { text-align: left; padding: 12px 16px 12px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  th {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .09em; text-transform: uppercase;
+    color: var(--ink-faint); font-weight: 600; border-bottom-width: 2px; border-bottom-color: var(--ink-soft);
+  }
+  td.num { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  tr.suma td { font-weight: 650; }
+  code {
+    font-family: var(--mono); font-size: .86em; background: var(--paper-2);
+    padding: 1.5px 5px; border-radius: 2px; word-break: break-word;
+  }
+
+  /* ── figury ─────────────────────────────────────────── */
+  figure { margin: 34px 0 38px; }
+  .fig-box { background: var(--paper-2); border-radius: 3px; padding: 26px 20px; overflow-x: auto; }
+  svg.diagram { display: block; width: 100%; max-width: 100%; height: auto; min-width: 560px; color: var(--ink); }
+  svg.diagram text[fill="#B08D1F"] { fill: var(--gold); }
+  svg.diagram text[fill="#9E3520"] { fill: var(--brick); }
+  svg.diagram [stroke="#B08D1F"] { stroke: var(--gold-line); }
+  svg.diagram rect[fill="#B08D1F"] { fill: var(--gold-line); }
+  svg.diagram marker#arg path, svg.diagram marker#arg2 path { fill: var(--gold-line); }
+  figcaption { font-size: 14.5px; color: var(--ink-faint); margin-top: 14px; max-width: 66ch; text-wrap: pretty; }
+
+  /* ── harmonogram ────────────────────────────────────── */
+  .plan { display: grid; gap: 0; margin: 26px 0; max-width: 66ch; }
+  .etap { display: grid; grid-template-columns: 130px 1fr; gap: 22px; padding: 18px 0; border-top: 1px solid var(--rule); }
+  .etap:last-child { border-bottom: 1px solid var(--rule); }
+  .etap-data { font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--gold); padding-top: 2px; }
+  .etap-tresc p { margin-bottom: 0; }
+  .etap-tresc .kto { font-size: 14.5px; color: var(--ink-faint); margin-top: 5px; }
+
+  footer {
+    border-top: 1px solid var(--rule); margin-top: 26px; padding-top: 26px;
+    font-size: 14.5px; color: var(--ink-faint); line-height: 1.7; max-width: 66ch;
+  }
+
+  @media (max-width: 620px) {
+    .wrap { padding: 40px 18px 80px; }
+    body { font-size: 16.5px; }
+    .etap { grid-template-columns: 1fr; gap: 6px; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+  a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+  /* ── druk / PDF ─────────────────────────────────────
+     Bez `print-color-adjust` przeglądarka wycina tła — a wtedy z ramek schematów
+     i wyróżnień zostaje biała plama i rysunek traci czytelność. */
+  @media print {
+    :root {
+      --ink:#10152B; --ink-soft:#3A4260; --ink-faint:#5B6079;
+      --paper:#FFFFFF; --paper-2:#F2F0EA; --rule:#CFCABB;
+      --gold:#7A5F10; --gold-line:#9C7C1A; --brick:#8E2E1C; --moss:#1B5A3E;
+    }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body { font-size: 11.5pt; line-height: 1.5; }
+    .wrap { max-width: none; padding: 0; }
+    section { margin-bottom: 26pt; }
+    /* nic ważnego nie ma się łamać w pół */
+    figure, .karta, .wyroz, .etap, table, .pytania { break-inside: avoid; page-break-inside: avoid; }
+    h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+    .fig-box { overflow: visible; }
+    svg.diagram { min-width: 0; }
+    @page { margin: 16mm 15mm; }
+  }
+</style>
+
+<div class="wrap">
+
+  <div class="marka">TAMAIA<span>.</span></div>
+
+  <h1>Skąd naprawdę dzwonią Wasi pacjenci — i co się dzieje po odebraniu</h1>
+
+  <p class="wstep">Przejrzeliśmy Wasz dzienny raport połączeń. Poniżej: co już z niego wiecie, czego w nim nie ma, i co możemy do niego dołożyć.</p>
+
+  <div class="dla">Dla: Milanova Clinic · Krzysztof Cieplak &nbsp;·&nbsp; 10 sierpnia 2026</div>
+
+  <!-- ══════ 1 ══════ -->
+  <section>
+    <h2>Co przeczytaliśmy w Waszym raporcie</h2>
+
+    <p>Podstawą jest dzienny eksport z <strong>6 sierpnia</strong> — 27 rekordów, 29 pól przy każdej rozmowie. Wszystko poniżej wynika wprost z tego pliku.</p>
+
+    <h3>Co ten raport robi dobrze</h3>
+
+    <div class="karty">
+      <div class="karta">
+        <h4><span class="znak jest">Jest</span>Rzetelna podstawa techniczna</h4>
+        <p>Eksport przychodzi codziennie o stałej porze. Czas oczekiwania jest trzymany <em>osobno</em> od czasu rozmowy — to rzadsze, niż się wydaje, a bez tego rozdzielenia nie da się uczciwie policzyć, ile pacjent czekał.</p>
+      </div>
+      <div class="karta">
+        <h4><span class="znak jest">Jest</span>Transkrypcje i identyfikator kliknięcia</h4>
+        <p>Transkrypcja jest przy 24 z 27 rozmów. Przy 14 rozmowach zapisany jest identyfikator kliknięcia Google. To ważne — bo właśnie z niego da się odtworzyć rzeczy, których w raporcie jeszcze nie widać.</p>
+      </div>
+    </div>
+
+    <h3>Czego w nim nie znaleźliśmy</h3>
+
+    <div class="karty">
+      <div class="karta">
+        <h4><span class="znak brak">Brak</span>Nie wiadomo, <em>która</em> reklama zadzwoniła</h4>
+        <p>Raport ma pole „kampania". W całym dniu przyjmuje ono <strong>cztery wartości i pokrywają się one jeden do jednego ze źródłem ruchu</strong> — „GA Milanova 607 214 428" to etykieta numeru, nie nazwa kampanii z Google Ads.</p>
+        <p>W praktyce: wiecie, że pacjent przyszedł z Google Ads. Nie wiecie, z której kampanii ani na jakie słowo kluczowe. <strong>A identyfikator kliknięcia, który by na to odpowiedział, leży w tych samych rekordach.</strong></p>
+      </div>
+      <div class="karta">
+        <h4><span class="znak brak">Brak</span>Nie wiadomo, czy pacjent się zapisał</h4>
+        <p>Osiem pól — między innymi <code>visit_made</code>, <code>paid</code>, <code>value</code>, <code>classification</code> — jest pustych w każdym rekordzie tego dnia. Struktura na te dane istnieje, wartości nie ma.</p>
+        <p>To dokładnie ta warstwa, o którą pytaliście: klasyfikacja rozmów i odpowiedź, co się wydarzyło po odebraniu telefonu.</p>
+      </div>
+      <div class="karta">
+        <h4><span class="znak brak">Brak</span>Nie widać, które rozmowy przejął asystent</h4>
+        <p>Raport rozróżnia „odebraną" i „nieodebraną", a przy <strong>7 z 27</strong> rozmów podaje nazwisko osoby, która odebrała. Nie ma jednak pola, które mówi, że telefon przejął asystent głosowy.</p>
+        <p>W efekcie nie da się postawić pytania, które przy płatnych kampaniach jest najważniejsze: <strong>ile rozmów z reklamy odebrał asystent, a nie recepcja — i co się z nimi dalej stało.</strong> Płacicie za kliknięcie, telefon dzwoni, ktoś go przejmuje — i w tym miejscu ślad się urywa.</p>
+      </div>
+      <div class="karta">
+        <h4><span class="znak brak">Brak</span>Rozmowy nie mają trwałego numeru</h4>
+        <p>Numer porządkowy rozmowy to <code>0, 1, 2…</code> liczony od nowa każdego dnia. Przy zestawianiu kilku dni nie da się na nim oprzeć historii kontaktu z pacjentem.</p>
+        <p>Osobno: znacznik „nowy pacjent" ma wartość „tak" we wszystkich 27 rozmowach — także w 19 <strong>wychodzących</strong>, czyli wtedy, gdy to Wasza recepcja dzwoni do kogoś, kogo już zna.</p>
+      </div>
+    </div>
+
+    <div class="wyroz">
+      <h4>Trzy pytania, zanim cokolwiek zaproponujemy</h4>
+      <p>Plik, który dostaliśmy, był pozbawiony danych osobowych. Nie chcemy wyciągać wniosków z czegoś, co mogło zniknąć przy anonimizacji — dlatego pytamy, zamiast zakładać:</p>
+      <div class="pytania">
+        <div class="pytanie"><p>Czy te osiem pól jest puste również w Waszej pełnej wersji raportu?</p></div>
+        <div class="pytanie"><p>Czy „czas trwania" oznacza czas rozmowy, czy całe połączenie razem z dzwonieniem? Od tego zależy każda średnia, którą będziemy zestawiać.</p></div>
+        <div class="pytanie"><p>Czy w raporcie widzicie oryginalny numer dzwoniącego?</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ 2 ══════ -->
+  <section>
+    <h2>Gdzie gubi się informacja — i jak to zmienić</h2>
+
+    <p>Identyfikator kliknięcia Google powstaje w chwili, gdy pacjent klika reklamę, i podróżuje razem z nim na Waszą stronę. Ginie na jednym ogniwie: tam, gdzie strona podmienia numer telefonu. <strong>Dane przechodzą dalej tylko wtedy, gdy podmianę i raport robi ten sam system.</strong></p>
+
+    <figure>
+      <div class="fig-box">
+        <svg class="diagram" viewBox="0 0 980 400" role="img"
+             aria-label="Porównanie dwóch łańcuchów: dziś identyfikator kliknięcia Google ginie na ogniwie podmiany numeru i raport podaje tylko źródło ruchu; po przejściu na TAMAIA identyfikator jest zachowany, a raport podaje kampanię, słowo kluczowe oraz to, czy pacjent się zapisał i dlaczego nie.">
+          <defs>
+            <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+            </marker>
+            <marker id="arg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#B08D1F"/>
+            </marker>
+          </defs>
+
+          <text x="20" y="26" font-family="ui-monospace, Menlo, monospace" font-size="12" font-weight="700"
+                letter-spacing="1.4" fill="currentColor" opacity=".55">DZIŚ</text>
+
+          <rect x="20"  y="46" width="140" height="52" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/>
+          <text x="90"  y="70"  text-anchor="middle" font-size="13" fill="currentColor">Reklama</text>
+          <text x="90"  y="86"  text-anchor="middle" font-size="13" fill="currentColor">Google</text>
+
+          <rect x="220" y="46" width="140" height="52" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/>
+          <text x="290" y="70"  text-anchor="middle" font-size="13" fill="currentColor">Wasza</text>
+          <text x="290" y="86"  text-anchor="middle" font-size="13" fill="currentColor">strona</text>
+
+          <rect x="420" y="46" width="140" height="52" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"
+                stroke-dasharray="5 3"/>
+          <text x="490" y="70"  text-anchor="middle" font-size="13" fill="currentColor">Podmiana</text>
+          <text x="490" y="86"  text-anchor="middle" font-size="13" fill="currentColor">numeru</text>
+
+          <rect x="620" y="46" width="140" height="52" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/>
+          <text x="690" y="78"  text-anchor="middle" font-size="13" fill="currentColor">Centrala</text>
+
+          <rect x="820" y="46" width="140" height="52" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/>
+          <text x="890" y="70"  text-anchor="middle" font-size="13" fill="currentColor">Raport</text>
+          <text x="890" y="86"  text-anchor="middle" font-size="13" fill="currentColor">dzienny</text>
+
+          <line x1="160" y1="72" x2="214" y2="72" stroke="currentColor" stroke-width="1.3" marker-end="url(#ar)"/>
+          <line x1="360" y1="72" x2="414" y2="72" stroke="currentColor" stroke-width="1.3" marker-end="url(#ar)"/>
+          <line x1="560" y1="72" x2="614" y2="72" stroke="currentColor" stroke-width="1.3" marker-end="url(#ar)"/>
+          <line x1="760" y1="72" x2="814" y2="72" stroke="currentColor" stroke-width="1.3" marker-end="url(#ar)"/>
+
+          <text x="587" y="36"  text-anchor="middle" font-size="11.5" font-weight="700" fill="#9E3520">tu ginie</text>
+          <text x="587" y="118" text-anchor="middle" font-size="11.5" fill="#9E3520">id kliknięcia</text>
+
+          <text x="890" y="122" text-anchor="middle" font-size="12" fill="currentColor" opacity=".7">„Google Ads"</text>
+          <text x="890" y="138" text-anchor="middle" font-size="12" fill="currentColor" opacity=".7">i nic więcej</text>
+
+          <line x1="20" y1="180" x2="960" y2="180" stroke="currentColor" stroke-width="1" opacity=".2"/>
+
+          <text x="20" y="216" font-family="ui-monospace, Menlo, monospace" font-size="12" font-weight="700"
+                letter-spacing="1.4" fill="#B08D1F">Z TAMAIĄ</text>
+
+          <rect x="20"  y="236" width="140" height="52" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/>
+          <text x="90"  y="260" text-anchor="middle" font-size="13" fill="currentColor">Reklama</text>
+          <text x="90"  y="276" text-anchor="middle" font-size="13" fill="currentColor">Google</text>
+
+          <rect x="220" y="236" width="140" height="52" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/>
+          <text x="290" y="260" text-anchor="middle" font-size="13" fill="currentColor">Wasza</text>
+          <text x="290" y="276" text-anchor="middle" font-size="13" fill="currentColor">strona</text>
+
+          <rect x="420" y="236" width="140" height="52" rx="3" fill="#B08D1F" fill-opacity=".12"
+                stroke="#B08D1F" stroke-width="2"/>
+          <text x="490" y="260" text-anchor="middle" font-size="13" fill="currentColor">Podmiana</text>
+          <text x="490" y="276" text-anchor="middle" font-size="13" font-weight="700" fill="#B08D1F">TAMAIA</text>
+
+          <rect x="620" y="236" width="140" height="52" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/>
+          <text x="690" y="268" text-anchor="middle" font-size="13" fill="currentColor">Centrala</text>
+
+          <rect x="820" y="236" width="140" height="52" rx="3" fill="#B08D1F" fill-opacity=".12"
+                stroke="#B08D1F" stroke-width="2"/>
+          <text x="890" y="260" text-anchor="middle" font-size="13" fill="currentColor">Raport</text>
+          <text x="890" y="276" text-anchor="middle" font-size="13" fill="currentColor">dzienny</text>
+
+          <line x1="160" y1="262" x2="214" y2="262" stroke="currentColor" stroke-width="1.3" marker-end="url(#ar)"/>
+          <line x1="360" y1="262" x2="414" y2="262" stroke="currentColor" stroke-width="1.3" marker-end="url(#ar)"/>
+          <line x1="560" y1="262" x2="614" y2="262" stroke="#B08D1F" stroke-width="2" marker-end="url(#arg)"/>
+          <line x1="760" y1="262" x2="814" y2="262" stroke="#B08D1F" stroke-width="2" marker-end="url(#arg)"/>
+
+          <text x="587" y="226" text-anchor="middle" font-size="11.5" font-weight="700" fill="#B08D1F">zachowane</text>
+          <text x="587" y="308" text-anchor="middle" font-size="11.5" fill="#B08D1F">id kliknięcia</text>
+
+          <text x="890" y="312" text-anchor="middle" font-size="12" fill="currentColor">kampania + słowo</text>
+          <text x="890" y="328" text-anchor="middle" font-size="12" fill="currentColor">czy się zapisał</text>
+          <text x="890" y="344" text-anchor="middle" font-size="12" fill="currentColor">jeśli nie — dlaczego</text>
+
+          <text x="20" y="378" font-size="12.5" fill="currentColor" opacity=".65">Zmienia się jedno ogniwo. Reszta zostaje bez zmian — numer główny kliniki też.</text>
+        </svg>
+      </div>
+      <figcaption>Numer główny Milanovej pozostaje na stronie i w wizytówkach bez żadnej zmiany. Podmiana dotyczy wyłącznie numerów pokazywanych osobom przychodzącym z reklam.</figcaption>
+    </figure>
+
+    <div class="wyroz">
+      <h4>Jeden warunek techniczny</h4>
+      <p>Na jednej stronie może pracować tylko <strong>jedna</strong> podmieniarka numerów. Dwa skrypty podmieniające ten sam numer nadpisują się nawzajem — pacjent zobaczy raz jeden numer, raz drugi, a telefon zostanie przypisany do przypadkowej kampanii.</p>
+      <p>To wynika z tego, jak działa przeglądarka, a nie z tego, czyje rozwiązanie jest lepsze. Obowiązywałoby tak samo w odwrotną stronę.</p>
+    </div>
+  </section>
+
+  <!-- ══════ 3 ══════ -->
+  <section>
+    <h2>Co dojdzie do Waszego raportu</h2>
+
+    <p>Zostawiamy dzienny eksport w tej samej formie i o tej samej porze, żebyście mogli zestawić go z tym, co macie dziś. Dokładamy do niego cztery rzeczy:</p>
+
+    <ul class="plain">
+      <li><strong>Kampania i słowo kluczowe</strong> przy każdej rozmowie z reklamy — zamiast samego „Google Ads".</li>
+      <li><strong>Czy pacjent się zapisał</strong>, a jeśli nie — <strong>z jakiego powodu</strong>, wraz z cytatem z rozmowy, na którym ten wniosek się opiera.</li>
+      <li><strong>Ocena rozmowy i etapy do rozwoju</strong> dla zespołu recepcji — po to, żeby wiedzieć, co ćwiczyć, nie po to, żeby wystawiać stopnie.</li>
+      <li><strong>Kolejka do oddzwonienia z gotowym kontekstem</strong> — telefon, którego recepcja nie zdążyła odebrać, przejmuje asystent. Zbiera, kto dzwonił i w jakiej sprawie, ocenia pilność, a do rejestracji trafia gotowa notatka. Oddzwaniacie <strong>wiedząc, o co chodzi</strong>, zamiast dzwonić w ciemno.</li>
+    </ul>
+
+    <p>To zamyka pętlę, która dziś się rwie: telefon poza zasięgiem recepcji → asystent odbiera i ustala potrzebę → rejestracja oddzwania z konkretną godziną → my mierzymy, czy pacjent faktycznie się zapisał. <strong>Każdy z tych kroków jest widoczny w raporcie</strong>, więc widać nie tylko ile telefonów wpadło, ale gdzie dokładnie zatrzymuje się droga do wizyty.</p>
+
+    <p>Każda rozmowa dostaje u nas trwały identyfikator, więc historia kontaktu z pacjentem daje się prześledzić przez wiele dni, a nie tylko w obrębie jednego dnia.</p>
+  </section>
+
+  <!-- ══════ 4 ══════ -->
+  <section>
+    <h2>Jeśli uruchamiacie voicebota</h2>
+
+    <p>Bot odbierający telefony potrzebuje czterech rzeczy. Dwie ma klinika u siebie. Dwie powstają dopiero z mierzenia rozmów — i to jest ta część, którą wnosimy.</p>
+
+    <figure>
+      <div class="fig-box">
+        <svg class="diagram" viewBox="0 0 900 340" role="img"
+             aria-label="Voicebot potrzebuje czterech wejść: bazy wiedzy i kalendarza od kliniki oraz powodów rezygnacji pacjentów i nadzoru od TAMAIA. Rozmowy bota wracają jako pomiar, zamykając pętlę.">
+          <defs>
+            <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+            </marker>
+            <marker id="arg2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#B08D1F"/>
+            </marker>
+          </defs>
+
+          <text x="20" y="24" font-family="ui-monospace, Menlo, monospace" font-size="11.5" font-weight="700"
+                letter-spacing="1.3" fill="currentColor" opacity=".55">MACIE U SIEBIE</text>
+
+          <rect x="20" y="36" width="240" height="46" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/>
+          <text x="36" y="55" font-size="13" fill="currentColor">Baza wiedzy</text>
+          <text x="36" y="72" font-size="11.5" fill="currentColor" opacity=".6">usługi, ceny, godziny, lekarze</text>
+
+          <rect x="20" y="94" width="240" height="46" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/>
+          <text x="36" y="113" font-size="13" fill="currentColor">Kalendarz</text>
+          <text x="36" y="130" font-size="11.5" fill="currentColor" opacity=".6">wolne terminy do umówienia</text>
+
+          <text x="20" y="176" font-family="ui-monospace, Menlo, monospace" font-size="11.5" font-weight="700"
+                letter-spacing="1.3" fill="#B08D1F">WNOSI TAMAIA</text>
+
+          <rect x="20" y="188" width="240" height="46" rx="3" fill="#B08D1F" fill-opacity=".12" stroke="#B08D1F" stroke-width="2"/>
+          <text x="36" y="207" font-size="13" fill="currentColor">Powody rezygnacji</text>
+          <text x="36" y="224" font-size="11.5" fill="currentColor" opacity=".75">na czym pacjenci odpadają</text>
+
+          <rect x="20" y="246" width="240" height="46" rx="3" fill="#B08D1F" fill-opacity=".12" stroke="#B08D1F" stroke-width="2"/>
+          <text x="36" y="265" font-size="13" fill="currentColor">Niezależny pomiar</text>
+          <text x="36" y="282" font-size="11.5" fill="currentColor" opacity=".75">czy bot nie traci pacjentów</text>
+
+          <line x1="260" y1="59"  x2="392" y2="140" stroke="currentColor" stroke-width="1.3" marker-end="url(#ar2)"/>
+          <line x1="260" y1="117" x2="392" y2="155" stroke="currentColor" stroke-width="1.3" marker-end="url(#ar2)"/>
+          <line x1="260" y1="211" x2="392" y2="180" stroke="#B08D1F" stroke-width="2" marker-end="url(#arg2)"/>
+          <line x1="260" y1="269" x2="392" y2="195" stroke="#B08D1F" stroke-width="2" marker-end="url(#arg2)"/>
+
+          <rect x="398" y="128" width="150" height="80" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
+          <text x="473" y="163" text-anchor="middle" font-size="15" font-weight="700" fill="currentColor">Voicebot</text>
+          <text x="473" y="182" text-anchor="middle" font-size="11.5" fill="currentColor" opacity=".6">odbiera telefon</text>
+
+          <line x1="548" y1="168" x2="654" y2="168" stroke="currentColor" stroke-width="1.3" marker-end="url(#ar2)"/>
+          <text x="601" y="158" text-anchor="middle" font-size="11.5" fill="currentColor" opacity=".7">rozmowa</text>
+
+          <rect x="660" y="128" width="220" height="80" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/>
+          <text x="770" y="158" text-anchor="middle" font-size="13" fill="currentColor">Pacjent umówiony</text>
+          <text x="770" y="177" text-anchor="middle" font-size="13" fill="currentColor">— albo nie</text>
+          <text x="770" y="196" text-anchor="middle" font-size="11.5" fill="currentColor" opacity=".6">i to trzeba zmierzyć</text>
+
+          <path d="M 770 208 L 770 306 L 140 306 L 140 296" fill="none" stroke="#B08D1F" stroke-width="2"
+                stroke-dasharray="6 4" marker-end="url(#arg2)"/>
+          <text x="455" y="326" text-anchor="middle" font-size="12" font-weight="600" fill="#B08D1F">każda rozmowa bota wraca jako pomiar — pętla się zamyka</text>
+        </svg>
+      </div>
+      <figcaption>Bot uczy się z tego, co zmierzone. Bez wiedzy o tym, na czym pacjenci odpadają, powtórzy te same potknięcia co człowiek — tylko na każdej rozmowie naraz.</figcaption>
+    </figure>
+
+    <div class="wyroz">
+      <h4>Rozmowa przejęta przez asystenta nie gubi kampanii</h4>
+      <p>To jest różnica, która robi się widoczna dopiero w raporcie. Gdy asystent i śledzenie źródeł
+         są jednym systemem, telefon przejęty po godzinach <strong>nadal niesie ze sobą kampanię i słowo
+         kluczowe</strong>, z których przyszedł. Widzicie wtedy, ile rozmów z reklamy odebrał asystent,
+         ile z nich ustaliło potrzebę i ile skończyło się wizytą.</p>
+      <p>Gdy to dwa osobne systemy, w tym miejscu ślad się urywa — i płatna kampania kończy się
+         na „telefon nieodebrany", mimo że rozmowa się odbyła.</p>
+    </div>
+
+    <div class="wyroz">
+      <h4>Możecie z nim porozmawiać już teraz</h4>
+      <p>Asystent nauczył się <b>Waszego cennika, zespołu i zakresu usług</b> z Waszej strony.
+         Zapytajcie go o cenę leczenia kanałowego trzonowca albo o to, kto prowadzi ortodoncję —
+         odpowie konkretnie, nie ogólnikami.</p>
+      <p style="font-family:var(--mono);font-size:15px"><b>tamaia.pl/demo-rejestracja</b></p>
+      <p style="font-size:15px;color:var(--ink-faint)">Rozmawiacie głosem, przeglądarka poprosi
+         o mikrofon. To ta sama rozmowa, którą odbywałby pacjent dzwoniący po godzinach.</p>
+    </div>
+
+    <div class="wyroz">
+      <h4>Jedna liczba, którą warto obserwować od pierwszego dnia</h4>
+      <p>Bot odbierający wszystko sprowadza liczbę nieodebranych połączeń do zera. To wygląda jak sukces i często nim jest — ale nie mówi jeszcze nic o tym, ilu pacjentów faktycznie się zapisało.</p>
+      <p>Dlatego warto mierzyć obie liczby naraz, i dobrze, gdy tę drugą liczy ktoś, kto nie dostarcza samego bota.</p>
+    </div>
+  </section>
+
+  <!-- ══════ 5 ══════ -->
+  <section>
+    <h2>Co trzeba przygotować</h2>
+
+    <h3>Po Waszej stronie</h3>
+
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Co</th><th>Kto</th></tr></thead>
+        <tbody>
+          <tr><td>Numery telefoniczne w Ringostacie, na koncie kliniki — ok. 15 sztuk</td><td>Milanova</td></tr>
+          <tr><td>Wyłączenie obecnej podmieniarki numerów na stronie</td><td>Wasza agencja</td></tr>
+          <tr><td>Dostęp do Google Tag Managera — wpięcie robimy my</td><td>Wasza agencja</td></tr>
+          <tr><td>Numer testowy, na którym ktoś odbiera</td><td>Milanova</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Jak to jest rozliczane</h3>
+
+    <p><strong>Śledzenie źródeł i voicebot są częścią pakietu Pro</strong> — nie ma za nie osobnej opłaty ani wdrożeniowej, ani miesięcznej. Dostajecie je razem z resztą TAMAI.</p>
+
+    <p>Osobno rozliczane są tylko <strong>minuty połączeń</strong>, w formie doładowania — płacicie za to, co faktycznie wykorzystane, a nie za pakiet z góry. Do rocznego abonamentu dokładany jest startowy zapas minut; kolejne doładowania robicie wtedy, gdy się kończy, a w panelu widzicie na bieżąco, ile zostało i na jak długo powinno starczyć przy Waszym tempie rozmów.</p>
+
+    <p>Konkretne stawki i wielkość pakietu startowego omówimy na spotkaniu — chcemy je oprzeć na Waszym rzeczywistym ruchu, a nie na cenniku z półki.</p>
+  </section>
+
+  <!-- ══════ 6 ══════ -->
+  <section>
+    <h2>Jak to poprowadzimy</h2>
+
+    <div class="plan">
+      <div class="etap">
+        <div class="etap-data">do 21.08</div>
+        <div class="etap-tresc">
+          <p><strong>Test techniczny</strong> — numery działają, skrypt wpięty, pierwsze rozmowy trafiają do raportu z pełnym opisem źródła.</p>
+          <p class="kto">My + Wasza agencja. Bez wpływu na pracę recepcji.</p>
+        </div>
+      </div>
+      <div class="etap">
+        <div class="etap-data">22–30.08</div>
+        <div class="etap-tresc">
+          <p><strong>Urlop kliniki</strong> — nic nie uruchamiamy i niczego nie zmieniamy.</p>
+        </div>
+      </div>
+      <div class="etap">
+        <div class="etap-data">od 31.08</div>
+        <div class="etap-tresc">
+          <p><strong>Test właściwy</strong> — raport dzienny w pełnym zakresie, z kampanią, słowem kluczowym i informacją, czy pacjent się zapisał.</p>
+          <p class="kto">Zestawiacie go z tym, co macie dziś, i oceniacie na własnych danych.</p>
+        </div>
+      </div>
+    </div>
+
+    <p>Numer główny Milanovej przez cały czas pozostaje bez zmian. Gdyby cokolwiek po naszej stronie przestało odpowiadać, na stronie pokazuje się numer główny — pacjent zawsze ma na co zadzwonić.</p>
+  </section>
+
+  <footer>
+    Ustalenia oparte na dziennym eksporcie połączeń z 6 sierpnia 2026, udostępnionym przez Milanova Clinic
+    (27 rekordów w wersji pozbawionej danych osobowych). Ceny numerów według cennika Ringostat.
+    Chętnie przejdziemy przez każdą z powyższych liczb na Waszych pełnych danych.
+  </footer>
+
+</div>
