@@ -54,6 +54,31 @@
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=300, s-maxage=600" }
       ]
+    },
+
+    {
+      "source": "/milanova",
+      "headers": [
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(self \"https://elevenlabs.io\"), geolocation=()" }
+      ]
+    },
+    {
+      "source": "/milanova.html",
+      "headers": [
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(self \"https://elevenlabs.io\"), geolocation=()" }
+      ]
+    },
+    {
+      "source": "/demo-rejestracja",
+      "headers": [
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(self \"https://elevenlabs.io\"), geolocation=()" }
+      ]
+    },
+    {
+      "source": "/demo-rejestracja.html",
+      "headers": [
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(self \"https://elevenlabs.io\"), geolocation=()" }
+      ]
     }
   ]
 }
