@@ -3997,6 +3997,17 @@
 .ws-sub{max-width:660px;margin-left:auto;margin-right:auto}
 .problem-source{max-width:760px;margin-left:auto;margin-right:auto}
 </style>
+<!-- TAMAIA — śledzenie źródeł połączeń (podmieniarka numerów). Wstawione 28.08.2026.
+     Skrypt jest TAKŻE na stronach bez numeru telefonu: parametry kampanii (`gclid`, `tam_kw`)
+     istnieją wyłącznie w adresie wejścia. Reklama kierująca na /oferta bez skryptu na tej
+     stronie traci źródło bezpowrotnie — po fakcie nie da się go odtworzyć.
+     `mainNumber` MUSI tu być, dopóki naprawa „numer główny z panelu" (65339d7) nie jest na
+     produkcji: serwowany t.js czyta numer wyłącznie ze strony, a bez niego podmiana kończy się
+     na `tamaia_replaced: 0` — skrypt wygląda na działający i nie robi nic.
+     ⚠️ Konto śledzenia jest WSPÓLNE ze stroną doskonalaobslugapacjenta.pl (decyzja 28.08),
+     więc numer główny w panelu należy do DOP — tutaj podajemy własny numer Tamai. -->
+<script>window.TAMAIA_TRACK = { mainNumber: '886 570 047' };</script>
+<script async src="https://app.tamaia.pl/t.js?k=RsRpVQelJow9foux1N78XSFh"></script>
 </head>
 <body>
 <a href="#tresc" class="skip-link">Przejdz do tresci</a>

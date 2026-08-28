@@ -47,7 +47,18 @@ header.top{display:flex;align-items:center;gap:12px;margin-bottom:20px}.logo{fon
 .final .t{flex:1;min-width:240px}.final .t b{font-size:19px;color:var(--navy);display:block;margin-bottom:3px}.final .t span{color:var(--muted);font-size:14px}
 .final a{background:var(--navy);color:#fff;font-weight:800;text-decoration:none;padding:13px 24px;border-radius:12px;font-size:15px;white-space:nowrap}
 footer{margin-top:26px;font-size:12px;color:var(--muted);text-align:center}
-</style></head><body><div class="wrap">
+</style><!-- TAMAIA — śledzenie źródeł połączeń (podmieniarka numerów). Wstawione 28.08.2026.
+     Skrypt jest TAKŻE na stronach bez numeru telefonu: parametry kampanii (`gclid`, `tam_kw`)
+     istnieją wyłącznie w adresie wejścia. Reklama kierująca na /oferta bez skryptu na tej
+     stronie traci źródło bezpowrotnie — po fakcie nie da się go odtworzyć.
+     `mainNumber` MUSI tu być, dopóki naprawa „numer główny z panelu" (65339d7) nie jest na
+     produkcji: serwowany t.js czyta numer wyłącznie ze strony, a bez niego podmiana kończy się
+     na `tamaia_replaced: 0` — skrypt wygląda na działający i nie robi nic.
+     ⚠️ Konto śledzenia jest WSPÓLNE ze stroną doskonalaobslugapacjenta.pl (decyzja 28.08),
+     więc numer główny w panelu należy do DOP — tutaj podajemy własny numer Tamai. -->
+<script>window.TAMAIA_TRACK = { mainNumber: '886 570 047' };</script>
+<script async src="https://app.tamaia.pl/t.js?k=RsRpVQelJow9foux1N78XSFh"></script>
+</head><body><div class="wrap">
 <header class="top"><div class="logo">TAMAIA <b>·</b> Doskonała Rejestracja</div><div class="badge">Dla gabinetów i klinik stomatologicznych</div></header>
 <section class="hero"><span class="tag">AI-centralka + CRM dla recepcji</span><h1>Recepcja, która zamienia rozmowy w wizyty.</h1><p>Telefon to główne wejście pacjenta. TAMAIA mierzy i podnosi skuteczność telefonicznej rejestracji — i pokazuje właścicielowi jedną liczbę, która ma znaczenie: pieniądze.</p><a class="cta" href="https://app.tamaia.pl" target="_blank" rel="noopener">Umów demo →</a></section>
 <section class="sec"><h2>Problem, którego nie widać w kalendarzu</h2><div class="pain"><b>Gabinet traci wizyty na telefonach — i nawet o tym nie wie.</b><ul><li>Część połączeń zostaje nieodebrana — pacjent dzwoni do konkurencji.</li><li>Rozmowy różnej jakości: bez propozycji terminu zapis się nie domyka.</li><li>Odwołania zostawiają „pusty fotel", a nikt nie oddzwania po nieodebranych.</li><li>Nikt nie mierzy, ile rozmów zamienia się w wizyty ani gdzie ucieka przychód.</li></ul></div></section>

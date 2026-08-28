@@ -46,7 +46,18 @@ header.top{display:flex;align-items:center;gap:12px;margin-bottom:20px}.logo{fon
 .final .t{flex:1;min-width:240px}.final .t b{font-size:19px;color:var(--navy);display:block;margin-bottom:3px}.final .t span{color:var(--muted);font-size:14px}
 .final a{background:var(--navy);color:#fff;font-weight:800;text-decoration:none;padding:13px 24px;border-radius:12px;font-size:15px;white-space:nowrap}
 footer{margin-top:26px;font-size:12px;color:var(--muted);text-align:center}
-</style></head><body><div class="wrap">
+</style><!-- TAMAIA — śledzenie źródeł połączeń (podmieniarka numerów). Wstawione 28.08.2026.
+     Skrypt jest TAKŻE na stronach bez numeru telefonu: parametry kampanii (`gclid`, `tam_kw`)
+     istnieją wyłącznie w adresie wejścia. Reklama kierująca na /oferta bez skryptu na tej
+     stronie traci źródło bezpowrotnie — po fakcie nie da się go odtworzyć.
+     `mainNumber` MUSI tu być, dopóki naprawa „numer główny z panelu" (65339d7) nie jest na
+     produkcji: serwowany t.js czyta numer wyłącznie ze strony, a bez niego podmiana kończy się
+     na `tamaia_replaced: 0` — skrypt wygląda na działający i nie robi nic.
+     ⚠️ Konto śledzenia jest WSPÓLNE ze stroną doskonalaobslugapacjenta.pl (decyzja 28.08),
+     więc numer główny w panelu należy do DOP — tutaj podajemy własny numer Tamai. -->
+<script>window.TAMAIA_TRACK = { mainNumber: '886 570 047' };</script>
+<script async src="https://app.tamaia.pl/t.js?k=RsRpVQelJow9foux1N78XSFh"></script>
+</head><body><div class="wrap">
 <header class="top"><div class="logo">TAMAIA <b>·</b> Excellent Reception</div><div class="badge">For dental practices and clinics</div></header>
 <section class="hero"><span class="tag">AI phone system + CRM for the front desk</span><h1>The front desk that turns calls into appointments.</h1><p>The phone is the patient’s main way in. TAMAIA measures and raises the performance of phone bookings — and shows the owner the one number that matters: money.</p><a class="cta" href="https://app.tamaia.pl" target="_blank" rel="noopener">Book a demo →</a></section>
 <section class="sec"><h2>The problem you cannot see in the calendar</h2><div class="pain"><b>Practices lose appointments on the phone — without ever knowing.</b><ul><li>Some calls go unanswered — the patient rings a competitor.</li><li>Calls vary in quality: with no slot offered, the booking never closes.</li><li>Cancellations leave an empty chair, and nobody calls the missed numbers back.</li><li>Nobody measures how many calls become appointments, or where the revenue leaks.</li></ul></div></section>
