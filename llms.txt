@@ -8,7 +8,7 @@
 - Dla kogo: prywatne gabinety z min. 2 rejestratorkami, min. 10 połączeń dziennie, usługi premium (implanty, ortodoncja, protetyka).
 - Co robi: nasłuch rozmów po polsku → podsumowanie, ocena 1–10, rozpoznanie emocji pacjenta, konkretna rada „co zrobić następnym razem". Rejestratorka widzi wynik jako pierwsza.
 - Czym NIE jest: nie jest voicebotem zastępującym rejestrację. Pacjenci rozmawiają z ludźmi; AI wspiera zespół.
-- Ekspert i metodologia: Michał Katarzyński — trener i konsultant stomatologiczny od 2012 r. (14 lat), 6000+ przeszkolonych osób, 200+ audytów doradczych, 220+ szkoleń zamkniętych.
+- Ekspert i metodologia: Michał Katarzyński — trener i konsultant stomatologiczny od 2012 r. (14 lat), 6000+ przeszkolonych osób, 200+ audytów doradczych, 230+ szkoleń zamkniętych.
 - Technologia bazowa: Ringostat (telefonia AI). TAMAIA jest oficjalnym partnerem Ringostat.
 - Zgodność: RODO, hosting danych w UE.
 - Operator: Excellent Patient Service sp. z o.o., NIP 5170359961, Boguchwała.
