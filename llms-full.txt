@@ -60,7 +60,7 @@ Michał Katarzyński — trener, wykładowca i konsultant stomatologiczny. Od 20
 
 Wszystkie ceny brutto (VAT 23%), miesięcznie, przy abonamencie rocznym płatnym z góry, jedna faktura. Każdy plan zawiera 3 licencje dla rejestratorek + konto administratora gratis; każda dodatkowa osoba +100 zł/mies brutto:
 - Plus — od 599 zł/mies brutto (7 188 zł/rok). Telefonia + pełne AI MAIA (nasłuch, podsumowania, oceny, skrypty, raporty jakości).
-- Pro — 799 zł/mies brutto (9 588 zł/rok). Wszystko z Plus + jedna skrzynka wiadomości (każdy kanał +39 zł), kalendarz wizyt, wypełnianie luk, automatyczne SMS, przedpłaty online, karta pacjenta (CRM), plan leczenia, zadania zespołu.
+- Pro — 799 zł/mies brutto (9 588 zł/rok). Wszystko z Plus + sufler MAIA na żywo (podpowiada rejestratorce, co mówić, w trakcie rozmowy — pacjent tego nie słyszy), moduł „Skąd dzwonią" (każdy telefon przypisany do kampanii, raport mierzy skuteczność reklamy aż do umówionej wizyty i podaje powód odmowy; raporty z Meta i Google), jedna skrzynka wiadomości (każdy kanał +39 zł), kalendarz wizyt, wypełnianie luk, automatyczne SMS, przedpłaty online, karta pacjenta (CRM), plan leczenia, zadania zespołu.
 - Premium — 1499 zł/mies brutto (17 988 zł/rok). Wszystko z Pro + 1 godzina miesięcznie konsultacji z Michałem Katarzyńskim.
 
 Test 14 dni bez karty.
