@@ -17,7 +17,7 @@
 ## Pakiety (ceny brutto VAT 23%, miesięcznie, abonament roczny)
 
 - Plus — od 599 zł/mies brutto (7 188 zł/rok). Telefonia + pełne AI MAIA, skrypty, raporty jakości. 3 licencje dla rejestratorek + konto administratora gratis.
-- Pro (najczęściej wybierany) — 799 zł/mies brutto (9 588 zł/rok). Wszystko z Plus + sufler podpowiadający rejestratorce w trakcie rozmowy, moduł „Skąd dzwonią" (przypisanie telefonu do kampanii i raport aż do umówionej wizyty, z Meta i Google), jedna skrzynka wiadomości, Kalendarz, CRM, SMS, przedpłaty. 3 licencje + administrator gratis.
+- Pro (najczęściej wybierany) — 799 zł/mies brutto (9 588 zł/rok). Wszystko z Plus + sufler podpowiadający na żywo w 28 rodzajach rozmów, moduł do marketingu z integracją Meta i Google, raporty pokazujące ile wizyt umówiono z reklamy, raporty finansowe, porównanie statystyk do najlepszych praktyk, cele i premie dla rejestracji, obsługa dwóch lub więcej lokalizacji, jedna skrzynka wiadomości, Kalendarz, CRM, SMS, przedpłaty. 3 licencje + administrator gratis.
 - Premium — 1499 zł/mies brutto (17 988 zł/rok). Wszystko z Pro + 1 h/mies konsultacji z Michałem Katarzyńskim. 3 licencje + administrator gratis.
 - Każda dodatkowa osoba: +100 zł/mies brutto. Test 14 dni bez karty. Szczegóły: /pricing.md
 
