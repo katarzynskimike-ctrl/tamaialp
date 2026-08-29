@@ -27,7 +27,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Czy AI zastąpi rejestratorkę w gabinecie stomatologicznym?","acceptedAnswer":{"@type":"Answer","text":"W TAMAIA nie zastępuje — pacjent rozmawia z człowiekiem, a AI słucha tej rozmowy i po niej podpowiada zespołowi, co zrobić następnym razem. Zastąpieniem zajmują się voiceboty i to osobna kategoria produktu. Wybór między jednym a drugim nie jest wyborem lepszej technologii, tylko odpowiedzią na pytanie, czy w Twoim gabinecie rozmowa telefoniczna jest formalnością, czy początkiem relacji, na której stoi decyzja o leczeniu za kilkanaście tysięcy złotych."}},
-{"@type":"Question","name":"Czym różni się voicebot od asystentki AI oceniającej rozmowy?","acceptedAnswer":{"@type":"Answer","text":"Voicebot odbiera telefon zamiast człowieka i prowadzi rozmowę z pacjentem. Asystentka oceniająca rozmowy nie odzywa się do pacjenta w ogóle — słucha rozmowy prowadzonej przez rejestratorkę i po jej zakończeniu wystawia podsumowanie, ocenę oraz wskazówkę dla zespołu. Pierwsza zmienia to, kto rozmawia. Druga zmienia to, jak dobrze rozmawia człowiek."}},
+{"@type":"Question","name":"Czym różni się voicebot od asystentki AI oceniającej rozmowy?","acceptedAnswer":{"@type":"Answer","text":"Voicebot odbiera telefon zamiast człowieka i prowadzi rozmowę z pacjentem. TAMAIA nie odzywa się do pacjenta w ogóle — mówi wyłącznie do rejestratorki. W trakcie rozmowy sufler podpowiada jej na ekranie, co powiedzieć, a po zakończeniu powstaje podsumowanie, ocena i wskazówka na następny raz. Pierwsza zmienia to, kto rozmawia z pacjentem. Druga zmienia to, jak dobrze rozmawia człowiek."}},
 {"@type":"Question","name":"Kiedy voicebot jest lepszym wyborem niż TAMAIA?","acceptedAnswer":{"@type":"Answer","text":"Gdy rozmowa jest przewidywalna i powtarzalna: przypomnienie o wizycie, potwierdzenie terminu, odwołanie, godziny otwarcia, odbieranie telefonów w nocy i w weekendy. Narodowy Fundusz Zdrowia podpisał w 2026 roku umowę na voicebota do centralnej e-Rejestracji za 23,6 mln zł brutto — właśnie do przypominania o wizytach oraz ich przekładania i odwoływania. To sensowne zastosowanie tej technologii. Voicebot ma też przewagę w gabinecie pracującym solo, bez rejestracji, gdzie alternatywą jest nieodebrany telefon."}},
 {"@type":"Question","name":"Czy pacjenci akceptują robota w rejestracji stomatologicznej?","acceptedAnswer":{"@type":"Answer","text":"Zależy od tego, po co dzwonią. Przy potwierdzeniu terminu automat bywa wygodniejszy niż czekanie na połączenie. Przy pierwszym telefonie z bólem albo przy pytaniu o koszt implantu pacjent ocenia gabinet po tej rozmowie i porównuje go z innym gabinetem, do którego zadzwoni za pięć minut. W stomatologii prywatnej pierwsza rozmowa jest częścią decyzji zakupowej, a nie czynnością administracyjną."}},
 {"@type":"Question","name":"Czego sztuczna inteligencja nie powinna robić w rozmowie o bólu zęba?","acceptedAnswer":{"@type":"Answer","text":"Nie powinna oceniać pilności ani decydować, czy pacjent może poczekać do jutra — to ocena o skutkach zdrowotnych. Nie powinna też negocjować ceny leczenia ani uspokajać pacjenta w kryzysie. Rozpoznanie, że ktoś dzwoni z bólem i wymaga innego potraktowania niż osoba umawiająca przegląd, jest dokładnie tym momentem, w którym człowiek wygrywa z automatem."}},
@@ -141,7 +141,7 @@ footer.stopka ul{list-style:none;margin:14px 0 0;display:flex;gap:4px 18px;flex-
 <section id="roznica" aria-labelledby="roznica-h">
   <h2 id="roznica-h">Czym różni się voicebot od asystentki AI oceniającej rozmowy?</h2>
   <div class="odp">
-    <p><strong>Voicebot odbiera telefon zamiast człowieka</strong> i prowadzi rozmowę z pacjentem. <strong>Asystentka oceniająca rozmowy nie odzywa się do pacjenta w ogóle</strong> — słucha rozmowy prowadzonej przez rejestratorkę i po niej wystawia podsumowanie, ocenę i wskazówkę dla zespołu.</p>
+    <p><strong>Voicebot odbiera telefon zamiast człowieka</strong> i prowadzi rozmowę z pacjentem. <strong>TAMAIA nie odzywa się do pacjenta w ogóle</strong> — mówi wyłącznie do rejestratorki: w trakcie rozmowy sufler podpowiada jej na ekranie, co powiedzieć, a po zakończeniu powstaje podsumowanie, ocena i wskazówka na następny raz.</p>
     <p>Pierwsza zmienia to, <em>kto</em> rozmawia. Druga zmienia to, <em>jak dobrze</em> rozmawia człowiek.</p>
   </div>
 
@@ -149,7 +149,8 @@ footer.stopka ul{list-style:none;margin:14px 0 0;display:flex;gap:4px 18px;flex-
     <thead><tr><th>&nbsp;</th><th>Voicebot</th><th>TAMAIA</th></tr></thead>
     <tbody>
       <tr><td><strong>Kto rozmawia z pacjentem</strong></td><td>automat</td><td>rejestratorka</td></tr>
-      <tr><td><strong>Kiedy działa AI</strong></td><td>w trakcie rozmowy</td><td>po rozmowie</td></tr>
+      <tr><td><strong>Do kogo mówi AI</strong></td><td>do pacjenta</td><td>do rejestratorki</td></tr>
+      <tr><td><strong>Kiedy działa AI</strong></td><td>w trakcie rozmowy</td><td>w trakcie i po rozmowie</td></tr>
       <tr><td><strong>Co daje właścicielowi</strong></td><td>odebrany telefon</td><td>wiedzę, dlaczego pacjent nie przyszedł</td></tr>
       <tr><td><strong>Co daje zespołowi</strong></td><td>mniej telefonów</td><td>wskazówkę po każdej rozmowie</td></tr>
       <tr><td><strong>Godziny nocne i weekendy</strong></td><td>obsługuje</td><td>nie obsługuje</td></tr>
@@ -222,14 +223,14 @@ footer.stopka ul{list-style:none;margin:14px 0 0;display:flex;gap:4px 18px;flex-
   <table>
     <thead><tr><th>Moment</th><th>Człowiek</th><th>AI</th></tr></thead>
     <tbody>
-      <tr><td>Telefon od pacjenta</td><td>odbiera i prowadzi rozmowę</td><td>słucha</td></tr>
+      <tr><td>Telefon od pacjenta</td><td>odbiera i prowadzi rozmowę</td><td>podpowiada rejestratorce na ekranie</td></tr>
       <tr><td>Zaraz po rozmowie</td><td>zapisuje wizytę</td><td>podsumowanie, ocena 1–10, wskazówka</td></tr>
       <tr><td>Przerwa w ciągu dnia</td><td>czyta swoje wyniki</td><td>pokazuje, co poszło dobrze</td></tr>
       <tr><td>Koniec dnia</td><td>oddzwania do niezdecydowanych</td><td>przypomina, kto czeka na kontakt</td></tr>
       <tr><td>Raz w tygodniu</td><td>rozmowa zespołu o wynikach</td><td>zestawienie: co się poprawiło</td></tr>
     </tbody>
   </table>
-  <p>AI nie odzywa się do pacjenta w żadnym z tych momentów. Cała jej praca dzieje się między rozmową a następną rozmową.</p>
+  <p><strong>AI nie odzywa się do pacjenta w żadnym z tych momentów</strong> — nawet wtedy, gdy pracuje w trakcie rozmowy. Sufler wyświetla podpowiedź na ekranie rejestratorki; pacjent po drugiej stronie słyszy wyłącznie człowieka i nie ma powodu domyślać się, że cokolwiek jeszcze jest w tle.</p>
 </section>
 
 <section id="bez-kontroli" aria-labelledby="bez-kontroli-h">
