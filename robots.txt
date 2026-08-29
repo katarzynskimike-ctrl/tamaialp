@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tamaia.pl/sitemap.xml
+Sitemap: https://www.tamaia.pl/sitemap.xml
