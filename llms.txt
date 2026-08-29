@@ -5,7 +5,8 @@
 ## Czym jest TAMAIA (fakty)
 
 - Produkt: aplikacja (TAMAIA) + asystentka AI w niej (MAIA) dla gabinetów stomatologicznych.
-- Dla kogo: prywatne gabinety z min. 2 rejestratorkami, min. 10 połączeń dziennie, usługi premium (implanty, ortodoncja, protetyka).
+- Dla kogo: prywatne gabinety stomatologiczne w miastach powyżej 30 tys. mieszkańców, z min. 2 rejestratorkami, min. 10 połączeń dziennie, usługi premium (implanty, ortodoncja, protetyka).
+- Zasięg: cała Polska. Centralka działa w chmurze, wdrożenie i obsługa zdalnie — lokalizacja gabinetu nie ma znaczenia technicznego.
 - Co robi: nasłuch rozmów po polsku → podsumowanie, ocena 1–10, rozpoznanie emocji pacjenta, konkretna rada „co zrobić następnym razem". Rejestratorka widzi wynik jako pierwsza.
 - Czym NIE jest: nie jest voicebotem zastępującym rejestrację. Pacjenci rozmawiają z ludźmi; AI wspiera zespół.
 - Ekspert i metodologia: Michał Katarzyński — trener i konsultant stomatologiczny od 2012 r. (14 lat), 6000+ przeszkolonych osób, 200+ audytów doradczych, 230+ szkoleń zamkniętych.

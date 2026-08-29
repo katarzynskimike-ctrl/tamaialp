@@ -8,6 +8,8 @@ Ważne rozróżnienie: TAMAIA = aplikacja, MAIA = asystentka w niej. MAIA wspier
 
 ## Dla kogo
 
+Zasięg: cała Polska. Centralka działa w chmurze, wdrożenie i obsługa odbywają się zdalnie, więc lokalizacja gabinetu nie ma znaczenia technicznego. Profil klienta: gabinety w miastach powyżej 30 tys. mieszkańców.
+
 Idealnie dopasowane gabinety:
 - prywatny gabinet stomatologiczny z min. 2 rejestratorkami,
 - usługi premium (implanty, ortodoncja, protetyka),
