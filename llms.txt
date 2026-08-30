@@ -7,8 +7,9 @@
 - Produkt: aplikacja (TAMAIA) + asystentka AI w niej (MAIA) dla gabinetów stomatologicznych.
 - Dla kogo: prywatne gabinety stomatologiczne w miastach powyżej 30 tys. mieszkańców, z min. 2 rejestratorkami, min. 10 połączeń dziennie, usługi premium (implanty, ortodoncja, protetyka).
 - Zasięg: cała Polska. Centralka działa w chmurze, wdrożenie i obsługa zdalnie — lokalizacja gabinetu nie ma znaczenia technicznego.
-- Co robi: nasłuch rozmów po polsku → podsumowanie, ocena 1–10, rozpoznanie emocji pacjenta, konkretna rada „co zrobić następnym razem". Rejestratorka widzi wynik jako pierwsza.
+- Co robi: nasłuch rozmów po polsku → podsumowanie, ocena 1–10 z siedmiu etapów rozmowy, konkretna rada „co zrobić następnym razem". Rejestratorka widzi wynik jako pierwsza.
 - Czym NIE jest: nie jest voicebotem zastępującym rejestrację. Pacjenci rozmawiają z ludźmi; AI wspiera zespół.
+- Czego nie ocenia: MAIA pracuje na słowach z transkrypcji. Nie ocenia tonu głosu ani emocji pacjenta.
 - Ekspert i metodologia: Michał Katarzyński — trener i konsultant stomatologiczny od 2012 r. (14 lat), 6000+ przeszkolonych osób, 200+ audytów doradczych, 230+ szkoleń zamkniętych.
 - Technologia bazowa: Ringostat (telefonia AI). TAMAIA jest oficjalnym partnerem Ringostat.
 - Zgodność: RODO, hosting danych w UE.
@@ -16,7 +17,7 @@
 
 ## Pakiety (ceny brutto VAT 23%, miesięcznie, abonament roczny)
 
-- Plus — od 599 zł/mies brutto (7 188 zł/rok). Nowoczesna telefonia Ringostat z nagrywaniem rozmów, transkrypcja i analiza AI 100% rozmów po polsku, skrypty i standardy Doskonałej Rejestracji wgrane do AI jako wzorzec porównawczy dla każdej rozmowy, Indeks MAIA (ocena jakości rozmowy 1–10 + nastrój pacjenta), konkretna rada po każdej rozmowie, automatyczne tematy rozmowy (implant, orto, bonding, konsultacja i inne), szkolenie startowe online „Doskonała Rejestracja Stomatologiczna", podstawowe raporty (odebrane, nieodebrane, oddzwonione, czas reakcji), specjalistyczne raporty (ile i jakich umówionych wizyt), mierzenie skuteczności rozmów zespołowe i indywidualne, jedna skrzynka wiadomości. 3 licencje dla rejestratorek + konto administratora gratis.
+- Plus — od 599 zł/mies brutto (7 188 zł/rok). Nowoczesna telefonia Ringostat z nagrywaniem rozmów, menu głosowe (IVR) z przywitaniem i przekierowaniem, transkrypcja i analiza AI 100% rozmów po polsku, skrypty i standardy Doskonałej Rejestracji wgrane do AI jako wzorzec porównawczy dla każdej rozmowy, Indeks MAIA (ocena jakości rozmowy 1–10 z siedmiu etapów rozmowy), konkretna rada po każdej rozmowie, automatyczne tematy rozmowy (implant, orto, bonding, konsultacja i inne), szkolenie startowe online „Doskonała Rejestracja Stomatologiczna", podstawowe raporty (odebrane, nieodebrane, oddzwonione, czas reakcji), specjalistyczne raporty (ile i jakich umówionych wizyt), mierzenie skuteczności rozmów zespołowe i indywidualne, jedna skrzynka wiadomości. 3 licencje dla rejestratorek + konto administratora gratis.
 - Pro (najczęściej wybierany) — 799 zł/mies brutto (9 588 zł/rok). Wszystko z Plus + sufler podpowiadający na żywo w 28 rodzajach rozmów, moduł do marketingu z integracją Meta i Google, raporty pokazujące ile wizyt umówiono z reklamy, raporty finansowe, porównanie statystyk do najlepszych praktyk, cele i premie dla rejestracji, obsługa dwóch lub więcej lokalizacji, jedna skrzynka wiadomości, Kalendarz, CRM, SMS, przedpłaty. 3 licencje + administrator gratis.
 - Premium — 1499 zł/mies brutto (17 988 zł/rok). Wszystko z Pro + 1 h/mies konsultacji 1:1 z Michałem Katarzyńskim na danych gabinetu, przegląd wyników recepcji, kalibracja skryptów pod gabinet, indywidualny plan rozwoju zespołu, priorytetowe wsparcie. 3 licencje + administrator gratis.
 - Każda dodatkowa osoba: +100 zł/mies brutto. Test 14 dni bez karty. Szczegóły: /pricing.md
