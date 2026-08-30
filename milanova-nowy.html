@@ -1,0 +1,450 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="kanal" content="wss://posrednik-production-c73b.up.railway.app">
+<title>Rejestracja głosowa dla Milanova Clinic — nowy asystent</title>
+<style>
+  :root {
+    --ink:#1B2C4F; --ink-soft:#40536F; --ink-faint:#5A6B7A;
+    --paper:#FAF8F3; --paper-2:#F2EDE1; --rule:#E8E1CF;
+    --gold:#7E6026; --gold-line:#A28234; --brick:#9E3520; --brick-soft:#F6E4DF;
+    --serif: Georgia, 'Iowan Old Style', 'Palatino Linotype', 'Times New Roman', serif;
+    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --ink:#F3EFE6; --ink-soft:#C3CDDC; --ink-faint:#94A3B5;
+            --paper:#0F1E3D; --paper-2:#17294A; --rule:#2A3E63;
+            --gold:#E5C36A; --gold-line:#E5C36A; --brick:#E4907C; --brick-soft:#2E1C18; }
+  }
+  :root[data-theme="dark"] { --ink:#F3EFE6; --ink-soft:#C3CDDC; --ink-faint:#94A3B5;
+      --paper:#0F1E3D; --paper-2:#17294A; --rule:#2A3E63;
+      --gold:#E5C36A; --gold-line:#E5C36A; --brick:#E4907C; --brick-soft:#2E1C18; }
+  :root[data-theme="light"] { --ink:#1B2C4F; --ink-soft:#40536F; --ink-faint:#5A6B7A;
+      --paper:#FAF8F3; --paper-2:#F2EDE1; --rule:#E8E1CF;
+      --gold:#7E6026; --gold-line:#A28234; --brick:#9E3520; --brick-soft:#F6E4DF; }
+
+  body { background: var(--paper); color: var(--ink); font-family: var(--sans);
+         font-size: 17px; line-height: 1.62; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 62ch; margin: 0 auto; padding: 56px 24px 120px; }
+  @media (min-width: 1100px) { .wrap { padding-right: 400px; } }
+
+  /* logo marki — na ciemnym tle granatowy znak zniknąłby, więc dostaje jasną podkładkę */
+  a.marka { display:inline-block; line-height:0; margin-bottom:26px; border-radius:6px; }
+  a.marka img { height:34px; width:auto; display:block; }
+  @media (prefers-color-scheme: dark){ a.marka{ background:#FAF8F3; padding:8px 12px; } }
+  :root[data-theme="dark"] a.marka{ background:#FAF8F3; padding:8px 12px; }
+  :root[data-theme="light"] a.marka{ background:none; padding:0; }
+  @media print { a.marka{ background:none; padding:0 } a.marka img{ height:26px } }
+  .dla { font-family: var(--mono); font-size: 12.5px; letter-spacing:.06em;
+         color: var(--gold); font-weight: 700; margin-bottom: 34px; }
+
+  h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(29px, 5vw, 40px);
+       line-height: 1.14; letter-spacing:-.017em; text-wrap: balance; margin-bottom: 14px; }
+  .wstep { font-size: 18.5px; color: var(--ink-soft); text-wrap: pretty; margin-bottom: 30px; }
+  p { margin-bottom: 15px; text-wrap: pretty; }
+
+  .panel { background: var(--paper-2); border-radius: 4px; padding: 24px; margin: 30px 0 34px; }
+  .panel h2 { font-family: var(--sans); font-size: 15px; font-weight: 650; margin-bottom: 6px; }
+  .panel p { font-size: 15.5px; color: var(--ink-soft); margin-bottom: 0; }
+
+  h3 { font-size: 16.5px; font-weight: 650; margin: 30px 0 10px; text-wrap: balance; }
+  ul.plain { list-style:none; display:grid; gap:10px; margin:0 0 18px; }
+  ul.plain li { display:flex; gap:11px; }
+  ul.plain li::before { content:'—'; color: var(--gold); flex:none; font-weight:700; }
+
+  .nota { border-left: 3px solid var(--gold-line); padding: 4px 0 4px 16px; margin: 24px 0;
+          font-size: 15.5px; color: var(--ink-soft); }
+
+  /* komunikat, gdy mikrofon nie zadziała */
+  #ostrzezenie { display: none; background: var(--brick-soft); border-radius: 4px;
+                 padding: 20px 22px; margin: 24px 0; }
+  #ostrzezenie h2 { font-size: 16px; font-weight: 700; color: var(--brick); margin-bottom: 8px; }
+  #ostrzezenie p { font-size: 15.5px; margin-bottom: 10px; }
+  #ostrzezenie p:last-child { margin-bottom: 0; }
+  #ostrzezenie code { font-family: var(--mono); font-size: .9em; background: var(--paper);
+                      padding: 2px 6px; border-radius: 3px; }
+
+  footer { border-top: 1px solid var(--rule); margin-top: 40px; padding-top: 20px;
+           font-size: 14px; color: var(--ink-faint); }
+  @media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important} }
+</style>
+<style>
+  .pasek { position: sticky; top:0; z-index:5; background: var(--paper);
+           border-bottom: 1px solid var(--rule); padding: 12px 0; margin-bottom: 24px;
+           display:flex; gap:14px; align-items:center; flex-wrap:wrap;
+           font-family: var(--mono); font-size:13px; color: var(--ink-soft); }
+  .pasek b { color: var(--ink); }
+  button { font: inherit; font-size:15px; font-weight:600; padding:11px 22px; border-radius:4px;
+           border:1px solid var(--gold-line); background: var(--gold); color:#FAF8F3; cursor:pointer; }
+  button.stop { background: var(--brick); border-color: var(--brick); }
+  button[disabled] { opacity:.45; cursor:not-allowed; }
+  .kropka { width:9px; height:9px; border-radius:50%; background: var(--ink-faint); flex:none; }
+  .kropka.zielona { background:#2E7D32; } .kropka.czerwona { background: var(--brick); }
+  .kropka.mowi { background: var(--gold-line); }
+
+  .liczby { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin:0 0 26px; }
+  .liczba { background: var(--paper-2); border-radius:4px; padding:14px 16px; }
+  .liczba .co { font-family: var(--mono); font-size:11px; letter-spacing:.05em;
+                color: var(--gold); font-weight:700; margin-bottom:5px; }
+  .liczba .ile { font-family: var(--serif); font-size:27px; line-height:1.1; }
+  .liczba .ile small { font-size:14px; color: var(--ink-faint); }
+
+  #rozmowa { border:1px solid var(--rule); border-radius:4px; padding:6px 0; margin-bottom:26px;
+             max-height:440px; overflow-y:auto; }
+  .tura { padding:11px 18px; border-bottom:1px solid var(--rule); font-size:15.5px; }
+  .tura:last-child { border-bottom:none; }
+  .tura .kto { font-family: var(--mono); font-size:11px; letter-spacing:.05em; font-weight:700;
+               margin-bottom:4px; display:block; }
+  .tura.pacjent .kto { color: var(--ink-faint); }
+  .tura.bot .kto { color: var(--gold); }
+  .tura.narz { background: var(--paper-2); }
+  .tura.narz .kto { color: var(--gold-line); }
+  .tura.blad { background: var(--brick-soft); } .tura.blad .kto { color: var(--brick); }
+  #pokretla .wiersz { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px; }
+  #pokretla label { display:block; font-size:14px; color: var(--ink-soft); }
+  #pokretla label b { color: var(--ink); font-family: var(--mono); }
+  #pokretla select, #pokretla input[type=range] { width:100%; margin-top:6px; font:inherit;
+      font-size:14px; }
+  #pokretla select { padding:7px 9px; border:1px solid var(--rule); border-radius:4px;
+      background: var(--paper); color: var(--ink); }
+  #pokretla[data-aktywne="nie"] { opacity:.5; }
+  #rozmowa:empty::after { content:'Naciśnij „Zadzwoń" i mów. Tu pojawi się zapis rozmowy.';
+                          display:block; padding:26px 18px; color: var(--ink-faint); font-size:15px; }
+</style>
+
+<div class="wrap" style="padding-right:24px">
+
+  <a href="https://tamaia.pl" class="marka" aria-label="TAMAIA"><img src="https://tamaia.pl/logo_tamaia.png" alt="TAMAIA" width="1582" height="372"></a>
+  <div class="dla">PRZYGOTOWANE DLA MILANOVA CLINIC</div>
+
+  <h1>Rejestracja, która odbiera zawsze</h1>
+  <p class="wstep">To nie jest ten sam asystent co na <b>tamaia.pl/milanova</b>. Tamten stoi na
+     ElevenLabs. Ten mówi przez <b>Azure Voice Live</b> — ścieżkę A z porównania trzech dróg,
+     tę samą, która pojedzie potem przez telefon.</p>
+
+  <div id="ostrzezenie" style="display:none">
+    <h2 id="ostrzezenie-tytul">Nie da się połączyć</h2>
+    <div id="ostrzezenie-tresc"></div>
+  </div>
+
+  <div class="pasek">
+    <span class="kropka" id="lampka"></span>
+    <span id="stan">rozłączony</span>
+    <button id="btn">Zadzwoń</button>
+    <span>model <b id="model">—</b></span>
+    <span>głos <b id="glos">—</b></span>
+  </div>
+
+  <div class="panel" id="pokretla">
+    <h2>Głos i tempo — zmieniasz w trakcie rozmowy, bez rozłączania</h2>
+    <div class="wiersz">
+      <label>Głos
+        <select id="p-glos">
+          <option value="pl-PL-ZofiaNeural">Zofia (kobieta)</option>
+          <option value="pl-PL-AgnieszkaNeural">Agnieszka (kobieta, rodowód Ivony)</option>
+          <option value="pl-PL-MarekNeural">Marek (mężczyzna)</option>
+        </select>
+      </label>
+      <label>Tempo mówienia <b id="w-tempo">1.00</b>
+        <input type="range" id="p-tempo" min="0.5" max="1.5" step="0.05" value="1">
+      </label>
+      <label>Ile ciszy = koniec Twojej wypowiedzi <b id="w-cisza">900</b> ms
+        <input type="range" id="p-cisza" min="200" max="1400" step="50" value="900">
+      </label>
+      <label>Czułość na mowę <b id="w-prog">0.50</b>
+        <input type="range" id="p-prog" min="0.1" max="0.9" step="0.05" value="0.5">
+      </label>
+    </div>
+    <p style="margin-top:12px">„Ile ciszy" to najkrótsza droga do tego, żeby przestała się ociągać z odpowiedzią — ale
+       <b>za krótka wartość rozbija jedno zdanie na dwie tury i bot odpowiada dwa razy</b>.
+       Zmierzone: przy 500 ms pożegnanie padało dwukrotnie, przy 900 ms — raz.
+       Zmiany wchodzą natychmiast.</p>
+  </div>
+
+  <div class="liczby">
+    <div class="liczba"><div class="co">OSTATNIA ODPOWIEDŹ</div>
+      <div class="ile"><span id="ttfab">—</span> <small>ms</small></div></div>
+    <div class="liczba"><div class="co">MEDIANA</div>
+      <div class="ile"><span id="mediana">—</span> <small>ms</small></div></div>
+    <div class="liczba"><div class="co">TUR</div>
+      <div class="ile"><span id="tur">0</span></div></div>
+    <div class="liczba"><div class="co">PRÓG DOBRY</div>
+      <div class="ile">800 <small>ms</small></div></div>
+  </div>
+
+  <div id="rozmowa"></div>
+
+  <div class="nota">
+    Liczba obok „ostatnia odpowiedź" to czas od chwili, gdy przestałeś mówić, do pierwszego dźwięku
+    asystenta — jedyne opóźnienie, które rozmówca naprawdę czuje. Ten sam miernik zapisuje się do
+    <code>pomiary.csv</code> co przy połączeniu telefonicznym, więc obie drogi da się porównać.
+  </div>
+
+  <h3>Czym to się różni od strony pokazowej</h3>
+  <ul class="plain">
+    <li>Klucz do Azure <b>nie trafia do przeglądarki</b> — siedzi w pośredniku na Twoim komputerze.</li>
+    <li>Model ma sufiks <code>-datazone</code>, więc przetwarzanie zostaje w strefie danych regionu.
+        Gotowe WebRTC od Microsoftu tego nie daje — chodzi na global standard.</li>
+    <li>Asystent <b>nie zna cennika Milanovej</b> — nie ma tu bazy wiedzy. Sprawdzasz sposób
+        prowadzenia rozmowy i szybkość, nie znajomość gabinetu.</li>
+  </ul>
+
+  <footer>
+    Test własny. Wypowiedzi asystenta nie są poradą medyczną ani wyceną leczenia.
+    W sprawach nagłych numer 112.
+  </footer>
+</div>
+
+<script>
+/* Mikrofon -> PCM16 24 kHz -> posrednik -> Azure. I z powrotem.
+   24 kHz bierze sie stad, ze tyle chce Voice Live; AudioContext potrafi
+   otworzyc sie od razu w tej czestotliwosci, wiec nie ma przepróbkowania
+   po drodze i nie ma gdzie zgubic jakosci. */
+(function () {
+  /* Adres posrednika bierzemy z <meta name="kanal"> w naglowku strony.
+     Strona jest statyczna, a posrednik stoi osobno, bo trzyma klucz do Azure
+     i utrzymuje stale polaczenie — tego nie da sie zrobic w przegladarce. */
+  var META = document.querySelector('meta[name="kanal"]');
+  var WS = (META && META.content) ? META.content
+         : "ws://" + location.hostname + ":8779";
+  var ctx = null, wezel = null, strumien = null, gniazdo = null;
+  var kolejkaOd = 0, pomiary = [], turaBota = null;
+
+  var lampka = document.getElementById("lampka");
+  var stan   = document.getElementById("stan");
+  var btn    = document.getElementById("btn");
+  var rozmowa = document.getElementById("rozmowa");
+
+  function ustawStan(tekst, klasa) {
+    stan.textContent = tekst;
+    lampka.className = "kropka" + (klasa ? " " + klasa : "");
+  }
+  function ostrzez(tytul, html) {
+    document.getElementById("ostrzezenie-tytul").textContent = tytul;
+    document.getElementById("ostrzezenie-tresc").innerHTML = html;
+    document.getElementById("ostrzezenie").style.display = "block";
+  }
+  function dopisz(kto, tekst, klasa) {
+    var d = document.createElement("div");
+    d.className = "tura " + klasa;
+    d.innerHTML = '<span class="kto">' + kto + '</span>';
+    d.appendChild(document.createTextNode(tekst));
+    rozmowa.appendChild(d);
+    rozmowa.scrollTop = rozmowa.scrollHeight;
+    return d;
+  }
+
+  /* Odtwarzanie: kazdy kawalek dostaje SWOJ moment startu liczony od zegara
+     dzwiekowego, nie "zaraz po poprzednim". Przy planowaniu wzgledem biezacej
+     chwili kawalki nachodza na siebie albo zostawiaja dziury i glos faluje. */
+  var grajace = [];        // zaplanowane kawalki, do zatrzymania przy wejsciu w slowo
+  var porzucaj = false;    // czy odrzucac audio przychodzace po przerwaniu
+
+  function odtworz(pcm16) {
+    if (porzucaj) return;  // Azure moze jeszcze doslac konce anulowanej wypowiedzi
+    var n = pcm16.length, buf = ctx.createBuffer(1, n, 24000), kanal = buf.getChannelData(0);
+    for (var i = 0; i < n; i++) kanal[i] = pcm16[i] / 32768;
+    var zrodlo = ctx.createBufferSource();
+    zrodlo.buffer = buf; zrodlo.connect(ctx.destination);
+    var teraz = ctx.currentTime;
+    if (kolejkaOd < teraz + 0.05) kolejkaOd = teraz + 0.05;
+    zrodlo.start(kolejkaOd);
+    kolejkaOd += buf.duration;
+    grajace.push(zrodlo);
+    zrodlo.onended = function () {
+      var i = grajace.indexOf(zrodlo); if (i >= 0) grajace.splice(i, 1);
+    };
+  }
+
+  /* Wejscie w slowo. Azure przerywa generowanie po swojej stronie, ale przegladarka
+     ma juz ZAPLANOWANE kilka sekund dzwieku do przodu — i dogra je, mimo ze bot
+     juz nie mowi. Z perspektywy dzwoniacego wyglada to tak, jakby bot go ignorowal.
+     Dlatego trzeba jawnie zatrzymac wszystko, co stoi w kolejce odtwarzania. */
+  function przerwij() {
+    porzucaj = true;
+    grajace.forEach(function (z) { try { z.stop(); } catch (e) {} });
+    grajace = [];
+    kolejkaOd = 0;
+  }
+
+  function b64naInt16(b64) {
+    var s = atob(b64), b = new Uint8Array(s.length);
+    for (var i = 0; i < s.length; i++) b[i] = s.charCodeAt(i);
+    return new Int16Array(b.buffer);
+  }
+  function int16naB64(i16) {
+    var b = new Uint8Array(i16.buffer), s = "";
+    for (var i = 0; i < b.length; i += 8192)
+      s += String.fromCharCode.apply(null, b.subarray(i, i + 8192));
+    return btoa(s);
+  }
+
+  var KOD_WORKLETU =
+    'class P extends AudioWorkletProcessor{' +
+    'process(we){const k=we[0][0];if(!k)return true;' +
+    'const o=new Int16Array(k.length);' +
+    'for(let i=0;i<k.length;i++){let v=Math.max(-1,Math.min(1,k[i]));o[i]=v*32767;}' +
+    'this.port.postMessage(o,[o.buffer]);return true;}}' +
+    'registerProcessor("nadajnik",P);';
+
+  /* Kolejnosc jest celowa: NAJPIERW pytamy posrednika, czy w ogole ma z czym gadac,
+     dopiero POTEM prosimy o mikrofon. Odwrotnie wygladalo to tak, ze przegladarka
+     zabiera uprawnienie do mikrofonu, zeby po sekundzie powiedziec "nie ma zasobu
+     Azure" — pytanie o dostep do sprzetu bez pokrycia w tym, co zaraz zrobimy. */
+  async function wlaczMikrofon() {
+    try {
+      ctx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 24000 });
+      await ctx.resume();
+      strumien = await navigator.mediaDevices.getUserMedia({
+        audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true } });
+    } catch (e) {
+      ostrzez("Przeglądarka nie dała mikrofonu",
+        "<p>Kliknij ikonę po lewej stronie adresu, znajdź <b>Mikrofon</b>, przestaw na "
+      + "<b>Zezwalaj</b> i odśwież stronę.</p><p>Treść błędu: <code>" + e.message + "</code></p>");
+      ustawStan("brak mikrofonu", "czerwona");
+      rozlacz(); return false;
+    }
+    var blob = new Blob([KOD_WORKLETU], { type: "application/javascript" });
+    await ctx.audioWorklet.addModule(URL.createObjectURL(blob));
+    wezel = new AudioWorkletNode(ctx, "nadajnik");
+    ctx.createMediaStreamSource(strumien).connect(wezel);
+    wezel.port.onmessage = function (e) {
+      if (gniazdo && gniazdo.readyState === 1)
+        gniazdo.send(JSON.stringify({ typ: "audio", dane: int16naB64(e.data) }));
+    };
+    btn.disabled = false; btn.textContent = "Rozłącz"; btn.className = "stop";
+    ustawStan("połączony — mów", "zielona");
+    return true;
+  }
+
+  async function polacz() {
+    btn.disabled = true;
+    ustawStan("łączę…");
+    gniazdo = new WebSocket(WS);
+
+    gniazdo.onmessage = function (e) {
+      var z = JSON.parse(e.data);
+      if (z.typ === "gotowe") {
+        document.getElementById("model").textContent = z.model;
+        document.getElementById("glos").textContent = z.glos;
+        document.getElementById("pokretla").setAttribute("data-aktywne", "tak");
+        gniazdo.send(JSON.stringify(biezaceUstawienia()));
+        wlaczMikrofon();
+      } else if (z.typ === "ustawienia_przyjete") {
+        document.getElementById("glos").textContent = z.sesja.voice.name.replace("pl-PL-","").replace("Neural","");
+      } else if (z.typ === "audio") {
+        odtworz(b64naInt16(z.dane));
+      } else if (z.typ === "poczatek_mowy") {
+        przerwij();
+        ustawStan("słucham…", "mowi");
+      } else if (z.typ === "koniec_mowy") {
+        porzucaj = false;
+        ustawStan("myśli…", "zielona"); turaBota = null;
+      } else if (z.typ === "ttfab") {
+        pomiary.push(z.ms);
+        document.getElementById("ttfab").textContent = z.ms;
+        document.getElementById("tur").textContent = pomiary.length;
+        var s = pomiary.slice().sort(function (a, b) { return a - b; });
+        document.getElementById("mediana").textContent =
+          s.length % 2 ? s[(s.length - 1) / 2] : Math.round((s[s.length / 2 - 1] + s[s.length / 2]) / 2);
+        ustawStan("mówi", "mowi");
+      } else if (z.typ === "tekst_pacjenta") {
+        if (z.dane) dopisz("PACJENT", z.dane, "pacjent");
+      } else if (z.typ === "tekst_bota") {
+        if (!turaBota) turaBota = dopisz("ASYSTENT", "", "bot");
+        turaBota.appendChild(document.createTextNode(z.dane));
+        rozmowa.scrollTop = rozmowa.scrollHeight;
+      } else if (z.typ === "narzedzie") {
+        dopisz("KALENDARZ", z.nazwa + " → " + JSON.stringify(z.wynik), "narz");
+      } else if (z.typ === "brak_konfiguracji") {
+        ostrzez("Nie ma jeszcze zasobu Azure",
+          "<p>Pośrednik działa, ale nie zna adresu ani klucza. Brakuje: <code>"
+        + z.zmienne.join("</code>, <code>") + "</code>.</p>"
+        + "<p>Asystent jest chwilowo niedostępny. Proszę spróbować za kilka minut.</p>");
+        dopisz("KONFIGURACJA", "brak: " + z.zmienne.join(", "), "blad");
+        ustawStan("brak zasobu Azure", "czerwona");
+        btn.textContent = "Zadzwoń"; btn.className = ""; btn.disabled = false;
+      } else if (z.typ === "blad") {
+        dopisz("BŁĄD", z.tresc, "blad");
+        ostrzez("Nie udało się połączyć z asystentem",
+          "<p>To zwykle chwilowe. Proszę odświeżyć stronę za moment.</p>"
+        + "<p>Jeśli problem się powtarza, proszę dać nam znać.</p>");
+        ustawStan("błąd", "czerwona");
+      }
+    };
+
+    gniazdo.onerror = function () {
+      ostrzez("Pośrednik nie odpowiada",
+        "<p>Strona działa, ale nie udało się połączyć z asystentem. "
+      + "To zwykle chwilowe — proszę odświeżyć stronę za moment.</p>"
+      + "<p>Jeśli problem się powtarza, proszę dać znać — sprawdzimy.</p>");
+      ustawStan("brak pośrednika", "czerwona");
+      btn.disabled = false;
+    };
+    gniazdo.onclose = function () { if (btn.textContent === "Rozłącz") rozlacz(); };
+  }
+
+  function rozlacz() {
+    if (wezel) { wezel.disconnect(); wezel = null; }
+    if (strumien) { strumien.getTracks().forEach(function (t) { t.stop(); }); strumien = null; }
+    if (gniazdo) { gniazdo.close(); gniazdo = null; }
+    if (ctx) { ctx.close(); ctx = null; }
+    przerwij(); porzucaj = false;
+    document.getElementById("pokretla").setAttribute("data-aktywne", "nie");
+    btn.textContent = "Zadzwoń"; btn.className = ""; btn.disabled = false;
+    ustawStan("rozłączony");
+  }
+
+  function biezaceUstawienia() {
+    return { typ: "ustawienia",
+             glos:  document.getElementById("p-glos").value,
+             tempo: parseFloat(document.getElementById("p-tempo").value),
+             cisza: parseInt(document.getElementById("p-cisza").value, 10),
+             prog:  parseFloat(document.getElementById("p-prog").value) };
+  }
+  function odswiezEtykiety() {
+    document.getElementById("w-tempo").textContent =
+      parseFloat(document.getElementById("p-tempo").value).toFixed(2);
+    document.getElementById("w-cisza").textContent = document.getElementById("p-cisza").value;
+    document.getElementById("w-prog").textContent =
+      parseFloat(document.getElementById("p-prog").value).toFixed(2);
+  }
+  ["p-glos", "p-tempo", "p-cisza", "p-prog"].forEach(function (id) {
+    document.getElementById(id).addEventListener("input", function () {
+      odswiezEtykiety();
+      if (gniazdo && gniazdo.readyState === 1) gniazdo.send(JSON.stringify(biezaceUstawienia()));
+    });
+  });
+  odswiezEtykiety();
+  document.getElementById("pokretla").setAttribute("data-aktywne", "nie");
+
+  btn.addEventListener("click", function () {
+    if (btn.textContent === "Rozłącz") rozlacz(); else polacz();
+  });
+
+  /* Punkt pomiarowy — pozwala sprawdzic z konsoli, ze wejscie w slowo naprawde
+     zatrzymuje zaplanowany dzwiek, zamiast wierzyc, ze zatrzymuje. Nie zmienia
+     zachowania strony; sluzy wylacznie do kontroli. */
+  window._pomiar = {
+    zaplanowanych: function () { return grajace.length; },
+    porzuca: function () { return porzucaj; },
+    kolejkaDo: function () { return ctx ? kolejkaOd - ctx.currentTime : null; },
+    zaplanujTestowe: function (sekund) {
+      if (!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 24000 });
+      var n = 24000 * (sekund || 1);
+      var pcm = new Int16Array(n);
+      for (var i = 0; i < n; i++) pcm[i] = Math.sin(2 * Math.PI * 440 * i / 24000) * 6000;
+      odtworz(pcm); return grajace.length;
+    },
+    przerwij: przerwij
+  };
+
+  if (location.protocol === "file:") {
+    ostrzez("Ta strona jest otwarta z pliku na dysku",
+      "<p>Przeglądarki nie udostępniają mikrofonu stronom otwartym w ten sposób.</p>"
+    + "<p>Proszę wpisać w pasku adresu <code>tamaia.pl/milanova-nowy</code> "
+    + "i otworzyć stronę stamtąd.</p>");
+  }
+})();
+</script>
