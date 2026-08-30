@@ -59,7 +59,7 @@ Michał Katarzyński — trener, wykładowca i konsultant stomatologiczny. Od 20
 ## Pakiety i ceny
 
 Wszystkie ceny brutto (VAT 23%), miesięcznie, przy abonamencie rocznym płatnym z góry, jedna faktura. Każdy plan zawiera 3 licencje dla rejestratorek + konto administratora gratis; każda dodatkowa osoba +100 zł/mies brutto:
-- Plus — od 599 zł/mies brutto (7 188 zł/rok). Telefonia + pełne AI MAIA (nasłuch, podsumowania, oceny, skrypty, raporty jakości).
+- Plus — od 599 zł/mies brutto (7 188 zł/rok). Telefonia Ringostat (nagrywanie rozmów, menu głosowe IVR), AI MAIA analizująca 100% rozmów po polsku, transkrypcja + ocena jakości rozmowy 1–10 + nastrój pacjenta, konkretna rada po każdej rozmowie, automatyczne tematy rozmowy (implant, orto, bonding), skrypty TAMAIA + ranking rejestratorek, jedna skrzynka wiadomości, raporty dla właściciela + szkolenie startowe online.
 - Pro — 799 zł/mies brutto (9 588 zł/rok). Wszystko z Plus + sufler na żywo (podpowiada rejestratorce, co mówić, w 28 różnych rodzajach rozmów — pacjent tego nie słyszy), moduł do marketingu z integracją Meta i Google (każdy telefon przypisany do kampanii, raport mierzy skuteczność reklamy aż do umówionej wizyty i podaje powód odmowy), raporty finansowe, porównanie statystyk gabinetu do najlepszych praktyk, cele i premie dla rejestracji, obsługa dwóch lub więcej lokalizacji, jedna skrzynka wiadomości (każdy kanał +39 zł), kalendarz wizyt, wypełnianie luk, automatyczne SMS, przedpłaty online, karta pacjenta (CRM), plan leczenia, zadania zespołu.
 - Premium — 1499 zł/mies brutto (17 988 zł/rok). Wszystko z Pro + 1 godzina miesięcznie konsultacji z Michałem Katarzyńskim.
 

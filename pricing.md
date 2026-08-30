@@ -5,7 +5,7 @@ Wszystkie ceny BRUTTO (VAT 23%), miesięcznie, przy abonamencie rocznym płatnym
 ## Plus
 - Cena: od 599 zł/mies brutto (7 188 zł/rok)
 - Dla kogo: gabinet startujący ze standardem rejestracji
-- Zawiera: telefonia AI + pełne AI MAIA (nasłuch 100% rozmów po polsku, podsumowania, ocena 1–10, rozpoznanie emocji), skrypty stomatologiczne wgrane do AI, raporty jakości rozmów; 3 licencje dla rejestratorek + konto administratora gratis
+- Zawiera: telefonia Ringostat (nagrywanie rozmów, menu głosowe IVR), AI MAIA analizująca 100% rozmów po polsku, transkrypcja + ocena jakości rozmowy 1–10 + nastrój pacjenta, konkretna rada po każdej rozmowie, automatyczne tematy rozmowy (implant, orto, bonding), skrypty TAMAIA + ranking rejestratorek, jedna skrzynka wiadomości, raporty dla właściciela + szkolenie startowe online; 3 licencje dla rejestratorek + konto administratora gratis
 
 ## Pro (najczęściej wybierany)
 - Cena: 799 zł/mies brutto (9 588 zł/rok)
