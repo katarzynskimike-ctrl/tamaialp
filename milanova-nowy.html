@@ -140,9 +140,8 @@
     <div class="wiersz">
       <label>Głos
         <select id="p-glos">
-          <option value="pl-PL-ZofiaNeural">Zofia (kobieta)</option>
-          <option value="pl-PL-AgnieszkaNeural">Agnieszka (kobieta, rodowód Ivony)</option>
-          <option value="pl-PL-MarekNeural">Marek (mężczyzna)</option>
+          <option value="pl-PL-ZofiaNeural">Maia 1</option>
+          <option value="pl-PL-AgnieszkaNeural">Maia 2</option>
         </select>
       </label>
       <label>Tempo mówienia <b id="w-tempo">1.00</b>
@@ -329,13 +328,12 @@
       var z = JSON.parse(e.data);
       if (z.typ === "gotowe") {
         // Klientowi pokazujemy imie glosu, nie identyfikator techniczny.
-        document.getElementById("glos").textContent =
-          String(z.glos).replace("pl-PL-", "").replace("Neural", "");
+        document.getElementById("glos").textContent = nazwaGlosu(z.glos);
         document.getElementById("pokretla").setAttribute("data-aktywne", "tak");
         gniazdo.send(JSON.stringify(biezaceUstawienia()));
         wlaczMikrofon();
       } else if (z.typ === "ustawienia_przyjete") {
-        document.getElementById("glos").textContent = z.sesja.voice.name.replace("pl-PL-","").replace("Neural","");
+        document.getElementById("glos").textContent = nazwaGlosu(z.sesja.voice.name);
       } else if (z.typ === "audio") {
         odtworz(b64naInt16(z.dane));
       } else if (z.typ === "poczatek_mowy") {
@@ -394,6 +392,11 @@
     document.getElementById("pokretla").setAttribute("data-aktywne", "nie");
     btn.textContent = "Zadzwoń"; btn.className = ""; btn.disabled = false;
     ustawStan("rozłączony");
+  }
+
+  function nazwaGlosu(id) {
+    return { "pl-PL-ZofiaNeural": "Maia 1", "pl-PL-AgnieszkaNeural": "Maia 2" }[id]
+        || String(id).replace("pl-PL-", "").replace("Neural", "");
   }
 
   function biezaceUstawienia() {
