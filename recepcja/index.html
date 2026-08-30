@@ -374,6 +374,10 @@
   @media (min-width: 1080px) {
     .mobile-menu { display: none !important; }
   }
+  /* Ponizej 360 px (iPhone SE 1. gen i podobne) logo wypychalo hamburgera poza krawedz ekranu. */
+  @media (max-width: 359px) {
+    .nav-inner { padding-left: 10px; padding-right: 10px; }
+  }
   @media (max-width: 559px) {
     .nav-cta { display: none; }
     .logo-img-maia { height: 38px; }
@@ -3605,6 +3609,15 @@
     color: rgba(255,255,255,0.5);
   }
   @media (max-width: 850px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  /* Kolumna z logo ma duza szerokosc minimalna i na telefonie sciskala pozostale
+     kolumny do 85 px, przez co linki stopki wychodzily poza ekran i byly obciete. */
+  .footer-grid > * { min-width: 0; }
+  @media (max-width: 560px) { .footer-grid { grid-template-columns: 1fr; gap: 28px; } }
+  /* Na telefonie linki stopki mialy 17 px wysokosci i 10 px odstepu - za malo na palec. */
+  @media (max-width: 850px) {
+    .footer-col a { display: inline-block; padding: 7px 0; }
+    .footer-col li { margin-bottom: 2px; }
+  }
 
   /* ===== SCROLL PROGRESS BAR ===== */
   .scroll-progress {
@@ -5666,8 +5679,8 @@
           NIP: 5170359961 · REGON: 180874009<br>
           KRS: 0000429303 · Sąd Rejonowy w Rzeszowie, XII Wydział Gospodarczy KRS<br>
           Kapitał zakładowy: 5 000 zł<br>
-          <a href="tel:+48886570047" style="color: var(--gold-2); font-weight: 600;">📞 +48 886 570 047</a><br>
-          <a href="mailto:biuro@tamaia.pl" style="color: rgba(255,255,255,0.8);">biuro@tamaia.pl</a>
+          <a href="tel:+48886570047" style="color: var(--gold-2); font-weight: 600; display:inline-block; padding:10px 0;">📞 +48 886 570 047</a><br>
+          <a href="mailto:biuro@tamaia.pl" style="color: rgba(255,255,255,0.8); display:inline-block; padding:10px 0;">biuro@tamaia.pl</a>
         </div>
       </div>
       <div class="footer-col">
