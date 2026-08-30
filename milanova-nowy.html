@@ -119,9 +119,9 @@
   <div class="dla">PRZYGOTOWANE DLA MILANOVA CLINIC</div>
 
   <h1>Rejestracja, która odbiera zawsze</h1>
-  <p class="wstep">To nie jest ten sam asystent co na <b>tamaia.pl/milanova</b>. Tamten stoi na
-     ElevenLabs. Ten mówi przez <b>Azure Voice Live</b> — ścieżkę A z porównania trzech dróg,
-     tę samą, która pojedzie potem przez telefon.</p>
+  <p class="wstep">Rozmowa pokazowa. Asystent nauczył się Waszego cennika, zespołu i zakresu usług —
+     mówicie do niego głosem, tak jak pacjent przez telefon. To druga, nowsza wersja niż ta
+     na <b>tamaia.pl/milanova</b>: szybsza i z cennikiem co do złotówki.</p>
 
   <div id="ostrzezenie" style="display:none">
     <h2 id="ostrzezenie-tytul">Nie da się połączyć</h2>
@@ -132,7 +132,6 @@
     <span class="kropka" id="lampka"></span>
     <span id="stan">rozłączony</span>
     <button id="btn">Zadzwoń</button>
-    <span>model <b id="model">—</b></span>
     <span>głos <b id="glos">—</b></span>
   </div>
 
@@ -176,19 +175,22 @@
   <div id="rozmowa"></div>
 
   <div class="nota">
-    Liczba obok „ostatnia odpowiedź" to czas od chwili, gdy przestałeś mówić, do pierwszego dźwięku
-    asystenta — jedyne opóźnienie, które rozmówca naprawdę czuje. Ten sam miernik zapisuje się do
-    <code>pomiary.csv</code> co przy połączeniu telefonicznym, więc obie drogi da się porównać.
+    Liczba obok „ostatnia odpowiedź" to czas od chwili, gdy przestaliście mówić, do pierwszego
+    dźwięku asystenta — jedyne opóźnienie, które rozmówca naprawdę czuje. Poniżej ośmiuset
+    milisekund rozmowa jest odbierana jako naturalna.
   </div>
 
-  <h3>Czym to się różni od strony pokazowej</h3>
+  <h3>O co warto zapytać</h3>
   <ul class="plain">
-    <li>Klucz do Azure <b>nie trafia do przeglądarki</b> — siedzi w pośredniku na Twoim komputerze.</li>
-    <li>Model ma sufiks <code>-datazone</code>, więc przetwarzanie zostaje w strefie danych regionu.
-        Gotowe WebRTC od Microsoftu tego nie daje — chodzi na global standard.</li>
-    <li>Asystent <b>nie zna cennika Milanovej</b> — nie ma tu bazy wiedzy. Sprawdzasz sposób
-        prowadzenia rozmowy i szybkość, nie znajomość gabinetu.</li>
+    <li>„Ile kosztuje leczenie kanałowe trzonowca?" — zna Wasz cennik co do złotówki.</li>
+    <li>„Kto u Państwa zajmuje się ortodoncją?" — zna Wasz zespół i specjalizacje.</li>
+    <li>„Bardzo się boję, czy to będzie bolało?" — poprowadzi rozmowę wg Waszego standardu.</li>
+    <li>„Od wczoraj boli mnie ząb" — przeprowadzi wywiad i ustali pilność.</li>
   </ul>
+
+  <h3>Gdzie przetwarzane są dane</h3>
+  <p>Rozmowa jest przetwarzana <b>w Europejskim Obszarze Gospodarczym</b>, w centrum danych
+     w Szwecji. Nagrania i treść rozmów <b>nie służą do trenowania modeli</b>.</p>
 
   <footer>
     Test własny. Wypowiedzi asystenta nie są poradą medyczną ani wyceną leczenia.
@@ -326,8 +328,9 @@
     gniazdo.onmessage = function (e) {
       var z = JSON.parse(e.data);
       if (z.typ === "gotowe") {
-        document.getElementById("model").textContent = z.model;
-        document.getElementById("glos").textContent = z.glos;
+        // Klientowi pokazujemy imie glosu, nie identyfikator techniczny.
+        document.getElementById("glos").textContent =
+          String(z.glos).replace("pl-PL-", "").replace("Neural", "");
         document.getElementById("pokretla").setAttribute("data-aktywne", "tak");
         gniazdo.send(JSON.stringify(biezaceUstawienia()));
         wlaczMikrofon();
@@ -358,12 +361,9 @@
       } else if (z.typ === "narzedzie") {
         dopisz("KALENDARZ", z.nazwa + " → " + JSON.stringify(z.wynik), "narz");
       } else if (z.typ === "brak_konfiguracji") {
-        ostrzez("Nie ma jeszcze zasobu Azure",
-          "<p>Pośrednik działa, ale nie zna adresu ani klucza. Brakuje: <code>"
-        + z.zmienne.join("</code>, <code>") + "</code>.</p>"
-        + "<p>Asystent jest chwilowo niedostępny. Proszę spróbować za kilka minut.</p>");
-        dopisz("KONFIGURACJA", "brak: " + z.zmienne.join(", "), "blad");
-        ustawStan("brak zasobu Azure", "czerwona");
+        ostrzez("Asystent chwilowo niedostępny",
+          "<p>Asystent jest chwilowo niedostępny. Proszę spróbować za kilka minut.</p>");
+        ustawStan("chwilowo niedostępny", "czerwona");
         btn.textContent = "Zadzwoń"; btn.className = ""; btn.disabled = false;
       } else if (z.typ === "blad") {
         dopisz("BŁĄD", z.tresc, "blad");
@@ -375,11 +375,11 @@
     };
 
     gniazdo.onerror = function () {
-      ostrzez("Pośrednik nie odpowiada",
+      ostrzez("Nie udało się połączyć z asystentem",
         "<p>Strona działa, ale nie udało się połączyć z asystentem. "
       + "To zwykle chwilowe — proszę odświeżyć stronę za moment.</p>"
       + "<p>Jeśli problem się powtarza, proszę dać znać — sprawdzimy.</p>");
-      ustawStan("brak pośrednika", "czerwona");
+      ustawStan("brak połączenia", "czerwona");
       btn.disabled = false;
     };
     gniazdo.onclose = function () { if (btn.textContent === "Rozłącz") rozlacz(); };
