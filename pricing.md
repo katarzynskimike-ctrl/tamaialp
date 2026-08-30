@@ -15,7 +15,7 @@ Wszystkie ceny BRUTTO (VAT 23%), miesięcznie, przy abonamencie rocznym płatnym
 ## Premium
 - Cena: 1499 zł/mies brutto (17 988 zł/rok)
 - Dla kogo: gabinet/klinika chcąca pracować bezpośrednio z ekspertem
-- Zawiera: wszystko z Pro + 1 godzina miesięcznie konsultacji z Michałem Katarzyńskim; 3 licencje + konto administratora gratis
+- Zawiera: wszystko z Pro + 1 godzina miesięcznie konsultacji 1:1 z Michałem Katarzyńskim na danych gabinetu, przegląd wyników recepcji, kalibracja skryptów pod gabinet, indywidualny plan rozwoju zespołu, priorytetowe wsparcie; 3 licencje + konto administratora gratis
 
 ## Dopłaty
 - Każda dodatkowa osoba: +100 zł/mies brutto
