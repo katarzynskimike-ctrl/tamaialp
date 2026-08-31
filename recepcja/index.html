@@ -5497,20 +5497,19 @@
           <div class="wizard-step" data-step="3">
             <h3 class="ws-title">Co macie aktualnie?</h3>
             <p class="ws-sub">To pomaga nam doradzić Ci najlepszy pakiet — i od razu wiemy, jak podłączyć Wasz numer na czas testu.</p>
-            <fieldset class="ws-radio-group">
-              <legend>Jaki numer ma dzisiaj Wasza rejestracja? *</legend>
-              <label class="ws-radio"><input type="radio" name="numberType" value="Stacjonarny" required onchange="toggleNumberType('stacjonarny')"><span>Stacjonarny</span></label>
-              <label class="ws-radio"><input type="radio" name="numberType" value="Komórkowy" required onchange="toggleNumberType('komorkowy')"><span>Komórkowy</span></label>
-              <label class="ws-radio"><input type="radio" name="numberType" value="Oba" required onchange="toggleNumberType('oba')"><span>Oba</span></label>
-              <label class="ws-radio"><input type="radio" name="numberType" value="Centralka telefoniczna" required onchange="toggleNumberType('centralka')"><span>Centralka telefoniczna</span></label>
+            <fieldset class="ws-checkbox-group">
+              <legend>Na czym stoi dzisiaj Wasza rejestracja? Zaznaczcie wszystko, co macie *</legend>
+              <label class="ws-check"><input type="checkbox" name="numberKinds" value="Stacjonarny" required onchange="toggleNumberKinds()"><span>Numer stacjonarny</span></label>
+              <label class="ws-check"><input type="checkbox" name="numberKinds" value="Komórkowy" required onchange="toggleNumberKinds()"><span>Numer komórkowy</span></label>
+              <label class="ws-check"><input type="checkbox" name="numberKinds" value="Centralka telefoniczna" required onchange="toggleNumberKinds()"><span>Centralka telefoniczna</span></label>
             </fieldset>
-            <label class="ws-field" id="opFixedField" style="display:none;"><span>Operator numeru stacjonarnego *</span><select name="operatorFixed" onchange="toggleOperatorOther('Fixed')"><option value="" selected disabled>— wybierz z listy —</option><option value="Orange (dawniej TP)">Orange (dawniej TP)</option><option value="Netia">Netia</option><option value="Vectra (dawniej Multimedia)">Vectra (dawniej Multimedia)</option><option value="Play (dawniej UPC)">Play (dawniej UPC)</option><option value="INEA">INEA</option><option value="TOYA">TOYA</option><option value="T-Mobile">T-Mobile</option><option value="Plus">Plus</option><option value="Telestrada">Telestrada</option><option value="Nie wiem">Nie wiem — sprawdzimy na fakturze</option><option value="Inny">Inny — wpiszę nazwę</option></select></label>
+            <label class="ws-field" id="opFixedField" style="display:none;"><span>Operator numeru stacjonarnego *</span><select name="operatorFixed" onchange="toggleOperatorOther('Fixed')"><option value="" selected disabled>— wybierz z listy —</option><option value="Orange (dawniej TP)">Orange (dawniej TP)</option><option value="Netia">Netia</option><option value="Vectra (dawniej Multimedia)">Vectra (dawniej Multimedia)</option><option value="Play (dawniej UPC)">Play (dawniej UPC)</option><option value="INEA">INEA</option><option value="TOYA">TOYA</option><option value="T-Mobile">T-Mobile</option><option value="Plus">Plus</option><option value="Telestrada">Telestrada</option><option value="Inny">Inny — wpiszę nazwę</option></select></label>
             <label class="ws-field" id="opFixedOtherField" style="display:none;"><span>Nazwa operatora stacjonarnego *</span><input type="text" name="operatorFixedOther" maxlength="80" placeholder="np. Netia, lokalny operator osiedlowy"></label>
-            <label class="ws-field" id="opMobileField" style="display:none;"><span>Operator numeru komórkowego *</span><select name="operatorMobile" onchange="toggleOperatorOther('Mobile')"><option value="" selected disabled>— wybierz z listy —</option><option value="Orange">Orange</option><option value="T-Mobile">T-Mobile</option><option value="Play">Play</option><option value="Plus">Plus</option><option value="nju mobile">nju mobile</option><option value="Heyah">Heyah</option><option value="Virgin Mobile">Virgin Mobile</option><option value="Plush">Plush</option><option value="Mobile Vikings">Mobile Vikings</option><option value="Lycamobile">Lycamobile</option><option value="Nie wiem">Nie wiem — sprawdzimy na fakturze</option><option value="Inny">Inny — wpiszę nazwę</option></select></label>
+            <label class="ws-field" id="opMobileField" style="display:none;"><span>Operator numeru komórkowego *</span><select name="operatorMobile" onchange="toggleOperatorOther('Mobile')"><option value="" selected disabled>— wybierz z listy —</option><option value="Orange">Orange</option><option value="T-Mobile">T-Mobile</option><option value="Play">Play</option><option value="Plus">Plus</option><option value="nju mobile">nju mobile</option><option value="Heyah">Heyah</option><option value="Virgin Mobile">Virgin Mobile</option><option value="Plush">Plush</option><option value="Mobile Vikings">Mobile Vikings</option><option value="Lycamobile">Lycamobile</option><option value="Inny">Inny — wpiszę nazwę</option></select></label>
             <label class="ws-field" id="opMobileOtherField" style="display:none;"><span>Nazwa operatora komórkowego *</span><input type="text" name="operatorMobileOther" maxlength="80" placeholder="np. Otvarta, Premium Mobile"></label>
-            <label class="ws-field" id="opPbxField" style="display:none;"><span>Jaka centralka? *</span><select name="operatorPbx" onchange="toggleOperatorOther('Pbx')"><option value="" selected disabled>— wybierz z listy —</option><optgroup label="Wirtualna centrala u operatora"><option value="Play Wirtualna Centralka">Play Wirtualna Centralka</option><option value="Orange Wirtualna Centralka">Orange Wirtualna Centralka</option><option value="Netia Wirtualna Centralka">Netia Wirtualna Centralka</option><option value="Plus Centralka Firmy">Plus Centralka Firmy</option><option value="Thulium">Thulium</option><option value="Welyo (dawniej Focus Telecom / Systell)">Welyo (dawniej Focus Telecom / Systell)</option></optgroup><optgroup label="Centralka w gabinecie"><option value="Slican">Slican</option><option value="Panasonic">Panasonic</option><option value="Platan">Platan</option><option value="Yeastar">Yeastar</option><option value="Grandstream">Grandstream</option><option value="Cisco">Cisco</option><option value="Alcatel">Alcatel</option></optgroup><optgroup label="Telefonia internetowa (VoIP)"><option value="FCN (Freeconet)">FCN (Freeconet)</option><option value="Ipfon">Ipfon</option><option value="HaloNet">HaloNet</option><option value="SuperVoIP">SuperVoIP</option><option value="Datera Call-eX">Datera Call-eX</option><option value="3CX">3CX</option><option value="FreePBX / Asterisk">FreePBX / Asterisk</option><option value="Microsoft Teams Phone">Microsoft Teams Phone</option><option value="Zadarma">Zadarma</option><option value="CloudTalk">CloudTalk</option><option value="Telnyx">Telnyx</option><option value="Twilio">Twilio</option></optgroup><option value="Nie wiem">Nie wiem — sprawdzimy na fakturze</option><option value="Inny">Inna — wpiszę nazwę</option></select></label>
+            <label class="ws-field" id="opPbxField" style="display:none;"><span>Jaka centralka? *</span><select name="operatorPbx" onchange="toggleOperatorOther('Pbx')"><option value="" selected disabled>— wybierz z listy —</option><optgroup label="Wirtualna centrala u operatora"><option value="Play Wirtualna Centralka">Play Wirtualna Centralka</option><option value="Orange Wirtualna Centralka">Orange Wirtualna Centralka</option><option value="Netia Wirtualna Centralka">Netia Wirtualna Centralka</option><option value="Plus Centralka Firmy">Plus Centralka Firmy</option><option value="Thulium">Thulium</option><option value="Welyo (dawniej Focus Telecom / Systell)">Welyo (dawniej Focus Telecom / Systell)</option></optgroup><optgroup label="Centralka w gabinecie"><option value="Slican">Slican</option><option value="Panasonic">Panasonic</option><option value="Platan">Platan</option><option value="Yeastar">Yeastar</option><option value="Grandstream">Grandstream</option><option value="Cisco">Cisco</option><option value="Alcatel">Alcatel</option></optgroup><optgroup label="Telefonia internetowa (VoIP)"><option value="FCN (Freeconet)">FCN (Freeconet)</option><option value="Ipfon">Ipfon</option><option value="HaloNet">HaloNet</option><option value="SuperVoIP">SuperVoIP</option><option value="Datera Call-eX">Datera Call-eX</option><option value="3CX">3CX</option><option value="FreePBX / Asterisk">FreePBX / Asterisk</option><option value="Microsoft Teams Phone">Microsoft Teams Phone</option><option value="Zadarma">Zadarma</option><option value="CloudTalk">CloudTalk</option><option value="Telnyx">Telnyx</option><option value="Twilio">Twilio</option></optgroup><option value="Inny">Inna — wpiszę nazwę</option></select></label>
             <label class="ws-field" id="opPbxOtherField" style="display:none;"><span>Nazwa centralki *</span><input type="text" name="operatorPbxOther" maxlength="80" placeholder="np. Slican CCT, Polcom, własny Asterisk"></label>
-            <div class="ws-why">💡 Pytamy, bo od rodzaju numeru i operatora zależy, jak przekierujemy do nas Wasze połączenia na czas testu — inne kody ma komórka, inne numer stacjonarny, a przy centralce robi się to w jej panelu.</div>
+            <div class="ws-why">💡 Pytamy, bo od tego zależy, jak przekierujemy do nas Wasze połączenia na czas testu — inne kody ma komórka, inne numer stacjonarny, a przy centralce robi się to w jej panelu. Macie i jedno, i drugie? Zaznaczcie oba.</div>
             <fieldset class="ws-radio-group" id="recordingField" style="display:none;">
               <legend>Macie nagrywanie rozmów? *</legend>
               <label class="ws-radio"><input type="radio" name="recordingStatus" value="Tak, wszystko"><span>Tak, wszystko</span></label>
@@ -6338,7 +6337,6 @@ Cena miesięcznie (brutto, VAT 23%): ${config.monthly_brutto}`
       return wejscie;
     }
 
-    /* „Inny" na liscie -> wolne pole na nazwe, obowiazkowe. */
     window.toggleOperatorOther = function(ktory) {
       const poleListy = document.getElementById('op' + ktory + 'Field');
       const lista = poleListy ? poleListy.querySelector('select') : null;
@@ -6348,24 +6346,25 @@ Cena miesięcznie (brutto, VAT 23%): ${config.monthly_brutto}`
       ustawPole('op' + ktory + 'OtherField', listaWidoczna && !!lista && lista.value === 'Inny');
     };
 
-    window.toggleNumberType = function(rodzaj) {
-      const stac = (rodzaj === 'stacjonarny' || rodzaj === 'oba');
-      const kom  = (rodzaj === 'komorkowy'  || rodzaj === 'oba');
-      const pbx  = (rodzaj === 'centralka');
-      ustawPole('opFixedField', stac);
-      ustawPole('opMobileField', kom);
+    window.zaznaczoneRodzaje = function() {
+      return [].slice.call(document.querySelectorAll('#wizardForm input[name="numberKinds"]:checked'))
+        .map(function (i) { return i.value; });
+    };
+
+    window.toggleNumberKinds = function() {
+      const z = window.zaznaczoneRodzaje();
+      const ma = function (w) { return z.indexOf(w) !== -1; };
+      const pbx = ma('Centralka telefoniczna');
+      ustawPole('opFixedField', ma('Stacjonarny'));
+      ustawPole('opMobileField', ma('Komórkowy'));
       ustawPole('opPbxField', pbx);
-      /* USTERKA Z RECENZJI 31.08: te trzy wiersze chowaly pola „Inny" BEZWARUNKOWO.
-         Klinika, ktora wybrala „Stacjonarny", zaznaczyla na liscie „Inny" i wpisala nazwe,
-         a potem zmienila zdanie na „Oba", traci wpisana nazwe: lista dalej mowi
-         „Inny — wpisze nazwe", ale pola do wpisania juz nie ma i nie da sie go przywolac.
-         Zgloszenie przechodzilo dalej z bezuzytecznym „stacjonarny: Inny", mimo ze
-         nazwa miala byc obowiazkowa. Widocznoscia pola „Inny" rzadzi WYLACZNIE jego
-         wlasna lista — a ta, gdy znika, i tak czysci swoja wartosc w ustawPole(). */
+      /* Pole „Inny" idzie ZA SWOJA LISTA, nie za zaznaczeniem rodzaju — inaczej zmiana
+         zdania kasuje nazwe wpisana przez klinike, a lista dalej mowi „Inny". */
       window.toggleOperatorOther('Fixed');
       window.toggleOperatorOther('Mobile');
       window.toggleOperatorOther('Pbx');
-      // Pytanie o nagrywanie ma sens tylko przy centralce — tak jak dotad.
+      /* Nagrywanie ma sens wszedzie tam, gdzie JEST centralka — takze w parze z komorka.
+         Przy wyborze jednokrotnym to pytanie nie padalo nigdy poza czysta „Centralka". */
       const rec = document.getElementById('recordingField');
       if (rec) {
         rec.style.display = pbx ? 'block' : 'none';
@@ -6374,6 +6373,12 @@ Cena miesięcznie (brutto, VAT 23%): ${config.monthly_brutto}`
           else { r.removeAttribute('required'); r.checked = false; }
         });
       }
+      /* „Przynajmniej jedno zaznaczenie": HTML nie zna takiego warunku dla grupy kratek,
+         wiec trzymamy required na WSZYSTKICH, dopoki zadna nie jest zaznaczona. */
+      document.querySelectorAll('#wizardForm input[name="numberKinds"]').forEach(function (p) {
+        if (z.length) p.removeAttribute('required');
+        else p.setAttribute('required', 'required');
+      });
     };
 
     /* Skladamy odpowiedz w jeden czytelny napis dla doradcy w CRM i w mailu. */
@@ -6383,15 +6388,13 @@ Cena miesięcznie (brutto, VAT 23%): ${config.monthly_brutto}`
         if (!v) return '';
         return v === 'Inny' ? (String(fd.get('operator' + ktory + 'Other') || '').trim() || 'Inny') : v;
       };
-      const rodzaj = fd.get('numberType') || '';
-      const s = wez('Fixed'), m = wez('Mobile'), p = wez('Pbx');
-      if (rodzaj === 'Oba' || rodzaj === 'Both') {
-        const cz = [];
-        if (s) cz.push('stacjonarny: ' + s);
-        if (m) cz.push('komórkowy: ' + m);
-        return cz.join(' · ');
-      }
-      return s || m || p || '';
+      const rodzaje = fd.getAll ? fd.getAll('numberKinds') : [];
+      const ma = function (w) { return rodzaje.indexOf(w) !== -1; };
+      const cz = [];
+      if (ma('Stacjonarny')) { const v = wez('Fixed');  if (v) cz.push('stacjonarny: ' + v); }
+      if (ma('Komórkowy'))  { const v = wez('Mobile'); if (v) cz.push('komórkowy: ' + v); }
+      if (ma('Centralka telefoniczna'))  { const v = wez('Pbx');    if (v) cz.push('centralka: ' + v); }
+      return cz.join(' · ');
     };
 
     window.wizardSubmit = function(event) {
@@ -6408,14 +6411,16 @@ Cena miesięcznie (brutto, VAT 23%): ${config.monthly_brutto}`
         city: fd.get('city'),
         receptionCount: fd.get('receptionCount'),
         locations: fd.get('locations'),
-        numberType: fd.get('numberType') || '',
+        numberType: fd.getAll('numberKinds').join(' + '),
         operator: window.operatorOpis(fd),
-        // currentPbx zostaje w kontrakcie /api/lead — wyliczamy je z nowego pytania,
-        // zeby CRM i maile nie musialy sie zmieniac i nie bylo dwoch sprzecznych odpowiedzi.
-        // Pusto, nie „Nie": przy numerze stacjonarnym/komórkowym NIE PYTAMY już o centralkę,
-        // więc nie wolno nam w jej imieniu twierdzić, że kliniki nie ma centralki.
-        currentPbx: (fd.get('numberType') === 'Centralka telefoniczna' || fd.get('numberType') === 'Phone system (PBX)') ? 'Tak' : '',
-        currentPbxName: (fd.get('numberType') === 'Centralka telefoniczna' || fd.get('numberType') === 'Phone system (PBX)') ? window.operatorOpis(fd) : '',
+        /* currentPbx znow jest ODPOWIEDZIA KLINIKI, nie naszym wnioskiem: przy wyborze
+           wielokrotnym pytamy o centralke wprost w kazdej kombinacji. */
+        currentPbx: fd.getAll('numberKinds').indexOf('Centralka telefoniczna') !== -1 ? 'Tak' : 'Nie',
+        currentPbxName: (function () {
+          const v = fd.get('operatorPbx');
+          if (!v) return '';
+          return v === 'Inny' ? (String(fd.get('operatorPbxOther') || '').trim() || 'Inny') : v;
+        })(),
         recordingStatus: fd.get('recordingStatus') || '',
         services: services,
         installments: fd.get('installments'),
