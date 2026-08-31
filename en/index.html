@@ -6337,9 +6337,12 @@ Monthly price (gross, 23% VAT): ${config.monthly_brutto}`
 
     /* „Inny" na liscie -> wolne pole na nazwe, obowiazkowe. */
     window.toggleOperatorOther = function(ktory) {
-      const lista = document.querySelector('#op' + ktory + 'Field select');
-      const pokaz = !!(lista && lista.value === 'Inny');
-      ustawPole('op' + ktory + 'OtherField', pokaz);
+      const poleListy = document.getElementById('op' + ktory + 'Field');
+      const lista = poleListy ? poleListy.querySelector('select') : null;
+      /* Lista schowana => nie ma czego dopytywac. Lista widoczna i nadal na „Inny"
+         => pole na nazwe MUSI zostac, razem z wpisana juz trescia. */
+      const listaWidoczna = !!poleListy && poleListy.style.display !== 'none';
+      ustawPole('op' + ktory + 'OtherField', listaWidoczna && !!lista && lista.value === 'Inny');
     };
 
     window.toggleNumberType = function(rodzaj) {
@@ -6349,10 +6352,16 @@ Monthly price (gross, 23% VAT): ${config.monthly_brutto}`
       ustawPole('opFixedField', stac);
       ustawPole('opMobileField', kom);
       ustawPole('opPbxField', pbx);
-      // schowana lista nie moze zostawic za soba widocznego, obowiazkowego pola „Inny"
-      ustawPole('opFixedOtherField', false);
-      ustawPole('opMobileOtherField', false);
-      ustawPole('opPbxOtherField', false);
+      /* USTERKA Z RECENZJI 31.08: te trzy wiersze chowaly pola „Inny" BEZWARUNKOWO.
+         Klinika, ktora wybrala „Stacjonarny", zaznaczyla na liscie „Inny" i wpisala nazwe,
+         a potem zmienila zdanie na „Oba", traci wpisana nazwe: lista dalej mowi
+         „Inny — wpisze nazwe", ale pola do wpisania juz nie ma i nie da sie go przywolac.
+         Zgloszenie przechodzilo dalej z bezuzytecznym „stacjonarny: Inny", mimo ze
+         nazwa miala byc obowiazkowa. Widocznoscia pola „Inny" rzadzi WYLACZNIE jego
+         wlasna lista — a ta, gdy znika, i tak czysci swoja wartosc w ustawPole(). */
+      window.toggleOperatorOther('Fixed');
+      window.toggleOperatorOther('Mobile');
+      window.toggleOperatorOther('Pbx');
       // Pytanie o nagrywanie ma sens tylko przy centralce — tak jak dotad.
       const rec = document.getElementById('recordingField');
       if (rec) {
@@ -6375,8 +6384,8 @@ Monthly price (gross, 23% VAT): ${config.monthly_brutto}`
       const s = wez('Fixed'), m = wez('Mobile'), p = wez('Pbx');
       if (rodzaj === 'Oba' || rodzaj === 'Both') {
         const cz = [];
-        if (s) cz.push('stacjonarny: ' + s);
-        if (m) cz.push('komórkowy: ' + m);
+        if (s) cz.push('landline: ' + s);
+        if (m) cz.push('mobile: ' + m);
         return cz.join(' · ');
       }
       return s || m || p || '';
@@ -6400,7 +6409,9 @@ Monthly price (gross, 23% VAT): ${config.monthly_brutto}`
         operator: window.operatorOpis(fd),
         // currentPbx zostaje w kontrakcie /api/lead — wyliczamy je z nowego pytania,
         // zeby CRM i maile nie musialy sie zmieniac i nie bylo dwoch sprzecznych odpowiedzi.
-        currentPbx: (fd.get('numberType') === 'Centralka telefoniczna' || fd.get('numberType') === 'Phone system (PBX)') ? 'Yes' : 'No',
+        // Pusto, nie „No": przy numerze stacjonarnym/komórkowym NIE PYTAMY już o centralkę,
+        // więc nie wolno nam w jej imieniu twierdzić, że kliniki nie ma centralki.
+        currentPbx: (fd.get('numberType') === 'Centralka telefoniczna' || fd.get('numberType') === 'Phone system (PBX)') ? 'Yes' : '',
         currentPbxName: (fd.get('numberType') === 'Centralka telefoniczna' || fd.get('numberType') === 'Phone system (PBX)') ? window.operatorOpis(fd) : '',
         recordingStatus: fd.get('recordingStatus') || '',
         services: services,
@@ -6438,6 +6449,7 @@ Monthly price (gross, 23% VAT): ${config.monthly_brutto}`
         'Locations: ' + data.locations,
         '',
         '📞 CURRENT SETUP',
+        'Number / operator: ' + (data.numberType || '—') + (data.operator ? ' — ' + data.operator : ''),
         'Phone system: ' + data.currentPbx + (data.currentPbxName ? ' (' + data.currentPbxName + ')' : ''),
         'Call recording: ' + (data.recordingStatus || 'n/a (no phone system)'),
         '',
