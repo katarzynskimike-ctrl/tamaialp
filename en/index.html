@@ -3917,7 +3917,11 @@
      Arial 13,3 px, szara ramka). Wlasna strzalka, bo appearance:none kasuje systemowa. */
   .ws-field select { -webkit-appearance: none; appearance: none; cursor: pointer; padding-right: 38px; line-height: 1.4;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23071D49' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; }
-  .ws-field select:invalid { color: #8a8578; }
+  /* 6f6a5c, nie jasniejszy: zmierzony kontrast na bialym 5,40:1 (WCAG chce 4,5:1).
+     Poprzednie #8a8578 dawalo 3,68:1 — miescilo sie w wyjatku dla tekstu zastepczego,
+     ale to pole NIE MA innego tekstu, dopoki klinika nie wybierze, wiec traktujemy je
+     jak zwykla tresc. */
+  .ws-field select:invalid { color: #6f6a5c; }
   .ws-field select option { color: var(--text); }
   .ws-field input:invalid:not(:placeholder-shown) { border-color: #c83a3a; }
 
