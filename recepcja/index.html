@@ -3987,9 +3987,19 @@
      więc numer główny w panelu należy do DOP — tutaj podajemy własny numer Tamai. -->
 <script>window.TAMAIA_TRACK = { mainNumber: '886 570 047' };</script>
 <script async src="https://app.tamaia.pl/t.js?k=RsRpVQelJow9foux1N78XSFh"></script>
-<!-- Kolejka GTM. Musi istniec ZANIM zaladuje sie kontener GTM — stad w <head>,
-     a nie w /tracking.js, ktory jest odroczony (defer). Nie nadpisuje istniejacej. -->
-<script>window.dataLayer=window.dataLayer||[];</script>
+<!-- Kolejka GTM + Consent Mode v2. Musi stac ZANIM zaladuje sie kontener GTM,
+     stad w <head>, a nie w odroczonych /tracking.js i /zgoda.js.
+     gtag() jest tu WYLACZNIE nakladka na dataLayer.push — udokumentowany ksztalt
+     Consent Mode, a nie wywolanie czegokolwiek u Google.
+     Start = ODMOWA wszystkiego poza bezpieczenstwem. Brak decyzji to NIE zgoda. -->
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'denied',personalization_storage:'denied',security_storage:'granted'});
+(function(){try{var d=null;try{d=localStorage.getItem('cookieDecision');}catch(e){}
+if(!d){var m=document.cookie.match(/(?:^|;\s*)cookieDecision=([^;]+)/);d=m?m[1]:null;}
+if(d==='accepted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted',functionality_storage:'granted',personalization_storage:'granted'});}}catch(e){}})();
+</script>
 </head>
 <body>
 <a href="#tresc" class="skip-link">Przejdz do tresci</a>
@@ -5855,7 +5865,12 @@
 })();
 </script>
 
-<!-- ===== COOKIE BANNER (TYMCZASOWO WYŁĄCZONY) ===== -->
+<!-- ===== COOKIE BANNER (STARY, ZASTĄPIONY 05.09.2026) =====
+     Ten zakomentowany banner NIE JEST już używany. Zastąpił go /zgoda.js:
+     samowystarczalny (własne style — 12 z 15 stron nie ma zmiennych marki),
+     wpięty w Consent Mode v2 i z odmową równie łatwą jak zgoda. Tutejszy CSS
+     dawał „Akceptuję" całe wolne miejsce i pogrubienie, a „Tylko niezbędne"
+     wyszarzał — wzorzec ciemny, nie do przywrócenia. -->
 <!--
 <div class="cookie-banner" id="cookieBanner">
   <h4>🍪 Cookies & analityka</h4>
@@ -6699,5 +6714,8 @@ window.addEventListener('message',function(e){var d=e&&e.data;if(!d||!d.tamaiaH)
 </script>
 <!-- Warstwa pomiarowa dla GTM (dataLayer). Zdarzenia i parametry: /tracking.js -->
 <script defer src="/tracking.js"></script>
+<!-- Okno zgody na ciasteczka + Consent Mode v2. Samowystarczalne: wlasne style,
+     bo 12 z 15 stron nie ma zmiennych marki. Szczegoly w /zgoda.js -->
+<script defer src="/zgoda.js"></script>
 </body>
 </html>

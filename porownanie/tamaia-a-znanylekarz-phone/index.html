@@ -126,9 +126,19 @@ footer.stopka ul{list-style:none;margin:14px 0 0;display:flex;gap:4px 18px;flex-
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "TAMAIA", "item": "https://www.tamaia.pl/"}, {"@type": "ListItem", "position": 2, "name": "Porównania", "item": "https://www.tamaia.pl/porownanie"}, {"@type": "ListItem", "position": 3, "name": "TAMAIA a ZnanyLekarz Phone", "item": "https://www.tamaia.pl/porownanie/tamaia-a-znanylekarz-phone"}]}
 </script>
-<!-- Kolejka GTM. Musi istniec ZANIM zaladuje sie kontener GTM — stad w <head>,
-     a nie w /tracking.js, ktory jest odroczony (defer). Nie nadpisuje istniejacej. -->
-<script>window.dataLayer=window.dataLayer||[];</script>
+<!-- Kolejka GTM + Consent Mode v2. Musi stac ZANIM zaladuje sie kontener GTM,
+     stad w <head>, a nie w odroczonych /tracking.js i /zgoda.js.
+     gtag() jest tu WYLACZNIE nakladka na dataLayer.push — udokumentowany ksztalt
+     Consent Mode, a nie wywolanie czegokolwiek u Google.
+     Start = ODMOWA wszystkiego poza bezpieczenstwem. Brak decyzji to NIE zgoda. -->
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'denied',personalization_storage:'denied',security_storage:'granted'});
+(function(){try{var d=null;try{d=localStorage.getItem('cookieDecision');}catch(e){}
+if(!d){var m=document.cookie.match(/(?:^|;\s*)cookieDecision=([^;]+)/);d=m?m[1]:null;}
+if(d==='accepted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted',functionality_storage:'granted',personalization_storage:'granted'});}}catch(e){}})();
+</script>
 </head>
 <body>
 
@@ -331,5 +341,8 @@ footer.stopka ul{list-style:none;margin:14px 0 0;display:flex;gap:4px 18px;flex-
 
 <!-- Warstwa pomiarowa dla GTM (dataLayer). Zdarzenia i parametry: /tracking.js -->
 <script defer src="/tracking.js"></script>
+<!-- Okno zgody na ciasteczka + Consent Mode v2. Samowystarczalne: wlasne style,
+     bo 12 z 15 stron nie ma zmiennych marki. Szczegoly w /zgoda.js -->
+<script defer src="/zgoda.js"></script>
 </body>
 </html>
