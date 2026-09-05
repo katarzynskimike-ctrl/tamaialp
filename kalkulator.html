@@ -121,6 +121,9 @@
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "WebApplication", "name": "Kalkulator strat na nieodebranych telefonach", "url": "https://www.tamaia.pl/kalkulator", "applicationCategory": "BusinessApplication", "operatingSystem": "Przeglądarka internetowa", "inLanguage": "pl-PL", "dateModified": "2026-08-31", "description": "Kalkulator, który przelicza nieodebrane połączenia w gabinecie stomatologicznym na utracone wizyty i przychód.", "isPartOf": {"@type": "WebSite", "@id": "https://www.tamaia.pl/#website"}, "publisher": {"@id": "https://www.tamaia.pl/#organization"}, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "PLN"}}
 </script>
+<!-- Kolejka GTM. Musi istniec ZANIM zaladuje sie kontener GTM — stad w <head>,
+     a nie w /tracking.js, ktory jest odroczony (defer). Nie nadpisuje istniejacej. -->
+<script>window.dataLayer=window.dataLayer||[];</script>
 </head>
 <body>
 <div class="wrap">
@@ -325,5 +328,7 @@
   calc();
 })();
 </script>
+<!-- Warstwa pomiarowa dla GTM (dataLayer). Zdarzenia i parametry: /tracking.js -->
+<script defer src="/tracking.js"></script>
 </body>
 </html>
