@@ -6093,6 +6093,16 @@
   let configBilling = 'yearly';  // tylko rocznie
   let purchaseIntent = 'buy'; // 'bezpłatny test' or 'buy'
 
+  // Okno przy wyjściu woła setIntent(...) z atrybutu onclick, a funkcji NIE BYŁO
+  // w kodzie. Kliknięcie rzucało „ReferenceError: setIntent is not defined", więc
+  // stojące zaraz po nim closePopup() nigdy się nie wykonywało — okno zostawało
+  // otwarte. Zmierzone przed naprawą: display okna po kliknięciu nadal 'flex'.
+  // Zapis trafia też do warstwy pomiarowej, żeby nie był zapisem bez odczytu.
+  function setIntent(t) {
+    purchaseIntent = t;
+    try { if (window.tamaiaDL && window.tamaiaDL.setIntent) window.tamaiaDL.setIntent(t); } catch (e) {}
+  }
+
   // ===== STICKY CTA on scroll =====
   const stickyCta = document.getElementById('stickyCta');
   window.addEventListener('scroll', () => {

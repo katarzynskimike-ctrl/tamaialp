@@ -148,6 +148,15 @@
       o = o || {};
       push('lead_fallback_mailto', { lead_type: o.lead_type || intent, placement: o.placement || 'cta_section' });
     },
+    /* Wolane przez setIntent() ze strony (okno przy wyjsciu). Tlumaczy etykiety
+       ze strony na slownik lead_type. Sam NIC nie pcha do kolejki — od tego sa
+       nasluchy; to wylacznie zapamietanie, po co odwiedzajacy przyszedl. */
+    setIntent: function (etykieta) {
+      var e = String(etykieta || '').toLowerCase();
+      if (e.indexOf('test') > -1 || e.indexOf('trial') > -1) ustawIntent('test_14dni');
+      else if (e === 'buy' || e.indexOf('zam') > -1) ustawIntent('zamowienie');
+      else if (e === 'info' || e.indexOf('pyta') > -1) ustawIntent('pytanie');
+    },
     push: push,
     _stan: function () { return { variant: VARIANT, intent: intent, plan: planZeStanu(), seats: seatsZeStanu() }; }
   };
