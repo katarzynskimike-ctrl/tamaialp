@@ -3983,6 +3983,9 @@
      więc numer główny w panelu należy do DOP — tutaj podajemy własny numer Tamai. -->
 <script>window.TAMAIA_TRACK = { mainNumber: '886 570 047' };</script>
 <script async src="https://app.tamaia.pl/t.js?k=RsRpVQelJow9foux1N78XSFh"></script>
+<!-- Kolejka GTM. Musi istniec ZANIM zaladuje sie kontener GTM — stad w <head>,
+     a nie w /tracking.js, ktory jest odroczony (defer). Nie nadpisuje istniejacej. -->
+<script>window.dataLayer=window.dataLayer||[];</script>
 </head>
 <body>
 <a href="#tresc" class="skip-link">Skip to content</a>
@@ -6090,6 +6093,16 @@
   let configBilling = 'yearly';  // tylko rocznie
   let purchaseIntent = 'buy'; // 'bezpłatny test' or 'buy'
 
+  // Okno przy wyjściu woła setIntent(...) z atrybutu onclick, a funkcji NIE BYŁO
+  // w kodzie. Kliknięcie rzucało „ReferenceError: setIntent is not defined", więc
+  // stojące zaraz po nim closePopup() nigdy się nie wykonywało — okno zostawało
+  // otwarte. Zmierzone przed naprawą: display okna po kliknięciu nadal 'flex'.
+  // Zapis trafia też do warstwy pomiarowej, żeby nie był zapisem bez odczytu.
+  function setIntent(t) {
+    purchaseIntent = t;
+    try { if (window.tamaiaDL && window.tamaiaDL.setIntent) window.tamaiaDL.setIntent(t); } catch (e) {}
+  }
+
   // ===== STICKY CTA on scroll =====
   const stickyCta = document.getElementById('stickyCta');
   window.addEventListener('scroll', () => {
@@ -6489,10 +6502,17 @@ Monthly price (gross, 23% VAT): ${config.monthly_brutto}`
         .then(r => r.json().catch(() => ({})).then(j => ({ httpOk: r.ok, j })))
         .then(({ httpOk, j }) => {
           if (!httpOk || !j || !j.ok) throw new Error('backend');
-          // sukces — zgłoszenie zapisane po stronie serwera; nic więcej nie robimy
+          // sukces — zgłoszenie zapisane po stronie serwera.
+          // TU i tylko tu wolno zgłosić konwersję. Ekran „dziękujemy” pokazał się
+          // kilkanaście linii wyżej, ZANIM serwer cokolwiek potwierdził, więc nie
+          // jest dowodem wysyłki — pomiar wpięty tam liczyłby próby, nie zgłoszenia.
+          try { if (window.tamaiaDL) window.tamaiaDL.lead({ seats: data.receptionCount, placement: 'cta_section' }); } catch (e) {}
         })
         .catch(() => {
-          // Fallback: otwórz klienta pocztowego z gotowym mailem do biura
+          // Fallback: otwórz klienta pocztowego z gotowym mailem do biura.
+          // To NIE jest konwersja — mail może nigdy nie wyjść. Osobne zdarzenie,
+          // żeby ta luka była widoczna w danych, a nie zamieciona pod generate_lead.
+          try { if (window.tamaiaDL) window.tamaiaDL.leadFallback({ placement: 'cta_section' }); } catch (e) {}
           try { window.location.href = mailto; } catch (e) {}
         });
 
@@ -6557,7 +6577,14 @@ window.addEventListener('message',function(e){var d=e&&e.data;if(!d||!d.tamaiaH)
     var data={name:fd.get('name'),email:fd.get('email'),phone:fd.get('phone'),practice:fd.get('practice'),city:fd.get('city'),consent_terms:fd.get('consent')?1:0,consent_contact:fd.get('consent')?1:0,terms_version:'v1',timestamp:new Date().toISOString(),source:'tamaia.pl/en legal-gate'};
     if(pendingHref){released[pendingHref]=true; var dl=document.getElementById('legalGateDocLink'); if(dl){dl.setAttribute('href',pendingHref);}}
     f.style.display='none'; document.getElementById('legalGateSuccess').style.display='block';
-    try{fetch('https://app.tamaia.pl/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}).catch(function(){});}catch(e){}
+    // Wynik POST byl wczesniej wyrzucany do kosza (.catch(function(){})), wiec nie
+    // dalo sie odroznic zgloszenia przyjetego od odrzuconego. Teraz sprawdzamy
+    // odpowiedz tym samym warunkiem, co kreator, i dopiero wtedy zglaszamy konwersje.
+    // Kazda awaria nadal jest polykana — uzytkownik ma widziec podziekowanie tak samo.
+    try{fetch('https://app.tamaia.pl/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
+      .then(function(r){ return r.json().catch(function(){return {};}).then(function(j){ return {ok:r.ok,j:j}; }); })
+      .then(function(res){ if(!res.ok||!res.j||!res.j.ok) return; try{ if(window.tamaiaDL) window.tamaiaDL.lead({lead_type:'dokument',placement:'legal_gate'}); }catch(e){} })
+      .catch(function(){});}catch(e){}
     return false;
   };
   gate.addEventListener('click',function(e){ if(e.target===gate){closeLegalGate();} });
@@ -6667,5 +6694,7 @@ window.addEventListener('message',function(e){var d=e&&e.data;if(!d||!d.tamaiaH)
   }, true);
 })();
 </script>
+<!-- Warstwa pomiarowa dla GTM (dataLayer). Zdarzenia i parametry: /tracking.js -->
+<script defer src="/tracking.js"></script>
 </body>
 </html>

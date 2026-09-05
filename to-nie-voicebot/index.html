@@ -115,6 +115,9 @@ footer.stopka ul{list-style:none;margin:14px 0 0;display:flex;gap:4px 18px;flex-
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "TAMAIA", "item": "https://www.tamaia.pl/"}, {"@type": "ListItem", "position": 2, "name": "To nie voicebot", "item": "https://www.tamaia.pl/to-nie-voicebot"}]}
 </script>
+<!-- Kolejka GTM. Musi istniec ZANIM zaladuje sie kontener GTM — stad w <head>,
+     a nie w /tracking.js, ktory jest odroczony (defer). Nie nadpisuje istniejacej. -->
+<script>window.dataLayer=window.dataLayer||[];</script>
 </head>
 <body>
 
@@ -326,5 +329,7 @@ footer.stopka ul{list-style:none;margin:14px 0 0;display:flex;gap:4px 18px;flex-
   </div>
 </footer>
 
+<!-- Warstwa pomiarowa dla GTM (dataLayer). Zdarzenia i parametry: /tracking.js -->
+<script defer src="/tracking.js"></script>
 </body>
 </html>
