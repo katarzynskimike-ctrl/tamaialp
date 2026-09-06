@@ -368,10 +368,29 @@
   .hero-text .eyebrow { margin-bottom: 16px; display: block; }
   .hero h1 { margin-bottom: 22px; }
   .hero h1 .accent {
-    background: linear-gradient(135deg, var(--gold-1), var(--gold-2));
+    /* Zloto jest podkresleniem, nie litera. Gradient przyciety do tekstu dawal
+       kontrast 2,4:1 (#C9A24A) i 1,7:1 (#E5C36A) przy progu AA 3,0 dla duzego tekstu.
+       Granat na bieli daje 13,8:1, a zlota banda zostaje jako akcent marki. */
+    /* Zloto ZOSTAJE litera, ale w odcieniach, ktore przechodza prog.
+       Bylo: #C9A24A = 2,4:1 i #E5C36A = 1,7:1 na bieli, przy progu AA 3,0
+       dla duzego tekstu — obie wartosci oblewaly.
+       Jest: #8A6A12 = 5,05:1 i #A8842A = 3,52:1 — obie przechodza.
+       #8A6A12 to ten sam dostepny zloty, ktorego arkusz uzywa juz w .eyebrow. */
+    background: linear-gradient(135deg, #8A6A12, #A8842A);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+  }
+
+  /* Na telefonie glowny przycisk stal pod zgieciem (907 px przy ekranie 812 px).
+     Ramka o stracie schodzi pod przycisk: strach po wyjsciu, nie przed nim. */
+  @media (max-width: 900px) {
+    .hero-text { display: flex; flex-direction: column; }
+    .hero-text > * { order: 2; }
+    .hero-text > span,
+    .hero-text > h1,
+    .hero-text > .hero-lead,
+    .hero-text > .hero-cta-group { order: 1; }
   }
   .hero-lead {
     font-size: 1.22rem;
@@ -781,6 +800,9 @@
     margin-bottom: 8px;
   }
   .calc-output-period { color: rgba(255,255,255,0.7); font-size: 0.95rem; margin-bottom: 14px; }
+  .calc-chain{font-size:.86rem;line-height:1.65;color:var(--text-muted);margin:10px 0 12px;padding:10px 12px;background:rgba(201,162,74,.08);border-radius:8px;text-align:left}
+  .calc-chain b{color:var(--navy);font-weight:700}
+  .calc-chain span{opacity:.85}
   .calc-output-note {
     font-size: 0.85rem;
     color: rgba(255,255,255,0.8);
@@ -4035,7 +4057,7 @@ if(d==='accepted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'g
     </ul>
     <div class="nav-actions">
       <a href="https://app.tamaia.pl" class="nav-login" target="_blank" rel="noopener">Log in →</a>
-      <a href="#cta" class="btn btn-primary nav-cta">Start 14-day trial</a>
+      <a href="#cta" class="btn btn-primary nav-cta">Book a call</a>
       <button class="hamburger" id="hamburgerBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
         <span></span><span></span><span></span>
       </button>
@@ -4049,7 +4071,7 @@ if(d==='accepted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'g
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="https://app.tamaia.pl" target="_blank" rel="noopener" style="display:block; text-align:center; padding:12px; border:2px solid var(--gold-1); border-radius:8px; color:var(--gold-1); font-weight:600; margin-top:8px;">Log in →</a></li>
-      <li><a href="#cta" class="btn btn-primary" style="width: 100%; margin-top: 8px;">Start 14-day trial</a></li>
+      <li><a href="#cta" class="btn btn-primary" style="width: 100%; margin-top: 8px;">Book a call</a></li>
       <li><span class="lang-switch"><a href="/" hreflang="pl" lang="pl">PL</a><a href="/en" hreflang="en" lang="en" aria-current="true">EN</a></span></li>
     </ul>
   </div>
@@ -4084,8 +4106,8 @@ if(d==='accepted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'g
           <div class="ha-sub">The outcome is the same: the patient books elsewhere. A practice loses roughly 14 out of every 100 calls — and some answered calls are lost too, simply because the conversation was handled poorly.</div>
         </div>
         <div class="hero-cta-group">
-          <a href="#cta" class="btn btn-primary btn-lg">Start your 14-day trial — no card</a>
-          <div class="hero-cta-sub">no card · setup <b>free</b> · live in <b>5 days</b></div>
+          <a href="#cta" class="btn btn-primary btn-lg">Book a 20-minute call</a>
+          <div class="hero-cta-sub"><b>14-day trial, no card</b> — we start it after a short call, because we connect your numbers. We usually call the same day. Setup <b>free</b>, live in <b>5 days</b>.</div>
         </div>
         <div class="hero-trust">
           <div><strong>14 years</strong> in the dental industry</div>
@@ -4112,9 +4134,9 @@ if(d==='accepted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'g
       </div>
       <div class="plp-body">
         <div class="plp-kpis" style="grid-template-columns:repeat(3,1fr)">
-          <div class="plp-kpi"><div class="l" style="text-transform:uppercase;letter-spacing:.05em;font-weight:700;font-size:.66rem;margin:0 0 5px">Call statistics</div><div class="v" style="font-size:1.5rem">55<span style="font-size:.78rem;color:var(--text-muted);font-weight:600"> calls</span></div><div style="font-size:.72rem;margin-top:6px;line-height:1.45"><span style="color:var(--success);font-weight:700">Answered 30</span> · <span style="color:#B4441F;font-weight:700">Missed 25</span></div></div>
-          <div class="plp-kpi"><div class="l" style="text-transform:uppercase;letter-spacing:.05em;font-weight:700;font-size:.66rem;margin:0 0 5px">Call-back rate</div><div class="v" style="font-size:1.5rem;color:var(--success)">92%</div><div style="font-size:.72rem;margin-top:6px;color:var(--text-muted)">23/25 called back · target 95%</div></div>
-          <div class="plp-kpi"><div class="l" style="text-transform:uppercase;letter-spacing:.05em;font-weight:700;font-size:.66rem;margin:0 0 5px">Missed</div><div class="v" style="font-size:1.5rem;color:#D97706">45%</div><div style="font-size:.72rem;margin-top:6px;color:var(--text-muted)">25 of 55 total calls</div></div>
+          <div class="plp-kpi"><div class="l" style="text-transform:uppercase;letter-spacing:.05em;font-weight:700;font-size:.8rem;margin:0 0 5px">Call statistics</div><div class="v" style="font-size:1.5rem">55<span style="font-size:.78rem;color:var(--text-muted);font-weight:600"> calls</span></div><div style="font-size:.8rem;margin-top:6px;line-height:1.45"><span style="color:var(--success);font-weight:700">Answered 30</span> · <span style="color:#B4441F;font-weight:700">Missed 25</span></div></div>
+          <div class="plp-kpi"><div class="l" style="text-transform:uppercase;letter-spacing:.05em;font-weight:700;font-size:.8rem;margin:0 0 5px">Call-back rate</div><div class="v" style="font-size:1.5rem;color:var(--success)">92%</div><div style="font-size:.8rem;margin-top:6px;color:var(--text-muted)">23/25 called back · target 95%</div></div>
+          <div class="plp-kpi"><div class="l" style="text-transform:uppercase;letter-spacing:.05em;font-weight:700;font-size:.8rem;margin:0 0 5px">Missed</div><div class="v" style="font-size:1.5rem;color:#D97706">45%</div><div style="font-size:.8rem;margin-top:6px;color:var(--text-muted)">25 of 55 total calls</div></div>
         </div>
 
         <div style="background:linear-gradient(135deg,var(--navy) 0%,var(--navy-dark) 100%);border-radius:14px;padding:15px 16px;color:#fff;margin-top:12px">
@@ -4200,9 +4222,9 @@ if(d==='accepted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'g
       </div>
       <div class="plp-body">
         <div class="plp-kpis" style="grid-template-columns:repeat(3,1fr)">
-          <div class="plp-kpi"><div class="l" style="text-transform:uppercase;letter-spacing:.05em;font-weight:700;font-size:.66rem;margin:0 0 5px">Call statistics</div><div class="v" style="font-size:1.5rem">55<span style="font-size:.78rem;color:var(--text-muted);font-weight:600"> calls</span></div><div style="font-size:.72rem;margin-top:6px;line-height:1.45"><span style="color:var(--success);font-weight:700">Answered 30</span> · <span style="color:#B4441F;font-weight:700">Missed 25</span></div></div>
-          <div class="plp-kpi"><div class="l" style="text-transform:uppercase;letter-spacing:.05em;font-weight:700;font-size:.66rem;margin:0 0 5px">Call-back rate</div><div class="v" style="font-size:1.5rem;color:var(--success)">92%</div><div style="font-size:.72rem;margin-top:6px;color:var(--text-muted)">23/25 called back · target 95%</div></div>
-          <div class="plp-kpi"><div class="l" style="text-transform:uppercase;letter-spacing:.05em;font-weight:700;font-size:.66rem;margin:0 0 5px">Missed</div><div class="v" style="font-size:1.5rem;color:#D97706">45%</div><div style="font-size:.72rem;margin-top:6px;color:var(--text-muted)">25 of 55 total calls</div></div>
+          <div class="plp-kpi"><div class="l" style="text-transform:uppercase;letter-spacing:.05em;font-weight:700;font-size:.8rem;margin:0 0 5px">Call statistics</div><div class="v" style="font-size:1.5rem">55<span style="font-size:.78rem;color:var(--text-muted);font-weight:600"> calls</span></div><div style="font-size:.8rem;margin-top:6px;line-height:1.45"><span style="color:var(--success);font-weight:700">Answered 30</span> · <span style="color:#B4441F;font-weight:700">Missed 25</span></div></div>
+          <div class="plp-kpi"><div class="l" style="text-transform:uppercase;letter-spacing:.05em;font-weight:700;font-size:.8rem;margin:0 0 5px">Call-back rate</div><div class="v" style="font-size:1.5rem;color:var(--success)">92%</div><div style="font-size:.8rem;margin-top:6px;color:var(--text-muted)">23/25 called back · target 95%</div></div>
+          <div class="plp-kpi"><div class="l" style="text-transform:uppercase;letter-spacing:.05em;font-weight:700;font-size:.8rem;margin:0 0 5px">Missed</div><div class="v" style="font-size:1.5rem;color:#D97706">45%</div><div style="font-size:.8rem;margin-top:6px;color:var(--text-muted)">25 of 55 total calls</div></div>
         </div>
 
         <div style="background:linear-gradient(135deg,var(--navy) 0%,var(--navy-dark) 100%);border-radius:14px;padding:15px 16px;color:#fff;margin-top:12px">
@@ -4325,7 +4347,7 @@ if(d==='accepted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'g
     </div>
     <div class="wcd-grid" id="wcd-grid"></div>
     <div class="wcd-foot">
-      <a href="#cta">Start your 14-day trial — no card</a>
+      <a href="#cta">Book a 20-minute call</a>
       <div class="h">The data on these screens is sample data · yours will be your own.</div>
     </div>
   </div>
@@ -4429,10 +4451,11 @@ if(d==='accepted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'g
         </div>
         <div class="calc-output">
           <div class="calc-output-label">You lose every month</div>
-          <div class="calc-output-value" id="calcLoss">~PLN 31,500</div>
+          <div class="calc-output-value" id="calcLoss">~PLN 30,000</div>
           <div class="calc-output-period">on missed calls alone</div>
+          <div class="calc-chain" id="calcChain"></div>
           <div class="calc-output-note">
-            Conservative assumption: 23% missed × 20% of patients recovered × plan value. The real potential is usually higher.
+            These are <strong>assumptions, not a measurement of your practice</strong>: 23% of calls unanswered and 20% of those realistically recoverable. A month is counted in working days. The first thing we do after launch is measure your own 30 days — and then these numbers are replaced by yours.
           </div>
         </div>
       </div>
@@ -4479,7 +4502,7 @@ if(d==='accepted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'g
     </div>
     <div style="text-align:center;margin:0 auto 8px;">
       <p style="font-size:1.05rem;font-weight:700;color:var(--navy);margin:0 0 14px;">Want to see this on your own practice’s data?</p>
-      <a href="#cta" class="btn btn-primary btn-lg">Start your 14-day trial — no card →</a>
+      <a href="#cta" class="btn btn-primary btn-lg">Book a 20-minute call →</a>
     </div>
   </div>
   <style>
@@ -4630,7 +4653,7 @@ if(d==='accepted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'g
   .plp-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
   .plp-kpi{background:var(--cream);border:1px solid var(--warm-border);border-radius:12px;padding:13px 14px}
   .plp-kpi .v{font-size:1.6rem;font-weight:800;color:var(--navy);line-height:1.1}
-  .plp-kpi .l{font-size:.78rem;color:var(--text-muted);margin-top:3px}
+  .plp-kpi .l{font-size:.82rem;color:var(--text-muted);margin-top:3px}
   .plp-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
   .plp-panel{background:var(--white);border:1px solid var(--warm-border);border-radius:14px;padding:14px}
   .plp-h{font-size:.95rem;font-weight:700;color:var(--navy);margin:0 0 10px}
@@ -4795,7 +4818,7 @@ if(d==='accepted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'g
       </div>
 
       <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 28px;">
-        <a href="#cta" class="btn btn-primary btn-lg">Try it — 14-day trial →</a>
+        <a href="#cta" class="btn btn-primary btn-lg">Book a 20-minute call →</a>
         <a href="#pricing" class="btn btn-outline btn-lg" style="border-color: rgba(229,195,106,0.6); color: var(--gold-2);">See pricing ↓</a>
       </div>
     </div>
@@ -5463,7 +5486,7 @@ if(d==='accepted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'g
   <div class="container">
     <div class="cta-grid">
       <div class="cta-left">
-        <h2 style="margin-top: 28px;">Order your package</h2>
+        <h2 style="margin-top: 28px;">Let's talk about your start</h2>
         <p>The configuration from the calculator above is attached to your enquiry. <strong>We will call you within 1 day</strong> to talk about access to the free 14-day trial. The decision is yours.</p>
         <ul class="cta-bullets">
           <li><strong>Free setup</strong> — you bear no onboarding costs</li>
@@ -5631,7 +5654,7 @@ if(d==='accepted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'g
 <div class="trust-bar">
   <div class="container">
     <div class="trust-inline">
-      <p class="trust-lead">The AI phone system runs on technology trusted by more than <strong>2,300 companies</strong> worldwide:</p>
+      <p class="trust-lead">The TAMAIA phone system runs on Ringostat technology, trusted by more than <strong>2,300 companies</strong> worldwide — these are Ringostat customers, not TAMAIA customers:</p>
       <div class="trust-logos">
         <span>BOSCH</span>
         <span>·</span>
@@ -5734,7 +5757,7 @@ if(d==='accepted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'g
     </div>
     <div style="display: flex; align-items: center; gap: 14px;">
       <a href="tel:+48886570047" class="sticky-cta-phone">📞 886 570 047</a>
-      <a href="#cta" class="btn btn-primary">Start 14-day trial</a>
+      <a href="#cta" class="btn btn-primary">Book a call</a>
     </div>
   </div>
 </div>
@@ -6090,13 +6113,25 @@ if(d==='accepted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'g
   });
 
   // ===== CALCULATOR STRAT =====
+  // A month is counted in WORKING DAYS (21), not calendar days (30): a practice does
+  // not answer calls at weekends, and the page itself states that over 90% of patients
+  // call during opening hours. Counting 30 days inflated the result by ~43%.
+  const WORKING_DAYS = 21, MISSED_SHARE = 0.23, RECOVERY_SHARE = 0.20;
   function updateCalc() {
     const calls = parseFloat(document.getElementById('calcCalls').value) || 0;
     const plan = parseFloat(document.getElementById('calcPlan').value) || 0;
-    // 23% nieodebranych × 20% odzyskanych × wartość planu × 30 dni (założenie ostrożne)
-    const lost = calls * 30 * 0.23 * 0.20 * plan;
-    const formatted = lost.toLocaleString('en-US', { maximumFractionDigits: 0 });
-    document.getElementById('calcLoss').textContent = '~PLN ' + formatted;
+    const perMonth = Math.round(calls * WORKING_DAYS);
+    const missed = Math.round(perMonth * MISSED_SHARE);
+    const patients = Math.round(missed * RECOVERY_SHARE);
+    const lost = patients * plan;
+    const f = function (n) { return n.toLocaleString('en-US', { maximumFractionDigits: 0 }); };
+    document.getElementById('calcLoss').textContent = '~PLN ' + f(lost);
+    const el = document.getElementById('calcChain');
+    if (el) el.innerHTML =
+      '<b>' + f(perMonth) + '</b> calls a month <span>(' + f(calls) + ' a day × 21 working days)</span>'
+      + '<br>→ <b>' + f(missed) + '</b> go unanswered <span>(23%)</span>'
+      + '<br>→ <b>' + f(patients) + '</b> patients realistically recoverable <span>(20% of those)</span>'
+      + '<br>→ <b>' + f(patients) + ' × PLN ' + f(plan) + '</b>';
   }
   document.getElementById('calcCalls').addEventListener('input', updateCalc);
   document.getElementById('calcPlan').addEventListener('input', updateCalc);
@@ -6624,7 +6659,8 @@ window.addEventListener('message',function(e){var d=e&&e.data;if(!d||!d.tamaiaH)
   function fmt(n,dec,suf){ return (dec? n.toFixed(dec).replace('.',','):Math.round(n).toString())+(suf||''); }
   function countUp(el,cb){
     var to=parseFloat(el.getAttribute('data-to')), dec=parseInt(el.getAttribute('data-dec')||'0'), suf=el.getAttribute('data-suffix')||'';
-    var dur=480, t0=performance.now();
+    if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){ el.textContent=fmt(to,dec,suf); if(cb) cb(); return; }
+    var dur=380, t0=performance.now();
     (function step(t){
       var p=Math.min(1,(t-t0)/dur), e=1-Math.pow(1-p,3);
       el.textContent=fmt(to*e,dec,suf);
@@ -6639,13 +6675,16 @@ window.addEventListener('message',function(e){var d=e&&e.data;if(!d||!d.tamaiaH)
     });
   }
   function run(){
-    if(ran) return; ran=true; var i=0;
-    (function next(){
-      if(i>=seq.length) return;
-      var it=seq[i++]; it.classList.add('show');
-      var num=it.querySelector('.plp-num');
-      setTimeout(function(){ if(num) countUp(num,function(){ setTimeout(next,120); }); else setTimeout(next,220); }, 150);
-    })();
+    if(ran) return; ran=true;
+    /* Karty ruszaja rownolegle z krotkim przesunieciem. Kolejka szeregowa
+       (150 + 480 + 120 ms na karte) trzymala trzecia liczbe na zerze ~2,3 s. */
+    seq.forEach(function(it,i){
+      setTimeout(function(){
+        it.classList.add('show');
+        var num=it.querySelector('.plp-num');
+        if(num) countUp(num);
+      }, i*70);
+    });
   }
   function inView(){ var r=pulpit.getBoundingClientRect(); return r.top < (window.innerHeight*0.85) && r.bottom > 40; }
   if(inView()){ run(); }
@@ -6664,13 +6703,13 @@ window.addEventListener('message',function(e){var d=e&&e.data;if(!d||!d.tamaiaH)
   function grp(x){return x.replace(/\B(?=(\d{3})+(?!\d))/g,'\u00A0');}
   function fmt(n,dec,suf,g){var x=dec?n.toFixed(dec).replace('.',','):Math.round(n).toString();if(g)x=grp(x);return x+(suf||'');}
   function setNum(el,v){el.textContent=fmt(v,parseInt(el.getAttribute('data-dec')||'0'),el.getAttribute('data-suf')||'',el.getAttribute('data-grp'));}
-  function countUp(el,cb){var to=parseFloat(el.getAttribute('data-to')),dec=parseInt(el.getAttribute('data-dec')||'0'),suf=el.getAttribute('data-suf')||'',g=el.getAttribute('data-grp');var dur=620,t0=performance.now();(function st(t){var p=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-p,3);el.textContent=fmt(to*e,dec,suf,g);if(p<1)requestAnimationFrame(st);else{el.textContent=fmt(to,dec,suf,g);if(cb)cb();}})(performance.now());}
+  function countUp(el,cb){var to=parseFloat(el.getAttribute('data-to')),dec=parseInt(el.getAttribute('data-dec')||'0'),suf=el.getAttribute('data-suf')||'',g=el.getAttribute('data-grp');if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){el.textContent=fmt(to,dec,suf,g);if(cb)cb();return;}var dur=420,t0=performance.now();(function st(t){var p=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-p,3);el.textContent=fmt(to*e,dec,suf,g);if(p<1)requestAnimationFrame(st);else{el.textContent=fmt(to,dec,suf,g);if(cb)cb();}})(performance.now());}
   function setup(row){
     var items=[].slice.call(row.children).filter(function(c){return c.nodeType===1;});
     if(!items.length)return; var ran=false;
     function inView(){var r=row.getBoundingClientRect();return r.top<(window.innerHeight*0.85)&&r.bottom>40;}
     function arm(){items.forEach(function(it){it.classList.add('anim-armed');[].slice.call(it.querySelectorAll('.cu')).forEach(function(n){setNum(n,0);});});}
-    function run(){if(ran)return;ran=true;var i=0;(function next(){if(i>=items.length)return;var it=items[i++];it.classList.add('show');var cu=it.querySelector('.cu');setTimeout(function(){if(cu)countUp(cu,function(){setTimeout(next,110);});else setTimeout(next,200);},150);})();}
+    function run(){if(ran)return;ran=true;items.forEach(function(it,i){setTimeout(function(){it.classList.add('show');var cu=it.querySelector('.cu');if(cu)countUp(cu);},i*70);});}
     arm();
     if(inView()){run();}
     else{var on=function(){if(inView()){cl();run();}};function cl(){window.removeEventListener('scroll',on);window.removeEventListener('resize',on);}window.addEventListener('scroll',on,{passive:true});window.addEventListener('resize',on,{passive:true});setTimeout(function(){if(!ran){cl();run();}},8000);}
