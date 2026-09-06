@@ -372,10 +372,29 @@
   .hero-text .eyebrow { margin-bottom: 16px; display: block; }
   .hero h1 { margin-bottom: 22px; }
   .hero h1 .accent {
-    background: linear-gradient(135deg, var(--gold-1), var(--gold-2));
+    /* Zloto jest podkresleniem, nie litera. Gradient przyciety do tekstu dawal
+       kontrast 2,4:1 (#C9A24A) i 1,7:1 (#E5C36A) przy progu AA 3,0 dla duzego tekstu.
+       Granat na bieli daje 13,8:1, a zlota banda zostaje jako akcent marki. */
+    /* Zloto ZOSTAJE litera, ale w odcieniach, ktore przechodza prog.
+       Bylo: #C9A24A = 2,4:1 i #E5C36A = 1,7:1 na bieli, przy progu AA 3,0
+       dla duzego tekstu — obie wartosci oblewaly.
+       Jest: #8A6A12 = 5,05:1 i #A8842A = 3,52:1 — obie przechodza.
+       #8A6A12 to ten sam dostepny zloty, ktorego arkusz uzywa juz w .eyebrow. */
+    background: linear-gradient(135deg, #8A6A12, #A8842A);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+  }
+
+  /* Na telefonie glowny przycisk stal pod zgieciem (907 px przy ekranie 812 px).
+     Ramka o stracie schodzi pod przycisk: strach po wyjsciu, nie przed nim. */
+  @media (max-width: 900px) {
+    .hero-text { display: flex; flex-direction: column; }
+    .hero-text > * { order: 2; }
+    .hero-text > span,
+    .hero-text > h1,
+    .hero-text > .hero-lead,
+    .hero-text > .hero-cta-group { order: 1; }
   }
   .hero-lead {
     font-size: 1.22rem;
@@ -785,6 +804,9 @@
     margin-bottom: 8px;
   }
   .calc-output-period { color: rgba(255,255,255,0.7); font-size: 0.95rem; margin-bottom: 14px; }
+  .calc-chain{font-size:.86rem;line-height:1.65;color:var(--text-muted);margin:10px 0 12px;padding:10px 12px;background:rgba(201,162,74,.08);border-radius:8px;text-align:left}
+  .calc-chain b{color:var(--navy);font-weight:700}
+  .calc-chain span{opacity:.85}
   .calc-output-note {
     font-size: 0.85rem;
     color: rgba(255,255,255,0.8);
@@ -4029,7 +4051,7 @@ if(d==='accepted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'g
     </ul>
     <div class="nav-actions">
       <a href="https://app.tamaia.pl" class="nav-login" target="_blank" rel="noopener">Zaloguj się →</a>
-      <a href="#cta" class="btn btn-primary nav-cta">Wypróbuj 14 dni</a>
+      <a href="#cta" class="btn btn-primary nav-cta">Umów rozmowę</a>
       <button class="hamburger" id="hamburgerBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
         <span></span><span></span><span></span>
       </button>
@@ -4043,7 +4065,7 @@ if(d==='accepted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'g
       <li><a href="#pricing">Cennik</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="https://app.tamaia.pl" target="_blank" rel="noopener" style="display:block; text-align:center; padding:12px; border:2px solid var(--gold-1); border-radius:8px; color:var(--gold-1); font-weight:600; margin-top:8px;">Zaloguj się →</a></li>
-      <li><a href="#cta" class="btn btn-primary" style="width: 100%; margin-top: 8px;">Wypróbuj 14 dni</a></li>
+      <li><a href="#cta" class="btn btn-primary" style="width: 100%; margin-top: 8px;">Umów rozmowę</a></li>
     </ul>
   </div>
 </nav>
@@ -4077,8 +4099,8 @@ if(d==='accepted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'g
           <div class="ha-sub">TAMAIA pokazuje realne dane: ile było telefonów, ilu pacjentów umówionych, co poszło dobrze. Koniec z domysłami i niesprawiedliwą oceną — liczby mówią za Ciebie.</div>
         </div>
         <div class="hero-cta-group">
-          <a href="#cta" class="btn btn-primary btn-lg">Pokaż szefowi — 14 dni za darmo</a>
-          <div class="hero-cta-sub">bez karty · konfiguracja <b>0 zł</b> · gotowe w <b>5 dni</b></div>
+          <a href="#cta" class="btn btn-primary btn-lg">Pokaż szefowi — umów rozmowę</a>
+          <div class="hero-cta-sub"><b>14 dni testu bez karty</b> — uruchamiamy go po krótkiej rozmowie, bo podłączamy Twoje numery. Zwykle dzwonimy tego samego dnia. Konfiguracja <b>0 zł</b>, centralka gotowa w <b>5 dni</b>.</div>
         </div>
         <div class="hero-trust">
           <div><strong>14 lat</strong> doświadczenia w branży stomatologicznej</div>
@@ -4348,7 +4370,7 @@ if(d==='accepted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'g
     </div>
     <div class="wcd-grid" id="wcd-grid"></div>
     <div class="wcd-foot">
-      <a href="#cta">Wypróbuj 14 dni — bez karty</a>
+      <a href="#cta">Umów rozmowę o starcie</a>
       <div class="h">Dane na ekranach są przykładowe · u Ciebie będą Twoje.</div>
     </div>
   </div>
@@ -4423,13 +4445,13 @@ if(d==='accepted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'g
         <div class="problem-stat"><span class="cu" data-to="41" data-suf="%">41%</span></div>
         <h3>Słabo obsłużone</h3>
         <p>Rejestratorka odbiera, ale nie uśmiecha się lub nie okazuje empatii i zaangażowania, nie proponuje wizyty z inicjatywą. Pacjent mówi „dziękuję" i dzwoni dalej, szukając profesjonalizmu.</p>
-        <div style="display:inline-block;margin-top:auto;align-self:center;background:#FBEAEA;color:#9B1C1C;font-weight:700;font-size:0.9rem;line-height:1.35;padding:7px 12px;border-radius:8px;">Co miesiąc dla konkurencji: ≈ 21 000 zł<span style="display:block;font-weight:500;color:#B45757;font-size:0.78rem;margin-top:2px;">~7 pacjentów × 3 000 zł</span></div>
+        <div style="display:inline-block;margin-top:auto;align-self:center;background:#FBEAEA;color:#9B1C1C;font-weight:700;font-size:0.9rem;line-height:1.35;padding:7px 12px;border-radius:8px;">Ujęcie nakłada się na powyższe<span style="display:block;font-weight:500;color:#B45757;font-size:0.82rem;margin-top:2px;">~7 na 100 rozmów</span></div>
       </div>
       <div class="problem-card">
         <div class="problem-stat"><span class="cu" data-to="62" data-suf="%">62%</span></div>
         <h3>Bez kontaktu zwrotnego</h3>
         <p>Pacjent pyta o cenę, a rejestratorka nie buduje wartości wizyty, tylko podaje cenę. Pacjent mówi „jeszcze się zastanowię" — nigdy już nie zadzwoni.</p>
-        <div style="display:inline-block;margin-top:auto;align-self:center;background:#FBEAEA;color:#9B1C1C;font-weight:700;font-size:0.9rem;line-height:1.35;padding:7px 12px;border-radius:8px;">Co miesiąc dla konkurencji: ≈ 15 000 zł<span style="display:block;font-weight:500;color:#B45757;font-size:0.78rem;margin-top:2px;">~5 pacjentów × 3 000 zł</span></div>
+        <div style="display:inline-block;margin-top:auto;align-self:center;background:#FBEAEA;color:#9B1C1C;font-weight:700;font-size:0.9rem;line-height:1.35;padding:7px 12px;border-radius:8px;">Ujęcie nakłada się na powyższe<span style="display:block;font-weight:500;color:#B45757;font-size:0.82rem;margin-top:2px;">~5 na 100 rozmów</span></div>
       </div>
     </div>
 
@@ -4452,10 +4474,11 @@ if(d==='accepted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'g
         </div>
         <div class="calc-output">
           <div class="calc-output-label">Tracisz miesięcznie</div>
-          <div class="calc-output-value" id="calcLoss">~31 500 zł</div>
+          <div class="calc-output-value" id="calcLoss">~30 000 zł</div>
           <div class="calc-output-period">na samych nieodebranych połączeniach</div>
+          <div class="calc-chain" id="calcChain"></div>
           <div class="calc-output-note">
-            Założenie ostrożne: 23% nieodebranych × 20% odzyskanych pacjentów × wartość planu. Realny potencjał jest zwykle wyższy.
+            To są <strong>założenia, nie pomiar Twojego gabinetu</strong>: 23% telefonów bez odpowiedzi i 20% z nich realnie do odzyskania. Miesiąc liczymy w dniach roboczych. Pierwsze, co robimy po starcie, to mierzymy Twoje własne 30 dni — i wtedy te liczby zastępujemy Twoimi.
           </div>
         </div>
       </div>
@@ -4502,7 +4525,7 @@ if(d==='accepted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'g
     </div>
     <div style="text-align:center;margin:0 auto 8px;">
       <p style="font-size:1.05rem;font-weight:700;color:var(--navy);margin:0 0 14px;">Chcesz zobaczyć to na danych swojego gabinetu?</p>
-      <a href="#cta" class="btn btn-primary btn-lg">Wypróbuj 14 dni — bez karty →</a>
+      <a href="#cta" class="btn btn-primary btn-lg">Umów rozmowę o starcie →</a>
     </div>
   </div>
   <style>
@@ -4653,7 +4676,7 @@ if(d==='accepted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'g
   .plp-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
   .plp-kpi{background:var(--cream);border:1px solid var(--warm-border);border-radius:12px;padding:13px 14px}
   .plp-kpi .v{font-size:1.6rem;font-weight:800;color:var(--navy);line-height:1.1}
-  .plp-kpi .l{font-size:.78rem;color:var(--text-muted);margin-top:3px}
+  .plp-kpi .l{font-size:.82rem;color:var(--text-muted);margin-top:3px}
   .plp-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
   .plp-panel{background:var(--white);border:1px solid var(--warm-border);border-radius:14px;padding:14px}
   .plp-h{font-size:.95rem;font-weight:700;color:var(--navy);margin:0 0 10px}
@@ -4818,7 +4841,7 @@ if(d==='accepted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'g
       </div>
 
       <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 28px;">
-        <a href="#cta" class="btn btn-primary btn-lg">Wypróbuj — test 14 dni →</a>
+        <a href="#cta" class="btn btn-primary btn-lg">Umów rozmowę o starcie →</a>
         <a href="#pricing" class="btn btn-outline btn-lg" style="border-color: rgba(229,195,106,0.6); color: var(--gold-2);">Zobacz cennik ↓</a>
       </div>
     </div>
@@ -5458,7 +5481,7 @@ if(d==='accepted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'g
   <div class="container">
     <div class="cta-grid">
       <div class="cta-left">
-        <h2 style="margin-top: 28px;">Zamów swój pakiet</h2>
+        <h2 style="margin-top: 28px;">Umówmy rozmowę o starcie</h2>
         <p>Konfiguracja z kalkulatora powyżej zostaje dołączona do zgłoszenia. W ciągu <strong>1 dnia zadzwonimy</strong> do Ciebie i porozmawiamy o dostępie do bezpłatnego testu 14 dni. Ty decydujesz.</p>
         <ul class="cta-bullets">
           <li><strong>Przygotowanie gratis</strong> — nie ponosisz kosztów wdrożenia</li>
@@ -5626,7 +5649,7 @@ if(d==='accepted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'g
 <div class="trust-bar">
   <div class="container">
     <div class="trust-inline">
-      <p class="trust-lead">Telefon AI działa na technologii, której zaufało ponad <strong>2 300+ firm</strong> na całym świecie:</p>
+      <p class="trust-lead">Centralka TAMAIA pracuje na technologii Ringostat, której zaufało ponad <strong>2 300 firm</strong> na całym świecie — to klienci Ringostatu, nie TAMAI:</p>
       <div class="trust-logos">
         <span>BOSCH</span>
         <span>·</span>
@@ -5733,11 +5756,11 @@ if(d==='accepted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'g
 <div class="sticky-cta" id="stickyCta">
   <div class="sticky-cta-inner">
     <div class="sticky-cta-text">
-      <strong>14 dni za darmo</strong> <small>· bez karty, bez zobowiązań</small>
+      <strong>14 dni testu bez karty</strong> <small>· startuje po krótkiej rozmowie</small>
     </div>
     <div style="display: flex; align-items: center; gap: 14px;">
       <a href="tel:+48886570047" class="sticky-cta-phone">📞 886 570 047</a>
-      <a href="#cta" class="btn btn-primary">Wypróbuj 14 dni</a>
+      <a href="#cta" class="btn btn-primary">Umów rozmowę</a>
     </div>
   </div>
 </div>
@@ -5889,8 +5912,8 @@ if(d==='accepted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'g
     <button class="popup-close" onclick="closePopup()" aria-label="Zamknij">×</button>
     <div class="popup-icon">💬</div>
     <h3>Zanim wyjdziesz — wypróbuj 14 dni</h3>
-    <p>Aktywujemy konto testowe <strong>bez karty, bez zobowiązań</strong>. Sprawdź pełen system, raporty AI, kurs Doskonałej Rejestracji. Decyzję podejmiesz po 14 dniach.</p>
-    <a href="#cta" class="btn btn-primary btn-lg" style="width: 100%;" onclick="setIntent('bezpłatny test'); closePopup();">Aktywuj test 14 dni →</a>
+    <p>Test to <strong>14 dni bez karty i bez zobowiązań</strong> — pełen system, raporty AI, kurs Doskonałej Rejestracji. Uruchamiamy go po krótkiej rozmowie, bo podłączamy Twoje numery. Decyzję podejmujesz po 14 dniach.</p>
+    <a href="#cta" class="btn btn-primary btn-lg" style="width: 100%;" onclick="setIntent('bezpłatny test'); closePopup();">Umów rozmowę o starcie →</a>
   </div>
 </div>
 
@@ -6093,13 +6116,27 @@ if(d==='accepted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'g
   });
 
   // ===== CALCULATOR STRAT =====
+  // Miesiac liczymy w DNIACH ROBOCZYCH (21), nie kalendarzowych (30). Gabinet nie
+  // odbiera telefonow w weekendy, a strona sama pisze, ze ponad 90% pacjentow dzwoni
+  // w godzinach otwarcia. Liczenie 30 dni zawyzalo wynik o ~43% i bylo zrodlem
+  // rozjazdu: kalkulator pokazywal 41 400 zl tam, gdzie sekcja problemu mowila
+  // o ~30 000 zl przy DOKLADNIE tych samych zalozeniach.
+  const DNI_ROBOCZE = 21, UDZIAL_NIEODEBRANYCH = 0.23, UDZIAL_ODZYSKU = 0.20;
   function updateCalc() {
     const calls = parseFloat(document.getElementById('calcCalls').value) || 0;
     const plan = parseFloat(document.getElementById('calcPlan').value) || 0;
-    // 23% nieodebranych × 20% odzyskanych × wartość planu × 30 dni (założenie ostrożne)
-    const lost = calls * 30 * 0.23 * 0.20 * plan;
-    const formatted = lost.toLocaleString('pl-PL', { maximumFractionDigits: 0 });
-    document.getElementById('calcLoss').textContent = '~' + formatted + ' zł';
+    const wMiesiacu = Math.round(calls * DNI_ROBOCZE);
+    const nieodebrane = Math.round(wMiesiacu * UDZIAL_NIEODEBRANYCH);
+    const pacjenci = Math.round(nieodebrane * UDZIAL_ODZYSKU);
+    const lost = pacjenci * plan;
+    const f = function (n) { return n.toLocaleString('pl-PL', { maximumFractionDigits: 0 }); };
+    document.getElementById('calcLoss').textContent = '~' + f(lost) + ' zł';
+    const el = document.getElementById('calcChain');
+    if (el) el.innerHTML =
+      '<b>' + f(wMiesiacu) + '</b> połączeń miesięcznie <span>(' + f(calls) + ' dziennie × 21 dni roboczych)</span>'
+      + '<br>→ <b>' + f(nieodebrane) + '</b> zostaje bez odpowiedzi <span>(23%)</span>'
+      + '<br>→ <b>' + f(pacjenci) + '</b> pacjentów realnie do odzyskania <span>(20% z nich)</span>'
+      + '<br>→ <b>' + f(pacjenci) + ' × ' + f(plan) + ' zł</b>';
   }
   document.getElementById('calcCalls').addEventListener('input', updateCalc);
   document.getElementById('calcPlan').addEventListener('input', updateCalc);
@@ -6627,7 +6664,8 @@ window.addEventListener('message',function(e){var d=e&&e.data;if(!d||!d.tamaiaH)
   function fmt(n,dec,suf){ return (dec? n.toFixed(dec).replace('.',','):Math.round(n).toString())+(suf||''); }
   function countUp(el,cb){
     var to=parseFloat(el.getAttribute('data-to')), dec=parseInt(el.getAttribute('data-dec')||'0'), suf=el.getAttribute('data-suffix')||'';
-    var dur=480, t0=performance.now();
+    if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){ el.textContent=fmt(to,dec,suf); if(cb) cb(); return; }
+    var dur=380, t0=performance.now();
     (function step(t){
       var p=Math.min(1,(t-t0)/dur), e=1-Math.pow(1-p,3);
       el.textContent=fmt(to*e,dec,suf);
@@ -6642,13 +6680,16 @@ window.addEventListener('message',function(e){var d=e&&e.data;if(!d||!d.tamaiaH)
     });
   }
   function run(){
-    if(ran) return; ran=true; var i=0;
-    (function next(){
-      if(i>=seq.length) return;
-      var it=seq[i++]; it.classList.add('show');
-      var num=it.querySelector('.plp-num');
-      setTimeout(function(){ if(num) countUp(num,function(){ setTimeout(next,120); }); else setTimeout(next,220); }, 150);
-    })();
+    if(ran) return; ran=true;
+    /* Karty ruszaja rownolegle z krotkim przesunieciem. Kolejka szeregowa
+       (150 + 480 + 120 ms na karte) trzymala trzecia liczbe na zerze ~2,3 s. */
+    seq.forEach(function(it,i){
+      setTimeout(function(){
+        it.classList.add('show');
+        var num=it.querySelector('.plp-num');
+        if(num) countUp(num);
+      }, i*70);
+    });
   }
   function inView(){ var r=pulpit.getBoundingClientRect(); return r.top < (window.innerHeight*0.85) && r.bottom > 40; }
   if(inView()){ run(); }
@@ -6667,13 +6708,13 @@ window.addEventListener('message',function(e){var d=e&&e.data;if(!d||!d.tamaiaH)
   function grp(x){return x.replace(/\B(?=(\d{3})+(?!\d))/g,'\u00A0');}
   function fmt(n,dec,suf,g){var x=dec?n.toFixed(dec).replace('.',','):Math.round(n).toString();if(g)x=grp(x);return x+(suf||'');}
   function setNum(el,v){el.textContent=fmt(v,parseInt(el.getAttribute('data-dec')||'0'),el.getAttribute('data-suf')||'',el.getAttribute('data-grp'));}
-  function countUp(el,cb){var to=parseFloat(el.getAttribute('data-to')),dec=parseInt(el.getAttribute('data-dec')||'0'),suf=el.getAttribute('data-suf')||'',g=el.getAttribute('data-grp');var dur=620,t0=performance.now();(function st(t){var p=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-p,3);el.textContent=fmt(to*e,dec,suf,g);if(p<1)requestAnimationFrame(st);else{el.textContent=fmt(to,dec,suf,g);if(cb)cb();}})(performance.now());}
+  function countUp(el,cb){var to=parseFloat(el.getAttribute('data-to')),dec=parseInt(el.getAttribute('data-dec')||'0'),suf=el.getAttribute('data-suf')||'',g=el.getAttribute('data-grp');if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){el.textContent=fmt(to,dec,suf,g);if(cb)cb();return;}var dur=420,t0=performance.now();(function st(t){var p=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-p,3);el.textContent=fmt(to*e,dec,suf,g);if(p<1)requestAnimationFrame(st);else{el.textContent=fmt(to,dec,suf,g);if(cb)cb();}})(performance.now());}
   function setup(row){
     var items=[].slice.call(row.children).filter(function(c){return c.nodeType===1;});
     if(!items.length)return; var ran=false;
     function inView(){var r=row.getBoundingClientRect();return r.top<(window.innerHeight*0.85)&&r.bottom>40;}
     function arm(){items.forEach(function(it){it.classList.add('anim-armed');[].slice.call(it.querySelectorAll('.cu')).forEach(function(n){setNum(n,0);});});}
-    function run(){if(ran)return;ran=true;var i=0;(function next(){if(i>=items.length)return;var it=items[i++];it.classList.add('show');var cu=it.querySelector('.cu');setTimeout(function(){if(cu)countUp(cu,function(){setTimeout(next,110);});else setTimeout(next,200);},150);})();}
+    function run(){if(ran)return;ran=true;items.forEach(function(it,i){setTimeout(function(){it.classList.add('show');var cu=it.querySelector('.cu');if(cu)countUp(cu);},i*70);});}
     arm();
     if(inView()){run();}
     else{var on=function(){if(inView()){cl();run();}};function cl(){window.removeEventListener('scroll',on);window.removeEventListener('resize',on);}window.addEventListener('scroll',on,{passive:true});window.addEventListener('resize',on,{passive:true});setTimeout(function(){if(!ran){cl();run();}},8000);}
