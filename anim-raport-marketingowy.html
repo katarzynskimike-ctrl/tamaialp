@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TAMAIA — Raport marketingowy: od kliknięcia w reklamę do umówionej wizyty</title>
+<style>
+/* Układ: jedno okno aplikacji o stałych proporcjach (16:10, na wąskim 4:5), w nim pięć scen raportu zmienianych w pętli;
+   wszystkie wymiary w em, a em liczone od szerokości kontenera, więc całość skaluje się jak obraz. Pod oknem sterowanie. */
+:root{
+  --strona:#EFECE4; --bg:#F5F3EE; --surface:#FFFFFF; --surface-2:#FAF8F3; --border:#E8E1CF; --border-strong:#D6CBB0;
+  --fg:#1B2C4F; --muted:#556676; --faint:#8A97A6;
+  --c-tel:#AFB8C8; --c-odb:#6F82A6; --c-oferta:#C9A24A; --c-umow:#1B2C4F;
+  --c-strata:#A8323B; --strata-bg:#FBECEC; --ink-oferta:#7A5B12; --oferta-bg:#FBF4E1;
+  --dobrze:#2B7439; --dobrze-bg:#E7F2EA; --hero-bg:#1B2C4F; --hero-fg:#FFFFFF;
+  --zaslona:rgba(13,22,40,.32); --cien:0 1px 2px rgba(27,44,79,.06),0 4px 12px rgba(27,44,79,.08);
+  --kursor:#1B2C4F; --kursor-obrys:#FFFFFF; --focus:#1B2C4F;
+  --f-display:Georgia,'Times New Roman',serif;
+  --f-body:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+}
+
+*{box-sizing:border-box}
+html{color-scheme:light}
+html,body{margin:0;background:transparent}
+body{color:var(--fg);font:400 16px/1.5 var(--f-body);-webkit-font-smoothing:antialiased;padding:10px}
+.num{font-variant-numeric:tabular-nums}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- kontener i okno ---------- */
+.anim{max-width:none;margin:0;container:anim/inline-size;display:grid;gap:12px}
+.okno{position:relative;width:100%;aspect-ratio:16/10;font-size:1.62cqi;line-height:1.35;background:var(--bg);color:var(--fg);
+  border:1px solid var(--border);border-radius:1em;overflow:hidden;box-shadow:var(--cien);display:grid;grid-template-rows:auto minmax(0,1fr)}
+.pasek{display:flex;align-items:center;gap:.6em 1em;padding:.75em 1.4em;background:var(--surface);border-bottom:1px solid var(--border);min-width:0}
+.pasek .znak{width:1.1em;height:1.1em;border-radius:.3em;background:var(--hero-bg);position:relative;flex:none}
+.pasek .znak::after{content:'';position:absolute;inset:.32em;border-radius:50%;background:var(--c-oferta)}
+.pasek b{font-weight:700;white-space:nowrap}
+.pasek .gdzie{color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.pasek .metka{margin-left:auto;flex:none;font-size:.82em;font-weight:600;color:var(--ink-oferta);background:var(--oferta-bg);padding:.2em .7em;border-radius:999px;white-space:nowrap}
+.sceny{position:relative;min-height:0}
+.scena{position:absolute;inset:0;padding:1.5em 1.7em;display:grid;align-content:start;gap:1.1em;visibility:hidden;opacity:0;min-width:0}
+.scena.on,.scena.wyj{visibility:visible;opacity:1}
+.lbl{font-size:.82em;line-height:1.3;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.sub{font-size:.86em;line-height:1.3;color:var(--muted)}
+h2{font-family:var(--f-display);font-weight:400;font-size:1.75em;line-height:1.15;margin:.15em 0 0;text-wrap:balance;letter-spacing:-.01em}
+.karta{background:var(--surface);border:1px solid var(--border);border-radius:.9em;min-width:0}
+
+/* ---------- ruch: tylko transform i opacity ---------- */
+@keyframes we{from{opacity:0;transform:translateY(.7em)}to{opacity:1;transform:none}}
+@keyframes pojaw{from{opacity:0}to{opacity:1}}
+@keyframes wyj{from{opacity:1}to{opacity:0}}
+@keyframes rosnijY{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes rosnijX{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes odslon{from{transform:translateX(0)}to{transform:translateX(101%)}}
+@keyframes wjazdX{from{transform:translateX(102%)}to{transform:none}}
+@keyframes wjazdY{from{transform:translateY(102%)}to{transform:none}}
+@keyframes fala{0%{opacity:.55;transform:scale(.2)}100%{opacity:0;transform:scale(1.6)}}
+.scena.on .we{animation:we .6s cubic-bezier(.2,.7,.2,1) both;animation-delay:var(--d,0ms)}
+.scena.on .pj{animation:pojaw .5s ease-out both;animation-delay:var(--d,0ms)}
+.scena.wyj{animation:wyj .45s ease-in both}
+.anim.staly .okno *{animation:none!important;transition:none!important}
+.anim.pauza .okno *{animation-play-state:paused!important}
+
+/* ---------- scena 1: miesiąc w skrócie ---------- */
+.s1{grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);align-content:stretch;gap:1em}
+.hero{background:var(--hero-bg);color:var(--hero-fg);border-radius:.9em;padding:1.7em 1.8em;display:grid;align-content:space-between;gap:1.2em;min-width:0}
+.hero .lbl{color:inherit;opacity:.75}
+.hero .glowne{font-family:var(--f-display);font-size:2.35em;line-height:1.16;margin:0;text-wrap:balance}
+.hero .glowne strong{font-weight:700;white-space:nowrap}
+.hero .dalej{margin:0;font-size:1.05em;line-height:1.45;opacity:.88;max-width:34em}
+.kafle{display:grid;gap:.75em;align-content:stretch;min-width:0}
+.kafel{padding:1em 1.2em;display:grid;gap:.2em;align-content:center}
+.kafel .w{font-size:2.15em;line-height:1.1;font-weight:700}
+.kafel.glowny{border-color:var(--fg);box-shadow:inset 0 0 0 1px var(--fg)}
+
+/* ---------- scena 2: lejek ---------- */
+.lejek-d{display:grid;grid-template-columns:minmax(0,1fr) 3.4em minmax(0,1fr) 3.4em minmax(0,1fr) 3.4em minmax(0,1fr);grid-template-rows:auto 10.5em auto;row-gap:.6em;padding:1.3em 1.4em}
+.lejek-d .gora{grid-row:1;align-self:end;display:grid;min-width:0}
+.lejek-d .w{font-size:2.1em;line-height:1.1;font-weight:700}
+.lejek-d .slup{grid-row:2;position:relative}
+.lejek-d .bar{position:absolute;left:0;right:0;top:calc((1 - var(--h))*50%);height:calc(var(--h)*100%);border-radius:.3em;transform-origin:50% 50%}
+.scena.on .lejek-d .bar{animation:rosnijY .8s cubic-bezier(.2,.7,.2,1) both;animation-delay:var(--d,0ms)}
+.lejek-d .lacz{grid-row:2}
+.lejek-d .lacz svg{display:block;width:100%;height:100%}
+.lejek-d .proc{grid-row:1;align-self:end;text-align:center;font-size:.86em;font-weight:700;color:var(--muted);padding-bottom:.3em}
+.lejek-d .koszt{grid-row:3;border-top:1px solid var(--border);padding-top:.55em;display:grid;min-width:0}
+.lejek-d .koszt .w{font-size:1.2em;line-height:1.3}
+.lejek-d .koszt.cel .w{font-size:1.5em}
+.ubytki{display:flex;flex-wrap:wrap;gap:.6em}
+.chip{display:inline-flex;align-items:baseline;gap:.4em;padding:.45em .9em;border-radius:999px;font-size:.92em;background:var(--surface-2);border:1px solid var(--border)}
+.chip b{font-weight:700}
+.chip.strata{background:var(--strata-bg);border-color:transparent}
+.chip.strata b{color:var(--c-strata)}
+.chip.oferta{background:var(--oferta-bg);border-color:transparent}
+.chip.oferta b{color:var(--ink-oferta)}
+.lejek-m{display:none;gap:.15em;padding:1em 1.1em}
+.lejek-m .wiersz{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.3em .8em;align-items:baseline}
+.lejek-m .naz{display:flex;align-items:baseline;gap:.45em;min-width:0}
+.lejek-m .w{font-size:1.45em;line-height:1.15;font-weight:700}
+.lejek-m .koszt{text-align:right;white-space:nowrap}
+.lejek-m .koszt b{font-size:1.05em;font-weight:700}
+.lejek-m .pas{grid-column:1/-1;height:.85em;border-radius:.25em;background:var(--surface-2);overflow:hidden}
+.lejek-m .pas b{display:block;height:100%;width:calc(var(--h)*100%);border-radius:.25em;transform-origin:0 50%}
+.scena.on .lejek-m .pas b{animation:rosnijX .8s cubic-bezier(.2,.7,.2,1) both;animation-delay:var(--d,0ms)}
+.lejek-m .krok{font-size:.82em;color:var(--muted);font-weight:700;padding:.35em 0 .25em}
+
+/* ---------- scena 3: skąd dzwonią ---------- */
+.zrodla{padding:1em 1.2em;position:relative}
+.sankey{position:relative}
+.sankey svg{display:block;width:100%;height:auto;overflow:visible}
+.sankey text{font-family:var(--f-body);fill:var(--fg)}
+.sankey .t-sub{fill:var(--muted)}
+.sankey .wst{transition:opacity .45s ease}
+.sankey.skupienie .wst:not(.z0){opacity:.1}
+.kurtyna{position:absolute;top:0;bottom:0;overflow:hidden;pointer-events:none}
+.kurtyna i{position:absolute;inset:0;background:linear-gradient(90deg,transparent 0,var(--surface) 2.5em);transform:translateX(101%)}
+.scena.on .kurtyna i{animation:odslon 1.5s cubic-bezier(.45,.05,.35,1) both;animation-delay:var(--d,0ms)}
+.s3 .legenda{display:none}
+.podpis{font-size:1em;color:var(--fg);opacity:0;transition:opacity .45s ease}
+.podpis b{font-weight:700}
+.s3.skupienie .podpis{opacity:1}
+.stosy{display:none;gap:.75em}
+.stosy .rz{display:flex;justify-content:space-between;gap:.8em;align-items:baseline}
+.stosy .naz{font-weight:700;min-width:0}
+.stosy .rz .sub{white-space:nowrap;flex:none}
+.stos{display:flex;height:.95em;border-radius:.25em;overflow:hidden;gap:2px;background:var(--surface-2);transform-origin:0 50%}
+.scena.on .stos{animation:rosnijX .8s cubic-bezier(.2,.7,.2,1) both;animation-delay:var(--d,0ms)}
+.stos i{display:block;height:100%}
+.legenda{display:flex;flex-wrap:wrap;gap:.35em 1em;font-size:.84em;color:var(--muted)}
+.legenda i{display:inline-block;width:.8em;height:.8em;border-radius:.2em;vertical-align:-.08em;margin-right:.3em}
+
+/* ---------- scena 4: kampanie i szuflada ---------- */
+.lista{padding:.4em 1.2em .6em}
+.lista .wiersz,.lista .naglowek{display:grid;grid-template-columns:minmax(0,2.4fr) minmax(0,.85fr) minmax(0,.9fr) minmax(0,1.3fr) minmax(0,1.6fr);gap:.8em;align-items:center;padding:.7em .5em;border-bottom:1px solid var(--border)}
+.lista .naglowek{align-items:end}
+.lista .wiersz:last-child{border-bottom:0}
+.lista .naglowek{padding-block:.6em .5em}
+.lista .naglowek span{font-size:.82em;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.lista .wiersz{border-radius:.5em;transition:background-color .3s ease}
+.lista .wiersz.wybrany{background:var(--surface-2);box-shadow:inset 0 0 0 1px var(--border-strong)}
+.lista .naz{display:grid;min-width:0}
+.lista .naz b{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.plat{display:inline-flex;align-items:center;gap:.35em;font-size:.82em;color:var(--muted)}
+.plat i{width:.55em;height:.55em;border-radius:50%;background:var(--fg);display:inline-block}
+.plat.meta i{background:transparent;box-shadow:inset 0 0 0 2px var(--fg)}
+.lista .w{font-weight:700;font-size:1.1em}
+.prawo{text-align:right}
+.lista .tor{display:block;height:.28em;border-radius:999px;background:var(--surface-2);position:relative;margin-top:.35em;margin-left:auto;width:100%;max-width:7em}
+.lista .tor b{position:absolute;top:-.14em;width:.56em;height:.56em;border-radius:50%;background:var(--fg);transform:translateX(-50%)}
+.lista .tor s{position:absolute;top:-.25em;width:2px;height:.78em;background:var(--faint);transform:translateX(-50%)}
+.ocena{justify-self:end;display:inline-block;font-size:.82em;font-weight:700;padding:.3em .7em;border-radius:999px;white-space:nowrap;background:var(--surface-2);color:var(--muted)}
+.ocena.dobrze{background:var(--dobrze-bg);color:var(--dobrze)}
+.ocena.opt{background:var(--oferta-bg);color:var(--ink-oferta)}
+.lista .krotko{display:none}
+.zaslona{position:absolute;inset:0;background:var(--zaslona);opacity:0;pointer-events:none}
+.s4.otwarta .zaslona{opacity:1;animation:pojaw .4s ease-out both}
+.szuflada{position:absolute;top:0;right:0;bottom:0;width:27em;max-width:100%;background:var(--surface);border-left:1px solid var(--border);
+  box-shadow:var(--cien);padding:1.4em 1.5em;display:grid;align-content:start;gap:.9em;transform:translateX(102%);min-width:0}
+.s4.otwarta .szuflada{transform:none;animation:wjazdX .5s cubic-bezier(.2,.7,.2,1) both}
+.szuflada h3{font-family:var(--f-display);font-weight:400;font-size:1.6em;line-height:1.15;margin:0}
+.sz-gora{display:grid;gap:.35em}
+.sz-liczby{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.55em}
+.sz-liczby div{border:1px solid var(--border);border-radius:.55em;padding:.55em .8em;display:grid}
+.sz-liczby .w{font-size:1.45em;line-height:1.15;font-weight:700}
+.rada{background:var(--oferta-bg);padding:.75em .95em;border-radius:.55em;font-size:.9em;line-height:1.4}
+.sz-blok{display:grid;gap:.3em;border-top:1px solid var(--border);padding-top:.7em;min-width:0}
+.sz-blok p{margin:0;font-size:.95em}
+.sz-blok p.sub{font-size:.84em}
+.para{display:flex;justify-content:space-between;gap:1em;font-size:.95em}
+.para b{font-weight:700}
+.atrapa{display:inline-flex;align-items:center;min-height:2.5em;padding:0 1.1em;border-radius:.5em;background:var(--fg);color:var(--surface);font-weight:700;font-size:.92em}
+.rozmowy{display:grid}
+.rozmowy .r{display:grid;grid-template-columns:4.6em minmax(0,1fr) auto;gap:.6em;align-items:center;padding:.5em 0;border-top:1px solid var(--border);font-size:.88em}
+.rozmowy .kiedy{color:var(--muted);line-height:1.25}
+.rozmowy .co{min-width:0;line-height:1.25}
+.rozmowy .co span{display:block;color:var(--muted);font-size:.92em}
+.wyn{display:inline-block;padding:.2em .6em;border-radius:999px;font-weight:700;white-space:nowrap;font-size:.92em}
+.wyn.u{background:var(--c-umow);color:var(--surface)}
+.wyn.o{background:var(--oferta-bg);color:var(--ink-oferta)}
+.wyn.b{background:var(--strata-bg);color:var(--c-strata)}
+.s4.otwarta .szuflada .we{animation:we .5s cubic-bezier(.2,.7,.2,1) both;animation-delay:var(--d,0ms)}
+.kursor{position:absolute;left:0;top:0;width:1.7em;height:1.7em;z-index:6;pointer-events:none;opacity:0;transition:opacity .25s ease;will-change:transform}
+.kursor.widac{opacity:1}
+.kursor svg{display:block;width:100%;height:100%;position:relative}
+.kursor .fala{position:absolute;left:-.9em;top:-.9em;width:1.8em;height:1.8em;border-radius:50%;background:var(--c-oferta);opacity:0}
+.kursor.klik .fala{animation:fala .55s ease-out both}
+
+/* ---------- scena 5: plansza końcowa ---------- */
+.s5{align-content:center;justify-items:center;text-align:center;gap:1.1em}
+.s5 .duze{font-family:var(--f-display);font-size:3em;line-height:1.1;margin:0;max-width:16em;text-wrap:balance;letter-spacing:-.01em}
+.s5 p{margin:0;font-size:1.15em;line-height:1.45;color:var(--muted);max-width:30em;text-wrap:pretty}
+.s5 .fakty{display:flex;flex-wrap:wrap;justify-content:center;gap:.6em}
+.s5 .fakty span{padding:.5em 1em;border-radius:999px;background:var(--surface);border:1px solid var(--border);font-size:1em}
+.s5 .fakty b{font-weight:700}
+.s5 .fakty .glowny{background:var(--hero-bg);color:var(--hero-fg);border-color:transparent}
+
+/* ---------- sterowanie ---------- */
+.ster{display:flex;align-items:center;gap:12px;font-size:clamp(12px,1.25cqi,14px)}
+.graj{flex:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--border-strong);background:var(--surface);color:var(--fg);cursor:pointer;display:grid;place-items:center;padding:0}
+.graj:hover{background:var(--surface-2)}
+.graj svg{width:18px;height:18px;display:block}
+.graj .ikona-graj{display:none}
+.graj[aria-pressed="true"] .ikona-graj{display:block}
+.graj[aria-pressed="true"] .ikona-pauza{display:none}
+.kroki{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;flex:1;min-width:0}
+.krok{all:unset;box-sizing:border-box;display:grid;gap:6px;min-height:44px;align-content:center;cursor:pointer;min-width:0;border-radius:6px}
+.krok .tor{display:block;height:4px;border-radius:999px;background:var(--border);overflow:hidden}
+.krok .tor i{display:block;height:100%;background:var(--fg);transform:scaleX(0);transform-origin:0 50%}
+.krok.zrobiony .tor i{transform:scaleX(1);opacity:.35}
+.krok .et{color:var(--muted);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.krok[aria-current="step"] .et{color:var(--fg)}
+.graj:focus-visible,.krok:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
+.uwaga{max-width:1120px;margin:14px auto 0;font-size:13px;line-height:1.5;color:var(--muted);text-align:center}
+
+/* ---------- wąski kontener: okno pionowe ---------- */
+@container anim (max-width:759px){
+  .okno{aspect-ratio:1/1;font-size:3cqi;border-radius:.8em}
+  .lbl{font-size:.86em}
+  .pasek{padding:.65em 1em}
+  .pasek .gdzie{display:none}
+  .scena{padding:1em 1.05em;gap:.8em}
+  h2{font-size:1.32em}
+  .s1{grid-template-columns:minmax(0,1fr);align-content:start;gap:.7em}
+  .hero{padding:1.15em 1.2em;gap:.6em}
+  .hero .glowne{font-size:1.75em}
+  .hero .dalej{display:none}
+  .kafle{gap:.55em}
+  .kafel{grid-template-columns:minmax(0,1fr) auto;align-items:baseline;padding:.75em 1em;gap:.1em .8em}
+  .kafel .lbl{grid-column:1}
+  .kafel .w{grid-column:2;grid-row:1/3;font-size:1.65em;align-self:center}
+  .kafel .sub{grid-column:1}
+  .lejek-d,.s2 .ubytki{display:none}
+  .lejek-m{display:grid}
+  .zrodla .sankey,.s3 .podpis{display:none}
+  .stosy{display:grid}
+  .s3 .legenda{display:flex}
+  .zrodla{padding:1em 1.05em}
+  .lista{padding:.2em .9em .4em}
+  .lista .naglowek{display:none}
+  .lista .wiersz{grid-template-columns:minmax(0,1fr) auto;gap:.2em .6em;padding:.6em .35em}
+  .lista .wiersz > .kol{display:none}
+  .lista .krotko{display:block;grid-column:1/-1;font-size:.86em;color:var(--muted)}
+  .lista .naz b{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.2}
+  .lista .koszt-kol{grid-column:2;grid-row:1;align-self:start}
+  .lista .koszt-kol .tor{display:none}
+  .lejek-m .krok{padding:.2em 0 .15em}
+  .lista .ocena{grid-column:2;grid-row:1}
+  .lista .plat{display:none}
+  .szuflada{top:auto;left:0;width:auto;height:95%;border-left:0;border-top:1px solid var(--border);border-radius:.9em .9em 0 0;transform:translateY(102%);padding:1em 1.15em;gap:.55em}
+  .s4.otwarta .szuflada{animation-name:wjazdY}
+  .szuflada h3{font-size:1.3em}
+  .sz-gora{gap:.25em}
+  .sz-liczby{gap:.45em}
+  .sz-liczby div{padding:.4em .7em}
+  .rada{padding:.6em .85em}
+  .rozmowy .r{padding:.42em 0}
+  .sz-liczby .w{font-size:1.25em}
+  .sz-liczby .sub{display:none}
+  .s5 .duze{font-size:2.05em}
+  .s5 p{font-size:1em}
+  .krok .et{display:none}
+}
+/* telefon: okno 3:4, większe pismo przy tym samym zapasie miejsca liczonym w em */
+@container anim (max-width:519px){
+  .okno{aspect-ratio:3/4;font-size:4cqi}
+  .lista .wiersz{padding:.5em .35em}
+  .lejek-m .wiersz{gap:.2em .8em}
+  .lejek-m .pas{height:.7em}
+  .rozmowy .r:nth-child(n+3){display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+<figure class="anim staly" id="anim" aria-label="Animacja: raport marketingowy Tamai na danych przykładowych">
+  <figcaption class="vh">Raport marketingowy Tamai, wrzesień 2026, klinika przykładowa. Reklamy przyniosły 65 telefonów i 23 umówione wizyty. Lejek: 65 telefonów, 57 odebranych, 39 rozmów o ofercie, 23 umówione. Najwięcej umówionych daje kampania Implanty — wyszukiwarka: 11 z 23, 225 zł za wizytę.</figcaption>
+  <div class="okno">
+    <div class="pasek">
+      <span class="znak" aria-hidden="true"></span>
+      <b>Raport marketingowy</b>
+      <span class="gdzie"><span class="klinika">Klinika Przykładowa · </span>wrzesień 2026</span>
+      <span class="metka">dane przykładowe</span>
+    </div>
+    <div class="sceny">
+
+      <!-- 1. Miesiąc w skrócie -->
+      <section class="scena s1 on" data-scena="0" aria-label="Miesiąc w skrócie">
+        <div class="hero we" style="--d:0ms">
+          <span class="lbl">Najważniejsze we wrześniu</span>
+          <p class="glowne">Reklamy przyniosły <strong><span class="num" data-licz="65" data-od="250">65</span>&nbsp;telefonów</strong> i&nbsp;<strong><span class="num" data-licz="23" data-od="450">23</span>&nbsp;umówione wizyty</strong>.</p>
+          <p class="dalej">Telefon z&nbsp;reklamy kosztował średnio 112&nbsp;zł, umówiona wizyta 318&nbsp;zł. Z&nbsp;39 rozmów o&nbsp;ofercie 23 skończyły się wizytą — skuteczność ofertowa 59%.</p>
+        </div>
+        <div class="kafle">
+          <div class="kafel karta we" style="--d:350ms"><span class="lbl">Wydatek na reklamy</span><span class="w num" data-licz="7310" data-od="450" data-zl>7&nbsp;310&nbsp;zł</span><span class="sub">wszystkie platformy</span></div>
+          <div class="kafel karta we" style="--d:550ms"><span class="lbl">Koszt telefonu</span><span class="w num" data-licz="112" data-od="650" data-zl>112&nbsp;zł</span><span class="sub">wydatek ÷ telefony z reklam</span></div>
+          <div class="kafel karta glowny we" style="--d:750ms"><span class="lbl">Koszt umówionej wizyty</span><span class="w num" data-licz="318" data-od="850" data-zl>318&nbsp;zł</span><span class="sub">wydatek ÷ umówione z reklam</span></div>
+        </div>
+      </section>
+
+      <!-- 2. Lejek -->
+      <section class="scena s2" data-scena="1" aria-label="Lejek">
+        <div class="we"><span class="lbl">Lejek</span><h2>Z 65 telefonów z reklam 23 skończyły się umówioną wizytą</h2></div>
+        <div class="karta we" style="--d:120ms">
+          <div class="lejek-d" id="lejek-d"></div>
+          <div class="lejek-m" id="lejek-m"></div>
+        </div>
+        <div class="ubytki">
+          <span class="chip strata we" style="--d:2300ms"><b>8 telefonów bez kontaktu</b> ok. 1&nbsp;120&nbsp;zł wydatku</span>
+          <span class="chip oferta we" style="--d:2550ms"><b>16 pacjentów</b> pytało o wizytę bez terminu: lista do oddzwonienia</span>
+        </div>
+      </section>
+
+      <!-- 3. Skąd dzwonią -->
+      <section class="scena s3" data-scena="2" aria-label="Skąd dzwonią">
+        <div class="we"><span class="lbl">Skąd dzwonią i czym to się kończy</span><h2>Najwięcej umówionych daje „Implanty — wyszukiwarka”: 11 z 23</h2></div>
+        <div class="karta zrodla we" style="--d:120ms">
+          <div class="sankey" id="sankey"></div>
+          <div class="stosy" id="stosy"></div>
+        </div>
+        <div class="legenda pj" style="--d:400ms"><span><i style="background:var(--c-umow)"></i>umówiona wizyta</span><span><i style="background:var(--c-oferta)"></i>oferta bez terminu</span><span><i style="background:var(--c-tel)"></i>inna sprawa</span><span><i style="background:var(--c-strata)"></i>bez kontaktu</span></div>
+        <p class="podpis" style="margin:0"><b>24 telefony → 16 rozmów o ofercie → 11 umówionych</b> · 225&nbsp;zł za wizytę</p>
+      </section>
+
+      <!-- 4. Kampanie -->
+      <section class="scena s4" data-scena="3" aria-label="Kampanie">
+        <div class="we"><span class="lbl">Kampanie</span><h2>Umówiona wizyta kosztuje od 107&nbsp;zł do 1&nbsp;120&nbsp;zł, zależnie od kampanii</h2></div>
+        <div class="karta lista we" style="--d:120ms" id="lista">
+          <div class="naglowek"><span>Kampania</span><span class="prawo">Telefony</span><span class="prawo">Umówione</span><span class="prawo">Skuteczność ofertowa</span><span class="prawo">Koszt wizyty</span></div>
+        </div>
+        <div class="zaslona"></div>
+        <aside class="szuflada" aria-label="Szczegóły kampanii Implanty — wyszukiwarka">
+          <div class="sz-gora we" style="--d:150ms">
+            <span class="plat"><i></i>Google Ads · sieć wyszukiwania</span>
+            <h3>Implanty — wyszukiwarka</h3>
+          </div>
+          <div class="sz-liczby we" style="--d:300ms">
+            <div><span class="lbl">Telefony</span><span class="w num">24</span><span class="sub">103&nbsp;zł za telefon</span></div>
+            <div><span class="lbl">Rozmowy</span><span class="w num">22</span><span class="sub">3 po nieodebranym</span></div>
+            <div><span class="lbl">O ofercie</span><span class="w num">16</span><span class="sub">5 bez terminu</span></div>
+            <div><span class="lbl">Umówione</span><span class="w num">11</span><span class="sub">69% z oferty · 225&nbsp;zł</span></div>
+          </div>
+          <div class="sz-blok we" style="--d:450ms"><span class="lbl">Bez kontaktu</span><p>2 telefony — ok. 210&nbsp;zł wydatku.</p></div>
+          <div class="sz-blok we" style="--d:600ms"><span class="lbl">Platforma o sobie</span>
+            <div class="para"><span>Kliknięcia</span><b class="num">812</b></div>
+            <div class="para"><span>Konwersje wg Google Ads</span><b class="num">38</b></div>
+            <p class="sub">To inna miara niż nasze telefony — do kosztów bierzemy tylko rozmowy z&nbsp;centrali.</p>
+          </div>
+          <div class="we" style="--d:750ms"><span class="atrapa">Otwórz w Telefonach z reklam</span></div>
+        </aside>
+      </section>
+
+      <!-- 5. Plansza końcowa -->
+      <section class="scena s5" data-scena="4" aria-label="Tamaia">
+        <span class="lbl we">Raport marketingowy w TAMAIA</span>
+        <p class="duze we" style="--d:150ms">Od kliknięcia w&nbsp;reklamę do umówionej wizyty.</p>
+        <p class="we" style="--d:350ms">TAMAIA łączy wydatki z&nbsp;Google Ads i&nbsp;Mety z&nbsp;telefonami do rejestracji i&nbsp;ocenami rozmów. Widać, ile kosztuje umówiona wizyta z&nbsp;każdej kampanii.</p>
+        <div class="fakty we" style="--d:600ms"><span><b class="num">65</b> telefonów</span><span><b class="num">23</b> umówione wizyty</span><span class="glowny"><b class="num">318&nbsp;zł</b> za wizytę</span></div>
+      </section>
+    </div>
+    <div class="kursor" id="kursor" aria-hidden="true"><span class="fala"></span><svg viewBox="0 0 24 24"><path d="M4 2.5 L4 19.5 L8.6 15.3 L11.6 21.8 L14.6 20.4 L11.7 14.1 L18 14.1 Z" fill="var(--kursor)" stroke="var(--kursor-obrys)" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+  </div>
+
+  <div class="ster">
+    <button class="graj" id="graj" type="button" aria-pressed="false" aria-label="Wstrzymaj animację">
+      <svg class="ikona-pauza" viewBox="0 0 18 18" aria-hidden="true"><rect x="3.5" y="2.5" width="4" height="13" rx="1" fill="currentColor"/><rect x="10.5" y="2.5" width="4" height="13" rx="1" fill="currentColor"/></svg>
+      <svg class="ikona-graj" viewBox="0 0 18 18" aria-hidden="true"><path d="M5 2.8 L15 9 L5 15.2 Z" fill="currentColor"/></svg>
+    </button>
+    <div class="kroki" role="group" aria-label="Sceny animacji" id="kroki"></div>
+  </div>
+</figure>
+
+<script>
+(function(){
+'use strict';
+var NBSP='\u00a0';
+function f(n){return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g,NBSP);}
+function zl(n){return f(n)+NBSP+'zł';}
+function pl(n,a,b,c){n=Math.abs(n);if(n===1)return a;var d=n%10,h=n%100;return(d>=2&&d<=4&&!(h>=12&&h<=14))?b:c;}
+function $(s,r){return(r||document).querySelector(s);}
+function $$(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));}
+
+/* ---------- dane z raportu (wrzesień 2026, klinika przykładowa) ---------- */
+var KAMP=[ /* kolejność jak w raporcie: od największej liczby umówionych */
+  {id:'g1',nazwa:'Implanty — wyszukiwarka',plat:'google',T:24,U:11,O:5,I:6,B:2,kU:225},
+  {id:'g2',nazwa:'Nazwa kliniki',plat:'google',T:15,U:6,O:2,I:6,B:1,kU:107},
+  {id:'m1',nazwa:'Implanty — film',plat:'meta',T:11,U:3,O:4,I:3,B:1,kU:473},
+  {id:'g3',nazwa:'Ortodoncja dla dorosłych',plat:'google',T:9,U:2,O:3,I:2,B:2,kU:825},
+  {id:'m2',nazwa:'Wybielanie — Instagram',plat:'meta',T:6,U:1,O:2,I:1,B:2,kU:1120}
+];
+var SREDNIA_KU=318;
+var LEJEK=[
+  {n:'Telefony',v:65,c:'var(--c-tel)',kos:112,kl:'za telefon',kk:'za telefon',sub:'wszystkie z kampanii'},
+  {n:'Rozmowy',v:57,c:'var(--c-odb)',kos:128,kl:'za rozmowę',kk:'za rozmowę',sub:'w tym 6 po nieodebranym'},
+  {n:'W sprawie oferty',v:39,c:'var(--c-oferta)',kos:187,kl:'za rozmowę o ofercie',kk:'za ofertę',sub:'pytali o wizytę lub cenę'},
+  {n:'Umówione',v:23,c:'var(--c-umow)',kos:318,kl:'za umówioną wizytę',kk:'za wizytę',sub:'skuteczność ofertowa 59%',cel:true}
+];
+var UBYTKI=['','8 bez kontaktu','18 w innej sprawie','16 bez terminu'];
+var WYNIKI=[['U','Umówiona wizyta','var(--c-umow)'],['O','Oferta bez terminu','var(--c-oferta)'],['I','Inna sprawa','var(--c-tel)'],['B','Bez kontaktu','var(--c-strata)']];
+
+/* ---------- budowa scen ---------- */
+function budujLejek(){
+  var d='',m='',max=LEJEK[0].v,H=168;
+  LEJEK.forEach(function(e,i){
+    var col=2*i+1,opoz=300+i*320,proc=i?Math.round(100*e.v/LEJEK[i-1].v):0;
+    if(i){
+      var a=LEJEK[i-1].v/max*H,b=e.v/max*H,y0=(H-a)/2,y1=(H-b)/2;
+      d+='<div class="lacz pj" style="grid-column:'+(col-1)+';--d:'+(opoz-80)+'ms" aria-hidden="true"><svg viewBox="0 0 56 '+H+'" preserveAspectRatio="none"><path d="M0 '+y0+' C28 '+y0+' 28 '+y1+' 56 '+y1+' L56 '+(y1+b)+' C28 '+(y1+b)+' 28 '+(y0+a)+' 0 '+(y0+a)+' Z" fill="var(--fg)" fill-opacity=".08"/></svg></div>'+
+        '<div class="proc num pj" style="grid-column:'+(col-1)+';--d:'+(opoz+200)+'ms">'+proc+'%</div>';
+      m+='<div class="krok num pj" style="--d:'+(opoz+200)+'ms">↓ '+proc+'% · '+UBYTKI[i]+'</div>';
+    }
+    d+='<div class="gora we" style="grid-column:'+col+';--d:'+opoz+'ms"><span class="lbl">'+e.n+'</span><span class="w num" data-licz="'+e.v+'" data-od="'+opoz+'" data-dl="800">'+e.v+'</span><span class="sub">'+e.sub+'</span></div>'+
+      '<div class="slup" style="grid-column:'+col+'"><div class="bar" style="background:'+e.c+';--h:'+(e.v/max).toFixed(3)+';--d:'+opoz+'ms"></div></div>'+
+      '<div class="koszt pj'+(e.cel?' cel':'')+'" style="grid-column:'+col+';--d:'+(opoz+450)+'ms"><span class="w num">'+zl(e.kos)+'</span><span class="sub">'+e.kl+'</span></div>';
+    m+='<div class="wiersz we" style="--d:'+opoz+'ms"><span class="naz"><span class="w num" data-licz="'+e.v+'" data-od="'+opoz+'" data-dl="800">'+e.v+'</span><span class="lbl">'+e.n+'</span></span><span class="koszt"><b class="num">'+zl(e.kos)+'</b> <span class="sub">'+e.kk+'</span></span>'+
+      '<div class="pas"><b style="background:'+e.c+';--h:'+(e.v/max).toFixed(3)+';--d:'+opoz+'ms"></b></div></div>';
+  });
+  $('#lejek-d').innerHTML=d;$('#lejek-m').innerHTML=m;
+}
+function budujSankey(){
+  var W=860,H=310,pad=6,gL=14,gP=18,xL=250,xP=600,nw=12;
+  var suma=KAMP.reduce(function(a,k){return a+k.T;},0);
+  var skala=Math.min((H-2*pad-gL*(KAMP.length-1))/suma,(H-2*pad-gP*(WYNIKI.length-1))/suma);
+  var lew=[],zajL=suma*skala+gL*(KAMP.length-1),y=(H-zajL)/2;
+  KAMP.forEach(function(k){lew.push({y:y,h:k.T*skala,k:k,o:0});y+=k.T*skala+gL;});
+  var sumW=WYNIKI.map(function(w){return KAMP.reduce(function(a,k){return a+k[w[0]];},0);});
+  var zajP=suma*skala+gP*(WYNIKI.length-1),yp=(H-zajP)/2,pra=[];
+  WYNIKI.forEach(function(w,i){pra.push({y:yp,h:sumW[i]*skala,w:w,v:sumW[i],o:0});yp+=sumW[i]*skala+gP;});
+  var s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Przepływ telefonów od pięciu kampanii do wyniku rozmowy">';
+  lew.forEach(function(L,ki){
+    WYNIKI.forEach(function(w,wi){
+      var v=L.k[w[0]];if(!v)return;var h=v*skala,P=pra[wi],y0=L.y+L.o,y1=P.y+P.o,x0=xL+nw,x1=xP,xm=(x0+x1)/2;
+      L.o+=h;P.o+=h;
+      s+='<path class="wst z'+ki+'" d="M'+x0+' '+y0+'C'+xm+' '+y0+' '+xm+' '+y1+' '+x1+' '+y1+'L'+x1+' '+(y1+h)+'C'+xm+' '+(y1+h)+' '+xm+' '+(y0+h)+' '+x0+' '+(y0+h)+'Z" fill="'+w[2]+'" fill-opacity=".4"/>';
+    });
+  });
+  lew.forEach(function(L){var c=L.y+L.h/2;
+    s+='<rect x="'+xL+'" y="'+L.y+'" width="'+nw+'" height="'+L.h+'" rx="3" fill="var(--fg)"/>'+
+      '<text x="'+(xL-12)+'" y="'+(c-2)+'" text-anchor="end" font-size="17" font-weight="700">'+L.k.nazwa+'</text>'+
+      '<text class="t-sub" x="'+(xL-12)+'" y="'+(c+16)+'" text-anchor="end" font-size="14">'+L.k.T+' '+pl(L.k.T,'telefon','telefony','telefonów')+' · '+L.k.U+' umów.</text>';});
+  pra.forEach(function(P){var c=P.y+P.h/2;
+    s+='<rect x="'+xP+'" y="'+P.y+'" width="'+nw+'" height="'+P.h+'" rx="3" fill="'+P.w[2]+'"/>'+
+      '<text x="'+(xP+nw+12)+'" y="'+(c-2)+'" font-size="17" font-weight="700">'+P.w[1]+'</text>'+
+      '<text class="t-sub" x="'+(xP+nw+12)+'" y="'+(c+16)+'" font-size="14">'+P.v+' '+pl(P.v,'rozmowa','rozmowy','rozmów')+'</text>';});
+  s+='</svg><div class="kurtyna" style="left:'+(100*(xL+nw)/W)+'%;width:'+(100*(xP-xL-nw)/W)+'%"><i style="--d:350ms"></i></div>';
+  $('#sankey').innerHTML=s;
+  var st='';
+  KAMP.forEach(function(k,i){
+    var seg=WYNIKI.filter(function(w){return k[w[0]]>0;}).map(function(w){return'<i style="flex:'+k[w[0]]+' 1 0;background:'+w[2]+'"></i>';}).join('');
+    st+='<div class="we" style="--d:'+(250+i*160)+'ms;display:grid;gap:.35em"><span class="rz"><span class="naz">'+k.nazwa+'</span><span class="sub num">'+k.T+' tel. · <b>'+k.U+' umów.</b></span></span>'+
+      '<span class="stos" style="--d:'+(400+i*160)+'ms" role="img" aria-label="Umówione '+k.U+', oferta bez terminu '+k.O+', inna sprawa '+k.I+', bez kontaktu '+k.B+'">'+seg+'</span></div>';
+  });
+  $('#stosy').innerHTML=st;
+}
+function budujListe(){
+  var maxKU=KAMP.reduce(function(a,k){return Math.max(a,k.kU);},0);
+  var h='';
+  KAMP.slice().sort(function(a,b){return a.kU-b.kU;}).forEach(function(k,i){
+    var of=k.U+k.O,sk=Math.round(100*k.U/of);
+    h+='<div class="wiersz we" data-k="'+k.id+'" style="--d:'+(250+i*130)+'ms">'+
+      '<span class="naz"><b>'+k.nazwa+'</b><span class="plat '+k.plat+'"><i></i>'+(k.plat==='google'?'Google Ads':'Meta')+'</span></span>'+
+      '<span class="kol prawo w num">'+k.T+'</span><span class="kol prawo w num">'+k.U+'</span>'+
+      '<span class="kol prawo"><span class="w num">'+sk+'%</span><span class="sub num" style="display:block">'+k.U+' z '+of+'</span></span>'+
+      '<span class="koszt-kol prawo"><span class="w num">'+zl(k.kU)+'</span><span class="tor" aria-hidden="true"><s style="left:'+(100*SREDNIA_KU/maxKU).toFixed(1)+'%"></s><b style="left:'+(100*k.kU/maxKU).toFixed(1)+'%"></b></span></span>'+
+      '<span class="krotko num">'+k.T+' tel. · '+k.U+' '+pl(k.U,'umówiona','umówione','umówionych')+' · '+sk+'% z oferty</span></div>';
+  });
+  $('#lista').insertAdjacentHTML('beforeend',h);
+}
+budujLejek();budujSankey();budujListe();
+
+/* ---------- oś czasu ---------- */
+var anim=$('#anim'),okno=$('.okno',anim),sceny=$$('.scena',anim),kursor=$('#kursor'),grajBtn=$('#graj');
+var NAZWY=['Miesiąc w skrócie','Lejek','Skąd dzwonią','Kampanie','Tamaia'];
+var DL=[4200,4800,5400,7400,4200];
+var ZDARZENIA={
+  2:[[2700,function(s){s.classList.add('skupienie');$('#sankey').classList.add('skupienie');}]],
+  3:[[2000,kursorStart],[3150,klik],[3350,otworzSzuflade]]
+};
+var stan={i:0,t:0,gra:true,widac:false,start:false,statyczna:true,odpalone:0,liczniki:[],ruch:null};
+var ogranicz=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var raf=0,ostatni=0;
+
+var kroki=$('#kroki');
+kroki.innerHTML=NAZWY.map(function(n,i){return'<button type="button" class="krok" data-i="'+i+'" aria-label="Scena '+(i+1)+': '+n+'"><span class="tor"><i></i></span><span class="et">'+n+'</span></button>';}).join('');
+var krokiBtn=$$('.krok',kroki);
+
+function dziala(){return stan.gra&&stan.widac&&!document.hidden&&stan.start;}
+function ustawPauze(){anim.classList.toggle('pauza',!dziala()&&!stan.statyczna);}
+function oznaczKroki(){
+  krokiBtn.forEach(function(b,i){
+    if(i===stan.i)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');
+    b.classList.toggle('zrobiony',i<stan.i);
+    var tor=$('.tor i',b);if(i!==stan.i)tor.style.transform='';
+  });
+}
+function wyczyscScene(s){
+  s.classList.remove('on','wyj','skupienie','otwarta');
+  var sk=$('#sankey',s);if(sk)sk.classList.remove('skupienie');
+  $$('.wybrany',s).forEach(function(w){w.classList.remove('wybrany');});
+  $$('[data-licz]',s).forEach(function(el){el.textContent=el.hasAttribute('data-zl')?zl(+el.dataset.licz):f(+el.dataset.licz);});
+}
+function schowajKursor(){kursor.classList.remove('widac','klik');stan.ruch=null;}
+/* scena w stanie końcowym, bez ruchu: ograniczony ruch, pauza z przeskokiem, pierwsza klatka */
+function pokazStatycznie(i){
+  anim.classList.add('staly');
+  sceny.forEach(function(s){wyczyscScene(s);});
+  schowajKursor();
+  stan.i=i;stan.t=0;stan.statyczna=true;stan.liczniki=[];
+  var s=sceny[i];s.classList.add('on');
+  (ZDARZENIA[i]||[]).forEach(function(z){if(z[1]!==kursorStart&&z[1]!==klik)z[1](s,true);});
+  oznaczKroki();$('.tor i',krokiBtn[i]).style.transform='scaleX(1)';
+  ustawPauze();
+}
+/* scena od zera, z ruchem */
+function uruchom(i){
+  var poprz=sceny[stan.i];
+  anim.classList.remove('staly');
+  schowajKursor();
+  if(poprz&&poprz!==sceny[i]&&poprz.classList.contains('on')&&!stan.statyczna){
+    poprz.classList.remove('on');poprz.classList.add('wyj');
+    poprz.addEventListener('animationend',function koniec(e){if(e.target!==poprz)return;poprz.removeEventListener('animationend',koniec);wyczyscScene(poprz);});
+  }else if(poprz&&poprz!==sceny[i]){wyczyscScene(poprz);}
+  var s=sceny[i];
+  wyczyscScene(s);void s.offsetWidth;s.classList.add('on');
+  stan.i=i;stan.t=0;stan.odpalone=0;stan.statyczna=false;
+  stan.liczniki=$$('[data-licz]',s).map(function(el){
+    var l={el:el,do:+el.dataset.licz,od:+(el.dataset.od||0),dl:+(el.dataset.dl||1100),zl:el.hasAttribute('data-zl')};
+    el.textContent=l.zl?zl(0):'0';return l;});
+  oznaczKroki();ustawPauze();
+}
+function ease(x){return 1-Math.pow(1-x,3);}
+function easeIO(x){return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;}
+function tick(){
+  var i=stan.i,t=stan.t,zd=ZDARZENIA[i]||[];
+  while(stan.odpalone<zd.length&&zd[stan.odpalone][0]<=t){zd[stan.odpalone][1](sceny[i],false);stan.odpalone++;}
+  stan.liczniki.forEach(function(l){
+    var p=Math.min(1,Math.max(0,(t-l.od)/l.dl)),v=Math.round(l.do*ease(p));
+    var txt=l.zl?zl(v):f(v);if(l.el.textContent!==txt)l.el.textContent=txt;});
+  if(stan.ruch){var r=stan.ruch,p=Math.min(1,Math.max(0,(t-r.od)/r.dl)),e=easeIO(p);
+    kursor.style.transform='translate('+(r.x0+(r.x1-r.x0)*e).toFixed(1)+'px,'+(r.y0+(r.y1-r.y0)*e).toFixed(1)+'px)';}
+  $('.tor i',krokiBtn[i]).style.transform='scaleX('+Math.min(1,t/DL[i]).toFixed(4)+')';
+  if(t>=DL[i])uruchom((i+1)%sceny.length);
+}
+function klatka(now){
+  raf=0;
+  if(!dziala()){ostatni=0;ustawPauze();return;}
+  if(ostatni)stan.t+=Math.min(now-ostatni,100);
+  ostatni=now;tick();
+  raf=requestAnimationFrame(klatka);
+}
+function wznow(){ustawPauze();if(!raf&&dziala()){ostatni=0;raf=requestAnimationFrame(klatka);}}
+
+/* ---------- scena 4: kursor, klik, szuflada ---------- */
+function pozycja(el){var a=okno.getBoundingClientRect(),b=el.getBoundingClientRect();return{x:b.left-a.left,y:b.top-a.top,w:b.width,h:b.height};}
+function kursorStart(s){
+  var cel=$('.wiersz[data-k="g1"] .naz b',s);if(!cel)return;
+  var c=pozycja(cel),o=okno.getBoundingClientRect();
+  var x1=c.x+Math.min(c.w*.55,c.w-8),y1=c.y+c.h*.55;
+  stan.ruch={x0:o.width*.82,y0:o.height*.92,x1:x1,y1:y1,od:2000,dl:1050};
+  kursor.style.transform='translate('+stan.ruch.x0+'px,'+stan.ruch.y0+'px)';
+  kursor.classList.add('widac');
+}
+function klik(s){
+  kursor.classList.remove('klik');void kursor.offsetWidth;kursor.classList.add('klik');
+  var w=$('.wiersz[data-k="g1"]',s);if(w)w.classList.add('wybrany');
+}
+function otworzSzuflade(s,staly){
+  var w=$('.wiersz[data-k="g1"]',s);if(w)w.classList.add('wybrany');
+  s.classList.add('otwarta');
+  if(!staly)setTimeout(function(){if(stan.i===3&&!stan.statyczna)kursor.classList.remove('widac');},700);
+}
+
+/* ---------- sterowanie ---------- */
+function ustawPrzycisk(){
+  grajBtn.setAttribute('aria-pressed',String(!stan.gra));
+  grajBtn.setAttribute('aria-label',stan.gra?'Wstrzymaj animację':'Odtwórz animację');
+}
+grajBtn.addEventListener('click',function(){
+  stan.gra=!stan.gra;stan.start=true;ustawPrzycisk();
+  if(stan.gra&&stan.statyczna)uruchom(stan.i);
+  wznow();
+});
+kroki.addEventListener('click',function(e){
+  var b=e.target.closest('.krok');if(!b)return;
+  var i=+b.dataset.i;stan.start=true;
+  if(stan.gra&&!ogranicz)uruchom(i);else pokazStatycznie(i);
+  wznow();
+});
+document.addEventListener('visibilitychange',wznow);
+
+window.__animacja={stan:stan,uruchom:uruchom,pokazStatycznie:pokazStatycznie,DL:DL};
+
+/* ---------- start: pierwsza klatka zostaje w stanie końcowym, dopóki animacja nie ruszy na ekranie ---------- */
+pokazStatycznie(0);
+if(ogranicz){stan.gra=false;ustawPrzycisk();return;}
+ustawPrzycisk();
+function rusz(){
+  if(stan.start)return;
+  requestAnimationFrame(function(){ /* ruszamy dopiero, gdy przeglądarka rysuje klatki */
+    if(stan.start||!stan.widac)return;
+    stan.start=true;uruchom(0);wznow();
+  });
+}
+if('IntersectionObserver' in window){
+  new IntersectionObserver(function(wpisy){
+    wpisy.forEach(function(w){stan.widac=w.isIntersecting&&w.intersectionRatio>=.25;});
+    if(stan.widac)rusz();
+    wznow();
+  },{threshold:[0,.25,.5]}).observe(okno);
+}else{stan.widac=true;rusz();}
+})();
+</script>
+</body>
+</html>

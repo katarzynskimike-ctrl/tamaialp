@@ -4521,6 +4521,28 @@ if(d==='accepted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'g
   </style>
 </section>
 
+<!-- ===== RAPORT MARKETINGOWY (animacja w ramce: anim-raport-marketingowy.html) ===== -->
+<section class="section" id="raport-marketingowy" aria-labelledby="raport-marketingowy-h">
+  <div class="container">
+    <p class="eyebrow">MODUŁ MARKETINGOWY</p>
+    <h2 id="raport-marketingowy-h">Ile kosztuje umówiona wizyta z reklamy? Raport marketingowy w TAMAIA</h2>
+    <p class="ws-sub">Wydatki z Google Ads i Mety, telefony do rejestracji i oceny rozmów w jednym raporcie. Widzisz, która kampania przynosi wizyty, a która tylko telefony.</p>
+    <div class="rm-ramka">
+      <iframe loading="lazy" src="anim-raport-marketingowy.html" title="Raport marketingowy TAMAIA: od kliknięcia w reklamę do umówionej wizyty"></iframe>
+    </div>
+    <p class="rm-podpis">Dane przykładowe · u Ciebie będą Twoje kampanie. Moduł marketingowy jest w <a href="#pricing">planie Pro</a>.</p>
+  </div>
+  <style>
+    /* Wysokość ramki = okno animacji (16:10, 1:1, 3:4 jak w pliku animacji) + pasek sterowania 44 px + odstępy 10+12+10 px. */
+    #raport-marketingowy .rm-ramka{max-width:1000px;margin:0 auto;container-type:inline-size}
+    #raport-marketingowy .rm-ramka iframe{display:block;width:100%;border:0;background:transparent;height:calc((100cqi - 20px)*.625 + 76px)}
+    @container (max-width:779px){#raport-marketingowy .rm-ramka iframe{height:calc(100cqi - 20px + 76px)}}
+    @container (max-width:539px){#raport-marketingowy .rm-ramka iframe{height:calc((100cqi - 20px)*4/3 + 76px)}}
+    #raport-marketingowy .rm-podpis{text-align:center;font-size:.85rem;color:var(--text-muted);margin:14px auto 0;max-width:640px;line-height:1.5}
+    #raport-marketingowy .rm-podpis a{color:var(--navy);font-weight:600}
+  </style>
+</section>
+
 <!-- ===== FOUNDER ===== -->
 <section id="founder" class="founder" aria-labelledby="founder-h">
   <div class="container">
