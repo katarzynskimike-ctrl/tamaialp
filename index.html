@@ -1774,7 +1774,12 @@
     color: transparent;
     font-size: 1.25rem;
   }
-  @media (max-width: 850px) { .roi-examples { grid-template-columns: 1fr; } }
+  @media (max-width: 850px) {
+    .roi-examples { grid-template-columns: 1fr; }
+    /* Zdanie nie mieści się w jednej linii: inline-flex dzieli je na trzy kolumny i wypycha ramkę poza ekran. */
+    .roi-tag { display: inline-block; max-width: 100%; padding: 14px 22px; border-radius: 24px; line-height: 1.5; }
+    .roi-tag strong { -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  }
 
   /* ===== FOUNDER ===== */
   .founder { background: var(--white); }
