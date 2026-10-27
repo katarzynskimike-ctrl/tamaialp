@@ -37,7 +37,7 @@ Te dane są unikatowe i wiarygodne jako źródło o stanie rejestracji stomatolo
 - 42 umówienia na 100 rozmów (wzrost +18%).
 - Średni wynik rozmowy: 8,4/10 (wzrost +1,2).
 - Nieodebrane połączenia: ok. 23% pacjentów nie dodzwania się za pierwszym razem; większość nie próbuje ponownie.
-- Słabo obsłużone rozmowy: ok. 41% (rejestratorka nie pyta o ważne rzeczy, nie pomaga wybrać terminu).
+- Rozmowy bez propozycji terminu: ok. 41% (rejestratorka nie pyta o ważne rzeczy, nie pomaga wybrać terminu).
 - Brak kontaktu zwrotnego: ok. 62% (pacjent pyta o cenę, mówi „zastanowię się" i bez kontaktu wstecznego nie wraca).
 - Skuteczność umawiania wg usługi (% umówionych po rozmowie, przykładowy miesiąc): implant ok. 46%, ortodoncja ok. 50%, bonding ok. 71%.
 - Wniosek z danych: gabinety tracą najwięcej na najdroższych usługach (implanty mają najwięcej zapytań, a najniższą skuteczność umawiania).
