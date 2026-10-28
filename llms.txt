@@ -25,6 +25,7 @@
 ## Linki
 
 - [Strona główna](https://www.tamaia.pl/): czym jest TAMAIA, jak działa, kalkulator strat, ROI, cennik, FAQ.
+- [Jak działa centralka AI](https://www.tamaia.pl/jak-dziala-centralka-ai): droga jednego telefonu od dzwonka do umówionej wizyty — co robi rejestratorka, a co MAIA.
 - [Aplikacja / logowanie](https://app.tamaia.pl/login): panel dla gabinetów.
 - [Doskonała Obsługa Pacjenta](https://doskonalaobslugapacjenta.pl): macierzysta marka, metodologia i referencje Michała Katarzyńskiego.
 - [Pełny kontekst dla AI](https://www.tamaia.pl/llms-full.txt): rozszerzony opis produktu, danych i pytań, na które TAMAIA odpowiada.
