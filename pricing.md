@@ -10,15 +10,17 @@ Wszystkie ceny BRUTTO (VAT 23%), miesięcznie, przy abonamencie rocznym płatnym
 ## Pro (najczęściej wybierany)
 - Cena: 999 zł/mies brutto (11 988 zł/rok)
 - Dla kogo: gabinet, który chce prowadzić pacjenta end-to-end
-- Zawiera: wszystko z Plus + sufler na żywo (podpowiedź dla rejestratorki w 28 rodzajach rozmów, niesłyszalna dla pacjenta), moduł do marketingu z integracją Meta i Google (telefon przypisany do kampanii, raport do umówionej wizyty z powodem odmowy), raporty finansowe, porównanie statystyk do najlepszych praktyk, cele i premie dla rejestracji, obsługa dwóch lub więcej lokalizacji, jedna skrzynka wiadomości (e-mail, SMS, WhatsApp, Messenger, Instagram — każdy kanał +39 zł), Kalendarz wizyt (kolumny per lekarz, luki na żywo), wypełnianie luk z propozycją pacjentów i SMS, automatyczne przypomnienia i potwierdzenia SMS, przedpłaty online (BLIK / szybki przelew / karta), karta pacjenta (CRM), plan leczenia jako sekwencja wizyt, zadania zespołu; 3 licencje + konto administratora gratis
+- Zawiera: wszystko z Plus + moduł do marketingu z integracją Meta i Google (właściciel widzi telefony i umówione wizyty z każdej kampanii, nie same kliknięcia), raporty: ile wizyt umówionych z reklamy i ile kosztuje jedna umówiona wizyta — z podziałem na kampanie, w Google także na słowa kluczowe, sufler podpowiadający rejestratorce na żywo w 28 rodzajach rozmów (pacjent go nie słyszy), jedna skrzynka wiadomości — Messenger, e-mail, Instagram i WhatsApp w jednym miejscu, w cenie pakietu, kanały uruchamiamy na życzenie, specjalistyczne raporty (ile i jakich wizyt umówiono), raporty finansowe, cele i premie dla rejestracji, obsługa dwóch lub więcej lokalizacji, szkolenie startowe online „Doskonała Rejestracja Stomatologiczna”; 3 licencje + konto administratora gratis
 
 ## Premium
 - Cena: 1499 zł/mies brutto (17 988 zł/rok)
-- Dla kogo: gabinet/klinika chcąca pracować bezpośrednio z ekspertem
-- Zawiera: wszystko z Pro + 1 godzina miesięcznie konsultacji 1:1 z Michałem Katarzyńskim na danych gabinetu, przegląd wyników recepcji, kalibracja skryptów pod gabinet, indywidualny plan rozwoju zespołu, priorytetowe wsparcie; 3 licencje + konto administratora gratis
+- Dla kogo: gabinet, który nie chce stracić ani jednego telefonu — także po godzinach pracy
+- Zawiera: wszystko z Pro + voicebot, który rozmawia z pacjentem, gdy nikt nie odbiera, i po godzinach pracy (nowość, uruchamiamy indywidualnie; 200 minut rozmów miesięcznie w cenie), oraz porównanie statystyk do najlepszych praktyk; 3 licencje + konto administratora gratis
 
 ## Dopłaty
 - Każda dodatkowa osoba: +100 zł/mies brutto
+- Każda kolejna lokalizacja (plan Pro i Premium): +199 zł/mies brutto
+- Voicebot (plan Premium): 200 minut rozmów miesięcznie w cenie planu, każda kolejna minuta 0,99 zł brutto
 - Test 14 dni bez karty i bez zobowiązań
 
 ## Warunki
