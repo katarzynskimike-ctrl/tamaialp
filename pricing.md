@@ -20,7 +20,7 @@ Wszystkie ceny BRUTTO (VAT 23%), miesięcznie, przy abonamencie rocznym płatnym
 ## Dopłaty
 - Każda dodatkowa osoba: +100 zł/mies brutto
 - Każda kolejna lokalizacja (plan Pro i Premium): +199 zł/mies brutto
-- Voicebot (plan Premium): 200 minut rozmów miesięcznie w cenie planu, każda kolejna minuta 0,99 zł brutto
+- Voicebot (plan Premium): 200 minut rozmów miesięcznie w cenie planu, każda kolejna minuta 0,99 zł brutto. Minuty liczymy co do sekundy, bez zaokrąglania w górę; czas liczy się od odebrania przez bota, a rozmowy krótsze niż 10 sekund są bezpłatne. Niewykorzystane minuty nie przechodzą na kolejny miesiąc
 - Test 14 dni bez karty i bez zobowiązań
 
 ## Warunki
