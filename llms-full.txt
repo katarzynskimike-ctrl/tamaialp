@@ -28,7 +28,7 @@ Dla kogo TAMAIA NIE jest:
 2. Podsumowanie po każdej rozmowie — pisemny zapis, ocena 1–10 z siedmiu etapów rozmowy, rada „co zrobić następnym razem". MAIA pracuje na słowach z transkrypcji — tonu głosu nie ocenia.
 3. Konkretne rady, nie krytyka — np. „następnym razem, gdy pacjent pyta o cenę, od razu zaproponuj termin". Rejestratorka widzi wynik jako pierwsza.
 4. Skrzynka, kalendarz i CRM (od planu Pro) — jedna skrzynka wiadomości (e-mail, SMS, WhatsApp, Messenger, Instagram), kalendarz wizyt z wypełnianiem luk, automatyczne SMS, przedpłaty online (BLIK / szybki przelew / karta), karta pacjenta i plan leczenia.
-5. Konsultacje z ekspertem (plan Premium) — 1 godzina miesięcznie z Michałem Katarzyńskim.
+5. Voicebot (plan Premium) — rozmawia z pacjentem, gdy nikt nie odbiera, i po godzinach pracy; uruchamiamy go indywidualnie. W Premium także porównanie statystyk gabinetu do najlepszych praktyk.
 6. Skrypty stomatologiczne — wzorcowe rozmowy (powitanie, wywiad, prezentacja cen, zapis na wizytę, pacjent z bólem) wgrane do AI jako wzorzec porównawczy.
 
 ## Dane własne TAMAIA (pomiar na 27 gabinetach, lipiec 2026)
@@ -58,7 +58,7 @@ Michał Katarzyński — trener, wykładowca i konsultant stomatologiczny. Od 20
 
 ## Pakiety i ceny
 
-Wszystkie ceny brutto (VAT 23%), miesięcznie, przy abonamencie rocznym płatnym z góry, jedna faktura. Każdy plan zawiera 3 licencje dla rejestratorek + konto administratora gratis; każda dodatkowa osoba +100 zł/mies brutto:
+Wszystkie ceny brutto (VAT 23%), miesięcznie, przy abonamencie rocznym płatnym z góry, jedna faktura. Każdy plan zawiera 3 licencje dla rejestratorek + konto administratora gratis; każda dodatkowa osoba +100 zł/mies brutto, każda kolejna lokalizacja +199 zł/mies brutto, minuta rozmowy voicebota w planie Premium 0,99 zł brutto rozliczana osobno:
 - Plus — od 699 zł/mies brutto (8 388 zł/rok). Nowoczesna telefonia Ringostat z nagrywaniem rozmów, menu głosowe (IVR) z przywitaniem i przekierowaniem, transkrypcja i analiza AI 100% rozmów po polsku, skrypty i standardy Doskonałej Rejestracji wgrane do AI jako wzorzec porównawczy dla każdej rozmowy, Indeks MAIA (ocena jakości rozmowy 1–10 z siedmiu etapów rozmowy), konkretna rada po każdej rozmowie, automatyczne tematy rozmowy (implant, orto, bonding, konsultacja i inne), podstawowe raporty (odebrane, nieodebrane, oddzwonione, czas reakcji), mierzenie skuteczności rozmów zespołowe i indywidualne.
 - Pro — 999 zł/mies brutto (11 988 zł/rok). Wszystko z Plus + sufler na żywo (podpowiada rejestratorce, co mówić, w 28 różnych rodzajach rozmów — pacjent tego nie słyszy), moduł do marketingu z integracją Meta i Google (każdy telefon przypisany do kampanii, raport mierzy skuteczność reklamy aż do umówionej wizyty i podaje powód odmowy), specjalistyczne raporty (ile i jakich umówionych wizyt), raporty finansowe, cele i premie dla rejestracji, obsługa dwóch lub więcej lokalizacji, jedna skrzynka wiadomości w cenie pakietu, szkolenie startowe online, kalendarz wizyt, wypełnianie luk, automatyczne SMS, przedpłaty online, karta pacjenta (CRM), plan leczenia, zadania zespołu.
 - Premium — 1499 zł/mies brutto (17 988 zł/rok). Wszystko z Pro + voicebot, który rozmawia z pacjentem, gdy nikt nie odbiera i po godzinach pracy (uruchamiamy indywidualnie), oraz porównanie statystyk gabinetu do najlepszych praktyk.
