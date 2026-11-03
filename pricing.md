@@ -15,12 +15,12 @@ Wszystkie ceny BRUTTO (VAT 23%), miesięcznie, przy abonamencie rocznym płatnym
 ## Premium
 - Cena: 1499 zł/mies brutto (17 988 zł/rok)
 - Dla kogo: gabinet, który nie chce stracić ani jednego telefonu — także po godzinach pracy
-- Zawiera: wszystko z Pro + voicebot, który rozmawia z pacjentem, gdy nikt nie odbiera, i po godzinach pracy (nowość, uruchamiamy indywidualnie), oraz porównanie statystyk do najlepszych praktyk; 3 licencje + konto administratora gratis
+- Zawiera: wszystko z Pro + voicebot, który rozmawia z pacjentem, gdy nikt nie odbiera, i po godzinach pracy (nowość, uruchamiamy indywidualnie; 200 minut rozmów miesięcznie w cenie), oraz porównanie statystyk do najlepszych praktyk; 3 licencje + konto administratora gratis
 
 ## Dopłaty
 - Każda dodatkowa osoba: +100 zł/mies brutto
 - Każda kolejna lokalizacja (plan Pro i Premium): +199 zł/mies brutto
-- Minuta rozmowy voicebota (plan Premium): 0,99 zł brutto, rozliczana osobno
+- Voicebot (plan Premium): 200 minut rozmów miesięcznie w cenie planu, każda kolejna minuta 0,99 zł brutto
 - Test 14 dni bez karty i bez zobowiązań
 
 ## Warunki
