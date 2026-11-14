@@ -51,10 +51,10 @@
 </script>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Product","name":"Doskonała Rejestracja Stomatologiczna (TAMAIA)","description":"Telefon AI z asystentką MAIA dla rejestracji stomatologicznej — analiza 100% rozmów, skrypty i raporty.","brand":{"@type":"Brand","name":"TAMAIA"},"offers":[
-{"@type":"Offer","name":"Plus","price":"699","priceCurrency":"PLN","description":"Telefonia i pełne AI MAIA (3 osoby/mies., brutto)"},
-{"@type":"Offer","name":"Pro","price":"999","priceCurrency":"PLN","description":"Plus oraz sufler na żywo, jedna skrzynka, moduł marketingowy i raporty finansowe (3 osoby/mies., brutto)"},
-{"@type":"Offer","name":"Premium","price":"1499","priceCurrency":"PLN","description":"Pro oraz 1 h/mies. z Michałem Katarzyńskim (3 osoby/mies., brutto)"}
+{"@context":"https://schema.org","@type":"Product","name":"Doskonała Rejestracja Stomatologiczna (TAMAIA)","image":["https://www.tamaia.pl/og-cover-v2.jpg","https://www.tamaia.pl/og-square-2.jpg"],"description":"Telefon AI z asystentką MAIA dla rejestracji stomatologicznej — analiza 100% rozmów, skrypty i raporty.","brand":{"@type":"Brand","name":"TAMAIA"},"offers":[
+{"@type":"Offer","name":"Plus","price":"699","priceCurrency":"PLN","url":"https://www.tamaia.pl/cennik","availability":"https://schema.org/InStock","description":"Telefonia i pełne AI MAIA (3 osoby/mies., brutto)"},
+{"@type":"Offer","name":"Pro","price":"999","priceCurrency":"PLN","url":"https://www.tamaia.pl/cennik","availability":"https://schema.org/InStock","description":"Plus oraz sufler na żywo, jedna skrzynka, moduł marketingowy i raporty finansowe (3 osoby/mies., brutto)"},
+{"@type":"Offer","name":"Premium","price":"1499","priceCurrency":"PLN","url":"https://www.tamaia.pl/cennik","availability":"https://schema.org/InStock","description":"Pro oraz voicebot, który rozmawia z pacjentem, gdy nikt nie odbiera i po godzinach pracy (200 minut miesięcznie w cenie), i porównanie statystyk do najlepszych praktyk (3 osoby/mies., brutto)"}
 ]}
 </script>
 
@@ -5999,8 +5999,8 @@ if(d==='accepted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'g
   const PRICING_PLANS = {
     // Proste formuły: cena_brutto/mies = base + step × liczba_osób
     // PLUS:    3 os. = 699 zł brutto, każda kolejna +100 zł (telefonia + pełne AI MAIA)
-    // PRO:     3 os. = 999 zł brutto, każda kolejna +100 zł (+ Kalendarz/CRM/SMS/przedpłaty)
-    // PREMIUM: 3 os. = 1499 zł brutto (= Pro + 700 zł: 1h/mies z Michałem, stała kwota)
+    // PRO:     3 os. = 999 zł brutto, każda kolejna +100 zł (+ sufler, Jedna skrzynka, marketing, raporty finansowe, wiele lokalizacji)
+    // PREMIUM: 3 os. = 1499 zł brutto (= Pro + 500 zł: voicebot z 200 min w cenie; każda kolejna osoba +100 zł)
     'PLUS':    { base: 399,  step: 100, label: 'Doskonała Rejestracja Plus',    rsName: 'Basic', min: 3, max: 15 },
     'PRO':     { base: 699,  step: 100, label: 'Doskonała Rejestracja Pro',     rsName: 'Basic', min: 3, max: 15 },
     'PREMIUM': { base: 1199, step: 100, label: 'Doskonała Rejestracja Premium', rsName: 'Basic', min: 3, max: 15 },
