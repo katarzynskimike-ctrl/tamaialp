@@ -155,6 +155,8 @@
   function zdecyduj(v) {
     zapisz(v);
     zglos(v === 'accepted');
+    /* GA4 ruszy dopiero teraz — tag Google laduje funkcja z <head> (nie na stronach bez niej). */
+    if (v === 'accepted' && typeof window.tamaiaZaladujGA === 'function') window.tamaiaZaladujGA();
     if (okno) okno.style.display = 'none';
     document.documentElement.classList.remove('tz-otwarte');
   }

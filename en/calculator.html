@@ -130,6 +130,19 @@ gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personali
 if(!d){var m=document.cookie.match(/(?:^|;\s*)cookieDecision=([^;]+)/);d=m?m[1]:null;}
 if(d==='accepted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted',functionality_storage:'granted',personalization_storage:'granted'});}}catch(e){}})();
 </script>
+<!-- Google Analytics 4 (usluga 565428442, strumien G-3K4DKH36CX) przez tag Google GTM-T66RLQ3L.
+     Tag laduje sie DOPIERO po zgodzie ("Akceptuje wszystkie"), bo okno zgody obiecuje:
+     "Dopoki nie wyrazisz zgody, nie uruchamiamy zadnych narzedzi analitycznych". Dlatego nie
+     wklejamy go na sztywno: przy samym Consent Mode Google dostawalby pingi takze bez zgody.
+     Wolane tu (decyzja zapisana z poprzedniej wizyty) i w /zgoda.js (klikniecie w oknie). -->
+<script>
+window.tamaiaZaladujGA=function(){if(window.__tamaiaGA)return;window.__tamaiaGA=1;
+var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtm.js?id=GTM-T66RLQ3L';
+document.head.appendChild(s);gtag('js',new Date());};
+(function(){var d=null;try{d=localStorage.getItem('cookieDecision');}catch(e){}
+if(!d){var m=document.cookie.match(/(?:^|;\s*)cookieDecision=([^;]+)/);d=m?m[1]:null;}
+if(d==='accepted')window.tamaiaZaladujGA();})();
+</script>
 </head>
 <body>
 <div class="wrap">
