@@ -4035,7 +4035,9 @@ if(d==='accepted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'g
 <script>
 window.tamaiaZaladujGA=function(){if(window.__tamaiaGA)return;window.__tamaiaGA=1;
 var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtm.js?id=GTM-T66RLQ3L';
-document.head.appendChild(s);gtag('js',new Date());};
+document.head.appendChild(s);gtag('js',new Date());
+/* Vercel Web Analytics tez dopiero po zgodzie (wczesniej ruszal bez okna zgody). */
+var v=document.createElement('script');v.defer=true;v.src='/_vercel/insights/script.js';document.head.appendChild(v);};
 (function(){var d=null;try{d=localStorage.getItem('cookieDecision');}catch(e){}
 if(!d){var m=document.cookie.match(/(?:^|;\s*)cookieDecision=([^;]+)/);d=m?m[1]:null;}
 if(d==='accepted')window.tamaiaZaladujGA();})();
@@ -6738,9 +6740,8 @@ window.addEventListener('message',function(e){var d=e&&e.data;if(!d||!d.tamaiaH)
   [].slice.call(document.querySelectorAll('[data-animrow]')).forEach(setup);
 })();
 </script>
-<!-- ===== POMIAR: Vercel Web Analytics (cookieless) + zdarzenia ===== -->
+<!-- ===== POMIAR: Vercel Web Analytics (skrypt laduje tamaiaZaladujGA po zgodzie) + zdarzenia ===== -->
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
-<script defer src="/_vercel/insights/script.js"></script>
 <script>
 (function(){
   function track(name,data){ try{ window.va('event', Object.assign({name:name}, data||{})); }catch(e){} }
